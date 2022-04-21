@@ -2,7 +2,7 @@ site_name: Notas de Aula em Sistemas Distribuídos
 site_url: https://paulo-coelho.github.io/ds_notes
 site_description: Notas de aula do curso de Sistemas Distribuídos da FACOM/UFU
 
-repo_url: https://github.com/paulo-coelho/ds_notes 
+repo_url: https://github.com/paulo-coelho/ds_notes
 edit_uri: ""
 
 extra_javascript:
