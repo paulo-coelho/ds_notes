@@ -96,7 +96,7 @@ Neste documento, usamos diversos recursos visuais com diferentes propósitos.
 
 ## Agradecimentos
 
-Agradeço ao Prof. Paulo R. S. L. Coelho pelas diversas contribuições feitas a este texto.
+Agradeço ao Prof. Lásaro Camargos pela publicação destas notas de aula.
 Agradeço também aos diversos alunos estão sempre, gentilmente, apresentando oportunidades de melhorias. Caso queira sugerir correções, faça um *pull request* apontando a correção no *branch* main, a partir do qual eu atualizarei o HTML.
 
 ???todo "TODO"

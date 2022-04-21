@@ -1,8 +1,8 @@
 site_name: Notas de Aula em Sistemas Distribuídos
-site_url: https://lasarojc.github.io/ds_notes
+site_url: https://paulo-coelho.github.io/ds_notes
 site_description: Notas de aula do curso de Sistemas Distribuídos da FACOM/UFU
 
-repo_url: https://github.com/lasarojc/ds_notes 
+repo_url: https://github.com/paulo-coelho/ds_notes 
 edit_uri: ""
 
 extra_javascript:
@@ -66,14 +66,14 @@ markdown_extensions:
         - pymdownx.tabbed
         - pymdownx.tilde
 
-copyright: "Copyright © 2021 Lásaro Camargos"
+copyright: "Copyright © 2022 Paulo Coelho"
 
 extra:
   social:
 #    - icon: fontawesome/brands/twitter
 #      link: https://twitter.com/...
     - icon: fontawesome/brands/github
-      link: https://github.com/lasarojc/ds_notes 
+      link: https://github.com/paulo-coelho/ds_notes 
       name: These notes on Github
 #    - icon: fontawesome/brands/slack
 #      link: https://slack.knative.dev
@@ -82,9 +82,9 @@ extra:
 #  version_warning: !!python/object/apply:os.getenv ["VERSION_WARNING"]
 #  knative_version: !!python/object/apply:os.getenv ["KNATIVE_VERSION"]
 #  branch: !!python/object/apply:os.getenv ["SAMPLES_BRANCH", "mkdocs"]
-  analytics:
-    provider: google
-    property: G-65TK61CS8M
+#  analytics:
+#    provider: google
+#    property: G-65TK61CS8M
   version:
     provider: mike
 
@@ -102,86 +102,85 @@ plugins:
                 sources: '*.drawio'
 
 
-        
 nav:
         #- Início: index.html
         - Prefácio: preface.md
         - Introdução: intro.md
-        - Comunicação:
-                - comm/index.md
-                - Redes: comm/redes.md
-                - Internet: comm/internet.md
-                - Sockets: comm/sockets.md
-                - Representação: comm/datarep.md
-                - Middlewares: comm/middleware.md
-                - RPC: comm/rpc.md
-                - MOM: comm/mom.md
-                #TODO? - Multicast: comm/multicast.md
-                - Epidêmicos: comm/epidemics.md
-                - Referências: comm/refs.md
-
-        - Arquiteturas: 
-                - arch/index.md
-                - P2P: arch/p2p.md
-                - Microsserviços: arch/microservices.md
-
-        - Modelos: 
-                - models/index.md
-                - Tipos: models/models.md
-                - Processador: models/processor.md
-
-        - Coordenação:
-                - Concorrência: coord/concurrency.md
-                - Coordenação: coord/coord.md
-        
-        - Tempo: 
-                - time/index.md
-                - Tempo Físico: time/physical.md
-                - Tempo Lógico: time/logical.md
-        
-        - Tolerância a Faltas: 
-                - fault/index.md
-                - Falta/Erros/Falhas: fault/failures.md
-                - Replicação: fault/replication.md
-                - Detectores de Falhas: fault/failuredetector.md
-                - Acordo: fault/agreement.md
-                - Grupos: fault/reconfiguration.md
-                - Falhas bizantinas: fault/bizantine.md
-                - Dependabilidade: fault/dependability.md
-
-        - Consistência:
-                - consistency/index.md
-                - Modelos: consistency/consistency_models.md
-                - Centrado nos Dados: consistency/data_centric.md
-                - Centrado no Cliente: consistency/client_centric.md
-                - Gerenciamento de Réplicas: consistency/replica_management.md
-                - Checkpointing: consistency/checkpointing.md
-                - Referências: consistency/references.md
-
-        - Bancos de Dados: db/disdb.md
-        
-        - Sistemas de Arquivos: filesystem/disfs.md
-
-        - Estudos de Caso: 
-                - Introdução: cases/index.md
-                - Cassandra: cases/cassandra.md
-                - Chord: cases/chord.md
-                - Pastry: cases/pastry.md
-                - Dynamo: cases/dynamo.md
-                - gRPC: cases/grpc.md
-                - Mosquito: cases/mosquito.md
-                - RMI: cases/rmi.md
-                - Thrift: cases/thrift.md
-                - Kafka: cases/kafka.md
-                - Swim: cases/swim.md
-                - Copycat: cases/copycat.md
-                - Ratis: cases/ratis.md
-                - BFT-Smart: cases/bftsmart.md
-                - Etcd: cases/etcd.md
-                - Zookeeper: cases/zookeeper.md
-
-                - Referências: cases/refs.md
-        
-        - Tecnologias: tech.md
-        
-        - Projeto: projeto.md
+#        - Comunicação:
+#                - comm/index.md
+#                - Redes: comm/redes.md
+#                - Internet: comm/internet.md
+#                - Sockets: comm/sockets.md
+#                - Representação: comm/datarep.md
+#                - Middlewares: comm/middleware.md
+#                - RPC: comm/rpc.md
+#                - MOM: comm/mom.md
+#                #TODO? - Multicast: comm/multicast.md
+#                - Epidêmicos: comm/epidemics.md
+#                - Referências: comm/refs.md
+#
+#        - Arquiteturas: 
+#                - arch/index.md
+#                - P2P: arch/p2p.md
+#                - Microsserviços: arch/microservices.md
+#
+#        - Modelos: 
+#                - models/index.md
+#                - Tipos: models/models.md
+#                - Processador: models/processor.md
+#
+#        - Coordenação:
+#                - Concorrência: coord/concurrency.md
+#                - Coordenação: coord/coord.md
+#        
+#        - Tempo: 
+#                - time/index.md
+#                - Tempo Físico: time/physical.md
+#                - Tempo Lógico: time/logical.md
+#        
+#        - Tolerância a Faltas: 
+#                - fault/index.md
+#                - Falta/Erros/Falhas: fault/failures.md
+#                - Replicação: fault/replication.md
+#                - Detectores de Falhas: fault/failuredetector.md
+#                - Acordo: fault/agreement.md
+#                - Grupos: fault/reconfiguration.md
+#                - Falhas bizantinas: fault/bizantine.md
+#                - Dependabilidade: fault/dependability.md
+#
+#        - Consistência:
+#                - consistency/index.md
+#                - Modelos: consistency/consistency_models.md
+#                - Centrado nos Dados: consistency/data_centric.md
+#                - Centrado no Cliente: consistency/client_centric.md
+#                - Gerenciamento de Réplicas: consistency/replica_management.md
+#                - Checkpointing: consistency/checkpointing.md
+#                - Referências: consistency/references.md
+#
+#        - Bancos de Dados: db/disdb.md
+#        
+#        - Sistemas de Arquivos: filesystem/disfs.md
+#
+#        - Estudos de Caso: 
+#                - Introdução: cases/index.md
+#                - Cassandra: cases/cassandra.md
+#                - Chord: cases/chord.md
+#                - Pastry: cases/pastry.md
+#                - Dynamo: cases/dynamo.md
+#                - gRPC: cases/grpc.md
+#                - Mosquito: cases/mosquito.md
+#                - RMI: cases/rmi.md
+#                - Thrift: cases/thrift.md
+#                - Kafka: cases/kafka.md
+#                - Swim: cases/swim.md
+#                - Copycat: cases/copycat.md
+#                - Ratis: cases/ratis.md
+#                - BFT-Smart: cases/bftsmart.md
+#                - Etcd: cases/etcd.md
+#                - Zookeeper: cases/zookeeper.md
+#
+#                - Referências: cases/refs.md
+#        
+#        - Tecnologias: tech.md
+#        
+#        - Projeto: projeto.md
