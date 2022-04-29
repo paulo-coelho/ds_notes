@@ -2,7 +2,7 @@
 
 Escrever **bons sistemas distribuídos** é uma tarefa que esbarra em diversos obstáculos, sendo a definição do que é um sistema distribuído e do que é ser "bom" neste contexto sendo nossos primeiros obstáculos.
 
-## O quê são Sistemas Distribuídos?
+## O que são Sistemas Distribuídos?
 
 Para atacarmos a primeira questão e entendermos o que é um Sistema Distribuído, talvez seja mais fácil começar pelo que **não é um sistema não-distribuído**.
 Estes são os **sistemas que contém em um único processo toda a lógica de negócio, armazenamento e interface com usuário**, mesmo que sejam divididos em vários módulos e usem diferentes bibliotecas e *frameworks*.

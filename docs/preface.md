@@ -1,6 +1,6 @@
 # Prefácio
 
-## Por quê ler estas notas?
+## Por que ler estas notas?
 
 ???- info inline end "Computação distribuída"
     * Área extremamente ativa
@@ -97,7 +97,7 @@ Neste documento, usamos diversos recursos visuais com diferentes propósitos.
 ## Agradecimentos
 
 Agradeço ao Prof. Lásaro Camargos pela publicação e compartilhamento destas notas de aula.
-Agradeço também aos diversos alunos estão sempre, gentilmente, apresentando oportunidades de melhorias. Caso queira sugerir correções, faça um *pull request* apontando a correção no *branch* main, a partir do qual eu atualizarei o HTML.
+Agradeço também aos diversos alunos que estão sempre, gentilmente, apresentando oportunidades de melhorias. Caso queira sugerir correções, faça um *pull request* apontando a correção no *branch* main, a partir do qual eu atualizarei o HTML.
 
 ???todo "TODO"
     * Adicionar guia de sugestões.
