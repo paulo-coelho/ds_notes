@@ -15,14 +15,19 @@ extra_css:
 
 theme:
         name: material
+        font:
+          text: Anonymous Pro
+          code: Fira Code
         palette:
            - scheme: default
+             accent: orange
+             primary: blue
              toggle:
                 icon: material/toggle-switch-off-outline
                 name: Switch to dark mode
-                accent: deep orange
-                primary: blue grey
            - scheme: slate
+             accent: blue
+             primary: orange 
              toggle:
                 icon: material/toggle-switch
                 name: Switch to light mode
@@ -106,19 +111,19 @@ nav:
         #- Início: index.html
         - Prefácio: preface.md
         - Introdução: intro.md
-#        - Comunicação:
-#                - comm/index.md
-#                - Redes: comm/redes.md
-#                - Internet: comm/internet.md
-#                - Sockets: comm/sockets.md
-#                - Representação: comm/datarep.md
-#                - Middlewares: comm/middleware.md
-#                - RPC: comm/rpc.md
-#                - MOM: comm/mom.md
-#                #TODO? - Multicast: comm/multicast.md
-#                - Epidêmicos: comm/epidemics.md
-#                - Referências: comm/refs.md
-#
+        - Comunicação:
+                - comm/index.md
+                - Redes: comm/redes.md
+                - Internet: comm/internet.md
+                - Sockets: comm/sockets.md
+                - Representação: comm/datarep.md
+                - Middlewares: comm/middleware.md
+                - RPC: comm/rpc.md
+                - MOM: comm/mom.md
+                #TODO? - Multicast: comm/multicast.md
+                - Epidêmicos: comm/epidemics.md
+                - Referências: comm/refs.md
+
 #        - Arquiteturas: 
 #                - arch/index.md
 #                - P2P: arch/p2p.md

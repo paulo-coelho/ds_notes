@@ -4,8 +4,8 @@ Redes de computadores podem ter diversas topologias e características, por exem
 
 |                     | Ponto-a-ponto  | Barramento Compartilhado | Token Ring |
 |---------------------|----------------|--------------------------|------------|
-| **Colisões**            | Sem            | Com                      | Sem        |
-| **Roteamento**          | Trivial        | Complexo                 | Simples    |
+| **Colisões**        | Sem            | Com                      | Sem        |
+| **Roteamento**      | Trivial        | Complexo                 | Simples    |
 | **# Conexões**      | Exponencial    | Linear                   | Linear     |
 
 Nas redes atuais, pode se dizer que o meio mais utilizado é provido pela arquitetura **Ethernet**, que trata da comunicação entre nós usando um **barramento compartilhado**, mesmo que este esteja por vezes escondido.
@@ -18,8 +18,7 @@ Sobre este meio, são usados protocolos para, por exemplo,
 As redes Ethernet, contudo, cobrem pequenas áreas e, para se ter conversas mais "abrangentes", é necessário que se conecte diversas destas redes.
 A conversa então é feita por meio de intermediários, ***gateways*** que conectam duas ou mais redes, permitindo que mensagens de um interlocutor sejam **roteadas** para o outro.
 
-???todo "Gateway"
-    Drawing.
+![Gateway](../drawings/gateway.drawio)
 
 Um exemplo interessante das questões ligadas à manutenção da conversa entre dois pontos é a decisão sobre o uso de **comutação de pacotes** (*packet switching*) ou de **circuitos** (*circuit switching*).
 
