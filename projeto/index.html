@@ -456,6 +456,158 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../arch/">Arquiteturas</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Arquiteturas" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Arquiteturas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch/p2p/" class="md-nav__link">
+        P2P
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch/microservices/" class="md-nav__link">
+        Microsserviços
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Projeto
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Projeto
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#casos-de-uso" class="md-nav__link">
+    Casos de Uso
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacao-entre-portais" class="md-nav__link">
+    Interação entre portais
+  </a>
+  
+    <nav class="md-nav" aria-label="Interação entre portais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapa-1-usuariosportais" class="md-nav__link">
+    Etapa 1 - Usuários/Portais
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -498,13 +650,6 @@
           <li class="md-nav__item">
   <a href="#etapa-1-usuariosportais" class="md-nav__link">
     Etapa 1 - Usuários/Portais
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etapa-2-banco-de-dados-replicado" class="md-nav__link">
-    Etapa 2 - Banco de dados Replicado
   </a>
   
 </li>
@@ -728,64 +873,50 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 <h3 id="etapa-1-usuariosportais">Etapa 1 - Usuários/Portais</h3>
 <ul>
 <li>Implementar os casos de uso usando como cache tabelas hash locais aos portais Cliente e Administrador.</li>
-<li>Se certificar de que cada operação use uma API distinta na comunicação via gRPC ou uma mensagem distinta no uso de pub/sub.</li>
-<li>Se certificar de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.</li>
+<li>Certificar-se de que cada operação use uma API distinta na comunicação via gRPC ou uma mensagem distinta no uso de pub/sub.</li>
+<li>Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.</li>
 <li>Implementar testes automatizados de sucesso e falha de cada uma das operações na API.</li>
 <li>Documentar o esquema de dados usados nas tabelas.</li>
 <li>Usar dois tipos de comunicação distintos entre clientes e portais.</li>
-<li>O sistema deve permitir a execução de múltiplos cliente, administradores, portais cliente e portais administrador.</li>
+<li>O sistema deve permitir a execução de múltiplos clientes, administradores, portais cliente e portais administrador.</li>
 <li>Implementar a propagação de informação entre as diversas caches do sistema. Sugiro usar pubsub, já que a comunicação é de 1 para muitos.</li>
 </ul>
 <p><img alt="Projeto" src="../drawings/projeto.drawio-1.svg" /></p>
 <p>Uma possível instância desta etapa do projeto seria a seguinte</p>
 <p><img alt="Projeto" src="../drawings/instancia_projeto.drawio-0.svg" /></p>
-<h3 id="etapa-2-banco-de-dados-replicado">Etapa 2 - Banco de dados Replicado</h3>
-<p>Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas consistentemente entre todas as réplicas usando um protocolo de difusão atômica.</p>
-<p><img alt="Projeto" src="../drawings/projeto.drawio-3.svg" /></p>
-<ul>
-<li>
-<p>Objetivos</p>
-<ul>
-<li>Replicar a base de dados para obter tolerância a falhas.</li>
-</ul>
-</li>
-<li>
-<p>Desafios</p>
-<ul>
-<li>Certificar-se de que o portais são máquinas de estados determinística</li>
-<li>Compreender o uso de Difusão Atômica em nível teórico</li>
-<li>Compreender o uso de Difusão Atômica em nível prático <ul>
-<li>Use <a href="https://lasarojc.github.io/ds_notes/cases/ratis">Ratis</a> para java</li>
-<li>Para Python, OpenReplica é uma boa opção.</li>
-<li>Aplicar difusão atômica na replicação do servidor</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Portal<ul>
-<li>A API para clientes continua a mesma.</li>
-<li>Requisições para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  </li>
-<li>Dados não são mais armazenados em disco pela sua aplicação mas somente via Ratis.</li>
-</ul>
-</li>
-<li>Cliente<ul>
-<li>Sem alteração.</li>
-</ul>
-</li>
-<li>Testes<ul>
-<li>O mesmo <em>framework</em> de testes deve continuar funcional</li>
-</ul>
-</li>
-<li>Comunicação<ul>
-<li>Entre cliente e portais, não é alterado.</li>
-<li>Entre servidores, usar Ratis</li>
-</ul>
-</li>
-<li>Apresentação<ul>
-<li>Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.</li>
-</ul>
-</li>
-</ul>
+<!--
+### Etapa 2 - Banco de dados Replicado
+Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
+
+![Projeto](drawings/projeto.drawio#3)
+
+* Objetivos
+    * Replicar a base de dados para obter tolerância a falhas.
+
+* Desafios
+    * Certificar-se de que o portais são máquinas de estados determinística
+    * Compreender o uso de Difusão Atômica em nível teórico
+    * Compreender o uso de Difusão Atômica em nível prático 
+        * Use [Ratis](https://lasarojc.github.io/ds_notes/cases/ratis) para java
+        * Para Python, OpenReplica é uma boa opção.
+        * Aplicar difusão atômica na replicação do servidor
+* Portal
+    * A API para clientes continua a mesma.
+    * Requisições para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  
+    * Dados não são mais armazenados em disco pela sua aplicação mas somente via Ratis.
+* Cliente
+    * Sem alteração.
+* Testes
+    * O mesmo *framework* de testes deve continuar funcional
+* Comunicação
+    * Entre cliente e portais, não é alterado.
+    * Entre servidores, usar Ratis
+* Apresentação
+    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
+
+
+-->
+
 <!--
 
 ### Etapa 2 - Banco de dados.
@@ -952,6 +1083,26 @@ Para garantir que todo o seu esforço será concentrado no lugar certo e que sua
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href="../arch/microservices/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Microsserviços" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Microsserviços
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
