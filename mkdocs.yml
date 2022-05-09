@@ -124,10 +124,10 @@ nav:
                 - Epidêmicos: comm/epidemics.md
                 - Referências: comm/refs.md
 
-#        - Arquiteturas: 
-#                - arch/index.md
-#                - P2P: arch/p2p.md
-#                - Microsserviços: arch/microservices.md
+        - Arquiteturas: 
+                - arch/index.md
+                - P2P: arch/p2p.md
+                - Microsserviços: arch/microservices.md
 #
 #        - Modelos: 
 #                - models/index.md
@@ -188,4 +188,4 @@ nav:
 #        
 #        - Tecnologias: tech.md
 #        
-#        - Projeto: projeto.md
+        - Projeto: projeto.md

@@ -132,12 +132,12 @@ Nesta descrição, a interação com a cache foi omitida, mas deverá ser implem
 ### Etapa 1 - Usuários/Portais
 
 * Implementar os casos de uso usando como cache tabelas hash locais aos portais Cliente e Administrador.
-* Se certificar de que cada operação use uma API distinta na comunicação via gRPC ou uma mensagem distinta no uso de pub/sub.
-* Se certificar de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.
+* Certificar-se de que cada operação use uma API distinta na comunicação via gRPC ou uma mensagem distinta no uso de pub/sub.
+* Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.
 * Implementar testes automatizados de sucesso e falha de cada uma das operações na API.
 * Documentar o esquema de dados usados nas tabelas.
 * Usar dois tipos de comunicação distintos entre clientes e portais.
-* O sistema deve permitir a execução de múltiplos cliente, administradores, portais cliente e portais administrador.
+* O sistema deve permitir a execução de múltiplos clientes, administradores, portais cliente e portais administrador.
 * Implementar a propagação de informação entre as diversas caches do sistema. Sugiro usar pubsub, já que a comunicação é de 1 para muitos.
 
 ![Projeto](drawings/projeto.drawio#1)
@@ -147,7 +147,7 @@ Uma possível instância desta etapa do projeto seria a seguinte
 ![Projeto](drawings/instancia_projeto.drawio#0)
 
 
-
+<!--
 ### Etapa 2 - Banco de dados Replicado
 Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
 
@@ -178,7 +178,7 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
     * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
 
 
-
+-->
 
 <!--
 
