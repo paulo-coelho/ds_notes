@@ -129,9 +129,9 @@ nav:
                 - P2P: arch/p2p.md
                 - Microsserviços: arch/microservices.md
 
-#        - Modelos: 
-#                - models/index.md
-#                - Tipos: models/models.md
+        - Modelos: 
+                - models/index.md
+                - Tipos: models/models.md
 #                - Processador: models/processor.md
 
         - Coordenação:
@@ -173,7 +173,7 @@ nav:
 #                - Pastry: cases/pastry.md
 #                - Dynamo: cases/dynamo.md
                 - gRPC: cases/grpc.md
-                - Mosquito: cases/mosquito.md
+                - Mosquitto: cases/mosquitto.md
 #                - RMI: cases/rmi.md
 #                - Thrift: cases/thrift.md
 #                - Kafka: cases/kafka.md

@@ -12,12 +12,11 @@ Por ser mínimo, o Mosquitto é ideal para uso em dispositivos pequenos e com po
 
 
 
-
 ###### Instalação
 
 * Ubuntu: `apt-get install mosquitto`
 * MacOS: brew install mosquitto
-* Windows: baixe [mosquitto-2.0.9a-install-windows-x64.exe](http://mosquitto.org/download)
+* Windows: baixe [mosquitto-XXXX-install-windows-x64.exe](http://mosquitto.org/download)
 
 ###### Inicializando o serviço
 
@@ -54,7 +53,7 @@ mosquitto_sub -t sensor/temperature/+
 ###### Programando
 
 Existem também APIs em diversas linguagem para desenvolvimento de aplicações que utilizem o Mosquitto.
-A biblioteca pode ser baixada [aqui](https://repo.eclipse.org/content/repositories/paho-snapshots/org/eclipse/paho/org.eclipse.paho.client.mqttv3/1.2.6-SNAPSHOT/org.eclipse.paho.client.mqttv3-1.2.6-20200715.040602-1.jar).
+A biblioteca pode ser baixada [aqui](https://www.eclipse.org/paho/index.php?page=clients/java/index.php).
 
 
 ```java
@@ -123,9 +122,10 @@ If you can think of any other differences that we overlooked, we would love to h
 
 
 
-
 !!! question "Exercícios - RPC e Publish/Subscribe"
+<!--
     * Usando *thrift* e a linguagem Java, estenda o serviço ChaveValor para retornar o valor antigo de uma determinada chave na operação `setKV()`  caso a chave já exista.
+-->
     * Usando o *broker* mosquitto instalado localmente, faça em Java um *publisher* que simula um sensor de temperatura e publica valores aleatórios entre 15 e 45 a cada segundo.
     * Faça o *subscriber* que irá consumir esses dados de temperatura.
 
