@@ -123,11 +123,11 @@ If you can think of any other differences that we overlooked, we would love to h
 
 
 !!! question "Exercícios - RPC e Publish/Subscribe"
+    * Usando o *broker* mosquitto instalado localmente, faça em Java um *publisher* que simula um sensor de temperatura e publica valores aleatórios entre 15 e 45 a cada segundo.
+    * Faça o *subscriber* que irá consumir esses dados de temperatura.
 <!--
     * Usando *thrift* e a linguagem Java, estenda o serviço ChaveValor para retornar o valor antigo de uma determinada chave na operação `setKV()`  caso a chave já exista.
 -->
-    * Usando o *broker* mosquitto instalado localmente, faça em Java um *publisher* que simula um sensor de temperatura e publica valores aleatórios entre 15 e 45 a cada segundo.
-    * Faça o *subscriber* que irá consumir esses dados de temperatura.
 
 
 

@@ -137,11 +137,11 @@ nav:
         - Coordenação:
                 - Concorrência: coord/concurrency.md
                 - Coordenação: coord/coord.md
-#        
-#        - Tempo: 
-#                - time/index.md
-#                - Tempo Físico: time/physical.md
-#                - Tempo Lógico: time/logical.md
+
+        - Tempo: 
+                - time/index.md
+                - Tempo Físico: time/physical.md
+                - Tempo Lógico: time/logical.md
 #        
 #        - Tolerância a Faltas: 
 #                - fault/index.md
