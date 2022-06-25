@@ -1841,14 +1841,14 @@ Apesar disso, pode-se demonstrar que o pior caso em termos de número de mensage
 <li>Observe que no algoritmo um processo apenas se "declara líder", mas os outros não necessariamente ficam sabendo disso. Como você o corrigiria para que terminasse?</li>
 </ul>
 </div>
-<p>Diversos outros algoritmos existem para a topologia em anel. O algoritmo de Franklin é um dos que propõe melhorias para reduzir quantidade de mensagens usadas na eleição.
+<p>Diversos outros algoritmos existem para a topologia em anel. O algoritmo de Franklin<sup id="fnref:franklin"><a class="footnote-ref" href="#fn:franklin">4</a></sup> é um dos que propõe melhorias para reduzir quantidade de mensagens usadas na eleição.
 Ele faz isso em rodadas, comparando identificadores com outros processos ativos tanto à esquerda quanto à direita e desativando os processos não viáveis.</p>
 <div class="admonition note">
 <p class="admonition-title">Algoritmo de Franklin</p>
 <ul>
 <li>Organize os nós em um anel lógico</li>
 <li>Ativo <span class="arithmatex">\(\gets 1\)</span></li>
-<li>Quando <span class="arithmatex">\(p\)</span> acha que o líder está morto e se Ativo $ = 1$ :<ul>
+<li>Quando <span class="arithmatex">\(p\)</span> acha que o líder está morto e se Ativo <span class="arithmatex">\(=1\)</span> :<ul>
 <li>Envia mensagem <span class="arithmatex">\((p)\)</span> à direita e à esquerda</li>
 </ul>
 </li>
@@ -1860,7 +1860,6 @@ Ele faz isso em rodadas, comparando identificadores com outros processos ativos 
 </li>
 <li>Se <span class="arithmatex">\(max(e,d) &gt; p\)</span><ul>
 <li>Ativo <span class="arithmatex">\(\gets 0\)</span></li>
-<li>Envia mensagem <span class="arithmatex">\(-p\)</span> à direita e à esquerda</li>
 </ul>
 </li>
 <li>Se <span class="arithmatex">\(max(e,d) = p\)</span><ul>
@@ -2118,6 +2117,9 @@ Aprofundemo-nos nos próximos capítulo nos conceitos de tempo e tolerância a f
 </li>
 <li id="fn:changrobert">
 <p><a href="https://dl.acm.org/doi/10.1145/359104.359108">An improved algorithm for decentralized extrema-finding in circular configurations of processes</a>.&#160;<a class="footnote-backref" href="#fnref:changrobert" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:franklin">
+<p><a href="https://dl.acm.org/doi/pdf/10.1145/358506.358517">On an improved algorithm for decentralized extrema finding in circular configurations of processors</a>&#160;<a class="footnote-backref" href="#fnref:franklin" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
