@@ -23,14 +23,14 @@ Observe que o repositório base apontado no tutorial serve de exemplo para diver
 Para usar os exemplos, você precisa clonar o repositório com o tutorial, usando o comando a seguir.
 
 ```bash
-git clone -b v1.42.1 https://github.com/grpc/grpc-java
+git clone -b v1.47.0 https://github.com/grpc/grpc-java
 ```
 
-Uma vez clonado, entre na pasta de exemplo do Java e certifique-se que está na versão 1.42.1, usada neste tutorial.
+Uma vez clonado, entre na pasta de exemplo do Java e certifique-se que está na versão 1.47.0, usada neste tutorial.
 
 ```bash
 cd grpc-java/examples
-git checkout v1.42.1
+git checkout v1.47.0
 ```
 
 ##### Compilando e executando

@@ -553,13 +553,15 @@ Apesar disso, pode-se demonstrar que o pior caso em termos de número de mensage
     * O pior caso em termos de número de mensagens até que alguém seja eleito é $O(n^2)$. Descreva como os nós devem estar organizados para que esta situação ocorra.
     * Observe que no algoritmo um processo apenas se "declara líder", mas os outros não necessariamente ficam sabendo disso. Como você o corrigiria para que terminasse?
 
-Diversos outros algoritmos existem para a topologia em anel. O algoritmo de Franklin é um dos que propõe melhorias para reduzir quantidade de mensagens usadas na eleição.
+Diversos outros algoritmos existem para a topologia em anel. O algoritmo de Franklin[^franklin] é um dos que propõe melhorias para reduzir quantidade de mensagens usadas na eleição.
 Ele faz isso em rodadas, comparando identificadores com outros processos ativos tanto à esquerda quanto à direita e desativando os processos não viáveis.
+
+[^franklin]: [On an improved algorithm for decentralized extrema finding in circular configurations of processors](https://dl.acm.org/doi/pdf/10.1145/358506.358517)
 
 !!!note "Algoritmo de Franklin"
     * Organize os nós em um anel lógico
     * Ativo $\gets 1$
-    * Quando $p$ acha que o líder está morto e se Ativo $ = 1$ :
+    * Quando $p$ acha que o líder está morto e se Ativo $=1$ :
         * Envia mensagem $(p)$ à direita e à esquerda
     * Quando $p$ recebe $e$ e $d$, da esquerda e da direita, respectivamente:
         * Se Ativo $=1$
@@ -567,7 +569,6 @@ Ele faz isso em rodadas, comparando identificadores com outros processos ativos 
                 * Envia mensagem $(p)$ à direita e à esquerda
             * Se $max(e,d) > p$
                 * Ativo $\gets 0$
-                * Envia mensagem $-p$ à direita e à esquerda
             * Se $max(e,d) = p$
                 * $p$ se declara líder.
         * Se Ativo $=0$
