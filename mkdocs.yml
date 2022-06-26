@@ -175,7 +175,7 @@ nav:
                 - gRPC: cases/grpc.md
                 - Mosquitto: cases/mosquitto.md
 #                - RMI: cases/rmi.md
-#                - Thrift: cases/thrift.md
+                - Thrift: cases/thrift.md
 #                - Kafka: cases/kafka.md
 #                - Swim: cases/swim.md
 #                - Copycat: cases/copycat.md
