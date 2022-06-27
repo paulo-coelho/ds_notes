@@ -8,8 +8,9 @@
 * ou instale-o usando apt-get, por exemplo. `apt-get install thrift-compiler`
 * execute "thrift" na linha de comando.
 * Para thrift com Java, também precisarão dos seguintes arquivos
-  * [slf4j](http://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.36)
-  * [libthrift0.16.0.jar](https://mvnrepository.com/artifact/org.apache.thrift/libthrift/0.16.0)
+  * [slf4j-api-1.7.36](http://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.36)
+  * [libthrift-0.16.0.jar](https://mvnrepository.com/artifact/org.apache.thrift/libthrift/0.16.0)
+  * [javax.annotation-api-1.3.2.jar](https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2)
   * coloque-os na pasta `jars`
 * Baseado no tutorial [oficial](https://thrift.apache.org/tutorial/java.html).
 
