@@ -13,15 +13,15 @@
         <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/cases/ratis/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
     
     
       
-        <title>Coordenação: Ratis - Notas de Aula em Sistemas Distribuídos</title>
+        <title>Ratis - Notas de Aula em Sistemas Distribuídos</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.120efc48.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Coordenação: Ratis
+              Ratis
             
           </span>
         </div>
@@ -778,12 +778,16 @@
         
           
         
+          
+        
+          
+        
       
       
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../">Estudos de Caso</a>
+          <a href="../../fault/">Tolerância a Faltas</a>
           
             <label for="__nav_8">
               <span class="md-nav__icon md-icon"></span>
@@ -791,8 +795,168 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="Estudos de Caso" data-md-level="1">
+      <nav class="md-nav" aria-label="Tolerância a Faltas" data-md-level="1">
         <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Tolerância a Faltas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fault/failures/" class="md-nav__link">
+        Falta/Erros/Falhas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fault/replication/" class="md-nav__link">
+        Replicação
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fault/failuredetector/" class="md-nav__link">
+        Detectores de Falhas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fault/agreement/" class="md-nav__link">
+        Acordo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fault/reconfiguration/" class="md-nav__link">
+        Grupos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fault/bizantine/" class="md-nav__link">
+        Falhas bizantinas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fault/dependability/" class="md-nav__link">
+        Dependabilidade
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Estudos de Caso</a>
+          
+            <label for="__nav_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Estudos de Caso" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           Estudos de Caso
         </label>
@@ -865,6 +1029,30 @@
       <a href="../thrift/" class="md-nav__link">
         Thrift
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ratis
+      </a>
+      
     </li>
   
 
@@ -1115,18 +1303,24 @@ Obviamente que voce deveria ler estes parâmetros como argumentos para o program
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.ratis.client.RaftClient</span><span class="p">;</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.net.InetSocketAddress</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.Charset</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Collectors</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ratis.client.RaftClient</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.conf.Parameters</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.conf.RaftProperties</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.grpc.GrpcFactory</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.protocol.*</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.thirdparty.com.google.protobuf.ByteString</span><span class="p">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.net.InetSocketAddress</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.nio.charset.Charset</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cliente</span>
 <span class="p">{</span>
@@ -1298,7 +1492,19 @@ O código é auto explicativo.</p>
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.ratis.conf.RaftProperties</span><span class="p">;</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.net.InetSocketAddress</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Collectors</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ratis.conf.RaftProperties</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.grpc.GrpcConfigKeys</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.protocol.RaftGroup</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.protocol.RaftGroupId</span><span class="p">;</span>
@@ -1308,14 +1514,6 @@ O código é auto explicativo.</p>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.server.RaftServerConfigKeys</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.thirdparty.com.google.protobuf.ByteString</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ratis.util.LifeCycle</span><span class="p">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.net.InetSocketAddress</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Servidor</span>
 <span class="p">{</span>
@@ -1362,9 +1560,11 @@ Para <strong>limpar</strong> o estado, apague as pastas de cada servidor.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="n">RaftProperties</span> <span class="n">properties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RaftProperties</span><span class="p">();</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="n">RaftProperties</span> <span class="n">properties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RaftProperties</span><span class="p">();</span>
         <span class="n">properties</span><span class="p">.</span><span class="na">setInt</span><span class="p">(</span><span class="n">GrpcConfigKeys</span><span class="p">.</span><span class="na">OutputStream</span><span class="p">.</span><span class="na">RETRY_TIMES_KEY</span><span class="p">,</span> <span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">);</span>
-        <span class="n">GrpcConfigKeys</span><span class="p">.</span><span class="na">Server</span><span class="p">.</span><span class="na">setPort</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">id2addr</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">).</span><span class="na">getPort</span><span class="p">();</span>
+        <span class="n">GrpcConfigKeys</span><span class="p">.</span><span class="na">Server</span><span class="p">.</span><span class="na">setPort</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span> <span class="n">port</span><span class="p">);</span>
         <span class="n">RaftServerConfigKeys</span><span class="p">.</span><span class="na">setStorageDir</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span> <span class="n">Collections</span><span class="p">.</span><span class="na">singletonList</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;/tmp/&quot;</span> <span class="o">+</span> <span class="n">myId</span><span class="p">)));</span>
 </code></pre></div>
 </td></tr></table>
@@ -1402,8 +1602,30 @@ Para <strong>limpar</strong> o estado, apague as pastas de cada servidor.</p>
 </td></tr></table>
 <p>Vamos agora para a definição da classe <code>MaquinaDeEstados</code>, no arquivo <code>MaquinaDeEstados.java</code>.
 Esta classe deve implementar a interface <code>org.apache.ratis.statemachine.StateMachine</code> e seus vários métodos ou, mais simples, estende <code>org.apache.ratis.statemachine.impl.BaseStateMachine</code>, a abordagem que usaremos aqui.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MaquinaDeEstados</span> <span class="kd">extends</span> <span class="n">BaseStateMachine</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.nio.charset.Charset</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.CompletableFuture</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.ConcurrentHashMap</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ratis.proto.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ratis.protocol.Message</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ratis.statemachine.TransactionContext</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ratis.statemachine.impl.BaseStateMachine</span><span class="p">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MaquinaDeEstados</span> <span class="kd">extends</span> <span class="n">BaseStateMachine</span>
 <span class="p">{</span>
 </code></pre></div>
 </td></tr></table>
@@ -1541,6 +1763,41 @@ java -cp target/ChaveValor-1.0-SNAPSHOT-jar-with-dependencies.jar Cliente add k2
       
         <footer class="md-footer">
   
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href="../thrift/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Thrift" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Thrift
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../projeto/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Projeto" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Projeto
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -1578,7 +1835,7 @@ java -cp target/ChaveValor-1.0-SNAPSHOT-jar-with-dependencies.jar Cliente add k2
     <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       
