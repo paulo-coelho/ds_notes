@@ -6,10 +6,14 @@ O projeto consiste em uma aplicação com dois tipos de usuários, os **clientes
 As funcionalidades são expostas para estes usuários via **dois tipos** de  aplicações distintas, o **portal do cliente**  e o **portal administrativo**, mas ambos manipulam a **mesma base de dados**.
 Múltiplas instâncias de cada portal podem existir e cada instância mantém um **cache** da base de dados em memória, com as entradas mais recentemente acessadas.
 
+A base de dados é replicada em outros nós usando um protocolo de **difusão atômica**.
+
+<!--
 A totalidade da base é particionada usando ***consistent hashing***.
 Cada partição é replicada em outros nós usando um protocolo de **difusão atômica**.
+-->
 
-![Projeto](drawings/projeto.drawio#0)
+![Projeto](drawings/projeto.drawio#3)
 
 A arquitetura do sistema será **híbrida**, contendo um pouco de Cliente/Servidor e Peer-2-Peer, além de ser multicamadas.
 Apesar de introduzir complexidade extra, também usaremos **múltiplos mecanismos para a comunicação** entre as partes, para que possam experimentar com diversas abordagens.
@@ -147,7 +151,6 @@ Uma possível instância desta etapa do projeto seria a seguinte
 ![Projeto](drawings/instancia_projeto.drawio#0)
 
 
-<!--
 ### Etapa 2 - Banco de dados Replicado
 Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
 
@@ -176,9 +179,6 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
     * Entre servidores, usar Ratis
 * Apresentação
     * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
-
-
--->
 
 <!--
 

@@ -33,7 +33,7 @@ Abra o arquivo `pom.xml` do seu projeto e adicione o seguinte trecho, com as dep
     <dependency>
         <groupId>com.beust</groupId>
         <artifactId>jcommander</artifactId>
-        <version>1.83</version>
+        <version>1.82</version>
     </dependency>
     <dependency>
         <groupId>org.slf4j</groupId>
@@ -61,20 +61,11 @@ Abra o arquivo `pom.xml` do seu projeto e adicione o seguinte trecho, com as dep
 </dependencies>
 ```
 
-Adicione também o plugin Maven e o plugin para gerar um `.jar` com todas as dependências. Observe que estou usando Java 17, mas você pode mudar para a sua versão.
+Adicione também o plugin Maven e o plugin para gerar um `.jar` com todas as dependências. 
 
 ```xml
 <build>
     <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>${maven.compiler.version}</version>
-            <configuration>
-                <source>17</source>
-                <target>17</target>
-            </configuration>
-        </plugin>
         <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
             <executions>
@@ -279,7 +270,7 @@ A máquina de estados em si é especificada no próximo excerto, em `setStateMac
 
 ```java
         //Join the group of processes.
-        final RaftGroup raftGroup = RaftGroup.valueOf(RaftGroupId.valueOf(ByteString.copyFromUtf8(raftGroupId)), id2addr);
+        final RaftGroup raftGroup = RaftGroup.valueOf(RaftGroupId.valueOf(ByteString.copyFromUtf8(raftGroupId)), addresses);
         RaftServer raftServer = RaftServer.newBuilder()
                 .setServerId(myId)
                 .setStateMachine(new MaquinaDeEstados())
@@ -379,7 +370,7 @@ java -cp target/ChaveValor-1.0-SNAPSHOT-jar-with-dependencies.jar Cliente get k1
 java -cp target/ChaveValor-1.0-SNAPSHOT-jar-with-dependencies.jar Cliente add k2 testek2
 ```
 
-Todo o código está disponível no [Github](https://github.com/lasarojc/ds_notes/tree/main/docs/fault/code/ChaveValor)
+Todo o código está disponível no Teams.
 
 ???todo "Exercício"
     * Adicionar operações 
