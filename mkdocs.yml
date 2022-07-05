@@ -142,16 +142,16 @@ nav:
                 - time/index.md
                 - Tempo Físico: time/physical.md
                 - Tempo Lógico: time/logical.md
-#        
-#        - Tolerância a Faltas: 
-#                - fault/index.md
-#                - Falta/Erros/Falhas: fault/failures.md
-#                - Replicação: fault/replication.md
-#                - Detectores de Falhas: fault/failuredetector.md
-#                - Acordo: fault/agreement.md
-#                - Grupos: fault/reconfiguration.md
-#                - Falhas bizantinas: fault/bizantine.md
-#                - Dependabilidade: fault/dependability.md
+        
+        - Tolerância a Faltas: 
+                - fault/index.md
+                - Falta/Erros/Falhas: fault/failures.md
+                - Replicação: fault/replication.md
+                - Detectores de Falhas: fault/failuredetector.md
+                - Acordo: fault/agreement.md
+                - Grupos: fault/reconfiguration.md
+                - Falhas bizantinas: fault/bizantine.md
+                - Dependabilidade: fault/dependability.md
 #
 #        - Consistência:
 #                - consistency/index.md
@@ -179,7 +179,7 @@ nav:
 #                - Kafka: cases/kafka.md
 #                - Swim: cases/swim.md
 #                - Copycat: cases/copycat.md
-#                - Ratis: cases/ratis.md
+                - Ratis: cases/ratis.md
 #                - BFT-Smart: cases/bftsmart.md
 #                - Etcd: cases/etcd.md
 #                - Zookeeper: cases/zookeeper.md
