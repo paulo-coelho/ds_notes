@@ -163,9 +163,12 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
     * Certificar-se de que o portais são máquinas de estados determinística
     * Compreender o uso de Difusão Atômica em nível teórico
     * Compreender o uso de Difusão Atômica em nível prático 
-        * Use [Ratis](https://lasarojc.github.io/ds_notes/cases/ratis) para java
-        * Para Python, OpenReplica é uma boa opção.
+        * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
+        * Para Python, [OpenReplica](https://openreplica.org) é uma boa opção.
         * Aplicar difusão atômica na replicação do servidor
+        * Utilizar um banco de dados simples do tipo chave-valor, como [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
+            * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
+        * Utilizar três réplicas (servidores)
 * Portal
     * A API para clientes continua a mesma.
     * Requisições para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  
