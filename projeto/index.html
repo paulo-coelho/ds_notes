@@ -1434,9 +1434,14 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 <li>Certificar-se de que o portais são máquinas de estados determinística</li>
 <li>Compreender o uso de Difusão Atômica em nível teórico</li>
 <li>Compreender o uso de Difusão Atômica em nível prático <ul>
-<li>Use <a href="https://lasarojc.github.io/ds_notes/cases/ratis">Ratis</a> para java</li>
-<li>Para Python, OpenReplica é uma boa opção.</li>
+<li>Use <a href="https://paulo-coelho.github.io/ds_notes/cases/ratis">Ratis</a> para java</li>
+<li>Para Python, <a href="https://openreplica.org">OpenReplica</a> é uma boa opção.</li>
 <li>Aplicar difusão atômica na replicação do servidor</li>
+<li>Utilizar um banco de dados simples do tipo chave-valor, como <a href="https://github.com/google/leveldb">LevelDB</a> ou <a href="https://git.openldap.org/openldap/openldap/tree/mdb.master">LMDB</a><ul>
+<li>Embora originalmente escritas em C++/C, há <em>ports</em> para diversas outras linguagens, (e.g., <a href="https://github.com/lmdbjava/lmdbjava">aqui</a> e <a href="https://github.com/dain/leveldb">aqui</a>)</li>
+</ul>
+</li>
+<li>Utilizar três réplicas (servidores)</li>
 </ul>
 </li>
 </ul>
