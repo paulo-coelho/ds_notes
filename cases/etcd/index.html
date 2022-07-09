@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/cases/etcd/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.120efc48.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
@@ -67,6 +67,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#key-value-store-etcd" class="md-skip">
+          Ir para o conteúdo
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -1053,18 +1058,22 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
       
       
       
         
           
             
+          
+        
           
         
           
@@ -1185,6 +1194,94 @@
 
             
           
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Etcd
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Etcd
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacao" class="md-nav__link">
+    Instalação
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execucao" class="md-nav__link">
+    Execução
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliente" class="md-nav__link">
+    Cliente
+  </a>
+  
+    <nav class="md-nav" aria-label="Cliente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#em-java" class="md-nav__link">
+    Em Java
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1223,6 +1320,56 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacao" class="md-nav__link">
+    Instalação
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execucao" class="md-nav__link">
+    Execução
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliente" class="md-nav__link">
+    Cliente
+  </a>
+  
+    <nav class="md-nav" aria-label="Cliente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#em-java" class="md-nav__link">
+    Em Java
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1243,13 +1390,334 @@
        as the main headline.
     -->
 
-  <h1>Etcd</h1>
-
 
   <!-- Content -->
-  <details class="todo">
-<summary>Todo</summary>
-<p><a href="https://etcd.io/">etcd</a></p>
+  <h1 id="key-value-store-etcd">Key-value store: Etcd</h1>
+<p><a href="https://etcd.io">Etcd</a> é uma infraestrutura de armazenamento do tipo chave-valor que fornece consistência forte. Implementa internamente o protocolo de consenso Raft para garantir tolerância a falhas.</p>
+<p>Entre os recursos disponíveis estão a facilidade de execução de leituras e escritas, seja via HTTP (com <em>curl</em>, por exemplo) seja via bibliotecas e troca de mensagens no formato JSON.</p>
+<p>O armazenamento de dados é organizado de maneira hierárquica em diretórios, similar a um sistema de arquivos.
+Suporta SSL e monitoramento de chaves, fornece eleição de líder <em>builtin</em>, entre outros recursos.</p>
+<p>É utilizado, por exemplo, para prover <a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/">armazenamento de alta disponibilidade para todos os dados de clusters Kubernetes</a>.</p>
+<p>A seguir veremos um passo-a-passo de como levantar os servidores e implementar o cliente.</p>
+<h2 id="instalacao">Instalação</h2>
+<ul>
+<li>Descarregar último <em>release</em> disponível para seu sistema operacional no <a href="https://github.com/etcd-io/etcd/releases">github</a>, descompactar em local adequado e definir o <code>PATH</code> corretamente.</li>
+</ul>
+<h3 id="execucao">Execução</h3>
+<ul>
+<li>
+<p>Abra 3 terminais e execute cada réplica:</p>
+<ul>
+<li>
+<p>Réplica 1
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># make sure etcd process has write access to this directory</span>
+<span class="c1"># remove this directory if the cluster is new; keep if restarting etcd</span>
+<span class="c1"># rm -rf /tmp/etcd/s1</span>
+
+
+/tmp/etcd-download-test/etcd --name s1 <span class="se">\</span>
+  --data-dir /tmp/etcd/s1 <span class="se">\</span>
+  --listen-client-urls http://localhost:12379 <span class="se">\</span>
+  --advertise-client-urls http://localhost:12379 <span class="se">\</span>
+  --listen-peer-urls http://localhost:12380 <span class="se">\</span>
+  --initial-advertise-peer-urls http://localhost:12380 <span class="se">\</span>
+  --initial-cluster <span class="nv">s1</span><span class="o">=</span>http://localhost:12380,s2<span class="o">=</span>http://localhost:22380,s3<span class="o">=</span>http://localhost:32380 <span class="se">\</span>
+  --initial-cluster-token tkn <span class="se">\</span>
+  --initial-cluster-state new
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>Réplica 2
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># make sure etcd process has write access to this directory</span>
+<span class="c1"># remove this directory if the cluster is new; keep if restarting etcd</span>
+<span class="c1"># rm -rf /tmp/etcd/s2</span>
+
+
+/tmp/etcd-download-test/etcd --name s2 <span class="se">\</span>
+  --data-dir /tmp/etcd/s2 <span class="se">\</span>
+  --listen-client-urls http://localhost:22379 <span class="se">\</span>
+  --advertise-client-urls http://localhost:22379 <span class="se">\</span>
+  --listen-peer-urls http://localhost:22380 <span class="se">\</span>
+  --initial-advertise-peer-urls http://localhost:22380 <span class="se">\</span>
+  --initial-cluster <span class="nv">s1</span><span class="o">=</span>http://localhost:12380,s2<span class="o">=</span>http://localhost:22380,s3<span class="o">=</span>http://localhost:32380 <span class="se">\</span>
+  --initial-cluster-token tkn <span class="se">\</span>
+  --initial-cluster-state new
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>Réplica 3
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># make sure etcd process has write access to this directory</span>
+<span class="c1"># remove this directory if the cluster is new; keep if restarting etcd</span>
+<span class="c1"># rm -rf /tmp/etcd/s3</span>
+
+
+/tmp/etcd-download-test/etcd --name s3 <span class="se">\</span>
+  --data-dir /tmp/etcd/s3 <span class="se">\</span>
+  --listen-client-urls http://localhost:32379 <span class="se">\</span>
+  --advertise-client-urls http://localhost:32379 <span class="se">\</span>
+  --listen-peer-urls http://localhost:32380 <span class="se">\</span>
+  --initial-advertise-peer-urls http://localhost:32380 <span class="se">\</span>
+  --initial-cluster <span class="nv">s1</span><span class="o">=</span>http://localhost:12380,s2<span class="o">=</span>http://localhost:22380,s3<span class="o">=</span>http://localhost:32380 <span class="se">\</span>
+  --initial-cluster-token tkn <span class="se">\</span>
+  --initial-cluster-state new
+</code></pre></div>
+</td></tr></table></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Para verificar se as réplicas estão funcionando corretamente, execute:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> /tmp/etcd-download-test/etcdctl <span class="se">\</span>
+  --endpoints localhost:12379,localhost:22379,localhost:32379 <span class="se">\</span>
+  endpoint health
+</code></pre></div>
+</td></tr></table></p>
+</li>
+</ul>
+<p>Mais detalhes de instalação <a href="http://play.etcd.io/home">aqui</a>.</p>
+<h2 id="cliente">Cliente</h2>
+<p>Bibliotecas <a href="https://etcd.io/docs/v3.5/integrations/">aqui</a>.</p>
+<h3 id="em-java">Em Java</h3>
+<p>Crie um novo projeto Maven com o nome <code>ClienteEtcd</code> (eu estou usando IntelliJ, mas as instruções devem ser semelhantes para Eclipse).</p>
+<p><img alt="Novo Projeto Maven" src="../../images/newmaven.png" /></p>
+<p>Abra o arquivo <code>pom.xml</code> do seu projeto e adicione o seguinte trecho, com as dependências do projeto, incluindo o próprio <a href="https://github.com/etcd-io/jetcd">jetcd</a>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>io.etcd<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>jetcd-core<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>0.7.1<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+     <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.slf4j<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>slf4j-api<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>1.7.36<span class="nt">&lt;/version&gt;</span>
+     <span class="nt">&lt;/dependency&gt;</span>
+     <span class="nt">&lt;dependency&gt;</span>
+         <span class="nt">&lt;groupId&gt;</span>org.slf4j<span class="nt">&lt;/groupId&gt;</span>
+             <span class="nt">&lt;artifactId&gt;</span>slf4j-simple<span class="nt">&lt;/artifactId&gt;</span>
+         <span class="nt">&lt;version&gt;</span>1.7.36<span class="nt">&lt;/version&gt;</span>
+     <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div>
+</td></tr></table>
+<p>Adicione também o plugin Maven e o plugin para gerar um <code>.jar</code> com todas as dependências. </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;executions&gt;</span>
+                <span class="nt">&lt;execution&gt;</span>
+                    <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+                    <span class="nt">&lt;goals&gt;</span>
+                        <span class="nt">&lt;goal&gt;</span>single<span class="nt">&lt;/goal&gt;</span>
+                    <span class="nt">&lt;/goals&gt;</span>
+                <span class="nt">&lt;/execution&gt;</span>
+            <span class="nt">&lt;/executions&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;descriptorRefs&gt;</span>
+                    <span class="nt">&lt;descriptorRef&gt;</span>jar-with-dependencies<span class="nt">&lt;/descriptorRef&gt;</span>
+                <span class="nt">&lt;/descriptorRefs&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div>
+</td></tr></table>
+<p>Crie uma nova classe denominada <code>ClienteEtcd</code> no arquivo <code>ClienteEtcd.java</code>.
+Nesta classe, iremos criar um objeto <code>KV</code> que será usado para enviar operações para os servidores. 
+Esta classe é importada juntamente com outras várias dependências, adicionadas no <code>pom.xml</code>, que devemos instanciar antes do <code>KV</code>.</p>
+<p>Neste exemplo eu coloco praticamente todos os parâmetros de configuração do Etcd <em>hardcoded</em> para simplificar o código.
+Obviamente que voce deveria ler estes parâmetros como argumentos para o programa ou de um arquivo de configuração.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">io.etcd.jetcd.ByteSequence</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">io.etcd.jetcd.Client</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">io.etcd.jetcd.KV</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">io.etcd.jetcd.KeyValue</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">io.etcd.jetcd.kv.GetResponse</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.CompletableFuture</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClienteEtcd</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+    <span class="c1">// create client using target which enable using any name resolution mechanism provided</span>
+    <span class="c1">// by grpc-java (i.e. dns:///foo.bar.com:2379)</span>
+    <span class="n">Client</span> <span class="n">client</span> <span class="o">=</span>
+        <span class="n">Client</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">target</span><span class="p">(</span><span class="s">&quot;ip:///127.0.0.1:12379,127.0.0.1:22379,127.0.0.1:32379&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+
+    <span class="n">KV</span> <span class="n">kvClient</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="na">getKVClient</span><span class="p">();</span>
+    <span class="n">ByteSequence</span> <span class="n">key</span> <span class="o">=</span> <span class="n">ByteSequence</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="s">&quot;test_key&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+    <span class="n">ByteSequence</span> <span class="n">value</span> <span class="o">=</span> <span class="n">ByteSequence</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="s">&quot;test_value&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+
+    <span class="c1">// put the key-value</span>
+    <span class="n">kvClient</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
+
+    <span class="c1">// get the CompletableFuture</span>
+    <span class="n">CompletableFuture</span><span class="o">&lt;</span><span class="n">GetResponse</span><span class="o">&gt;</span> <span class="n">getFuture</span> <span class="o">=</span> <span class="n">kvClient</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+
+    <span class="c1">// get the value from CompletableFuture</span>
+    <span class="n">GetResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">getFuture</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">KeyValue</span> <span class="n">kv</span> <span class="p">:</span> <span class="n">response</span><span class="p">.</span><span class="na">getKvs</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;key = &quot;</span> <span class="o">+</span> <span class="n">kv</span><span class="p">.</span><span class="na">getKey</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;, value = &quot;</span> <span class="o">+</span> <span class="n">kv</span><span class="p">.</span><span class="na">getValue</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="c1">// delete the key</span>
+    <span class="n">kvClient</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
+
+    <span class="c1">// get the CompletableFuture</span>
+    <span class="n">getFuture</span> <span class="o">=</span> <span class="n">kvClient</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+
+    <span class="c1">// get the value from CompletableFuture</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">getFuture</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">KeyValue</span> <span class="n">kv</span> <span class="p">:</span> <span class="n">response</span><span class="p">.</span><span class="na">getKvs</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;key = &quot;</span> <span class="o">+</span> <span class="n">kv</span><span class="p">.</span><span class="na">getKey</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;, value = &quot;</span> <span class="o">+</span> <span class="n">kv</span><span class="p">.</span><span class="na">getValue</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="n">client</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>Então, em um quarto terminal, execute:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>java -cp target/ClienteEtcd-1.0-SNAPSHOT-jar-with-dependencies.jar ClienteEtcd
+</code></pre></div>
+</td></tr></table>
+<p>O código está disponível no Teams.</p>
+<details class="todo">
+<summary>Exercício</summary>
+<ul>
+<li>Ler operações, chaves e valores do terminal no formato <code>op:key:value</code></li>
+<li>Implementar as seguintes operações:<ul>
+<li><code>get</code></li>
+<li><code>put</code></li>
+<li><code>del</code></li>
+<li><code>update</code></li>
+</ul>
+</li>
+</ul>
 </details>
 
   <!-- Last update of source file -->
@@ -1262,6 +1730,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href="../ratis/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Ratis" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Ratis
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../projeto/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Projeto" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Projeto
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1300,7 +1803,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       
