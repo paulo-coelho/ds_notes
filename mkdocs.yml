@@ -181,7 +181,7 @@ nav:
 #                - Copycat: cases/copycat.md
                 - Ratis: cases/ratis.md
 #                - BFT-Smart: cases/bftsmart.md
-#                - Etcd: cases/etcd.md
+                - Etcd: cases/etcd.md
 #                - Zookeeper: cases/zookeeper.md
 #
 #                - Referências: cases/refs.md

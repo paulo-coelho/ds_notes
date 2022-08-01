@@ -26,7 +26,7 @@ A seguir veremos um passo-a-passo de como levantar os servidores e implementar o
 # rm -rf /tmp/etcd/s1
 
 
-/tmp/test-etcd/etcd --name s1 \
+/tmp/etcd-download-test/etcd --name s1 \
   --data-dir /tmp/etcd/s1 \
   --listen-client-urls http://localhost:12379 \
   --advertise-client-urls http://localhost:12379 \
@@ -44,7 +44,7 @@ A seguir veremos um passo-a-passo de como levantar os servidores e implementar o
 # rm -rf /tmp/etcd/s2
 
 
-/tmp/test-etcd/etcd --name s2 \
+/tmp/etcd-download-test/etcd --name s2 \
   --data-dir /tmp/etcd/s2 \
   --listen-client-urls http://localhost:22379 \
   --advertise-client-urls http://localhost:22379 \
@@ -62,7 +62,7 @@ A seguir veremos um passo-a-passo de como levantar os servidores e implementar o
 # rm -rf /tmp/etcd/s3
 
 
-/tmp/test-etcd/etcd --name s3 \
+/tmp/etcd-download-test/etcd --name s3 \
   --data-dir /tmp/etcd/s3 \
   --listen-client-urls http://localhost:32379 \
   --advertise-client-urls http://localhost:32379 \
@@ -75,7 +75,7 @@ A seguir veremos um passo-a-passo de como levantar os servidores e implementar o
 
 * Para verificar se as réplicas estão funcionando corretamente, execute:
 ```bash
-ETCDCTL_API=3 /tmp/test-etcd/etcdctl \
+ETCDCTL_API=3 /tmp/etcd-download-test/etcdctl \
   --endpoints localhost:12379,localhost:22379,localhost:32379 \
   endpoint health
 ```
@@ -101,6 +101,16 @@ Abra o arquivo `pom.xml` do seu projeto e adicione o seguinte trecho, com as dep
             <artifactId>jetcd-core</artifactId>
         <version>0.7.1</version>
     </dependency>
+     <dependency>
+        <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        <version>1.7.36</version>
+     </dependency>
+     <dependency>
+         <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-simple</artifactId>
+         <version>1.7.36</version>
+     </dependency>
 </dependencies>
 ```
 
@@ -129,7 +139,7 @@ Adicione também o plugin Maven e o plugin para gerar um `.jar` com todas as dep
 </build>
 ```
 
-Crie uma nova classe denominada `Cliente` no arquivo `Cliente.java`.
+Crie uma nova classe denominada `ClienteEtcd` no arquivo `ClienteEtcd.java`.
 Nesta classe, iremos criar um objeto `KV` que será usado para enviar operações para os servidores. 
 Esta classe é importada juntamente com outras várias dependências, adicionadas no `pom.xml`, que devemos instanciar antes do `KV`.
 
@@ -137,38 +147,59 @@ Neste exemplo eu coloco praticamente todos os parâmetros de configuração do E
 Obviamente que voce deveria ler estes parâmetros como argumentos para o programa ou de um arquivo de configuração.
 
 ```java
+import io.etcd.jetcd.ByteSequence;
+import io.etcd.jetcd.Client;
+import io.etcd.jetcd.KV;
+import io.etcd.jetcd.KeyValue;
+import io.etcd.jetcd.kv.GetResponse;
+import java.util.concurrent.CompletableFuture;
 
-public class Cliente
-{
-    public static void main(String args[]) throws IOException
-    {
-        // create client using target which enable using any name resolution mechanism provided
-        // by grpc-java (i.e. dns:///foo.bar.com:2379)
-        Client client = Client.builder().target("ip:///etcd0:2379,etcd1:2379,etcd2:2379").build();
+public class ClienteEtcd {
+  public static void main(String args[]) throws Exception {
+    // create client using target which enable using any name resolution mechanism provided
+    // by grpc-java (i.e. dns:///foo.bar.com:2379)
+    Client client =
+        Client.builder().target("ip:///127.0.0.1:12379,127.0.0.1:22379,127.0.0.1:32379").build();
 
-        KV kvClient = client.getKVClient();
-        ByteSequence key = ByteSequence.from("test_key".getBytes());
-        ByteSequence value = ByteSequence.from("test_value".getBytes());
+    KV kvClient = client.getKVClient();
+    ByteSequence key = ByteSequence.from("test_key".getBytes());
+    ByteSequence value = ByteSequence.from("test_value".getBytes());
 
-        // put the key-value
-        kvClient.put(key, value).get();
+    // put the key-value
+    kvClient.put(key, value).get();
 
-        // get the CompletableFuture
-        CompletableFuture<GetResponse> getFuture = kvClient.get(key);
+    // get the CompletableFuture
+    CompletableFuture<GetResponse> getFuture = kvClient.get(key);
 
-        // get the value from CompletableFuture
-        GetResponse response = getFuture.get();
+    // get the value from CompletableFuture
+    GetResponse response = getFuture.get();
 
-        // delete the key
-        kvClient.delete(key).get();
+    for (KeyValue kv : response.getKvs()) {
+      System.out.println("key = " + kv.getKey() + ", value = " + kv.getValue());
     }
+
+    // delete the key
+    kvClient.delete(key).get();
+
+    // get the CompletableFuture
+    getFuture = kvClient.get(key);
+
+    // get the value from CompletableFuture
+    response = getFuture.get();
+
+    for (KeyValue kv : response.getKvs()) {
+      System.out.println("key = " + kv.getKey() + ", value = " + kv.getValue());
+    }
+
+    client.close();
+  }
 }
 ```
 
 Então, em um quarto terminal, execute:
 
 ```bash
-java -cp target/ClienteEtcd-1.0-SNAPSHOT-jar-with-dependencies.jar Cliente
+java -cp target/ClienteEtcd-1.0-SNAPSHOT-jar-with-dependencies.jar ClienteEtcd
 ```
 
 O código está disponível no Teams.
