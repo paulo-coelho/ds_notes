@@ -13,15 +13,15 @@
         <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/db/disdb/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
     
     
       
-        <title>Disdb - Notas de Aula em Sistemas Distribuídos</title>
+        <title>Bancos de Dados - Notas de Aula em Sistemas Distribuídos</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c5ef100.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Disdb
+              Bancos de Dados
             
           </span>
         </div>
@@ -1058,12 +1058,241 @@
 
   
   
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Bancos de Dados
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Bancos de Dados
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transacoes" class="md-nav__link">
+    Transações
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equivalencia-serial" class="md-nav__link">
+    Equivalência Serial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controle-de-concorrencia" class="md-nav__link">
+    Controle de Concorrência
+  </a>
+  
+    <nav class="md-nav" aria-label="Controle de Concorrência">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locking" class="md-nav__link">
+    Locking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-versao" class="md-nav__link">
+    Multi-versão
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamping" class="md-nav__link">
+    Timestamping
+  </a>
+  
+    <nav class="md-nav" aria-label="Timestamping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-implementar" class="md-nav__link">
+    Como implementar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-implementar-escrita" class="md-nav__link">
+    Como implementar -- escrita
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-implementar-leitura" class="md-nav__link">
+    como implementar -- leitura
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bancos-de-dados-distribuidos" class="md-nav__link">
+    Bancos de dados distribuídos
+  </a>
+  
+    <nav class="md-nav" aria-label="Bancos de dados distribuídos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transacao-distribuida" class="md-nav__link">
+    Transação distribuída
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprometimento-distribuido" class="md-nav__link">
+    Comprometimento distribuído
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprometimento distribuído">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1pc" class="md-nav__link">
+    1PC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2pc" class="md-nav__link">
+    2PC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pc" class="md-nav__link">
+    3-PC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paxos-commit" class="md-nav__link">
+    Paxos-Commit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-structured-merge-trees" class="md-nav__link">
+    Log Structured Merge Trees
+  </a>
+  
+    <nav class="md-nav" aria-label="Log Structured Merge Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compactacoes" class="md-nav__link">
+    Compactações
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtros-de-bloom" class="md-nav__link">
+    Filtros de Bloom
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cap" class="md-nav__link">
+    CAP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base" class="md-nav__link">
+    BASE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    Referências
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
   
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
       
       
       
@@ -1093,14 +1322,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../cases/">Estudos de Caso</a>
           
-            <label for="__nav_10">
+            <label for="__nav_11">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="Estudos de Caso" data-md-level="1">
-        <label class="md-nav__title" for="__nav_10">
+        <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
           Estudos de Caso
         </label>
@@ -1456,7 +1685,7 @@
        as the main headline.
     -->
 
-  <h1>Disdb</h1>
+  <h1>Bancos de Dados</h1>
 
 
   <!-- Content -->
@@ -2463,6 +2692,41 @@ Por exemplo, com um filtro com <span class="arithmatex">\(m = 2^{24}b = 2MB\)</s
       
         <footer class="md-footer">
   
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href="../../consistency/references/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Referências" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Referências
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../cases/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Introdução" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Introdução
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -2500,7 +2764,7 @@ Por exemplo, com um filtro com <span class="arithmatex">\(m = 2^{24}b = 2MB\)</s
     <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.748e2769.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       
