@@ -162,7 +162,7 @@ nav:
                 - Checkpointing: consistency/checkpointing.md
                 - Referências: consistency/references.md
 #
-#        - Bancos de Dados: db/disdb.md
+        - Bancos de Dados: db/disdb.md
 #        
 #        - Sistemas de Arquivos: filesystem/disfs.md
 #
