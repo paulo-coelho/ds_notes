@@ -1227,6 +1227,78 @@
   
 
     
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Projeto
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Projeto
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#casos-de-uso" class="md-nav__link">
+    Casos de Uso
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacao-entre-portais" class="md-nav__link">
+    Interação entre portais
+  </a>
+  
+    <nav class="md-nav" aria-label="Interação entre portais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapa-1-usuariosportais" class="md-nav__link">
+    Etapa 1 - Usuários/Portais
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1273,13 +1345,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#etapa-2-banco-de-dados-replicado" class="md-nav__link">
-    Etapa 2 - Banco de dados Replicado
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1312,9 +1377,9 @@
   <!-- Content -->
   <p>A área de computação distribuída é rica em aplicações e desenvolvê-los é topar de frente com vários problemas e decidir como resolvê-los ou contorná-los e, por isto, nada melhor que um projeto para experimentar em primeira mão as angústias e prazeres da área. 
 Assim, proponho visitarmos o material destas notas à luz de uma aplicação genérica mas real, desenvolvida por vocês enquanto vemos a teoria.</p>
-<p>O projeto consiste em uma aplicação com dois tipos de usuários, os <strong>clientes</strong> e os <strong>administradores</strong>, que você pode pensar em termos de compradores e lojistas, pacientes e médicos, ou consumidores e produtores de conteúdo, dependendo da aplicação que <strong>você</strong> resolver implementar.</p>
-<p>As funcionalidades são expostas para estes usuários via <strong>dois tipos</strong> de  aplicações distintas, o <strong>portal do cliente</strong>  e o <strong>portal administrativo</strong>, mas ambos manipulam a <strong>mesma base de dados</strong>.
-Múltiplas instâncias de cada portal podem existir e cada instância mantém um <strong>cache</strong> da base de dados em memória, com as entradas mais recentemente acessadas.</p>
+<p>O projeto consiste em uma com dois tipos de usuários, <strong>clientes</strong> e <strong>administradores</strong>, correspondendo a compradores e lojistas.</p>
+<p>As funcionalidades são expostas para estes usuários via <strong>dois tipos</strong> de  aplicações distintas, o <strong>portal do cliente</strong>  e o <strong>portal administrativo</strong>, mas ambos manipulam a <strong>mesma base de dados</strong>.</p>
+<p>Múltiplas instâncias de cada portal podem existir e cada instância mantém um <strong>cache</strong> da base de dados em memória, com as entradas mais recentemente acessadas.</p>
 <p>A base de dados é replicada em outros nós usando um protocolo de <strong>difusão atômica</strong>.</p>
 <!--
 A totalidade da base é particionada usando ***consistent hashing***.
@@ -1326,34 +1391,34 @@ Cada partição é replicada em outros nós usando um protocolo de **difusão at
 Apesar de introduzir complexidade extra, também usaremos <strong>múltiplos mecanismos para a comunicação</strong> entre as partes, para que possam experimentar com diversas abordagens.</p>
 <p>O sistemas tem duas <strong>aplicações</strong>, CLI ou GUI, para os dois tipos de usuários do sistema, clientes, e administradores.
 Estas aplicações se comunicarão com os portais para manipular os dados dos clientes e associados a cada cliente.
-A aplicação do administrador manipula clientes, isto é, permite o CRUD de clientes.
-A aplicação do cliente permite manipular os dados associados aos clientes.</p>
+A aplicação do administrador manipula clientes e produtos, isto é, permite o CRUD de clientes e produtos.
+A aplicação do cliente permite manipular os dados associados aos pedidos, ou seja, comprar produtos previamente cadastrados.</p>
 <p>O cadastro do cliente inclui a provisão de um identificador único do cliente CID (<em>client id</em>).
 Os dados dos clientes são mantidos em uma tabela CID -&gt; Dados do Cliente, em memória (use uma tabela hash). 
-O CID tem tipo BigInteger ou equivalente<sup id="fnref:int64"><a class="footnote-ref" href="#fn:int64">1</a></sup>; <strong>você</strong> deve decidir o que compõe os dados do cliente, mass eles <strong>devem</strong> ser armazenados como uma string JSON.
-A comunicação entre administradores e portal Administrativo se dá por uso direto de <em>sockets</em> e TCP, ou middleware pub/sub Mosquitto, ou gRPC.</p>
+O CID tem tipo String; <strong>você</strong> deve decidir o que compõe os dados do cliente, mas eles <strong>devem</strong> ser armazenados como uma string JSON.</p>
+<p>O cadastro do produto inclui a provisão de um identificador único do produto PID (<em>product id</em>).
+Os dados dos produtos são mantidos em uma tabela PID -&gt; Dados do Produto, em memória (use uma tabela hash). 
+O PID tem tipo String; <strong>você</strong> deve decidir o que compõe os dados do produto, mas devem ser suficientes para manter a descrição (String), quantidade (inteiro) e preço (ponto flutuante) do produto, e <strong>devem</strong> ser armazenados como uma string JSON.</p>
+<p>A comunicação entre administradores e Portal Administrativo se dá por uso direto de <em>sockets</em> e TCP, ou middleware pub/sub Mosquitto, ou gRPC.</p>
 <p>Somente clientes devidamente cadastrados no sistema podem ter suas operações executadas.
-A comunicação entre cliente e portal Cliente se dá por de <em>sockets</em> e TCP, ou middleware pub/sub Mosquitto, ou gRPC.
-O CID do cliente executando operações no porta cliente deve ser informado em cada operação para "autenticar" o cliente e autorizar a execução da operação.
-O cliente tem um "saco" de dados com diversas entradas armazenados no sistema, que podem ser manipuladas individualmente ou em conjunto; cada entrada corresponde a uma entrada no banco de dados, mantido em memória (use uma <strong>tabela hash</strong>).</p>
-<p>Aqui chamarei cada entrada no saco de "tarefa", mas dependendo da aplicação que <strong>você</strong> escolher, tarefas podem ser, por exemplo, eventos em um calendário ou entradas em uma lista compras.
-Cada tarefa tem um título, que serve de identificador da tarefa, e um corpo; ambos são do tipo <code>String</code>, JSON ou não.
-Os dados são mantidos em uma tabela hash e múltiplas entradas podem ser necessárias para armazenar e manter uma tarefa, isto é, algumas entradas podem ser de metadados, por exemplo, índice Por exemplo, para representar duas tarefas, <code>t1</code> e <code>t2</code>, com corpos <code>c1</code> e <code>c2</code>, associadas ao cliente <code>cliente1</code>, podemos ter as seguintes entradas.</p>
+O CID do cliente executando operações no portal cliente deve ser informado em cada operação para "autenticar" o cliente e autorizar a execução da operação.
+A comunicação entre Cliente e Portal Cliente se dá por meio de <em>sockets</em> e TCP, ou middleware pub/sub Mosquitto, ou gRPC.</p>
+<p>O cadastro do pedido inclui a geração de um identificador único do pedido OID (<em>order id</em>).
+O OID tem tipo String; <strong>você</strong> deve decidir o que compõe os dados do pedido, mas devem ser suficientes para identificar o produto, a quantidade comprada e o preço para cada produto no pedido. <strong>Devem</strong> ser armazenados como uma string JSON.
+A relação entre clientes e pedidos é mantida em uma tabela CID -&gt; OID, em memória (use uma tabela hash). </p>
+<p><strong>Exemplo de armazenamento no portal cliente</strong>: 
+Cada pedido tem um identificador (Sring), e um corpo (JSON);
+Os dados são mantidos em uma tabela hash e múltiplas entradas podem ser necessárias para armazenar e manter um pedido, isto é, algumas entradas podem ser de metadados, por exemplo, índice.
+Por exemplo, para representar dois pedidos, <code>o1</code> e <code>o2</code>, com corpos <code>c1</code> e <code>c2</code>, associadas ao cliente <code>cliente1</code>, podemos ter as seguintes entradas.</p>
 <ul>
-<li><code>cliente1 -&gt; [t1,t2]</code></li>
-<li><code>cliente1:t1 -&gt; c1</code></li>
-<li><code>cliente1:t2 -&gt; c2</code></li>
+<li><code>cliente1 -&gt; [o1,o2]</code></li>
+<li><code>cliente1:o1 -&gt; c1</code></li>
+<li><code>cliente1:o2 -&gt; c2</code></li>
 </ul>
-<p>Com este formato, podemos identificar os títulos das tarefas associadas ao <code>cliente1</code> e, a partir desta lista, identificar o conteúdo associado a cada tarefa.
-Este formato também permite que múltiplos clientes tenham tarefas com o mesmo título.
-<strong>O formato exato em que os dados serão armazenados pode variar</strong> e, por isso, nos casos de uso apresentados a seguir, <strong>as API usadas devem ser consideradas intenções</strong> e não necessariamente o que será implementado no seu trabalho.</p>
+<p>Com este formato, podemos identificar os pedidos associados ao <code>cliente1</code> e, a partir desta lista, identificar o conteúdo associado a cada pedido.
+Este formato também permite que múltiplos clientes tenham tarefas com o mesmo título.</p>
+<p><strong>O formato exato em que os dados serão armazenados pode variar</strong> e, por isso, nos casos de uso apresentados a seguir, <strong>as API usadas devem ser consideradas intenções</strong> e não necessariamente o que será implementado no seu trabalho.</p>
 <h2 id="casos-de-uso">Casos de Uso</h2>
-<details class="todo">
-<summary>Todo</summary>
-<ul>
-<li>Diagramas de interação.</li>
-</ul>
-</details>
 <h6 id="manipulacao-clientes">Manipulação Clientes</h6>
 <ul>
 <li>Inserção de Cliente<ul>
@@ -1372,7 +1437,7 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 </ul>
 </li>
 <li>Cliente<ul>
-<li>Recebe CID diretamente do administrador</li>
+<li>Recebe CID diretamente do administrador (já sabe o seu CID)</li>
 </ul>
 </li>
 </ul>
@@ -1426,73 +1491,148 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 </ul>
 </li>
 </ul>
-<h6 id="manipulacao-de-tarefas-dos-clientes">Manipulação de Tarefas dos Clientes</h6>
+<h6 id="manipulacao-produtos">Manipulação Produtos</h6>
+<ul>
+<li>Inserção de Produto<ul>
+<li>Administrador<ul>
+<li>Gera um PID para cada produto, baseado em seu nome ou outro atributo único.</li>
+<li><code>inserirProduto(PID, "dados do produto")</code></li>
+</ul>
+</li>
+<li>Portal Administrador<ul>
+<li>Executa a operação e retorna código de erro/sucesso.<ul>
+<li>Se produto existia, falha a operação.</li>
+<li>Se produto não existia, insere dados no banco e atualiza a cache.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cliente<ul>
+<li>Recebe PID diretamente do administrador (já sabe o PID do produto que deseja pedir)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Modificação de Produto<ul>
+<li>Administrador<ul>
+<li>Determina PID de produto a ser modificado.</li>
+<li><code>modificarProduto(PID, "novos dados do produto")</code></li>
+</ul>
+</li>
+<li>Portal Administrador<ul>
+<li>Executa a operação e retorna código de erro/sucesso.<ul>
+<li>Se produto existe, atualiza o produto e atualiza a cache.</li>
+<li>Se produto não existe, retorna erro.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Recuperação de Produtos<ul>
+<li>Administrador<ul>
+<li>Determina PID de produto a ser recuperado</li>
+<li><code>recuperarProduto(PID)</code></li>
+</ul>
+</li>
+<li>Portal Administrador<ul>
+<li>Executa a operação e retorna código de erro/sucesso.<ul>
+<li>Se produto não existe na cache, pesquisa banco de dados e atualiza a cache caso encontre.</li>
+<li>Se produto (não) existe na cache, retorna (erro) informação.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Remoção de Produto<ul>
+<li>Administrador<ul>
+<li>Determina PID de produto a ser removido</li>
+<li><code>apagarProduto(PID)</code></li>
+</ul>
+</li>
+<li>Portal Administrador<ul>
+<li>Executa a operação e retorna código de erro/sucesso.<ul>
+<li>Apaga dados do banco.</li>
+<li>Apaga dados da cache, se existe.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="manipulacao-de-tarefas-dos-pedidos">Manipulação de Tarefas dos Pedidos</h6>
 <p>Nesta descrição, a interação com a cache foi omitida, mas deverá ser implementada.</p>
 <ul>
-<li>
-<p>Inserção de tarefa</p>
-<ul>
+<li>Inserção de Pedido<ul>
 <li>Cliente<ul>
 <li>Usa o CID informado pelo administrador</li>
-<li><code>inserirTarefa(CID, "titulo da tarefa", "descrição da tarefa")</code></li>
+<li><code>criarPedido(CID)</code></li>
 </ul>
 </li>
 <li>Portal Cliente<ul>
 <li>Autentica o cliente</li>
+<li>Executa a operação e retorna OID ou código de erro.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Modificação de Pedido<ul>
+<li>Cliente<ul>
+<li>Usa o CID informado pelo administrador</li>
+<li>Usa o OID informado retornado pelo Portal Cliente </li>
+<li><code>modificarPedido(CID, OID, "produto e quantidade")</code></li>
+</ul>
+</li>
+<li>Portal Cliente<ul>
+<li>Autentica o cliente</li>
+<li>Verifica disponibilidade de produto e quantidade.</li>
+<li>Ajusta quantidade disponível de produto, se necessário.</li>
+<li>A informação de quantidade zero (0) remove o produto do pedido.</li>
 <li>Executa a operação e retorna código de erro/sucesso.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<p>Modificação de tarefa</p>
-<ul>
+<li>Enumeração de pedido<ul>
 <li>Cliente<ul>
 <li>Usa o CID informado pelo administrador</li>
-<li><code>modificarTarefa(CID, "titulo da tarefa", "nova descrição da tarefa")</code></li>
+<li>Usa o OID informado retornado pelo Portal Cliente </li>
+<li><code>listarPedido(CID, OID)</code></li>
 </ul>
 </li>
 <li>Portal Cliente<ul>
 <li>Autentica o cliente</li>
-<li>Executa a operação e retorna código de erro/sucesso.</li>
+<li>Caso o pedido exista, retorna informações dos produtos e valor total do pedido.</li>
+<li>Caso contrário, retorna código de erro.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Enumeração de tarefas<ul>
+<li>Enumeração de pedidos<ul>
 <li>Cliente<ul>
 <li>Usa o CID informado pelo administrador</li>
-<li><code>listarTarefas(CID)</code></li>
+<li><code>listarPedidos(CID)</code></li>
 </ul>
 </li>
 <li>Portal Cliente<ul>
 <li>Autentica o cliente</li>
-<li>Executa a operação e retorna código de erro/sucesso.</li>
+<li>Para cada pedido associado ao cliente, retorna OID e valor total.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Remoção de todas as tarefas<ul>
+<li>Cancelamento do pedido<ul>
 <li>Cliente<ul>
 <li>Usa o CID informado pelo administrador</li>
-<li><code>apagarTarefas(CID)</code></li>
+<li>Usa o OID informado retornado pelo Portal Cliente </li>
+<li><code>apagarPedido(CID, OID)</code></li>
 </ul>
 </li>
 <li>Portal Cliente<ul>
 <li>Autentica o cliente</li>
-<li>Executa a operação e retorna código de erro/sucesso.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Remoção de tarefa<ul>
-<li>Cliente<ul>
-<li>Usa o CID informado pelo administrador</li>
-<li><code>apagarTarefa(CID, "titulo da tarefa")</code></li>
-</ul>
-</li>
-<li>Portal Cliente<ul>
-<li>Autentica o cliente</li>
+<li>Ajusta quantidade disponível de produto, se necessário.</li>
 <li>Executa a operação e retorna código de erro/sucesso.</li>
 </ul>
 </li>
@@ -1510,62 +1650,42 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 <li>Usar dois tipos de comunicação distintos entre clientes e portais.</li>
 <li>O sistema deve permitir a execução de múltiplos clientes, administradores, portais cliente e portais administrador.</li>
 <li>Implementar a propagação de informação entre as diversas caches do sistema. Sugiro usar pubsub, já que a comunicação é de 1 para muitos.</li>
+<li>Gravar um vídeo demonstrando que os requisitos foram atendidos.</li>
 </ul>
 <p><img alt="Projeto" src="../drawings/projeto.drawio-1.svg" /></p>
-<p>Uma possível instância desta etapa do projeto seria a seguinte</p>
-<p><img alt="Projeto" src="../drawings/instancia_projeto.drawio-0.svg" /></p>
-<h3 id="etapa-2-banco-de-dados-replicado">Etapa 2 - Banco de dados Replicado</h3>
-<p>Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas consistentemente entre todas as réplicas usando um protocolo de difusão atômica.</p>
-<p><img alt="Projeto" src="../drawings/projeto.drawio-3.svg" /></p>
-<ul>
-<li>
-<p>Objetivos</p>
-<ul>
-<li>Replicar a base de dados para obter tolerância a falhas.</li>
-</ul>
-</li>
-<li>
-<p>Desafios</p>
-<ul>
-<li>Certificar-se de que o portais são máquinas de estados determinística</li>
-<li>Compreender o uso de Difusão Atômica em nível teórico</li>
-<li>Compreender o uso de Difusão Atômica em nível prático <ul>
-<li>Use <a href="https://paulo-coelho.github.io/ds_notes/cases/ratis">Ratis</a> para java</li>
-<li>Para Python, <a href="https://openreplica.org">OpenReplica</a> é uma boa opção.</li>
-<li>Aplicar difusão atômica na replicação do servidor</li>
-<li>Utilizar um banco de dados simples do tipo chave-valor, como <a href="https://github.com/google/leveldb">LevelDB</a> ou <a href="https://git.openldap.org/openldap/openldap/tree/mdb.master">LMDB</a><ul>
-<li>Embora originalmente escritas em C++/C, há <em>ports</em> para diversas outras linguagens, (e.g., <a href="https://github.com/lmdbjava/lmdbjava">aqui</a> e <a href="https://github.com/dain/leveldb">aqui</a>)</li>
-</ul>
-</li>
-<li>Utilizar três réplicas (servidores)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Portal<ul>
-<li>A API para clientes continua a mesma.</li>
-<li>Requisições para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  </li>
-<li>Dados não são mais armazenados em disco pela sua aplicação mas somente via Ratis.</li>
-</ul>
-</li>
-<li>Cliente<ul>
-<li>Sem alteração.</li>
-</ul>
-</li>
-<li>Testes<ul>
-<li>O mesmo <em>framework</em> de testes deve continuar funcional</li>
-</ul>
-</li>
-<li>Comunicação<ul>
-<li>Entre cliente e portais, não é alterado.</li>
-<li>Entre servidores, usar Ratis</li>
-</ul>
-</li>
-<li>Apresentação<ul>
-<li>Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.</li>
-</ul>
-</li>
-</ul>
+<!--
+### Etapa 2 - Banco de dados Replicado
+Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
+
+![Projeto](drawings/projeto.drawio#3)
+
+* Objetivos
+    * Replicar a base de dados para obter tolerância a falhas.
+
+* Desafios
+    * Certificar-se de que o portais são máquinas de estados determinística
+    * Compreender o uso de Difusão Atômica em nível teórico
+    * Compreender o uso de Difusão Atômica em nível prático 
+        * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
+        * Para Python, [OpenReplica](https://openreplica.org) é uma boa opção.
+        * Aplicar difusão atômica na replicação do servidor
+        * Utilizar um banco de dados simples do tipo chave-valor, como [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
+            * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
+        * Utilizar três réplicas (servidores)
+* Portal
+    * A API para clientes continua a mesma.
+    * Requisições para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  
+    * Dados não são mais armazenados em disco pela sua aplicação mas somente via Ratis.
+* Cliente
+    * Sem alteração.
+* Testes
+    * O mesmo *framework* de testes deve continuar funcional
+* Comunicação
+    * Entre cliente e portais, não é alterado.
+    * Entre servidores, usar Ratis
+* Apresentação
+    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
+-->
 <!--
 
 ### Etapa 2 - Banco de dados.
@@ -1713,15 +1833,6 @@ Para garantir que todo o seu esforço será concentrado no lugar certo e que sua
 
 -->
 
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:int64">
-<p>Inteiro de 64 bits não é BigInteger.&#160;<a class="footnote-backref" href="#fnref:int64" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
-
   <!-- Last update of source file -->
 
 
@@ -1732,6 +1843,26 @@ Para garantir que todo o seu esforço será concentrado no lugar certo e que sua
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href="../cases/etcd/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Etcd" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Etcd
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
