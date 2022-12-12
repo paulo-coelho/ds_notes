@@ -196,7 +196,7 @@ Nesta descrição, a interação com a cache foi omitida, mas deverá ser implem
 
 ![Projeto](drawings/projeto.drawio#1)
 
-<!--
+
 ### Etapa 2 - Banco de dados Replicado
 Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
 
@@ -210,25 +210,25 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
     * Compreender o uso de Difusão Atômica em nível teórico
     * Compreender o uso de Difusão Atômica em nível prático 
         * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
-        * Para Python, [OpenReplica](https://openreplica.org) é uma boa opção.
+        * Para Python, [PySyncObj](https://github.com/bakwc/PySyncObj) é uma boa opção.
         * Aplicar difusão atômica na replicação do servidor
-        * Utilizar um banco de dados simples do tipo chave-valor, como [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
+        * Utilizar um banco de dados simples do tipo chave-valor, necessariamente [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
             * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
         * Utilizar três réplicas (servidores)
 * Portal
-    * A API para clientes continua a mesma.
+    * A API para clientes e administradores continua a mesma.
     * Requisições para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  
     * Dados não são mais armazenados em disco pela sua aplicação mas somente via Ratis.
-* Cliente
+* Cliente e Administrador
     * Sem alteração.
 * Testes
     * O mesmo *framework* de testes deve continuar funcional
 * Comunicação
-    * Entre cliente e portais, não é alterado.
-    * Entre servidores, usar Ratis
+    * Entre cliente/administrador e portais, não é alterado.
+    * Entre servidores, usar Ratis/PySyncOb
 * Apresentação
     * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
--->
+
 <!--
 
 ### Etapa 2 - Banco de dados.
