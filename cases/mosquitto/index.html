@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/cases/mosquitto/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
@@ -21,11 +21,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
+      
       
     
     
@@ -1367,25 +1368,23 @@ Basta iniciar o <em>broker</em> com a opção <code>-v</code> para ter mais deta
 <h6 id="publicando">Publicando</h6>
 <p>Para publicar uma mensagem, o <em>publisher</em> deve indicar um host, porta, tópico e mensagem. Caso o host e porta sejam omitidos, assume-se <code>localhost:1883</code>.
 No MacOS, adicione <code>/usr/local/opt/mosquitto/bin/mosquitto_sub</code> ao <em>path</em>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># publicando valor de 40 para tópicos &#39;sensor/temperature/1&#39; e &#39;sensor/temperature/2&#39;</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># publicando valor de 40 para tópicos &#39;sensor/temperature/1&#39; e &#39;sensor/temperature/2&#39;</span>
 mosquitto_pub -t sensor/temperature/1 -m <span class="m">40</span>
 mosquitto_pub -t sensor/temperature/2 -m <span class="m">32</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Caso o <em>subscriber</em> não esteja em execução, adicione a opção <code>-r</code> para que o broker retenha a mensagem.</p>
 <h6 id="consumindo">Consumindo</h6>
 <p>O consumidor funciona de maneira semelhante, informando o tópico de interesse:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># consumindo mensagens de tópico /sensor/temperature/*</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># consumindo mensagens de tópico /sensor/temperature/*</span>
 mosquitto_sub -t sensor/temperature/+
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h6 id="programando">Programando</h6>
 <p>Existem também APIs em diversas linguagem para desenvolvimento de aplicações que utilizem o Mosquitto.
 A biblioteca pode ser baixada <a href="https://www.eclipse.org/paho/index.php?page=clients/java/index.php">aqui</a>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1425,49 +1424,48 @@ A biblioteca pode ser baixada <a href="https://www.eclipse.org/paho/index.php?pa
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.eclipse.paho.client.mqttv3.MqttClient</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">org.eclipse.paho.client.mqttv3.MqttConnectOptions</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">org.eclipse.paho.client.mqttv3.MqttException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">org.eclipse.paho.client.mqttv3.MqttMessage</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">org.eclipse.paho.client.mqttv3.persist.MemoryPersistence</span><span class="p">;</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.MqttClient</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.MqttConnectOptions</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.MqttException</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.MqttMessage</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.persist.MemoryPersistence</span><span class="p">;</span><span class="w"></span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MqttPublishSample</span> <span class="p">{</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MqttPublishSample</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">String</span> <span class="n">topic</span>        <span class="o">=</span> <span class="s">&quot;MQTT Examples&quot;</span><span class="p">;</span>
-    <span class="n">String</span> <span class="n">content</span>      <span class="o">=</span> <span class="s">&quot;Message from MqttPublishSample&quot;</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">qos</span>             <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">String</span> <span class="n">broker</span>       <span class="o">=</span> <span class="s">&quot;tcp://mqtt.eclipse.org:1883&quot;</span><span class="p">;</span>
-    <span class="n">String</span> <span class="n">clientId</span>     <span class="o">=</span> <span class="s">&quot;JavaSample&quot;</span><span class="p">;</span>
-    <span class="n">MemoryPersistence</span> <span class="n">persistence</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MemoryPersistence</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">topic</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MQTT Examples&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">content</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Message from MqttPublishSample&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">qos</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">broker</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tcp://mqtt.eclipse.org:1883&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">clientId</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;JavaSample&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">MemoryPersistence</span><span class="w"> </span><span class="n">persistence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MemoryPersistence</span><span class="p">();</span><span class="w"></span>
 
-    <span class="k">try</span> <span class="p">{</span>
-      <span class="n">MqttClient</span> <span class="n">sampleClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MqttClient</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">clientId</span><span class="p">,</span> <span class="n">persistence</span><span class="p">);</span>
-      <span class="n">MqttConnectOptions</span> <span class="n">connOpts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MqttConnectOptions</span><span class="p">();</span>
-      <span class="n">connOpts</span><span class="p">.</span><span class="na">setCleanSession</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Connecting to broker: &quot;</span><span class="o">+</span><span class="n">broker</span><span class="p">);</span>
-      <span class="n">sampleClient</span><span class="p">.</span><span class="na">connect</span><span class="p">(</span><span class="n">connOpts</span><span class="p">);</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Connected&quot;</span><span class="p">);</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Publishing message: &quot;</span><span class="o">+</span><span class="n">content</span><span class="p">);</span>
-      <span class="n">MqttMessage</span> <span class="n">message</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MqttMessage</span><span class="p">(</span><span class="n">content</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
-      <span class="n">message</span><span class="p">.</span><span class="na">setQos</span><span class="p">(</span><span class="n">qos</span><span class="p">);</span>
-      <span class="n">sampleClient</span><span class="p">.</span><span class="na">publish</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Message published&quot;</span><span class="p">);</span>
-      <span class="n">sampleClient</span><span class="p">.</span><span class="na">disconnect</span><span class="p">();</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Disconnected&quot;</span><span class="p">);</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">MqttException</span> <span class="n">me</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;reason &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getReasonCode</span><span class="p">());</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;msg &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;loc &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getLocalizedMessage</span><span class="p">());</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;cause &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getCause</span><span class="p">());</span>
-      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;excep &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">);</span>
-      <span class="n">me</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">MqttClient</span><span class="w"> </span><span class="n">sampleClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MqttClient</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span><span class="w"> </span><span class="n">clientId</span><span class="p">,</span><span class="w"> </span><span class="n">persistence</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">MqttConnectOptions</span><span class="w"> </span><span class="n">connOpts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MqttConnectOptions</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">connOpts</span><span class="p">.</span><span class="na">setCleanSession</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Connecting to broker: &quot;</span><span class="o">+</span><span class="n">broker</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">sampleClient</span><span class="p">.</span><span class="na">connect</span><span class="p">(</span><span class="n">connOpts</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Connected&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Publishing message: &quot;</span><span class="o">+</span><span class="n">content</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">MqttMessage</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MqttMessage</span><span class="p">(</span><span class="n">content</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">message</span><span class="p">.</span><span class="na">setQos</span><span class="p">(</span><span class="n">qos</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">sampleClient</span><span class="p">.</span><span class="na">publish</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Message published&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">sampleClient</span><span class="p">.</span><span class="na">disconnect</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Disconnected&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="n">MqttException</span><span class="w"> </span><span class="n">me</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;reason &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getReasonCode</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;msg &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;loc &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getLocalizedMessage</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;cause &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getCause</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;excep &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">me</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <details class="todo">
 <summary>Hive</summary>
 <ul>
@@ -1510,6 +1508,7 @@ If you can think of any other differences that we overlooked, we would love to h
 
 
             </article>
+            
           </div>
         </div>
         
@@ -1517,7 +1516,8 @@ If you can think of any other differences that we overlooked, we would love to h
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
       
         
         <a href="../grpc/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: gRPC" rel="prev">
@@ -1586,10 +1586,10 @@ If you can think of any other differences that we overlooked, we would love to h
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       

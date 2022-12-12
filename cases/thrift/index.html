@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/cases/thrift/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
@@ -21,11 +21,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
+      
       
     
     
@@ -1414,31 +1415,29 @@
 <h2 id="idl-thrift">IDL Thrift</h2>
 <ul>
 <li>Serviços
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="nc">ChaveValor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="nc">ChaveValor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set</span><span class="o">(</span><span class="mi">1</span><span class="p">:</span><span class="kt">i32</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="kt">string</span><span class="w"> </span><span class="n">value</span><span class="p">),</span><span class="w"></span>
 <span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">get</span><span class="o">(</span><span class="mi">1</span><span class="p">:</span><span class="kt">i32</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="k">throws</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">KeyNotFound</span><span class="w"> </span><span class="n">knf</span><span class="p">),</span><span class="w"></span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">delete</span><span class="o">(</span><span class="mi">1</span><span class="p">:</span><span class="kt">i32</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table></li>
+</code></pre></div></td></tr></table></div></li>
 <li><strong>Não se pode retornar NULL!!!</strong></li>
 <li>Exceções
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">exception</span><span class="w"> </span><span class="nc">KeyNotFound</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">exception</span><span class="w"> </span><span class="nc">KeyNotFound</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="mi">1</span><span class="p">:</span><span class="kt">i64</span><span class="w"> </span><span class="n">hora</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="mi">2</span><span class="p">:</span><span class="kt">string</span><span class="w"> </span><span class="n">chaveProcurada</span><span class="o">=</span><span class="s2">&quot;thrifty&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table></li>
+</code></pre></div></td></tr></table></div></li>
 </ul>
 <p>Exemplo: chavevalor.thrift</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1452,7 +1451,7 @@
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">namespace</span><span class="w"> </span><span class="nn">java</span><span class="w"> </span><span class="n">chavevalor</span><span class="w"></span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">namespace</span><span class="w"> </span><span class="nn">java</span><span class="w"> </span><span class="n">chavevalor</span><span class="w"></span>
 <span class="kn">namespace</span><span class="w"> </span><span class="nn">py</span><span class="w"> </span><span class="n">chavevalor</span><span class="w"></span>
 
 <span class="kd">exception</span><span class="w"> </span><span class="nc">KeyNotFound</span><span class="w"></span>
@@ -1467,13 +1466,12 @@
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">setKV</span><span class="o">(</span><span class="mi">1</span><span class="p">:</span><span class="kt">i32</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="kt">string</span><span class="w"> </span><span class="n">value</span><span class="p">),</span><span class="w"></span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">delKV</span><span class="o">(</span><span class="mi">1</span><span class="p">:</span><span class="kt">i32</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Compilação</p>
 <p><code>thrift --gen java chavevalor.thrift</code></p>
 <p><code>thrift --gen py chavevalor.thrift</code></p>
 <p>ChaveValorHandler.java
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1497,33 +1495,32 @@
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">package</span> <span class="nn">chavevalor</span><span class="p">;</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">chavevalor</span><span class="p">;</span><span class="w"></span>
 
-<span class="kn">import</span> <span class="nn">org.apache.thrift.TException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">chavevalor.*</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.thrift.TException</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">chavevalor.*</span><span class="p">;</span><span class="w"></span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChaveValorHandler</span> <span class="kd">implements</span> <span class="n">ChaveValor</span><span class="p">.</span><span class="na">Iface</span> <span class="p">{</span>
-   <span class="kd">private</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">kv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="n">String</span> <span class="nf">getKV</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">TException</span> <span class="p">{</span>
-       <span class="k">if</span><span class="p">(</span><span class="n">kv</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
-          <span class="k">return</span> <span class="n">kv</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
-       <span class="k">else</span>
-          <span class="k">throw</span> <span class="k">new</span> <span class="n">KeyNotFound</span><span class="p">();</span>
-   <span class="p">}</span>
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">setKV</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="n">String</span> <span class="n">valor</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">TException</span> <span class="p">{</span>
-       <span class="n">kv</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">valor</span><span class="p">);</span>
-       <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-   <span class="p">}</span>
-   <span class="nd">@Override</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delKV</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">TException</span> <span class="p">{</span>
-       <span class="n">kv</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
-   <span class="p">}</span>    
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table></p>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ChaveValorHandler</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ChaveValor</span><span class="p">.</span><span class="na">Iface</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getKV</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">TException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="k">if</span><span class="p">(</span><span class="n">kv</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">key</span><span class="p">))</span><span class="w"></span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">kv</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span><span class="w"></span>
+<span class="w">       </span><span class="k">else</span><span class="w"></span>
+<span class="w">          </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KeyNotFound</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">setKV</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">TException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="n">kv</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">valor</span><span class="p">);</span><span class="w"></span>
+<span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">delKV</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">TException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="n">kv</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">key</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w">    </span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div></p>
 <h2 id="arquitetura">Arquitetura</h2>
 <ul>
 <li>Runtime library -- componentes podem ser selecionados em tempo de execução e implementações podem ser trocadas</li>
@@ -1549,13 +1546,12 @@
 <li>TNonBlockingChannel</li>
 </ul>
 <h2 id="execucao">Execução</h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>javac  -cp jars/libthrift0.16.0.jar:jars/slf4japi1.7.36.jar:gen-java  -d . *.java 
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>javac  -cp jars/libthrift0.16.0.jar:jars/slf4japi1.7.36.jar:gen-java  -d . *.java 
 java -cp jars/libthrift0.16.0.jar:jars/slf4japi1.7.36.jar:gen-java:. chavevalor.ChaveValorServer
 java -cp jars/libthrift0.16.0.jar:jars/slf4japi1.7.36.jar:gen-java:. chavevalor.ChaveValorClient
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition question">
 <p class="admonition-title">Exercícios - Thrift</p>
 <ul>
@@ -1574,6 +1570,7 @@ java -cp jars/libthrift0.16.0.jar:jars/slf4japi1.7.36.jar:gen-java:. chavevalor.
 
 
             </article>
+            
           </div>
         </div>
         
@@ -1581,7 +1578,8 @@ java -cp jars/libthrift0.16.0.jar:jars/slf4japi1.7.36.jar:gen-java:. chavevalor.
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
       
         
         <a href="../mosquitto/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Mosquitto" rel="prev">
@@ -1650,10 +1648,10 @@ java -cp jars/libthrift0.16.0.jar:jars/slf4japi1.7.36.jar:gen-java:. chavevalor.
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       

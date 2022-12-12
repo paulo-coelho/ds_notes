@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/comm/datarep/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
@@ -21,11 +21,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
+      
       
     
     
@@ -1321,25 +1322,24 @@ Neste cenário, vários fatores precisam ser levados em consideração na hora d
 <h6 id="representacao-textual">Representação Textual</h6>
 <p>Uma abordagem comumente usada é a representação em formato textual "amigável a humanos".
 Veja o exemplo de como o protocolo HTTP requisita e recebe uma página HTML.
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>telnet www.google.com 80
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>telnet www.google.com 80
 Trying 187.72.192.217...
 Connected to www.google.com.
 Escape character is &#39;^]&#39;.
 GET / HTTP/1.1
 host: www.google.com
                         <span class="err">&lt;</span>=== Linha vazia!
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 As linhas 5 e 6 são entradas pelo cliente para requisitar a página raiz do sítio <a href="https://www.google.com">www.google.com</a>.
 A linha 7, vazia, indica ao servidor que a requisição está terminada.</p>
 <p>Em resposta a esta requisição, o servidor envia o seguinte, em que as primeiras linhas trazem metadados da página requisitada e, após a linha em branco, vem a resposta em HTML à requisição.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1356,7 +1356,7 @@ A linha 7, vazia, indica ao servidor que a requisição está terminada.</p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>HTTP/1.1 302 Found
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>HTTP/1.1 302 Found
 Location: http://www.google.com.br/?gws_rd=cr<span class="err">&amp;</span>ei=HTDqWJ3BDYe-wATs_a3ACA
 Cache-Control: private
 Content-Type: text/html; charset=UTF-8
@@ -1374,15 +1374,14 @@ Set-Cookie: NID=100=NB_AruuFWL0hXk2-h7VDduHO_UkjAr6RaqgG7VbccTsfLzFfhxEKx21Xpa2E
 The document has moved
 <span class="p">&lt;</span><span class="nt">A</span> <span class="na">HREF</span><span class="o">=</span><span class="s">&quot;http://www.google.com.br/?gws_rd=cr&amp;amp;ei=HTDqWJ3BDYe-wATs_a3ACA&quot;</span><span class="p">&gt;</span>here<span class="p">&lt;/</span><span class="nt">A</span><span class="p">&gt;</span>.
 <span class="p">&lt;/</span><span class="nt">BODY</span><span class="p">&gt;&lt;/</span><span class="nt">HTML</span><span class="p">&gt;</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Representações textuais são usadas em diversos protocolos como SMTP, POP, e telnet.
 Algumas destas representações seguem padrões formalizados, o que facilita a geração e interpretação dos dados. 
 Dois padrões bem conhecidas são XML e JSON.</p>
 <p><a href="https://xml.org">XML</a> é o acrônimo para <em>Extensible Markup Language</em>, ou seja, uma linguagem marcação que pode ser estendida para representar diferentes tipos de informação.
 A HTML, por exemplo, é uma instância de XML destinada à representação de hipertexto (A bem da verdade, XML foi uma generalização de HTML).</p>
 <p>Por exemplo, para representarmos os dados relativos à uma pessoa, podemos ter uma instância XML assim:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1390,7 +1389,7 @@ A HTML, por exemplo, é uma instância de XML destinada à representação de hi
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;person&gt;</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;person&gt;</span>
     <span class="nt">&lt;name&gt;</span>John Doe<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;id&gt;</span>112234556<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;email&gt;</span>jdoe@example.com<span class="nt">&lt;/email&gt;</span>
@@ -1399,14 +1398,13 @@ A HTML, por exemplo, é uma instância de XML destinada à representação de hi
        <span class="nt">&lt;telephone</span> <span class="na">type=</span><span class="s">&quot;home&quot;</span><span class="nt">&gt;</span>321 123 321<span class="nt">&lt;/telephone&gt;</span>
     <span class="nt">&lt;/telephones&gt;</span>
 <span class="nt">&lt;/person&gt;</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Uma das grandes vantagens do uso de XML é a possibilidade de se formalizar o que pode ou não estar em um arquivo para um certo domínio utilizando um <a href="https://docs.microsoft.com/pt-br/dotnet/standard/data/xml/xml-document-object-model-dom">XML <em>Domain Object Model</em></a>. Há, por exemplo, modelos para representação de documentos de texto, governos eletrônicos, representação de conhecimento, <a href="http://www.xml.org/">etc</a>.
 Sua maior desvantagem é que é muito verborrágico e por vezes complicado de se usar, abrindo alas para o seu mais famoso concorrente, JSON.</p>
 <p><a href="http://json.org/">JSON</a> é o acrônimo de <em>Javascript Object Notation</em>, isto é, o formato para representação de objetos da linguagem Javascript.
 Devido à sua simplicidade e versatilidade, entretanto, foi adotado como forma de representação de dados em sistemas desenvolvidos nas mais diferentes linguagens.
 O mesmo exemplo visto anteriormente, em XML, é representado em JSON assim:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1414,7 +1412,7 @@ O mesmo exemplo visto anteriormente, em XML, é representado em JSON assim:</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">112234556</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdoe@example.com&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1423,8 +1421,7 @@ O mesmo exemplo visto anteriormente, em XML, é representado em JSON assim:</p>
 <span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;home&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;321 123 321&quot;</span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Em Python, por exemplo, JSON são gerados e interpretados nativamente, sem a necessidade de <em>frameworks</em> externos, facilitando seu uso.
 Mas de fato, a opção final por XML ou JSON é questão de preferência, uma vez que os dois formatos são, de fato, equivalentes na questão da representação de informação.</p>
 <p>Outros formatos, binários, oferecem vantagens no uso de espaço para armazenar e transmitir dados, e por isso são frequentemente usados como forma de <em>serialização</em> de dados em sistemas distribuídos, isto é, na transformação de TAD para sequências de bytes que seguirão "no fio".</p>
@@ -1445,7 +1442,7 @@ Quanto à serialização feita nativamente pelo Java, por meio de <code>ObjectOu
 </blockquote>
 <p>Por meio de protobuf, é possível estruturar dados e gerar o código correspondente em diversas linguagens, for forma compartilhável entre as mesmas. Veja o exemplo a seguir, que especifica os dados referentes a uma pessoa. 
 Observe a presença de campos de preenchimento opcional (<strong>optional</strong>), de enumerações (<strong>enum</strong>), e de coleções (<strong>repeated</strong>).</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1459,7 +1456,7 @@ Observe a presença de campos de preenchimento opcional (<strong>optional</stron
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">required</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="k">required</span><span class="w"> </span><span class="kt">int32</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="w">    </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
@@ -1474,8 +1471,7 @@ Observe a presença de campos de preenchimento opcional (<strong>optional</stron
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="n">PhoneNumber</span><span class="w"> </span><span class="na">phone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Além dos tipos usados no exemplo, diversos outros tipos primitivos estão disponíveis:</p>
 <ul>
 <li><code>bool</code>: boolean (true/false)</li>
@@ -1492,7 +1488,7 @@ Observe a presença de campos de preenchimento opcional (<strong>optional</stron
 <p>Além destes, também pode ser usado um tipo indefinido e adaptável, <a href="https://developers.google.com/protocol-buffers/docs/proto3#any"><code>Any</code></a>, bem como coleções.</p>
 <p>A especificação protobuf pode ser traduzida para <a href="https://developers.google.com/protocol-buffers/docs/proto3">múltiplas linguagens</a>
 Por exemplo, se a tradução for feita para C++, o tipo <code>message</code> resulta em uma classe de mesmo nome, com funcionalidades para serialização e desserialização do objeto, como no exemplo a seguir.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1505,7 +1501,7 @@ Por exemplo, se a tradução for feita para C++, o tipo <code>message</code> res
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">//Instancia person e salva conteúdo em arquivo</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">//Instancia person e salva conteúdo em arquivo</span>
 <span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span><span class="w"></span>
 <span class="n">person</span><span class="p">.</span><span class="n">set_name</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">person</span><span class="p">.</span><span class="n">set_id</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span><span class="w"></span>
@@ -1519,8 +1515,7 @@ Por exemplo, se a tradução for feita para C++, o tipo <code>message</code> res
 <span class="n">person</span><span class="p">.</span><span class="n">ParseFromIstream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">);</span><span class="w"></span>
 <span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Name: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">name</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 <span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;E-mail: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">email</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>De acordo com <em>benchmarks</em> do próprio <a href="https://developers.google.com/protocol-buffers/docs/overview">projeto</a>, a operação em XML seria mais ordens de grandeza mais lenta e ocuparia mais espaço.</p>
 <blockquote>
 <p>When this message is encoded to the protocol buffer binary format, it would probably be 28 bytes long and take around 100-200 nanoseconds to parse. The XML version is at least 69 bytes if you remove whitespace, and would take around 5,000-10,000 nanoseconds to parse.</p>
@@ -1529,7 +1524,7 @@ Por exemplo, se a tradução for feita para C++, o tipo <code>message</code> res
 <p>Originalmente desenvolvido pela Facebook, <a href="https://thrift.apache.org/">Apache Thrift</a> é um arcabouço desenvolvimento de serviços multi-linguagens. Isto, mesmo que por enquanto nos foquemos no aspecto da representação de dados desta tecnologia, veremos depois que pode ser usado para executar a troca de dados entre processos.<sup id="fnref:fbthrift"><a class="footnote-ref" href="#fn:fbthrift">1</a></sup>
 Comparado ao protobuf, ele possui praticamente as mesmas funcionalidades, i.e., a definição de estruturas de dados complexos e geração de código para serialização e desserialização de instâncias destas estruturas.
 O mesmo exemplo acima, que define uma estrutura para representar pessoas e seus contatos, ficaria assim em thrift.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1550,7 +1545,7 @@ O mesmo exemplo acima, que define uma estrutura para representar pessoas e seus 
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">enum</span><span class="w"> </span><span class="nc">PhoneType</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">enum</span><span class="w"> </span><span class="nc">PhoneType</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">MOBILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">HOME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">WORK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
@@ -1572,12 +1567,10 @@ O mesmo exemplo acima, que define uma estrutura para representar pessoas e seus 
 <span class="w">   </span><span class="mi">1</span><span class="p">:</span><span class="kt">i64</span><span class="w"> </span><span class="n">hora</span><span class="p">;</span><span class="w"></span>
 <span class="w">   </span><span class="mi">2</span><span class="p">:</span><span class="kt">string</span><span class="w"> </span><span class="n">chaveProcurada</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Usar a classe correspondente em Java, depois da geração de código pelo compilador <code>thriftc</code>, é bem simples.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">,</span><span class="mi">112234556</span><span class="p">,</span><span class="s">&quot;jdoe@example.com&quot;</span><span class="p">,</span> <span class="n">Collections</span><span class="p">.</span><span class="na">emptyList</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">,</span><span class="mi">112234556</span><span class="p">,</span><span class="s">&quot;jdoe@example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Collections</span><span class="p">.</span><span class="na">emptyList</span><span class="p">())</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>Observe que além do uso de coleções e enumerações, demonstradas no exemplo, os mesmos tipos básicos também estão disponíveis.</p>
 <ul>
 <li>bool: boolean (true/false)</li>
@@ -1605,6 +1598,7 @@ Estas funcionalidades são normalmente implementadas por <em>frameworks</em> de 
 
 
             </article>
+            
           </div>
         </div>
         
@@ -1612,7 +1606,8 @@ Estas funcionalidades são normalmente implementadas por <em>frameworks</em> de 
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
       
         
         <a href="../sockets/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Sockets" rel="prev">
@@ -1681,10 +1676,10 @@ Estas funcionalidades são normalmente implementadas por <em>frameworks</em> de 
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       

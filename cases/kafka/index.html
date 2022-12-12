@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/cases/kafka/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
@@ -21,11 +21,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
+      
       
     
     
@@ -1402,7 +1403,7 @@ Produtor
 
 SimpleProducer.java
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1426,33 +1427,32 @@ SimpleProducer.java
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">org.apache.kafka.clients.producer.KafkaProducer</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.kafka.clients.producer.Producer</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.kafka.clients.producer.ProducerRecord</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Properties</span><span class="p">;</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.kafka.clients.producer.KafkaProducer</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.kafka.clients.producer.Producer</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.kafka.clients.producer.ProducerRecord</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Properties</span><span class="p">;</span><span class="w"></span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleProducer</span> <span class="p">{</span>
- <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">String</span> <span class="n">topicName</span> <span class="o">=</span> <span class="s">&quot;SimpleProducerTopic&quot;</span><span class="p">;</span>
-  <span class="n">String</span> <span class="n">key</span> <span class="o">=</span> <span class="s">&quot;Chave&quot;</span><span class="p">;</span>
-  <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&quot;Valor&quot;</span><span class="p">;</span>
-  <span class="n">Properties</span> <span class="n">props</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="p">();</span>
-  <span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;bootstrap.servers&quot;</span><span class="p">,</span> <span class="s">&quot;localhost:9092, localhost:9093&quot;</span><span class="p">);</span>
-  <span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;key.serializer&quot;</span><span class="p">,</span> <span class="s">&quot;org.apache.kafka.common.serialization.StringSerializer&quot;</span><span class="p">);</span>
-  <span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;value.serializer&quot;</span><span class="p">,</span> <span class="s">&quot;org.apache.kafka.common.serialization.StringSerializer&quot;</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleProducer</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">topicName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SimpleProducerTopic&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Chave&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Valor&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Properties</span><span class="w"> </span><span class="n">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Properties</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;bootstrap.servers&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;localhost:9092, localhost:9093&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;key.serializer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;org.apache.kafka.common.serialization.StringSerializer&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;value.serializer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;org.apache.kafka.common.serialization.StringSerializer&quot;</span><span class="p">);</span><span class="w"></span>
 
-  <span class="n">Producer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">producer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KafkaProducer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="n">props</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Producer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">producer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KafkaProducer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="n">props</span><span class="p">);</span><span class="w"></span>
 
-  <span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">record</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="n">topicName</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+<span class="w">  </span><span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="n">topicName</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
 
-  <span class="n">producer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">record</span><span class="p">);</span>
-  <span class="n">producer</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">  </span><span class="n">producer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">record</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">producer</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"></span>
 
-  <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleProducer Completed.&quot;</span><span class="p">);</span>
- <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SimpleProducer Completed.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 
 Workflow
 ![]()images/kafka6.png)
@@ -1470,7 +1470,7 @@ Fire and Forget
 Synchronous Call
 * Envia a mensagem e espera para saber se foi entregue ou não.
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1479,25 +1479,24 @@ Synchronous Call
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">{</span>
- <span class="n">RecordMetadata</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">producer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">record</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
- <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Message is sent to Partition no &quot;</span> <span class="o">+</span> <span class="n">metadata</span><span class="p">.</span><span class="na">partition</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; and offset &quot;</span> <span class="o">+</span> <span class="n">metadata</span><span class="p">.</span><span class="na">offset</span><span class="p">());</span>
- <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SynchronousProducer Completed with success.&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
- <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
- <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SynchronousProducer failed with an exception&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="k">finally</span><span class="p">{</span>
- <span class="n">producer</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">RecordMetadata</span><span class="w"> </span><span class="n">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">producer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">record</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Message is sent to Partition no &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">metadata</span><span class="p">.</span><span class="na">partition</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; and offset &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">metadata</span><span class="p">.</span><span class="na">offset</span><span class="p">());</span><span class="w"></span>
+<span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SynchronousProducer Completed with success.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w"></span>
+<span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;SynchronousProducer failed with an exception&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="k">finally</span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">producer</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 
 *  Future
 
 Callback
 Envia a mensagem e é invocado depois de receber um ACK
 
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1509,7 +1508,7 @@ Envia a mensagem e é invocado depois de receber um ACK
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>producer.send(record, new MyProducerCallback());
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>producer.send(record, new MyProducerCallback());
 
 ...
 
@@ -1522,8 +1521,7 @@ class MyProducerCallback implements Callback{
    System.out.println(&quot;AsynchronousProducer call Success:&quot;);
  }
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 
 *  max.in.flight.requests.per.connection
 
@@ -1645,6 +1643,7 @@ public class SimpleConsumer {
 
 
             </article>
+            
           </div>
         </div>
         
@@ -1686,10 +1685,10 @@ public class SimpleConsumer {
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       
