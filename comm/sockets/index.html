@@ -1131,6 +1131,8 @@
         
           
         
+          
+        
       
       
         
@@ -1151,6 +1153,20 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cases/sockets/" class="md-nav__link">
+        Sockets
+      </a>
+    </li>
+  
+
             
           
             
@@ -1477,116 +1493,6 @@ Do lado cliente, estabelece-se uma conexão apontando-se para onde está o servi
 <p>O cliente em Java também é simplificado.
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Socket</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Socket</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span><span class="n">port</span><span class="p">);</span>
 </code></pre></div></td></tr></table></div></p>
-<div class="admonition question">
-<p class="admonition-title">Exercício: Múltiplos Pacotes</p>
-<p>Façamos agora uma modificação no código do servidor para que envie não uma, mas três mensagens para o cliente, e que o cliente durma um pouco após receber a primeira mensagem. Isto é, modifique seu servidor assim</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">...</span>
-<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Thank you for connecting&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Come back often&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Bye!&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-</code></pre></div></td></tr></table></div>
-<p>Agora execute novamente o cliente e veja o que acontece.  Consegue explicar o fenômeno?</p>
-<p>Modifiquemos o cliente agora, para que tenha três <code>recv</code>, assim.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">...</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="o">...</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-
-<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-<span class="o">...</span>
-</code></pre></div></td></tr></table></div></p>
-<p>E agora, o que acontece? A saída é como esperava? Como explica este fenômeno e como poderia corrigí-lo?</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Exercício: Ping-Pong</p>
-<p>Modifique cliente e servidor tal que o cliente envie uma mensagem passada na linha de comando ao servidor e fique esperando uma resposta, e tal que o servidor fique esperando uma mensagem e então solicite ao operador que digite uma resposta e a envie para o cliente. O loop continua até que o usuário digite SAIR, e a conexão seja encerrada.</p>
-<table>
-<thead>
-<tr>
-<th>Terminal 1</th>
-<th>Terminal 2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>python server.py</td>
-<td>python client.py</td>
-</tr>
-<tr>
-<td>Esperando conexão.</td>
-<td>conectando-se ao servidor</td>
-</tr>
-<tr>
-<td>Conectado</td>
-<td>Conectado</td>
-</tr>
-<tr>
-<td>Esperando mensagem</td>
-<td>Digite mensagem: lalala</td>
-</tr>
-<tr>
-<td></td>
-<td>Mensagem enviada</td>
-</tr>
-<tr>
-<td>Mensagem recebida: lalala</td>
-<td>Esperando resposta</td>
-</tr>
-<tr>
-<td>Digite resposta: lelele</td>
-<td></td>
-</tr>
-<tr>
-<td>Resposta enviada.</td>
-<td>Resposta recebida: lelele</td>
-</tr>
-<tr>
-<td></td>
-<td>Digite mensagem: SAIR</td>
-</tr>
-<tr>
-<td></td>
-<td>Desconectando.</td>
-</tr>
-<tr>
-<td>Conexão encerrada.</td>
-<td></td>
-</tr>
-<tr>
-<td>Esperando conexão.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Observe que para ler do teclado em Python 2 você deve usar <code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">()</span></code>, enquanto que em Python 3 seria <code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span></code>. Além disso, em Python 2, você deve remover as invocações para <code>encode</code> e <code>decode</code>.</p>
-</div>
 <h2 id="udp">UDP</h2>
 <p>No exemplo anterior, usamos o protocolo TCP (o padrão da API). Caso quiséssemos usar UDP, precisaríamos nos atentar a alguns detalhes.</p>
 <p>A criação do socket é feita explicitando-se o uso de <strong>datagramas</strong>: <code class="highlight"><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span></code></p>
@@ -1600,11 +1506,6 @@ Do lado cliente, estabelece-se uma conexão apontando-se para onde está o servi
 <li>mais dados lidos que enviados (pode acontecer também no TCP)</li>
 </ul>
 <p>Com tantas dificuldades para se usar o UDP, fica a questão: <strong>para que serve UDP?</strong></p>
-<div class="admonition question">
-<p class="admonition-title">Exercício: Ping-Pong UDP</p>
-<p>Modifique o código do exercício Ping-Pong para usar UDP em vez de TCP na comunicação entre nós.
-Execute múltiplos clientes ao mesmo tempo. Como o seu servidor lida com isso? Modifique-o para mandar um "eco" da mensagem recebida de volta ao remetente. </p>
-</div>
 <h2 id="ip-multicast">IP-Multicast</h2>
 <p>Imagine que você tenha que enviar um <em>stream</em> de vídeo para um amigo mostrando como você está jogando o mais novo jogo da velha no mercado.
 Qual protocolo de transporte você usaria? TCP, provavelmente, já que garante a entrega ordenada dos pacotes do vídeo.
@@ -1753,61 +1654,10 @@ Agora criemos um programa que envia pacotes para o dito grupo.</p>
 <p>A título de curiosidade, IP-Multicast também está presente em IPv6, mas com algumas pequenas diferenças </p>
 <div class="admonition tip">
 <p class="admonition-title">IP-Multicast em IPv6<sup id="fnref:ipv6multi"><a class="footnote-ref" href="#fn:ipv6multi">5</a></sup></p>
-<p>In IPv6, the left-most bits of an address are used to determine its type. For a multicast address, the first 8 bits are all ones, i.e. FF00::/8. Further, bit 113-116 represent the scope of the address, which can be either one of the following 4: Global, Site-local, Link-local, Node-local.</p>
-<p>In addition to unicast and multicast, IPv6 also supports anycast, in which a packet can be sent to any member of the group, but need not be sent to all members.''</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Exercício: IP-Multicast</p>
-<p>Implemente e teste o seguinte <strong>receiver</strong>, colocando várias instâncias para executar em múltiplos terminais, ao mesmo tempo.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">struct</span>
-
-<span class="n">MCAST_GRP</span> <span class="o">=</span> <span class="s1">&#39;224.1.1.1&#39;</span>
-<span class="n">MCAST_PORT</span> <span class="o">=</span> <span class="mi">5007</span>
-
-<span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_UDP</span><span class="p">)</span>
-<span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">MCAST_PORT</span><span class="p">))</span>
-<span class="n">mreq</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;=4sl&quot;</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">inet_aton</span><span class="p">(</span><span class="n">MCAST_GRP</span><span class="p">),</span> <span class="n">socket</span><span class="o">.</span><span class="n">INADDR_ANY</span><span class="p">)</span>
-<span class="c1">#4 bytes (4s) seguidos de um long (l), usando ordem nativa (=)</span>
-
-<span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_IP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IP_ADD_MEMBERSHIP</span><span class="p">,</span> <span class="n">mreq</span><span class="p">)</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">10240</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-</code></pre></div></td></tr></table></div>
-<p>Implemente e teste o seguinte <strong>sender</strong>.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">socket</span>
-
-<span class="n">MCAST_GRP</span> <span class="o">=</span> <span class="s1">&#39;224.1.1.1&#39;</span>
-<span class="n">MCAST_PORT</span> <span class="o">=</span> <span class="mi">5007</span>
-
-<span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_UDP</span><span class="p">)</span>
-<span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_IP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IP_MULTICAST_TTL</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="p">(</span><span class="n">MCAST_GRP</span><span class="p">,</span> <span class="n">MCAST_PORT</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div>
+<p>Em IPv6, os bits mais à esquerda de um endereço são usados para determinar seu tipo.
+Para um endereço multicast, os primeiros 8 bits são todos iguais a 1, ou seja, FF00:/8.
+Além disso, os bites 113-116 representam o escopo do endereço, que pode ser: global, site-local, link-local, node-local.</p>
+<p>IPv6 suporta ainda a comunicação do tipo <em>anycast</em>, em que o pacote pode ser enviado para qualquer membro do grupo, não havendo necessidade de enviar a todos os membros.</p>
 </div>
 <div class="footnote">
 <hr />

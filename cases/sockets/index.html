@@ -10,16 +10,20 @@
       
       
       
-        <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/cases/pastry/">
+        <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/cases/sockets/">
       
       
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../cassandra/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-9.0.15">
     
     
       
-        <title>P2P: Pastry - Notas de Aula em Sistemas Distribuídos</title>
+        <title>Sockets - Notas de Aula em Sistemas Distribuídos</title>
       
     
     
@@ -73,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#p2p-pastry" class="md-skip">
+        <a href="#tcp" class="md-skip">
           Ir para o conteúdo
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              P2P: Pastry
+              Sockets
             
           </span>
         </div>
@@ -1045,14 +1049,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
       
       
         
@@ -1089,7 +1095,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
           Estudos de Caso
@@ -1102,11 +1108,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../sockets/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Sockets
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Sockets
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    TCP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    UDP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-multicast" class="md-nav__link">
+    IP-Multicast
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1233,8 +1290,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1243,75 +1298,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#roteamento" class="md-nav__link">
-    Roteamento
-  </a>
-  
-    <nav class="md-nav" aria-label="Roteamento">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#estrutura-interna-de-um-no-pastry" class="md-nav__link">
-    Estrutura Interna de um Nó Pastry
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#auto-organizacao-e-adaptacao" class="md-nav__link">
-    Auto organização e adaptação
-  </a>
-  
-    <nav class="md-nav" aria-label="Auto organização e adaptação">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#insercao-de-um-no" class="md-nav__link">
-    Inserção de um nó
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saida-de-um-no" class="md-nav__link">
-    Saída de um nó
-  </a>
-  
-    <nav class="md-nav" aria-label="Saída de um nó">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#atualizacao-da-tabela-de-rotas-de-um-no-a" class="md-nav__link">
-    Atualização da tabela de rotas de um nó a
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#localidade" class="md-nav__link">
-    localidade
+  <a href="#tcp" class="md-nav__link">
+    TCP
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referências
+  <a href="#udp" class="md-nav__link">
+    UDP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-multicast" class="md-nav__link">
+    IP-Multicast
   </a>
   
 </li>
@@ -1338,142 +1340,390 @@
        as the main headline.
     -->
 
+  <h1>Sockets</h1>
+
 
   <!-- Content -->
-  <h1 id="p2p-pastry">P2P: Pastry</h1>
-<p>Pastry é uma rede <em>peer to peer</em> (P2P) pensado por Antony Rowstron e Peter Druschel com a ideia de ser um sistema escalável
-com localização de objetos eficiente em redes potencialmente grandes. Suas aplicações incluem compartilhamento e armazenamento global de dados e comunicações
-em grupo. Como todo sistema P2P o número de clientes cresce linearmente com o número de servidores, ou seja, cada novo cliente é um novo servidor. Pastry network possui a topologia rede de Overlay <strong>estruturada</strong>, apesar de possuir uma adição de dados e de nós mais lenta do que uma rede não estruturada, veremos
-que o seu algoritmo de inserção é eficiente.  </p>
+  <p>Releia <a href="../../comm/sockets/">aqui</a> material sobre sockets antes de continuar.</p>
+<p>A API usada para estabelecer a conversa via socket tem várias chamadas, que devem ser executadas na ordem certa no processo iniciando a conversa e naquele que aceita participar da mesma. Comecemos estudando o TCP.</p>
+<h2 id="tcp">TCP</h2>
+<p>O fluxograma da criação de um socket TCP é apresentado na seguinte figura:
+<div class="mermaid">stateDiagram-v2
+   Servidor --&gt; Entrada/Saída
+   Cliente --&gt; Entrada/Saída
+   Entrada/Saída --&gt; Encerramento
+
+   state Servidor {
+     ss: Cria socket
+     sb: Associa porta
+     sl: Escuta conexões
+     sa: Aceita conexões
+     ss --&gt; sb 
+     sb --&gt; sl
+     sl --&gt; sa
+   }
+
+   state Entrada/Saída {
+     leitura --&gt; escrita
+     escrita --&gt; leitura
+   }
+
+   state Cliente {   
+     cs: Cria socket
+     cc: Inicia conexão
+     cs --&gt; cc
+   }
+
+   state Encerramento {
+       sc: Fecha conexão
+   }</div></p>
+<!--![image](images/04-15.png)-->
+
+<p>Estabelecido o socket, o mesmo pode ser usado como um <strong>arquivo</strong>, isto é, lendo-se e escrevendo-se bytes.
+O que exatamente deve ser escrito e como o que é lido deve ser interpretado é o protocolo da camada 7, <strong>sua responsabilidade</strong>.</p>
+<p>Considere o exemplo do uso de sockets, em Python, descrito no arquivo<code>server.py</code>.<sup id="fnref:pyname"><a class="footnote-ref" href="#fn:pyname">1</a></sup>
+Ele será utilizado como base para as atividades apresentadas na sequência.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">#server.py</span>
+<span class="c1">#!/usr/bin/python                           # This is server.py file</span>
+
+<span class="kn">import</span> <span class="nn">socket</span>                               <span class="c1"># Import socket module</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>                         <span class="c1"># Create a socket object</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">()</span>                 <span class="c1"># Get local machine name</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">12345</span>                                <span class="c1"># Reserve a port for your service.</span>
+<span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>                        <span class="c1"># Bind to the port</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                                 <span class="c1"># Now wait for client connections.</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+   <span class="n">c</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>                     <span class="c1"># Establish connection with client.</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Got connection from&#39;</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+   <span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Thank you for connecting&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+   <span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                                <span class="c1"># Close the connection</span>
+</code></pre></div></td></tr></table></div>
+<p>Para executá-lo, execute o seguinte comando em um terminal. </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python<span class="w"> </span>server.py
+</code></pre></div></td></tr></table></div>
+<p>Em outro terminal, execute <strong>um dos</strong> dois comandos a seguir. <sup id="fnref:telnet"><a class="footnote-ref" href="#fn:telnet">2</a></sup></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>telnet<span class="w"> </span>localhost<span class="w"> </span><span class="m">12345</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>netcat<span class="w"> </span>localhost<span class="w"> </span><span class="m">12345</span>
+</code></pre></div></td></tr></table></div>
+<p>Por completude, vamos também escrever o código do cliente, agora que você já sabe que o servidor funciona.
+Do lado cliente, estabelece-se uma conexão apontando-se para onde está o servidor.
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">#client.py</span>
+
+<span class="c1">#!/usr/bin/python                      # This is client.py file</span>
+
+<span class="kn">import</span> <span class="nn">socket</span>                          <span class="c1"># Import socket module</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>                    <span class="c1"># Create a socket object</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">()</span>            <span class="c1"># Get local machine name</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">12345</span>                           <span class="c1"># Reserve a port for your service.</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+<span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                              <span class="c1"># Close the socket when done</span>
+</code></pre></div></td></tr></table></div></p>
+<p>E para se executar o cliente, faça:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python<span class="w"> </span>client.py
+</code></pre></div></td></tr></table></div></p>
+<p>Observe que o <code>socket.close()</code> encerra a conexão do lado de quem invoca. Na contraparte, invocações a <code>socket.recv()</code> retornam com 0 bytes lidos.</p>
+<div class="admonition question">
+<p class="admonition-title">Exercício: Múltiplos Pacotes</p>
+<p>Façamos agora uma modificação no código do servidor para que envie não uma, mas três mensagens para o cliente, e que o cliente durma um pouco após receber a primeira mensagem. Isto é, modifique seu servidor assim</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">...</span>
+<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Thank you for connecting&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Come back often&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Bye!&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<p>Agora execute novamente o cliente e veja o que acontece.  Consegue explicar o fenômeno?</p>
+<p>Modifiquemos o cliente agora, para que tenha três <code>recv</code>, assim.
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">...</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="o">...</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+<span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+E agora, o que acontece? A saída é como esperava? Como explica este fenômeno e como poderia corrigí-lo?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercício: Ping-Pong</p>
+<p>Modifique cliente e servidor tal que o cliente envie uma mensagem passada na linha de comando ao servidor e fique esperando uma resposta, e tal que o servidor fique esperando uma mensagem e então solicite ao operador que digite uma resposta e a envie para o cliente. O loop continua até que o usuário digite SAIR, e a conexão seja encerrada.</p>
 <table>
 <thead>
 <tr>
-<th>Estruturada</th>
-<th>Não-Estruturada</th>
+<th>Terminal 1</th>
+<th>Terminal 2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Estrutura bem definida</td>
-<td>Estrutura aleatória</td>
+<td>python server.py</td>
+<td>python client.py</td>
 </tr>
 <tr>
-<td>Adição de dados é lenta</td>
-<td>Adição de dados é rápida</td>
+<td>Esperando conexão.</td>
+<td>conectando-se ao servidor</td>
 </tr>
 <tr>
-<td>Adição de nós é lenta</td>
-<td>Adição de nós é rápida</td>
+<td>Conectado</td>
+<td>Conectado</td>
 </tr>
 <tr>
-<td>Busca por dados é rápida</td>
-<td>Busca por dados lenta</td>
+<td>Esperando mensagem</td>
+<td>Digite mensagem: lalala</td>
+</tr>
+<tr>
+<td></td>
+<td>Mensagem enviada</td>
+</tr>
+<tr>
+<td>Mensagem recebida: lalala</td>
+<td>Esperando resposta</td>
+</tr>
+<tr>
+<td>Digite resposta: lelele</td>
+<td></td>
+</tr>
+<tr>
+<td>Resposta enviada.</td>
+<td>Resposta recebida: lelele</td>
+</tr>
+<tr>
+<td></td>
+<td>Digite mensagem: SAIR</td>
+</tr>
+<tr>
+<td></td>
+<td>Desconectando.</td>
+</tr>
+<tr>
+<td>Conexão encerrada.</td>
+<td></td>
+</tr>
+<tr>
+<td>Esperando conexão.</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<!-- steal this film.mov -->
+<p>Observe que para ler do teclado em Python 3 seria <code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span></code>. </p>
+</div>
+<h2 id="udp">UDP</h2>
+<p>No exemplo anterior, usamos o protocolo TCP (o padrão da API). Caso quiséssemos usar UDP, precisaríamos nos atentar a alguns detalhes.</p>
+<p>O fluxograma da criação de um socket UDP é apresentado na seguinte figura:
+<div class="mermaid">stateDiagram-v2
+   Servidor --&gt; Entrada/Saída
+   Cliente --&gt; Entrada/Saída
 
-<h2 id="roteamento">Roteamento</h2>
-<p>Na Pastry Network, tanto a adição de dados quando de nós utilizam o mesmo
-algoritmo para navegar na rede, esse algoritmo busca ser um trade-of entre
-tempo-espaço, uma vez se compararmos com uma topologia em formato de anel um
-nó só precisaria armazenar dois nós, mas  no pior caso, o roteamento teria que passar pelos <span class="arithmatex">\(N\)</span> nós, ou seja , é <span class="arithmatex">\(O(N)\)</span>, já comparado com um grafo totalmente conectado e seus nós armazenados em uma tabela, o tempo no pior caso, para rotear uma mensagem seria <span class="arithmatex">\(O(1)\)</span>, mas cada nó teria que ter uma tabela armazenando os outros <span class="arithmatex">\(N-1\)</span> nós,
-o que é impraticável em uma rede larga, já no Pastry o seu algoritmo de roteamento
-demora <span class="arithmatex">\(Log_{2^{b}}N\)</span> passos para encontrar um nó e quantidade de nós varia com o
-parametro <span class="arithmatex">\(b\)</span>, o tamanho do leaf set  e o tamanho do neighborhood set, tipicamente
-os valores são <span class="arithmatex">\(4\)</span>, <span class="arithmatex">\(2^{b}\)</span> e <span class="arithmatex">\(2^{b+1}\)</span>, respectivamente.</p>
-<h3 id="estrutura-interna-de-um-no-pastry">Estrutura Interna de um Nó Pastry</h3>
-<p>Um nó Pastry é uma estrutura que possui 2 conjuntos e uma tabela.
-O conjunto leaf set <span class="arithmatex">\(L\)</span> que é uma estrutura necessária e utilizada
-durante a remoção de um nó, garantido que a estrutura da rede não se desfaça.
-O conjunto de vizinhos (neighborhood set) que existe basicamente por causa da
-internet e seus problemas, como a necessidade de monitorar os outros nós para
-saber se eles ainda estão vivos e qual é a distância entre os nós. A tabela de
-roteamento que a estrutura chave para o algoritmo de roteamento.</p>
-<p><img alt="um estado hipotetico de um nó de id 10233102" src="../../drawings/pastry_node.drawio-0.svg" />  </p>
-<p><img alt="Pastry vs Dense graph vs ring graph" src="../../drawings/dense_vs_pastry.drawio-0.svg" /></p>
-<div class="admonition example">
-<p class="admonition-title">Algoritmo de roteamento</p>
+   state Servidor {
+     ss2: Cria socket
+     sb2: Associa porta
+     ss2 --&gt; sb2 
+   }
+
+   state Entrada/Saída {
+     leitura --&gt; escrita
+     escrita --&gt; leitura
+   }
+
+   state Cliente {   
+     cs2: Cria socket
+   }</div></p>
+<p>A criação do socket é feita explicitando-se o uso de <strong>datagramas</strong>: <code class="highlight"><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span></code></p>
+<p>Um servidor UDP não executa <code>listen</code> ou <code>accept</code> e, em Python, simplesmente executa <code class="highlight"><span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span></code> para receber o datagrama, onde <code>data</code> é o conteúdo recebido e  <code>addr</code> o endereço de quem enviou o datagrama.</p>
+<p>Neste caso, um mesmo socket é usado para manter comunicação com múltiplos interlocutores. Para enviar uma resposta a um interlocutor em específico, <code>addr</code> é usado: <code class="highlight"><span class="n">sent</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span></code>, onde <code>sent</code> é a quantidade de bytes enviados.</p>
+<p>Além deste detalhe, é importante manter em mente outras características do UDP:</p>
 <ul>
-<li>Seja um no de <span class="arithmatex">\(id\)</span> com valor <span class="arithmatex">\(A\)</span></li>
-<li>uma mensagem com uma chave de valor <span class="arithmatex">\(D\)</span></li>
-<li><span class="arithmatex">\(R^{i}_{l}\)</span> o valor de uma tabela <span class="arithmatex">\(R\)</span> onde <span class="arithmatex">\(i\)</span> é sua coluna e <span class="arithmatex">\(l\)</span> a sua linha</li>
-<li><span class="arithmatex">\(L_i\)</span> o i-ésimo <span class="arithmatex">\(id\)</span> do conjunto de folhas <span class="arithmatex">\(L\)</span>, <span class="arithmatex">\(-[\frac{|L|}{2}] \leq i \leq [\frac{|L|}{2} ]\)</span>, onde indices positivos e negativos indica <span class="arithmatex">\(id\)</span>s menores ou maiores que o <span class="arithmatex">\(id\)</span> <span class="arithmatex">\(A\)</span>, respectivamente.</li>
-<li><span class="arithmatex">\(D_{l}\)</span> o valor do l-ésimo digito da chave <span class="arithmatex">\(D\)</span></li>
-<li><span class="arithmatex">\(plength(A,B)\)</span> uma função que calcula o tamanho do prefixo compartilhado entre os ids <span class="arithmatex">\(A\)</span> e <span class="arithmatex">\(B\)</span></li>
-<li><span class="arithmatex">\(M\)</span> o conjunto de nós vizinhos  </li>
-<li><strong>se</strong> <span class="arithmatex">\(L_{-[\frac{|L|}{2}]}\)</span> <span class="arithmatex">\(\leq D  \leq\)</span> <span class="arithmatex">\(L_{[\frac{|L|}{2}]}\)</span>, ou seja, se o <span class="arithmatex">\(id\)</span> da mensagem pertence ao conjunto de <span class="arithmatex">\(ids\)</span> dos nós folha, <strong>então:</strong> <ul>
-<li>repasse a mensagem para o nó de <span class="arithmatex">\(id\)</span> <span class="arithmatex">\(L_i\)</span> onde <span class="arithmatex">\(| D - L_i|\)</span> é minimo</li>
+<li>falta de ordem</li>
+<li>falta de confiabilidade</li>
+<li>menos dados lidos que enviados.</li>
+<li>mais dados lidos que enviados (pode acontecer também no TCP)</li>
 </ul>
-</li>
-<li><strong>Caso contrário</strong> use  a tabela de rotas:   <ul>
-<li><span class="arithmatex">\(l = plength(D,A)\)</span></li>
-<li><strong>se</strong> <span class="arithmatex">\(R^{D_l}_{l} \neq null\)</span><ul>
-<li>repasse a mensagem para o nó  <span class="arithmatex">\(R^{D_l}_{l}\)</span></li>
-</ul>
-</li>
-<li><strong>caso contrário</strong>, ou seja, caso não for possível encaminhar a mensagem para <span class="arithmatex">\(R^{D_l}_{l}\)</span> ou essa celula da tabela esteja vazia:<ul>
-<li>repasse a mensagem para o nó <span class="arithmatex">\(T\)</span> tal que <span class="arithmatex">\(T \in L \cup R \cup M\)</span> e que  <span class="arithmatex">\(plength(T,D) \geq l\)</span>, <span class="arithmatex">\(|T- D| &lt; |A -D|\)</span>, ou seja <span class="arithmatex">\(T\)</span> é o nó que está em um dos conjuntos: Vizinhança, folha, tabela, que possui um prefixo compartilhado maior ou igual ao prefixo compartilhado do nó de id <span class="arithmatex">\(A\)</span></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>Com tantas dificuldades para se usar o UDP, fica a questão: <strong>para que serve UDP?</strong></p>
+<div class="admonition question">
+<p class="admonition-title">Exercício: Ping-Pong UDP</p>
+<p>Modifique o código do exercício Ping-Pong para usar UDP em vez de TCP na comunicação entre nós.
+Execute múltiplos clientes ao mesmo tempo. Como o seu servidor lida com isso? Modifique-o para mandar um "eco" da mensagem recebida de volta ao remetente. </p>
 </div>
-<h2 id="auto-organizacao-e-adaptacao">Auto organização e adaptação</h2>
-<p>Para uma rede como Pastry todas as suas vantagens estão estritamente ligadas a sua estrutura, então é imprescindível que em momentos de inserção ou saída de um nó a rede consiga se organizar de tal forma que garanta as suas propriedades</p>
-<h3 id="insercao-de-um-no">Inserção de um nó</h3>
-<div class="admonition example">
-<p class="admonition-title">Procedimento para inserir um novo nó</p>
-<ul>
-<li>
-<p>assumimos que o novo nó, o nó <span class="arithmatex">\(X\)</span> conhece o seu nó mais próximo considerando alguma métrica de distância, o nó <span class="arithmatex">\(A\)</span> </p>
-</li>
-<li>
-<p>gera-se o <span class="arithmatex">\(id\)</span> atraves do calculo do hash SHA-1 sobre o seu endereço ip ou com a sua chave publica</p>
-</li>
-<li>
-<p>Pastry Network passar a rotear uma mensagem especial <em>join</em>, onde assim como qualquer mensagem, Pastry busca encontrar o nó mais próximo numericamente do <span class="arithmatex">\(id\)</span>, que no caso é o <span class="arithmatex">\(id\)</span> do novo nó</p>
-</li>
-<li>
-<p>cada nó encontrado durante o roteamento envia para o novo nó sua tabela estado (Leaf set, Routing table, Neighborhood set) adicionado na tabela estado do novo nó</p>
-</li>
-<li>assumindo que nó <span class="arithmatex">\(A\)</span> é o mais próximo de <span class="arithmatex">\(X\)</span>, então inicializamos o conjuntos de vizinhos de <span class="arithmatex">\(X\)</span> com os vizinhos de <span class="arithmatex">\(A\)</span></li>
-<li>considerando que o nó <span class="arithmatex">\(Z\)</span> é o nó com o <span class="arithmatex">\(id\)</span> mais proximo de <span class="arithmatex">\(X\)</span>, então o conjunto de nós folhas (leaf set) de <span class="arithmatex">\(Z\)</span> inicializa o leaf set de <span class="arithmatex">\(X\)</span></li>
-<li>Considerando que <span class="arithmatex">\(A_i\)</span> significa a i-ésima linha da tabela de rotas de A e sabendo que a linha 0 de uma tabela de rotas independe do seu respectivo node <span class="arithmatex">\(id\)</span> então, podemos atribuir <span class="arithmatex">\(X_0 = A_0\)</span>, sabendo que o nó <span class="arithmatex">\(B\)</span> foi o nó depois de <span class="arithmatex">\(A\)</span>, logo <span class="arithmatex">\(B\)</span> já possui um prefixo em comum então podemos atribuir <span class="arithmatex">\(X_1 = B_1\)</span>, sabendo que <span class="arithmatex">\(C\)</span> foi o nó depois de <span class="arithmatex">\(B\)</span> então podemos atribuir <span class="arithmatex">\(X_2 = C_2\)</span>, e assim sucessivamente até achegar em <span class="arithmatex">\(Z\)</span>   </li>
-</ul>
+<div class="admonition question">
+<p class="admonition-title">Exercício: Confiabilidade UDP</p>
+<p>Modifique o código do cliente para usar UDP em vez de TCP na comunicação entre nós.
+Em seguida, configure o servidor para enviar 100.000 mensagens.
+Configure o cliente para receber mensagens em um laço infinito.
+Execute múltiplos clientes ao mesmo tempo. Como o seu servidor lida com isso?
+Verifique se houve perda de mensagens.</p>
 </div>
-<p>Perceba que a inserção utiliza do algoritmo de roteamento, e apesar do final ele enviar uma copia dos seu estado para todos os nós, são todos os nós que ele tem alguma proximidade e não todos os nós da rede e essa quantidade de nós é um parâmetro
-constante da rede, logo  a complexidade da inserção é <span class="arithmatex">\(O(logN)\)</span>, onde <span class="arithmatex">\(N\)</span> é o número
-de nós em uma rede pastry. </p>
-<h2 id="saida-de-um-no">Saída de um nó</h2>
-<p>Em um dado momento nós podem pedir para sair ou falharem sem nenhum tipo de aviso. A rede Pastry considera que um nó falhou no momento que os nós vizinhos não conseguem mais se comunicar com esse nó. Dado um nó <span class="arithmatex">\(A\)</span> que possui um leaf set <span class="arithmatex">\(L\)</span>, caso esse nó precise repor um nó do leaf set que falhou. então o nó <span class="arithmatex">\(A\)</span> contacta o nó de <span class="arithmatex">\(L\)</span> com o maior index possível, seja ele positivo ou negativo, por exemplo se o nos <span class="arithmatex">\(L_i\)</span>, dado que <span class="arithmatex">\([\frac{|L|}{2}] &lt; i &lt; 0\)</span>. então o nó <span class="arithmatex">\(A\)</span> irá enviar uma mensagem para o nó <span class="arithmatex">\(L_{-[\frac{|L|}{2}]}\)</span>, pedindo o seu conjunto leaf set <span class="arithmatex">\(L^{'}\)</span>, depois o nó <span class="arithmatex">\(A\)</span> escolhe um nó que não pertence ao seu conjunto <span class="arithmatex">\(L\)</span> e o adiciona, lembrando que <span class="arithmatex">\(A\)</span> remove o nó falho do conjunto <span class="arithmatex">\(L\)</span>. Perceba que o conjunto de vizinhos (neighborhood set) de um nó exerce um papel importante de de ficar em constante troca de mensagens, para verificar se um dado nó ainda está vivo.</p>
-<h3 id="atualizacao-da-tabela-de-rotas-de-um-no-a">Atualização da tabela de rotas de um nó a</h3>
-<p>Perceba que durante a saída de um nó a tabela de roteamento não é modificada, isso se
-dá porque Pastry adota uma uma solução em que essa atualização ocorre durante o roteamento. Durante o roteamento um dado no <span class="arithmatex">\(A\)</span> pode conter uma celula vazia, ou seja,
-<span class="arithmatex">\(R^{d}_{l} = null\)</span>, ou esse não é possível de ser contactado, o nó <span class="arithmatex">\(A\)</span> pede para um
-outro nó de mesma linha, como por exemplo: <span class="arithmatex">\(R^{i}_{l}, i\neq d\)</span> o seu nó <span class="arithmatex">\(R^{d}_{l}\)</span>, e se <span class="arithmatex">\(R^{i}_{l}\)</span> também for nulo, então <span class="arithmatex">\(A\)</span> contacta <span class="arithmatex">\(R^{i}_{l+1}\)</span> e assim sucessivamente. </p>
-<h2 id="localidade">localidade</h2>
-<p>Um ponto importante no algoritmo de inserção é assumir que conhecemo o nó mais
-próximo a partir de alguma metrica de distância, então se analisarmos o fato que
-<span class="arithmatex">\(X\)</span> copiou a linha 0 de <span class="arithmatex">\(A\)</span> e <span class="arithmatex">\(A\)</span> em algum ponto copiou a linha 0 do seu nó mais próximo, podemos perceber que todos os nós da linha 0 são relativamente próximos
-de <span class="arithmatex">\(X\)</span>, mas se a linha 1 ? bom se olharmos o pior caso que é sendo <span class="arithmatex">\(A\)</span> não tendo
-nenhum prefixo compartilhado com <span class="arithmatex">\(X\)</span>, logo <span class="arithmatex">\(B\)</span> é um dos nós da linha 0 de <span class="arithmatex">\(A\)</span>, então
-<span class="arithmatex">\(B\)</span> está próximo de <span class="arithmatex">\(A\)</span> que está próximo de <span class="arithmatex">\(X\)</span> , então quando <span class="arithmatex">\(X_1\)</span> recebe <span class="arithmatex">\(B_1\)</span>,
-ele recebeu os nós que estão a um nó mais próximo dele, da mesma forma que quando <span class="arithmatex">\(B\)</span> foi criado, ele recebeu os nós questão ao <strong>1 nível</strong> de distância dele, o mesmo se
-a aplica a <span class="arithmatex">\(X_3\)</span> e <span class="arithmatex">\(C_3\)</span> e assim por diante até <span class="arithmatex">\(X\)</span> receber o leaf set <span class="arithmatex">\(Z\)</span>, podemos
-dizer que durante a inserção de um nó, estamos sempre escolhendo a menor distância
-<strong>local</strong> e que ela não garante o mínimo global. Com o passar do tempo novos nós podem
-ser inseridos e removidos, ou até mesmo a métrica de distância pode variar com o
-tempo, logo periodicamente o nó <span class="arithmatex">\(A\)</span> envia mensagens para todos os nós da tabela
-enviarem sua tabela estado, onde ele compara os nós e caso encontre um nó que tenha o mesmo tamanho de prefixo e um valor da métrica de distância inferior, então o nó <span class="arithmatex">\(A\)</span>
-atualiza a sua tabela com esse novo nó. </p>
-<h2 id="referencias">Referências</h2>
-<p>Caso de Estudo feito por um Ex estudante <em><a href="https://github.com/samuel-cavalcanti">Samuel Cavalcanti</a></em></p>
-<p>Artigo do Pastry Network, <a href="https://rdcu.be/cABRL">Pastry: Scalable, decentralized object location and
-routing for large-scale peer-to-peer systems</a></p>
-<p>Vídeo do youtube explicando o algoritmo de roteamento, <a href="https://www.youtube.com/watch?v=WqQRQz_XYg4&amp;ab_channel=Wandida%2CEPFL">Routing in Distributed Hash Tables | Anne-Marie Kermarrec</a></p>
-<p>Vídeo do youtube explicado a auto organização da rede, <a href="https://www.youtube.com/watch?v=p8iugvHeGcg&amp;ab_channel=Wandida%2CEPFL">Dynamic Distributed Hash Tables | Anne-Marie Kermarrec</a></p>
+<h2 id="ip-multicast">IP-Multicast</h2>
+<p>Compare a figuras a seguir, representando conexões TCP para difundir a mesma informação para vários clientes.</p>
+<p><img alt="Multicast" src="../../drawings/multicast.drawio-0.svg" /></p>
+<p>Multicast, em oposição ao Unicast, é a capacidade de enviar mensagens para um grupo de destinatários, em vez de apenas um. </p>
+<p><img alt="Multicast" src="../../drawings/multicast.drawio-1.svg" /></p>
+<p>IP-Multicast é uma implementação desta ideia, usando umaa configuração específica do UDP, associada a recursos dos comutadores de rede, para otimizar o envio dos mesmos dados a múltiplos destinatários.
+Grupos são identificados por endereços IP especiais, conhecidos como Classe D (224.0.0.0-239.255.255.255), e propagados pela rede.
+A seguinte tabela descreve os usos das sub-faixas de endereços.<sup id="fnref:multicast_use"><a class="footnote-ref" href="#fn:multicast_use">3</a></sup></p>
+<table>
+<thead>
+<tr>
+<th>Endereço</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>224.0.0.0-224.0.0.255</td>
+<td>Multicast local - Usado por protocolos L2, como EIGRP e OSPF</td>
+</tr>
+<tr>
+<td>224.0.1.0-224.0.1.255</td>
+<td>Multicast roteaddo - Usado por protocolos L3</td>
+</tr>
+<tr>
+<td>232.0.0.0-232.255.255.255</td>
+<td><em>Source Specific Multicast</em> - Receptores definem fontes confiáveis</td>
+</tr>
+<tr>
+<td>233.0.0.0-233.255.255.255</td>
+<td>Reservado para detentores <em>Autonomous Systems</em></td>
+</tr>
+<tr>
+<td>239.0.0.0-239.255.255.255</td>
+<td>Reservado para IANA</td>
+</tr>
+<tr>
+<td>Resto</td>
+<td>Uso geral</td>
+</tr>
+</tbody>
+</table>
+<p>Quando um pacote é enviado para o endereço do grupo, <strong>todos</strong> os membros do grupo recebem tal mensagem.
+Melhor dizendo, todos os membros podem receber a mensagem, mas como estamos falando de UDP, <strong>é possível que alguns não recebam</strong>.
+Além disso, <strong>não há garantia qualquer sobre a ordem de recepção das mensagens</strong>.</p>
+<div class="admonition question">
+<p class="admonition-title">Exercício: IP-Multicast</p>
+<p>Implemente e teste o seguinte <strong>receiver</strong>, colocando várias instâncias para executar em múltiplos terminais, ao mesmo tempo.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+
+<span class="n">MCAST_GRP</span> <span class="o">=</span> <span class="s1">&#39;224.1.1.1&#39;</span>
+<span class="n">MCAST_PORT</span> <span class="o">=</span> <span class="mi">5007</span>
+
+<span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_UDP</span><span class="p">)</span>
+<span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">MCAST_PORT</span><span class="p">))</span>
+<span class="n">mreq</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;=4sl&quot;</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">inet_aton</span><span class="p">(</span><span class="n">MCAST_GRP</span><span class="p">),</span> <span class="n">socket</span><span class="o">.</span><span class="n">INADDR_ANY</span><span class="p">)</span>
+<span class="c1">#4 bytes (4s) seguidos de um long (l), usando ordem nativa (=)</span>
+
+<span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_IP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IP_ADD_MEMBERSHIP</span><span class="p">,</span> <span class="n">mreq</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">10240</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<p>Implemente e teste o seguinte <strong>sender</strong>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="n">MCAST_GRP</span> <span class="o">=</span> <span class="s1">&#39;224.1.1.1&#39;</span>
+<span class="n">MCAST_PORT</span> <span class="o">=</span> <span class="mi">5007</span>
+
+<span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_UDP</span><span class="p">)</span>
+<span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_IP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IP_MULTICAST_TTL</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="p">(</span><span class="n">MCAST_GRP</span><span class="p">,</span> <span class="n">MCAST_PORT</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:pyname">
+<p>Você pode usar outro nome, desde que não seja <code>socket.py</code>, e que adapte o comando para sua execução.&#160;<a class="footnote-backref" href="#fnref:pyname" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:telnet">
+<p>O programa <code>telnet</code> é normalmente instalado por padrão tanto no Windows, OSX quanto no Linux. Já o <code>netcat</code> normalmente precisa ser instalado por você. Em alguns sistemas, em vez de <code>netcat</code> o comando é o <code>nc</code>.&#160;<a class="footnote-backref" href="#fnref:telnet" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:multicast_use">
+<p><a href="http://www.dasblinkenlichten.com/understanding-ip-multicast/">Understanding IP Multicast</a>&#160;<a class="footnote-backref" href="#fnref:multicast_use" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
   <!-- Last update of source file -->
 
