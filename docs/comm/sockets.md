@@ -154,62 +154,6 @@ O cliente em Java também é simplificado.
 Socket s = new Socket(hostname,port);
 ```
 
-!!! question "Exercício: Múltiplos Pacotes"
-    Façamos agora uma modificação no código do servidor para que envie não uma, mas três mensagens para o cliente, e que o cliente durma um pouco após receber a primeira mensagem. Isto é, modifique seu servidor assim
-
-    ```Python
-    ...
-    c.send('Thank you for connecting'.encode())
-    c.send('Come back often'.encode())
-    c.send('Bye!'.encode())
-    ```
-
-    Agora execute novamente o cliente e veja o que acontece.  Consegue explicar o fenômeno?
-
-    Modifiquemos o cliente agora, para que tenha três `recv`, assim.
-    ```Python
-    ...
-    from time import sleep
-    ...
-    print("1")
-    data = s.recv(1024)
-    print(data.decode())
-
-    sleep(1)
-
-    print("2")
-    data = s.recv(1024)
-    print(data.decode())
-    print("3")
-    data = s.recv(1024)
-    print(data.decode())
-    ...
-    ```
-
-    E agora, o que acontece? A saída é como esperava? Como explica este fenômeno e como poderia corrigí-lo?
-
-!!! question "Exercício: Ping-Pong"
-
-    Modifique cliente e servidor tal que o cliente envie uma mensagem passada na linha de comando ao servidor e fique esperando uma resposta, e tal que o servidor fique esperando uma mensagem e então solicite ao operador que digite uma resposta e a envie para o cliente. O loop continua até que o usuário digite SAIR, e a conexão seja encerrada.
-
-
-    | Terminal 1                 |  Terminal 2 |
-    |----------------------------|-------------|
-    | python server.py           | python client.py| 
-    | Esperando conexão.         | conectando-se ao servidor |
-    | Conectado                  | Conectado                 |
-    | Esperando mensagem         | Digite mensagem: lalala   |
-    |                            | Mensagem enviada          |
-    | Mensagem recebida: lalala  | Esperando resposta        |
-    | Digite resposta: lelele    |                           |
-    | Resposta enviada.          |  Resposta recebida: lelele|
-    |                            |  Digite mensagem: SAIR    |
-    |                            |  Desconectando.           |
-    | Conexão encerrada.         |                           |
-    | Esperando conexão.         |                           |
-  
-    Observe que para ler do teclado em Python 2 você deve usar `#!py3 x = raw_input()`, enquanto que em Python 3 seria `#!py3 x = input()`. Além disso, em Python 2, você deve remover as invocações para `encode` e `decode`.
-
 
 
 ## UDP 
@@ -231,9 +175,6 @@ Além deste detalhe, é importante manter em mente outras características do UD
 
 Com tantas dificuldades para se usar o UDP, fica a questão: **para que serve UDP?**
 
-!!! question "Exercício: Ping-Pong UDP"
-    Modifique o código do exercício Ping-Pong para usar UDP em vez de TCP na comunicação entre nós.
-    Execute múltiplos clientes ao mesmo tempo. Como o seu servidor lida com isso? Modifique-o para mandar um "eco" da mensagem recebida de volta ao remetente. 
 
 
 ## IP-Multicast
@@ -337,47 +278,13 @@ Observe como a mesma mensagem é recebida pelos vários membros e que como difer
 A título de curiosidade, IP-Multicast também está presente em IPv6, mas com algumas pequenas diferenças 
 
 !!! tip "IP-Multicast em IPv6[^ipv6multi]"
-    In IPv6, the left-most bits of an address are used to determine its type. For a multicast address, the first 8 bits are all ones, i.e. FF00::/8. Further, bit 113-116 represent the scope of the address, which can be either one of the following 4: Global, Site-local, Link-local, Node-local.
+    Em IPv6, os bits mais à esquerda de um endereço são usados para determinar seu tipo.
+    Para um endereço multicast, os primeiros 8 bits são todos iguais a 1, ou seja, FF00:/8.
+    Além disso, os bites 113-116 representam o escopo do endereço, que pode ser: global, site-local, link-local, node-local.
 
-    In addition to unicast and multicast, IPv6 also supports anycast, in which a packet can be sent to any member of the group, but need not be sent to all members.''
+    IPv6 suporta ainda a comunicação do tipo *anycast*, em que o pacote pode ser enviado para qualquer membro do grupo, não havendo necessidade de enviar a todos os membros.
 
 [^ipv6multi]: [IP-Multicast em IPv6](http://www.baeldung.com/java-broadcast-multicast)
-
-
-!!! question "Exercício: IP-Multicast"
-    Implemente e teste o seguinte **receiver**, colocando várias instâncias para executar em múltiplos terminais, ao mesmo tempo.
-
-    ```Python
-    import socket
-    import struct
-
-    MCAST_GRP = '224.1.1.1'
-    MCAST_PORT = 5007
-
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    sock.bind(('', MCAST_PORT))
-    mreq = struct.pack("=4sl", socket.inet_aton(MCAST_GRP), socket.INADDR_ANY)
-    #4 bytes (4s) seguidos de um long (l), usando ordem nativa (=)
-
-    sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
-
-    while True:
-        print(sock.recv(10240).decode())
-    ```
-
-    Implemente e teste o seguinte **sender**.
-
-    ```Python
-    import socket
-
-    MCAST_GRP = '224.1.1.1'
-    MCAST_PORT = 5007
-
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-    sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
-    sock.sendto(input().encode(), (MCAST_GRP, MCAST_PORT))
-    ```
 
 
 

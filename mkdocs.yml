@@ -168,6 +168,7 @@ nav:
 #
         - Estudos de Caso: 
                 - Introdução: cases/index.md
+                - Sockets: cases/sockets.md
                 - Cassandra: cases/cassandra.md
                 - Chord: cases/chord.md
 #                - Pastry: cases/pastry.md
