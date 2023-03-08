@@ -216,8 +216,8 @@ Com tantas dificuldades para se usar o UDP, fica a questão: **para que serve UD
 
 !!! question "Exercício: Confiabilidade UDP"
     Modifique o código do cliente para usar UDP em vez de TCP na comunicação entre nós.
-    Em seguida, configure o servidor para enviar 100.000 mensagens.
-    Configure o cliente para receber mensagens em um laço infinito.
+    Em seguida, configure o cliente para enviar 10.000 mensagens.
+    Configure o servidor para receber mensagens em um laço infinito, imprimindo a quantidade de mensagens recebidas.
     Execute múltiplos clientes ao mesmo tempo. Como o seu servidor lida com isso?
     Verifique se houve perda de mensagens.
 
