@@ -1,25 +1,25 @@
 A área de computação distribuída é rica em aplicações e desenvolvê-los é topar de frente com vários problemas e decidir como resolvê-los ou contorná-los e, por isto, nada melhor que um projeto para experimentar em primeira mão as angústias e prazeres da área. 
 Assim, proponho visitarmos o material destas notas à luz de uma aplicação genérica mas real, desenvolvida por vocês enquanto vemos a teoria.
 
-O projeto consiste em uma com dois tipos de usuários, **clientes** e **administradores**, correspondendo a compradores e lojistas.
+O projeto consiste em uma com dois tipos de papeis, **clientes** e **administradores**. **Administradores** gerenciam cadastros de clientes e produtos. **Clientes** realizam pedidos de compra.
 
-As funcionalidades são expostas para estes usuários via **dois tipos** de  aplicações distintas, o **portal do cliente**  e o **portal administrativo**, mas ambos manipulam a **mesma base de dados**.
+As funcionalidades são expostas para estes usuários via **dois tipos** de  aplicações distintas, o **portal de pedidos**  e o **portal administrativo**, mas ambos manipulam a **mesma base de dados**.
 
 Múltiplas instâncias de cada portal podem existir e cada instância mantém um **cache** da base de dados em memória, com as entradas mais recentemente acessadas.
 
-A base de dados é replicada em outros nós usando um protocolo de **difusão atômica**.
-
 <!--
-A totalidade da base é particionada usando ***consistent hashing***.
-Cada partição é replicada em outros nós usando um protocolo de **difusão atômica**.
+A base de dados é replicada em outros nós usando um protocolo de **difusão atômica**.
 -->
 
-![Projeto](drawings/projeto.drawio#3)
+A totalidade da base é particionada usando ***consistent hashing***.
+Cada partição é replicada em outros nós usando um protocolo de **difusão atômica**.
+
+![Projeto](drawings/projeto.drawio#0)
 
 A arquitetura do sistema será **híbrida**, contendo um pouco de Cliente/Servidor e Peer-2-Peer, além de ser multicamadas.
 Apesar de introduzir complexidade extra, também usaremos **múltiplos mecanismos para a comunicação** entre as partes, para que possam experimentar com diversas abordagens.
 
-O sistemas tem duas **aplicações**, CLI ou GUI, para os dois tipos de usuários do sistema, clientes, e administradores.
+O sistemas tem duas **aplicações**, CLI ou GUI, para os dois tipos de papeis do sistema, clientes e administradores.
 Estas aplicações se comunicarão com os portais para manipular os dados dos clientes e associados a cada cliente.
 A aplicação do administrador manipula clientes e produtos, isto é, permite o CRUD de clientes e produtos.
 A aplicação do cliente permite manipular os dados associados aos pedidos, ou seja, comprar produtos previamente cadastrados.
@@ -32,17 +32,18 @@ O cadastro do produto inclui a provisão de um identificador único do produto P
 Os dados dos produtos são mantidos em uma tabela PID -> Dados do Produto, em memória (use uma tabela hash). 
 O PID tem tipo String; **você** deve decidir o que compõe os dados do produto, mas devem ser suficientes para manter a descrição (String), quantidade (inteiro) e preço (ponto flutuante) do produto, e **devem** ser armazenados como uma string JSON.
 
-A comunicação entre administradores e Portal Administrativo se dá por uso direto de *sockets* e TCP, ou middleware pub/sub Mosquitto, ou gRPC.
+A comunicação entre administradores e Portal Administrativo se dá obrigatoriamente via gRPC, conforme interface definida mais adiante.
 
 Somente clientes devidamente cadastrados no sistema podem ter suas operações executadas.
-O CID do cliente executando operações no portal cliente deve ser informado em cada operação para "autenticar" o cliente e autorizar a execução da operação.
-A comunicação entre Cliente e Portal Cliente se dá por meio de *sockets* e TCP, ou middleware pub/sub Mosquitto, ou gRPC.
+O CID do cliente executando operações no portal de pedidos deve ser informado em cada operação para "autenticar" o cliente e autorizar a execução da operação.
+
+A comunicação entre clientes e Portal de Pedidos se dá obrigatoriamente via gRPC, conforme interface definida mais adiante.
 
 O cadastro do pedido inclui a geração de um identificador único do pedido OID (*order id*).
 O OID tem tipo String; **você** deve decidir o que compõe os dados do pedido, mas devem ser suficientes para identificar o produto, a quantidade comprada e o preço para cada produto no pedido. **Devem** ser armazenados como uma string JSON.
 A relação entre clientes e pedidos é mantida em uma tabela CID -> OID, em memória (use uma tabela hash). 
 
-**Exemplo de armazenamento no portal cliente**: 
+**Exemplo de armazenamento no portal de pedidos**: 
 Cada pedido tem um identificador (Sring), e um corpo (JSON);
 Os dados são mantidos em uma tabela hash e múltiplas entradas podem ser necessárias para armazenar e manter um pedido, isto é, algumas entradas podem ser de metadados, por exemplo, índice.
 Por exemplo, para representar dois pedidos, `o1` e `o2`, com corpos `c1` e `c2`, associadas ao cliente `cliente1`, podemos ter as seguintes entradas.
@@ -52,17 +53,135 @@ Por exemplo, para representar dois pedidos, `o1` e `o2`, com corpos `c1` e `c2`,
 * `cliente1:o2 -> c2`
 
 Com este formato, podemos identificar os pedidos associados ao `cliente1` e, a partir desta lista, identificar o conteúdo associado a cada pedido.
-Este formato também permite que múltiplos clientes tenham tarefas com o mesmo título.
+Este formato também permite que múltiplos clientes tenham pedidos com o mesmo OID.
 
-**O formato exato em que os dados serão armazenados pode variar** e, por isso, nos casos de uso apresentados a seguir, **as API usadas devem ser consideradas intenções** e não necessariamente o que será implementado no seu trabalho.
 
 ## Casos de Uso
+
+###### Interfaces
+
+**O formato exato em que os dados serão armazenados pode variar dentro do JSON**, mas a API apresentada deve ter a assinada definida a seguir:
+
+```proto
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.ufu.facom.gbc074.project";
+
+package project;
+
+message Client {
+  // Client ID
+  string CID = 1;
+  // JSON string representing client data: at least a name
+  string data = 2;
+}
+
+message Product {
+  // Produto ID
+  string PID = 1;
+  // JSON string representing produto data: at least product name, price, and
+  // quantity
+  string data = 2;
+}
+
+message Order {
+  // Order ID
+  string OID = 1;
+  // CLient ID
+  string CID = 2;
+  // JSON string representing at least array of PIDs, prices, and quantities
+  string data = 3;
+}
+
+message Reply {
+  // Error code: 0 for success
+  int32 error = 1;
+  // Error message, if error > 0
+  optional string description = 2;
+}
+
+message ID {
+  // generic ID for CID, PID and OID
+  string ID = 1;
+}
+
+service AdminPortal {
+  rpc CreateClient(Client) returns (Reply) {}
+  rpc RetrieveClient(ID) returns (Client) {}
+  rpc UpdateClient(Client) returns (Reply) {}
+  rpc DeleteClient(ID) returns (Reply) {}
+  rpc CreateProduct(Product) returns (Reply) {}
+  rpc RetrieveProduct(ID) returns (Product) {}
+  rpc UpdateProduct(Product) returns (Reply) {}
+  rpc DeleteProduct(ID) returns (Reply) {}
+}
+
+service OrderPortal {
+  rpc CreateOrder(Order) returns (Reply) {}
+  rpc RetrieveOrder(ID) returns (Order) {}
+  rpc UpdateOrder(Order) returns (Reply) {}
+  rpc DeleteOrder(ID) returns (Reply) {}
+  rpc RetrieveClientOrders(ID) returns (stream Order) {}
+}
+```
+
+O JSON do cliente deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.
+
+```json
+{
+  "CID": "123",
+  "name": "Paulo",
+  "non-mandatory-field": "xxxxxxx"
+}
+```
+
+O JSON do produto deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.
+
+```json
+{
+  "PID": "123",
+  "name": "caneta",
+  "quantity": "40",
+  "price": "2.50",
+  "non-mandatory-field": "xxxxxxx"
+}
+```
+
+O JSON do pedido deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.
+
+```json
+{
+  "OID": "123",
+  "CID": "456",
+  [
+    {
+      "name": "caneta",
+      "quantity": "30",
+      "price": "2.50",
+      "non-mandatory-field": "xxxxxxx"
+    },
+    {
+      "name": "lapis",
+      "quantity": "10",
+      "price": "1.50",
+      "non-mandatory-field": "xxxxxxx"
+    },
+    {
+      "name": "borracha",
+      "quantity": "3",
+      "price": "0.50",
+      "non-mandatory-field": "xxxxxxx"
+    }
+  ],
+   "non-mandatory-field": "xxxxxxx"
+}
+```
 
 ###### Manipulação Clientes
 * Inserção de Cliente
     * Administrador
         * Gera um CID para cada cliente, baseado em seu nome ou outro atributo único.
-        * `inserirCliente(CID, "dados do cliente")`
         * Informa o CID para o cliente
     * Portal Administrador
         * Executa a operação e retorna código de erro/sucesso.
@@ -73,7 +192,6 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 * Modificação de Cliente
     * Administrador
         * Determina CID de cliente a ser modificado.
-        * `modificarCliente(CID, "novos dados do cliente")`
     * Portal Administrador
         * Executa a operação e retorna código de erro/sucesso.
             * Se cliente existe, atualiza o cliente e atualiza a cache.
@@ -81,15 +199,14 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 * Recuperação de Clientes
     * Administrador
         * Determina CID de cliente a ser recuperado
-        * `recuperarCliente(CID)`
     * Portal Administrador
-        * Executa a operação e retorna código de erro/sucesso.
+        * Executa a operação e retorna dados do cliente.
             * Se cliente não existe na cache, pesquisa banco de dados e atualiza a cache caso encontre.
-            * Se cliente (não) existe na cache, retorna (erro) informação.
+            * Se cliente existe na cache, retorna informação.
+            * Se cliente não existe na cache, retorna objeto vazio com CID igual a 0 (zero).
 * Remoção de Cliente
     * Administrador
         * Determina CID de cliente a ser removido
-        * `apagarCliente(CID)`
     * Portal Administrador
         * Executa a operação e retorna código de erro/sucesso.
             * Apaga dados do banco.
@@ -99,7 +216,6 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 * Inserção de Produto
     * Administrador
         * Gera um PID para cada produto, baseado em seu nome ou outro atributo único.
-        * `inserirProduto(PID, "dados do produto")`
     * Portal Administrador
         * Executa a operação e retorna código de erro/sucesso.
             * Se produto existia, falha a operação.
@@ -109,7 +225,6 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 * Modificação de Produto
     * Administrador
         * Determina PID de produto a ser modificado.
-        * `modificarProduto(PID, "novos dados do produto")`
     * Portal Administrador
         * Executa a operação e retorna código de erro/sucesso.
             * Se produto existe, atualiza o produto e atualiza a cache.
@@ -117,15 +232,14 @@ Este formato também permite que múltiplos clientes tenham tarefas com o mesmo 
 * Recuperação de Produtos
     * Administrador
         * Determina PID de produto a ser recuperado
-        * `recuperarProduto(PID)`
     * Portal Administrador
-        * Executa a operação e retorna código de erro/sucesso.
+        * Executa a operação e retorna dados do produto.
             * Se produto não existe na cache, pesquisa banco de dados e atualiza a cache caso encontre.
-            * Se produto (não) existe na cache, retorna (erro) informação.
+            * Se produto existe na cache, retorna informação.
+            * Se produto não existe na cache, retorna objeto vazio com PID igual a 0 (zero).
 * Remoção de Produto
     * Administrador
         * Determina PID de produto a ser removido
-        * `apagarProduto(PID)`
     * Portal Administrador
         * Executa a operação e retorna código de erro/sucesso.
             * Apaga dados do banco.
@@ -138,64 +252,57 @@ Nesta descrição, a interação com a cache foi omitida, mas deverá ser implem
 * Inserção de Pedido
     * Cliente
         * Usa o CID informado pelo administrador
-        * `criarPedido(CID)`
-    * Portal Cliente
-        * Autentica o cliente
-        * Executa a operação e retorna OID ou código de erro.
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Executa a operação e retorna OID para novo pedido vazio.
 * Modificação de Pedido
     * Cliente
         * Usa o CID informado pelo administrador
-        * Usa o OID informado retornado pelo Portal Cliente 
-        * `modificarPedido(CID, OID, "produto e quantidade")`
-    * Portal Cliente
-        * Autentica o cliente
+        * Usa o OID informado retornado pelo Portal de Pedidos
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
         * Verifica disponibilidade de produto e quantidade.
         * Ajusta quantidade disponível de produto, se necessário.
         * A informação de quantidade zero (0) remove o produto do pedido.
         * Executa a operação e retorna código de erro/sucesso.
-* Enumeração de pedido
+* Enumeração do pedido
     * Cliente
         * Usa o CID informado pelo administrador
-        * Usa o OID informado retornado pelo Portal Cliente 
-        * `listarPedido(CID, OID)`
-    * Portal Cliente
-        * Autentica o cliente
+        * Usa o OID informado retornado pelo Portal de Pedidos 
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
         * Caso o pedido exista, retorna informações dos produtos e valor total do pedido.
-        * Caso contrário, retorna código de erro.
-* Enumeração de pedidos
-    * Cliente
-        * Usa o CID informado pelo administrador
-        * `listarPedidos(CID)`
-    * Portal Cliente
-        * Autentica o cliente
-        * Para cada pedido associado ao cliente, retorna OID e valor total.
+        * Caso contrário, retorna objeto vazio com OID igual a 0 (zero).
 * Cancelamento do pedido
     * Cliente
         * Usa o CID informado pelo administrador
-        * Usa o OID informado retornado pelo Portal Cliente 
-        * `apagarPedido(CID, OID)`
-    * Portal Cliente
-        * Autentica o cliente
+        * Usa o OID informado retornado pelo Portal de Pedidos 
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
         * Ajusta quantidade disponível de produto, se necessário.
         * Executa a operação e retorna código de erro/sucesso.
-
+* Enumeração de pedidos
+    * Cliente
+        * Usa o CID informado pelo administrador
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Retorna lista de pedidos associados ao cliente.
 
 ## Interação entre portais
 
 ### Etapa 1 - Usuários/Portais
 
-* Implementar os casos de uso usando como cache tabelas hash locais aos portais Cliente e Administrador.
-* Certificar-se de que cada operação use uma API distinta na comunicação via gRPC ou uma mensagem distinta no uso de pub/sub.
+* Implementar os casos de uso usando como cache tabelas hash locais aos portais Administrador e de Pedidos.
 * Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.
 * Implementar testes automatizados de sucesso e falha de cada uma das operações na API.
 * Documentar o esquema de dados usados nas tabelas.
-* Usar dois tipos de comunicação distintos entre clientes e portais.
-* O sistema deve permitir a execução de múltiplos clientes, administradores, portais cliente e portais administrador.
-* Implementar a propagação de informação entre as diversas caches do sistema. Sugiro usar pubsub, já que a comunicação é de 1 para muitos.
-* Gravar um vídeo demonstrando que os requisitos foram atendidos.
+* O sistema deve permitir a execução de múltiplos clientes, administradores, portais de pedido e portais administrador.
+* Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
+* Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
 
 ![Projeto](drawings/projeto.drawio#1)
 
+<!--
 
 ### Etapa 2 - Banco de dados Replicado
 Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
@@ -227,7 +334,9 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
     * Entre cliente/administrador e portais, não é alterado.
     * Entre servidores, usar Ratis/PySyncOb
 * Apresentação
-    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
+    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidoa.
+
+-->
 
 <!--
 
