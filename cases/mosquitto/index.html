@@ -1417,7 +1417,12 @@ A biblioteca pode ser baixada <a href="https://www.eclipse.org/paho/index.php?pa
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.MqttClient</span><span class="p">;</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">br.ufu.facom.gbc074.mqtt</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.MqttClient</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.MqttConnectOptions</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.MqttException</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.paho.client.mqttv3.MqttMessage</span><span class="p">;</span>
@@ -1426,21 +1431,21 @@ A biblioteca pode ser baixada <a href="https://www.eclipse.org/paho/index.php?pa
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MqttPublishSample</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">topic</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MQTT Examples&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">content</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Message from MqttPublishSample&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">qos</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">broker</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tcp://mqtt.eclipse.org:1883&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">clientId</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;JavaSample&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sensor/temperature/1&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;100&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">qos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">broker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tcp://broker.hivemq.com:1883&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">clientId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;publisher-paulo-gbc074&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">//mude para que seja único</span>
 <span class="w">    </span><span class="n">MemoryPersistence</span><span class="w"> </span><span class="n">persistence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MemoryPersistence</span><span class="p">();</span>
 
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="n">MqttClient</span><span class="w"> </span><span class="n">sampleClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MqttClient</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span><span class="w"> </span><span class="n">clientId</span><span class="p">,</span><span class="w"> </span><span class="n">persistence</span><span class="p">);</span>
 <span class="w">      </span><span class="n">MqttConnectOptions</span><span class="w"> </span><span class="n">connOpts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MqttConnectOptions</span><span class="p">();</span>
 <span class="w">      </span><span class="n">connOpts</span><span class="p">.</span><span class="na">setCleanSession</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Connecting to broker: &quot;</span><span class="o">+</span><span class="n">broker</span><span class="p">);</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Connecting to broker: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">broker</span><span class="p">);</span>
 <span class="w">      </span><span class="n">sampleClient</span><span class="p">.</span><span class="na">connect</span><span class="p">(</span><span class="n">connOpts</span><span class="p">);</span>
 <span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Connected&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Publishing message: &quot;</span><span class="o">+</span><span class="n">content</span><span class="p">);</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Publishing message: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; in topic: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">topic</span><span class="p">);</span>
 <span class="w">      </span><span class="n">MqttMessage</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MqttMessage</span><span class="p">(</span><span class="n">content</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
 <span class="w">      </span><span class="n">message</span><span class="p">.</span><span class="na">setQos</span><span class="p">(</span><span class="n">qos</span><span class="p">);</span>
 <span class="w">      </span><span class="n">sampleClient</span><span class="p">.</span><span class="na">publish</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
@@ -1448,12 +1453,13 @@ A biblioteca pode ser baixada <a href="https://www.eclipse.org/paho/index.php?pa
 <span class="w">      </span><span class="n">sampleClient</span><span class="p">.</span><span class="na">disconnect</span><span class="p">();</span>
 <span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Disconnected&quot;</span><span class="p">);</span>
 <span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="n">MqttException</span><span class="w"> </span><span class="n">me</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;reason &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getReasonCode</span><span class="p">());</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;msg &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;loc &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getLocalizedMessage</span><span class="p">());</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;cause &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">.</span><span class="na">getCause</span><span class="p">());</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;excep &quot;</span><span class="o">+</span><span class="n">me</span><span class="p">);</span>
+
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">MqttException</span><span class="w"> </span><span class="n">me</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;reason &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">me</span><span class="p">.</span><span class="na">getReasonCode</span><span class="p">());</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;msg &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">me</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;loc &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">me</span><span class="p">.</span><span class="na">getLocalizedMessage</span><span class="p">());</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;cause &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">me</span><span class="p">.</span><span class="na">getCause</span><span class="p">());</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;excep &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">me</span><span class="p">);</span>
 <span class="w">      </span><span class="n">me</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -1461,9 +1467,10 @@ A biblioteca pode ser baixada <a href="https://www.eclipse.org/paho/index.php?pa
 </code></pre></div></td></tr></table></div>
 <details class="todo">
 <summary>Hive</summary>
+<p>Em terminais distintos, execute:</p>
 <ul>
-<li><code>/usr/local/opt/mosquitto/bin/mosquitto_sub -h broker.hivemq.com  -p 1883 -t esportes/+/flamengo</code></li>
-<li><code>/usr/local/opt/mosquitto/bin/mosquitto_pub -t esportes/nadacao/flamengo -m "perdeu mais uma vez" -r -h broker.hivemq.com</code></li>
+<li><code>mosquitto_sub -h broker.hivemq.com  -p 1883 -t esportes/+/flamengo</code></li>
+<li><code>mosquitto_pub -t esportes/nadacao/flamengo -m "perdeu mais uma vez" -r -h broker.hivemq.com</code></li>
 </ul>
 </details>
 <!-- Distinction from message queues
@@ -1479,10 +1486,123 @@ A queue is far more rigid than a topic. Before a queue can be used, the queue mu
 
 If you can think of any other differences that we overlooked, we would love to hear from you in the comments. -->
 
+<p>Na IDE IntelliJ, crie um novo projeto Maven, utilizando o arquivo <em>pom.xml</em> fornecido a seguir:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+
+<span class="nt">&lt;project</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">  </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;groupId&gt;</span>br.ufu.facom.gbc074.mqtt<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>mqtt-pubsub<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;name&gt;</span>mqtt-pubsub<span class="nt">&lt;/name&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- FIXME change it to the project&#39;s website --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;url&gt;</span>http://www.example.com<span class="nt">&lt;/url&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;properties&gt;</span>
+<span class="w">    </span><span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+<span class="w">    </span><span class="nt">&lt;maven.compiler.release&gt;</span>18<span class="nt">&lt;/maven.compiler.release&gt;</span>
+<span class="w">    </span><span class="nt">&lt;maven.compiler.source&gt;</span>18<span class="nt">&lt;/maven.compiler.source&gt;</span>
+<span class="w">    </span><span class="nt">&lt;maven.compiler.target&gt;</span>18<span class="nt">&lt;/maven.compiler.target&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/properties&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">      </span><span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">      </span><span class="nt">&lt;version&gt;</span>4.11<span class="nt">&lt;/version&gt;</span>
+<span class="w">      </span><span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.paho<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>org.eclipse.paho.client.mqttv3<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;version&gt;</span>1.2.5<span class="nt">&lt;/version&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/dependencies&gt;</span>
+
+<span class="w">  </span><span class="nt">&lt;build&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">      </span><span class="nt">&lt;plugin&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>maven-shade-plugin<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;version&gt;</span>3.3.0<span class="nt">&lt;/version&gt;</span>
+<span class="w">        </span><span class="nt">&lt;configuration&gt;</span>
+<span class="w">          </span><span class="cm">&lt;!-- put your configurations here --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/configuration&gt;</span>
+<span class="w">        </span><span class="nt">&lt;executions&gt;</span>
+<span class="w">          </span><span class="nt">&lt;execution&gt;</span>
+<span class="w">            </span><span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+<span class="w">            </span><span class="nt">&lt;goals&gt;</span>
+<span class="w">              </span><span class="nt">&lt;goal&gt;</span>shade<span class="nt">&lt;/goal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/goals&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/execution&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/executions&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/plugin&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/plugins&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition question">
 <p class="admonition-title">Exercícios - RPC e Publish/Subscribe</p>
 <ul>
-<li>Usando o <em>broker</em> mosquitto instalado localmente, faça em Java um <em>publisher</em> que simula um sensor de temperatura e publica valores aleatórios entre 15 e 45 a cada segundo.</li>
+<li>Usando o <em>broker</em> mosquitto instalado localmente (utilize broker.hivemq.com se não for possível instalar), faça em Java um <em>publisher</em> que simula um sensor de temperatura e publica valores aleatórios entre 15 e 45 a cada segundo.</li>
 <li>Faça o <em>subscriber</em> que irá consumir esses dados de temperatura.</li>
 </ul>
 </div>
