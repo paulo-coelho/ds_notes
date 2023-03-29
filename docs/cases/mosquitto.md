@@ -57,6 +57,8 @@ A biblioteca pode ser baixada [aqui](https://www.eclipse.org/paho/index.php?page
 
 
 ```java
+package br.ufu.facom.gbc074.mqtt;
+
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -66,21 +68,21 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 public class MqttPublishSample {
 
   public static void main(String[] args) {
-    String topic        = "MQTT Examples";
-    String content      = "Message from MqttPublishSample";
-    int qos             = 2;
-    String broker       = "tcp://mqtt.eclipse.org:1883";
-    String clientId     = "JavaSample";
+    String topic = args.length > 0 ? args[0] : "sensor/temperature/1";
+    String content = "100";
+    int qos = 2;
+    String broker = "tcp://broker.hivemq.com:1883";
+    String clientId = "publisher-paulo-gbc074"; //mude para que seja único
     MemoryPersistence persistence = new MemoryPersistence();
 
     try {
       MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
       MqttConnectOptions connOpts = new MqttConnectOptions();
       connOpts.setCleanSession(true);
-      System.out.println("Connecting to broker: "+broker);
+      System.out.println("Connecting to broker: " + broker);
       sampleClient.connect(connOpts);
       System.out.println("Connected");
-      System.out.println("Publishing message: "+content);
+      System.out.println("Publishing message: " + content + " in topic: " + topic);
       MqttMessage message = new MqttMessage(content.getBytes());
       message.setQos(qos);
       sampleClient.publish(topic, message);
@@ -88,12 +90,13 @@ public class MqttPublishSample {
       sampleClient.disconnect();
       System.out.println("Disconnected");
       System.exit(0);
-    } catch(MqttException me) {
-      System.out.println("reason "+me.getReasonCode());
-      System.out.println("msg "+me.getMessage());
-      System.out.println("loc "+me.getLocalizedMessage());
-      System.out.println("cause "+me.getCause());
-      System.out.println("excep "+me);
+
+    } catch (MqttException me) {
+      System.out.println("reason " + me.getReasonCode());
+      System.out.println("msg " + me.getMessage());
+      System.out.println("loc " + me.getLocalizedMessage());
+      System.out.println("cause " + me.getCause());
+      System.out.println("excep " + me);
       me.printStackTrace();
     }
   }
@@ -101,8 +104,10 @@ public class MqttPublishSample {
 ```
 
 ???todo "Hive"
-     * `/usr/local/opt/mosquitto/bin/mosquitto_sub -h broker.hivemq.com  -p 1883 -t esportes/+/flamengo`
-     * `/usr/local/opt/mosquitto/bin/mosquitto_pub -t esportes/nadacao/flamengo -m "perdeu mais uma vez" -r -h broker.hivemq.com`
+    Em terminais distintos, execute:
+
+     * `mosquitto_sub -h broker.hivemq.com  -p 1883 -t esportes/+/flamengo`
+     * `mosquitto_pub -t esportes/nadacao/flamengo -m "perdeu mais uma vez" -r -h broker.hivemq.com`
 
 
 <!-- Distinction from message queues
@@ -119,11 +124,71 @@ A queue is far more rigid than a topic. Before a queue can be used, the queue mu
 If you can think of any other differences that we overlooked, we would love to hear from you in the comments. -->
 
 
+Na IDE IntelliJ, crie um novo projeto Maven, utilizando o arquivo *pom.xml* fornecido a seguir:
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>br.ufu.facom.gbc074.mqtt</groupId>
+  <artifactId>mqtt-pubsub</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>mqtt-pubsub</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>18</maven.compiler.release>
+    <maven.compiler.source>18</maven.compiler.source>
+    <maven.compiler.target>18</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.eclipse.paho</groupId>
+        <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+        <version>1.2.5</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <!-- put your configurations here -->
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+```
 
 
 !!! question "Exercícios - RPC e Publish/Subscribe"
-    * Usando o *broker* mosquitto instalado localmente, faça em Java um *publisher* que simula um sensor de temperatura e publica valores aleatórios entre 15 e 45 a cada segundo.
+    * Usando o *broker* mosquitto instalado localmente (utilize broker.hivemq.com se não for possível instalar), faça em Java um *publisher* que simula um sensor de temperatura e publica valores aleatórios entre 15 e 45 a cada segundo.
     * Faça o *subscriber* que irá consumir esses dados de temperatura.
 <!--
     * Usando *thrift* e a linguagem Java, estenda o serviço ChaveValor para retornar o valor antigo de uma determinada chave na operação `setKV()`  caso a chave já exista.
