@@ -154,7 +154,7 @@ O JSON do pedido deve ter o formato apresentado a seguir. Campos adicionais pode
 {
   "OID": "123",
   "CID": "456",
-  [
+  "products": [
     {
       "name": "caneta",
       "quantity": "30",
@@ -248,17 +248,23 @@ O JSON do pedido deve ter o formato apresentado a seguir. Campos adicionais pode
 ###### Manipulação de Tarefas dos Pedidos
 
 Nesta descrição, a interação com a cache foi omitida, mas deverá ser implementada.
+Assuma que o cliente recebeu o CID do administrador, ou seja, ele sabe seu próprio CID.
 
 * Inserção de Pedido
     * Cliente
         * Usa o CID informado pelo administrador
+        * Informa o OID desejado para o pedido
+        * Informa zero ou mais pedidos a serem feitos
     * Portal de Pedidos
         * Autentica o cliente pelo seu CID
-        * Executa a operação e retorna OID para novo pedido vazio.
+        * Verifica se o OID informado já foi usado
+        * Verifica disponibilidade de produto e quantidade.
+        * Ajusta quantidade disponível de produto, se necessário.
+        * Executa a operação e retorna código de erro/sucesso.
 * Modificação de Pedido
     * Cliente
         * Usa o CID informado pelo administrador
-        * Usa o OID informado retornado pelo Portal de Pedidos
+        * Usa o OID informado na criação do pedido
     * Portal de Pedidos
         * Autentica o cliente pelo seu CID
         * Verifica disponibilidade de produto e quantidade.
@@ -268,7 +274,7 @@ Nesta descrição, a interação com a cache foi omitida, mas deverá ser implem
 * Enumeração do pedido
     * Cliente
         * Usa o CID informado pelo administrador
-        * Usa o OID informado retornado pelo Portal de Pedidos 
+        * Usa o OID informado na criação do pedido
     * Portal de Pedidos
         * Autentica o cliente pelo seu CID
         * Caso o pedido exista, retorna informações dos produtos e valor total do pedido.
@@ -276,7 +282,7 @@ Nesta descrição, a interação com a cache foi omitida, mas deverá ser implem
 * Cancelamento do pedido
     * Cliente
         * Usa o CID informado pelo administrador
-        * Usa o OID informado retornado pelo Portal de Pedidos 
+        * Usa o OID informado na criação do pedido
     * Portal de Pedidos
         * Autentica o cliente pelo seu CID
         * Ajusta quantidade disponível de produto, se necessário.
