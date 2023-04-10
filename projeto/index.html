@@ -1588,7 +1588,7 @@ Este formato também permite que múltiplos clientes tenham pedidos com o mesmo 
 <span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;OID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;CID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;456&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">&quot;products&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;caneta&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;30&quot;</span><span class="p">,</span>
@@ -1749,16 +1749,22 @@ Este formato também permite que múltiplos clientes tenham pedidos com o mesmo 
 </li>
 </ul>
 <h6 id="manipulacao-de-tarefas-dos-pedidos">Manipulação de Tarefas dos Pedidos</h6>
-<p>Nesta descrição, a interação com a cache foi omitida, mas deverá ser implementada.</p>
+<p>Nesta descrição, a interação com a cache foi omitida, mas deverá ser implementada.
+Assuma que o cliente recebeu o CID do administrador, ou seja, ele sabe seu próprio CID.</p>
 <ul>
 <li>Inserção de Pedido<ul>
 <li>Cliente<ul>
 <li>Usa o CID informado pelo administrador</li>
+<li>Informa o OID desejado para o pedido</li>
+<li>Informa zero ou mais pedidos a serem feitos</li>
 </ul>
 </li>
 <li>Portal de Pedidos<ul>
 <li>Autentica o cliente pelo seu CID</li>
-<li>Executa a operação e retorna OID para novo pedido vazio.</li>
+<li>Verifica se o OID informado já foi usado</li>
+<li>Verifica disponibilidade de produto e quantidade.</li>
+<li>Ajusta quantidade disponível de produto, se necessário.</li>
+<li>Executa a operação e retorna código de erro/sucesso.</li>
 </ul>
 </li>
 </ul>
@@ -1766,7 +1772,7 @@ Este formato também permite que múltiplos clientes tenham pedidos com o mesmo 
 <li>Modificação de Pedido<ul>
 <li>Cliente<ul>
 <li>Usa o CID informado pelo administrador</li>
-<li>Usa o OID informado retornado pelo Portal de Pedidos</li>
+<li>Usa o OID informado na criação do pedido</li>
 </ul>
 </li>
 <li>Portal de Pedidos<ul>
@@ -1782,7 +1788,7 @@ Este formato também permite que múltiplos clientes tenham pedidos com o mesmo 
 <li>Enumeração do pedido<ul>
 <li>Cliente<ul>
 <li>Usa o CID informado pelo administrador</li>
-<li>Usa o OID informado retornado pelo Portal de Pedidos </li>
+<li>Usa o OID informado na criação do pedido</li>
 </ul>
 </li>
 <li>Portal de Pedidos<ul>
@@ -1796,7 +1802,7 @@ Este formato também permite que múltiplos clientes tenham pedidos com o mesmo 
 <li>Cancelamento do pedido<ul>
 <li>Cliente<ul>
 <li>Usa o CID informado pelo administrador</li>
-<li>Usa o OID informado retornado pelo Portal de Pedidos </li>
+<li>Usa o OID informado na criação do pedido</li>
 </ul>
 </li>
 <li>Portal de Pedidos<ul>
