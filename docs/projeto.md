@@ -156,19 +156,19 @@ O JSON do pedido deve ter o formato apresentado a seguir. Campos adicionais pode
   "CID": "456",
   "products": [
     {
-      "name": "caneta",
+      "PID": "123",
       "quantity": "30",
       "price": "2.50",
       "non-mandatory-field": "xxxxxxx"
     },
     {
-      "name": "lapis",
+      "PID": "321",
       "quantity": "10",
       "price": "1.50",
       "non-mandatory-field": "xxxxxxx"
     },
     {
-      "name": "borracha",
+      "PID": "456",
       "quantity": "3",
       "price": "0.50",
       "non-mandatory-field": "xxxxxxx"
