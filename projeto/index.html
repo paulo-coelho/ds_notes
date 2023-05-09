@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-9.0.15">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.0">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.113286f1.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.402914a4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -91,7 +91,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
     <a href=".." title="Notas de Aula em Sistemas Distribuídos" class="md-header__button md-logo" aria-label="Notas de Aula em Sistemas Distribuídos" data-md-component="logo">
       
@@ -140,6 +142,41 @@
       </form>
     
     
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     
     
       <div class="md-header__source">
@@ -1277,6 +1314,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#etapa-2-banco-de-dados-particionado-e-replicacao" class="md-nav__link">
+    Etapa 2 - Banco de dados particionado e Replicação
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1332,6 +1376,13 @@
           <li class="md-nav__item">
   <a href="#etapa-1-usuariosportais" class="md-nav__link">
     Etapa 1 - Usuários/Portais
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-2-banco-de-dados-particionado-e-replicacao" class="md-nav__link">
+    Etapa 2 - Banco de dados particionado e Replicação
   </a>
   
 </li>
@@ -1874,21 +1925,67 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
 
 -->
 
+<h3 id="etapa-2-banco-de-dados-particionado-e-replicacao">Etapa 2 - Banco de dados particionado e Replicação</h3>
+<p>Nesta etapa você modificará o sistema para que modificações dos dados sejam refletidas no banco de dados particionado (para aumentar a escalabilidade) implementado usando <em>consistent hashing</em>, além de
+prover tolerância a falhas por meio da replicação de cada partição usando um protocolo de difusão atômica.</p>
+<p><img alt="Projeto" src="../drawings/projeto.drawio-0.svg" /></p>
+<ul>
+<li>
+<p>Objetivos</p>
+<ul>
+<li>Particionar e replicar a base de dados para obter escalabilidade e tolerância a falhas.</li>
+</ul>
+</li>
+<li>
+<p>Desafios</p>
+<ul>
+<li>Compreender o uso de <em>consistent hashing</em> em nível teórico</li>
+<li>Compreender o uso de <em>consistent hashing</em> em nível prático<ul>
+<li>Utilizar uma estrutura com duas partições, partição 0 e partição 1, equivalente a uma rede <em>Chord</em> com <em>m = 1</em></li>
+<li>As chaves de cada objeto (<em>PID, CID, OID</em>) serão utilizadas para definir a partição em que será armazenado utilizando a saída da função "<em>mod 2</em>" (resto da divisão por 2)</li>
+</ul>
+</li>
+<li>Certificar-se de que o portais são máquinas de estados determinísticas (API descrita oferece esta garantia)</li>
+<li>Compreender o uso de Difusão Atômica em nível teórico</li>
+<li>Compreender o uso de Difusão Atômica em nível prático <ul>
+<li>Use <a href="https://paulo-coelho.github.io/ds_notes/cases/ratis">Ratis</a> para java</li>
+<li>Para Python, utilize <a href="https://github.com/bakwc/PySyncObj">PySyncObj</a></li>
+<li>Aplicar difusão atômica na replicação do cada partição</li>
+<li>Utilizar um banco de dados simples do tipo chave-valor em cada réplica de cada partição, necessariamente <a href="https://github.com/google/leveldb">LevelDB</a> ou <a href="https://git.openldap.org/openldap/openldap/tree/mdb.master">LMDB</a><ul>
+<li>Embora originalmente escritas em C++/C, há <em>ports</em> para diversas outras linguagens, (e.g., <a href="https://github.com/lmdbjava/lmdbjava">aqui</a> e <a href="https://github.com/dain/leveldb">aqui</a>)</li>
+</ul>
+</li>
+<li>Utilizar três réplicas (servidores) por partição</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Portal<ul>
+<li>A API para clientes e administradores continua a mesma.</li>
+<li>Requisições para o servidor (linha contínua) são encaminhadas via Ratis/PySyncObj (linha tracejada) para ordená-las e entregar a todas as réplicas da partição selecionada (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  </li>
+<li>Dados não são mais armazenados pela sua aplicação original, mas somente via Ratis/PySyncObj</li>
+<li>Os portais devem manter uma estrutura de cache local para evitar consultas desnecessárias<ul>
+<li>Defina a estratégia de cache utilizada e política de atualização</li>
+<li>A efetivação da operação no banco de dados deve falhar se a operação for executada com dados antigos do cache, por exemplo, a tentativa de criação de um pedido para um cliente que estava no cache, mas não existe mais, deverá retornar erro ao ser executado na partição correspondente.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Testes<ul>
+<li>O mesmo <em>framework</em> de testes deve continuar funcional</li>
+</ul>
+</li>
+<li>Comunicação<ul>
+<li>Entre cliente/administrador e portais, não é alterado.</li>
+<li>Entre servidores de armazenamento, usar Ratis/PySyncOb</li>
+</ul>
+</li>
+<li>Apresentação<ul>
+<li>Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidoa.</li>
+</ul>
+</li>
+</ul>
 <!--
-
-### Etapa 2 - Banco de dados.
-Nesta etapa você modificará o sistema para que modificações dos dados sejam refletidas no banco de dados particionado implementado usando *consistent hashing*.
-
-![Projeto](drawings/projeto.drawio#2)
-
-### Etapa 3 - Replicação
-Nesta etapa você modificará o sistema para que todas as modificações nas partições do banco de dados sejam replicadas em outras partições.
-
-![Projeto](drawings/projeto.drawio#0)
-
-
-
-
 ### Etapa 2 - Cache
 
 Nesta segunda etapa você modificará o sistema para que os portais, em vez de armazenar os dados em tabelas hash locais, o façam em uma tabela remota, compartilhada entre os portais.
@@ -2074,15 +2171,13 @@ Para garantir que todo o seu esforço será concentrado no lugar certo e que sua
     <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      <script src="../assets/javascripts/bundle.ce72ebac.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="../javascripts/mathjaxhelper.js"></script>
-      
-        <script src="../search/main.js"></script>
       
     
   </body>
