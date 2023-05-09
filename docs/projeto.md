@@ -344,21 +344,48 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
 
 -->
 
-<!--
 
-### Etapa 2 - Banco de dados.
-Nesta etapa você modificará o sistema para que modificações dos dados sejam refletidas no banco de dados particionado implementado usando *consistent hashing*.
+### Etapa 2 - Banco de dados particionado e Replicação
 
-![Projeto](drawings/projeto.drawio#2)
-
-### Etapa 3 - Replicação
-Nesta etapa você modificará o sistema para que todas as modificações nas partições do banco de dados sejam replicadas em outras partições.
+Nesta etapa você modificará o sistema para que modificações dos dados sejam refletidas no banco de dados particionado (para aumentar a escalabilidade) implementado usando *consistent hashing*, além de
+prover tolerância a falhas por meio da replicação de cada partição usando um protocolo de difusão atômica.
 
 ![Projeto](drawings/projeto.drawio#0)
 
+* Objetivos
+    * Particionar e replicar a base de dados para obter escalabilidade e tolerância a falhas.
+
+* Desafios
+    * Compreender o uso de *consistent hashing* em nível teórico
+    * Compreender o uso de *consistent hashing* em nível prático
+        * Utilizar uma estrutura com duas partições, partição 0 e partição 1, equivalente a uma rede *Chord* com *m = 1*
+        * As chaves de cada objeto (*PID, CID, OID*) serão utilizadas para definir a partição em que será armazenado utilizando a saída da função "*mod 2*" (resto da divisão por 2)
+    * Certificar-se de que o portais são máquinas de estados determinísticas (API descrita oferece esta garantia)
+    * Compreender o uso de Difusão Atômica em nível teórico
+    * Compreender o uso de Difusão Atômica em nível prático 
+        * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
+        * Para Python, utilize [PySyncObj](https://github.com/bakwc/PySyncObj)
+        * Aplicar difusão atômica na replicação do cada partição
+        * Utilizar um banco de dados simples do tipo chave-valor em cada réplica de cada partição, necessariamente [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
+            * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
+        * Utilizar três réplicas (servidores) por partição
+* Portal
+    * A API para clientes e administradores continua a mesma.
+    * Requisições para o servidor (linha contínua) são encaminhadas via Ratis/PySyncObj (linha tracejada) para ordená-las e entregar a todas as réplicas da partição selecionada (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  
+    * Dados não são mais armazenados pela sua aplicação original, mas somente via Ratis/PySyncObj
+    * Os portais devem manter uma estrutura de cache local para evitar consultas desnecessárias
+        * Defina a estratégia de cache utilizada e política de atualização
+        * A efetivação da operação no banco de dados deve falhar se a operação for executada com dados antigos do cache, por exemplo, a tentativa de criação de um pedido para um cliente que estava no cache, mas não existe mais, deverá retornar erro ao ser executado na partição correspondente.
+* Testes
+    * O mesmo *framework* de testes deve continuar funcional
+* Comunicação
+    * Entre cliente/administrador e portais, não é alterado.
+    * Entre servidores de armazenamento, usar Ratis/PySyncOb
+* Apresentação
+    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidoa.
 
 
-
+<!--
 ### Etapa 2 - Cache
 
 Nesta segunda etapa você modificará o sistema para que os portais, em vez de armazenar os dados em tabelas hash locais, o façam em uma tabela remota, compartilhada entre os portais.
