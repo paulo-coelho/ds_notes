@@ -13,9 +13,11 @@
         <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/projeto/">
       
       
+        <link rel="prev" href="../cases/etcd/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.0, mkdocs-material-9.1.0">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-9.0.15">
     
     
       
@@ -23,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.402914a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.113286f1.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -89,9 +91,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
     <a href=".." title="Notas de Aula em Sistemas Distribuídos" class="md-header__button md-logo" aria-label="Notas de Aula em Sistemas Distribuídos" data-md-component="logo">
       
@@ -140,41 +140,6 @@
       </form>
     
     
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Pesquisar">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Inicializando a pesquisa
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
     
     
       <div class="md-header__source">
@@ -1253,6 +1218,118 @@
   
 
     
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Projeto
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Projeto
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#casos-de-uso" class="md-nav__link">
+    Casos de Uso
+  </a>
+  
+    <nav class="md-nav" aria-label="Casos de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descricao-dos-metodos" class="md-nav__link">
+    Descrição dos métodos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacao-entre-servidores" class="md-nav__link">
+    Interação entre servidores
+  </a>
+  
+    <nav class="md-nav" aria-label="Interação entre servidores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapa-1" class="md-nav__link">
+    Etapa 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comunicacao-entre-servidores" class="md-nav__link">
+    Comunicação entre servidores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linguagens-aceitas" class="md-nav__link">
+    Linguagens aceitas
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1282,32 +1359,65 @@
     Casos de Uso
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interacao-entre-portais" class="md-nav__link">
-    Interação entre portais
-  </a>
-  
-    <nav class="md-nav" aria-label="Interação entre portais">
+    <nav class="md-nav" aria-label="Casos de Uso">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#etapa-1-usuariosportais" class="md-nav__link">
-    Etapa 1 - Usuários/Portais
+  <a href="#interface" class="md-nav__link">
+    Interface
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#etapa-2-banco-de-dados-particionado-e-replicacao" class="md-nav__link">
-    Etapa 2 - Banco de dados particionado e Replicação
+  <a href="#descricao-dos-metodos" class="md-nav__link">
+    Descrição dos métodos
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacao-entre-servidores" class="md-nav__link">
+    Interação entre servidores
+  </a>
+  
+    <nav class="md-nav" aria-label="Interação entre servidores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapa-1" class="md-nav__link">
+    Etapa 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comunicacao-entre-servidores" class="md-nav__link">
+    Comunicação entre servidores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linguagens-aceitas" class="md-nav__link">
+    Linguagens aceitas
+  </a>
   
 </li>
       
@@ -1339,49 +1449,344 @@
   <!-- Content -->
   <p>A área de computação distribuída é rica em aplicações e desenvolvê-los é topar de frente com vários problemas e decidir como resolvê-los ou contorná-los e, por isto, nada melhor que um projeto para experimentar em primeira mão as angústias e prazeres da área. 
 Assim, proponho visitarmos o material destas notas à luz de uma aplicação genérica mas real, desenvolvida por vocês enquanto vemos a teoria.</p>
-<p>O projeto consiste em uma com dois tipos de papeis, <strong>clientes</strong> e <strong>administradores</strong>. <strong>Administradores</strong> gerenciam cadastros de clientes e produtos. <strong>Clientes</strong> realizam pedidos de compra.</p>
-<p>As funcionalidades são expostas para estes usuários via <strong>dois tipos</strong> de  aplicações distintas, o <strong>portal de pedidos</strong>  e o <strong>portal administrativo</strong>, mas ambos manipulam a <strong>mesma base de dados</strong>.</p>
-<p>Múltiplas instâncias de cada portal podem existir e cada instância mantém um <strong>cache</strong> da base de dados em memória, com as entradas mais recentemente acessadas.</p>
+<p>O projeto consistem em implementar um sistema de armazenamento chave-valor (<em>key-value store = KVS</em>) multi-versão.</p>
+<p>A arquitetura do sistema será <strong>híbrida</strong>, contendo um pouco de cliente/servidor, publish/subscribe e Peer-2-Peer, além de ser multicamadas.
+Apesar de introduzir complexidade extra, também usaremos <strong>múltiplos mecanismos para a comunicação</strong> entre as partes, para que possam experimentar com diversas abordagens.</p>
+<p>O sistema utiliza a arquitetura cliente-servidor na comunicação entre o cliente, que realiza as operações em cima do sistema de armazenamento, e o servidor, que atualiza seu estado de acordo e retorna o resultado ao cliente.</p>
+<p>Múltiplas instâncias do servidor podem ser executados simultaneamente para prover aumentar a disponibilidade do serviço e/ou atender um maior número de clientes (escalar).
+O detalhamento do comportamento e implementação, neste caso, será diferente para cada etapa do projeto, sendo detalhado nas seções seguintes.</p>
+<p>Tanto a aplicação cliente quanto a aplicação servidor devem, obrigatoriamente, possuir uma interface de linha de comando (<em>command line interface - CLI</em>) para execução e interação.</p>
+<p>A aplicação cliente manipula cada chave <strong>K</strong> em operações de escrita e leitura de acordo com a descrição e interface apresentada mais adiante.
+O sistema utiliza a noção de versões <strong>i</strong> de valores, ou seja, cada atualização de uma mesma chave <strong>K</strong> para uma valor <strong>V</strong> gera uma nova versão da mesma.
+A tupla <strong>(K,V,i)</strong> significa que a chave <strong>K</strong> possui valor <strong>V</strong> em sua versão <strong>i</strong>.
+Cada atualização para a mesma chave <strong>K</strong> com um novo valor <strong>V'</strong> gera uma nova versão <strong>j</strong>, em que <strong>j = <code>System.currentTimeMillis()</code></strong><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>As consultas podem ser feitas sobre uma versão específica ou sobre a versão mais recente da chave.
+Caso seja especificada uma versão <strong>i</strong>, a consulta deve retornar o valor <strong>V</strong> para a chave <strong>K</strong> com versão imediatamente menor ou igual a <strong>i</strong>.</p>
+<p>Tanto as consultas quanto as atualizações pode ser feitas para múltiplas chaves simultaneamente. A API completa é apresentada a seguir.</p>
+<p>As chaves e valores devem ser do tipo <em>String</em> enquanto as versões são variáveis do tipo <em>inteiro</em> que crescem monotonicamente a partir de 1 a cada nova atualização de cada chave.</p>
+<p>A comunicação entre cliente e servidor deve ser, obrigatoriamente, realizada via gRPC de acordo com a interface definida adiante.
+A implementação que não seguir a interface definida não será avaliada e terá atribuída a nota zero.</p>
+<h2 id="casos-de-uso">Casos de Uso</h2>
+<h3 id="interface">Interface</h3>
+<p>O formato exato em que os dados serão armazenados pode variar na sua implementação, mas a API apresentada deve, <strong>obrigatoriamente</strong>, ter a assinada definida a seguir:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+
+<span class="k">option</span><span class="w"> </span><span class="na">java_multiple_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="k">option</span><span class="w"> </span><span class="na">java_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;br.ufu.facom.gbc074.project&quot;</span><span class="p">;</span>
+
+<span class="kn">package</span><span class="w"> </span><span class="nn">project</span><span class="p">;</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">KeyRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// key</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// version</span>
+<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">KeyValueRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// key</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// value</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">KeyValueVersionReply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// key</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// value</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// version</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">ver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">PutReply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// key</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// value</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">old_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// old version</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">old_ver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// assigned version</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">ver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">service</span><span class="w"> </span><span class="n">KeyValueStore</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Get</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetRange</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">,</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetAll</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Put</span><span class="p">(</span><span class="n">KeyValueRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PutReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">PutAll</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">PutReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Del</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DelRange</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">,</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DelAll</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="descricao-dos-metodos">Descrição dos métodos</h3>
+<ul>
+<li><code>rpc Get(KeyRequest) returns (KeyValueVersionReply) {}</code>: retorna valor para chave e versão informados pelo cliente<ul>
+<li>Cliente:<ul>
+<li>informa chave e versão que deseja obter do servidor</li>
+<li>versão pode ser deixada em branco para obter valor mais recente</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna chave, valor e versão de acordo com requisição do cliente:<ul>
+<li>caso versão esteja em branco, retorna valor e versão mais recentes</li>
+<li>caso contrário, retorna valor e versão imediatamente menor ou igual à versão informada</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc GetRange(KeyRequest, KeyRequest) returns (stream KeyValueVersionReply) {}</code>: retorna valores no intervalo entre as duas chaves informadas pelo cliente<ul>
+<li>Cliente:<ul>
+<li>informa as duas tuplas chave e versão referente ao intervalo de chaves que deseja obter do servidor</li>
+<li>versão pode ser deixada em branco para obter valores mais recentes</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna conjunto de chaves, valores e versões de acordo com requisição do cliente:<ul>
+<li>caso versões estejam em branco, retorna valores e versões mais recentes</li>
+<li>caso contrário, escolhe a maior entre as versões recebidas do cliente e retorna valores e versões imediatamente menores ou iguais a esta versão.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc GetAll(stream KeyRequest) returns (stream KeyValueVersionReply) {}</code>: retorna valores para conjunto de chaves informado pelo cliente<ul>
+<li>Cliente:<ul>
+<li>informa conjunto desordenado de tuplas com chave e versão</li>
+<li>versão pode ser deixada em branco para obter valores mais recentes</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna conjunto de chaves, valores e versões de acordo com requisição do cliente:<ul>
+<li>caso versão esteja em branco, retorna valores e versões mais recentes</li>
+<li>caso contrário, escolhe a maior entre as versões recebidas do cliente e retorna valores e versões imediatamente menores ou iguais a esta versão.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc Put(KeyValueRequest) returns (PutReply) {}</code>: atualiza/insere valor e chave informados, retornando valor para chave e versão anteriores, bem como a nova versão atribuída<ul>
+<li>Cliente:<ul>
+<li>informa chave e valor para inserir/atualizar no servidor</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna chave, com valor e versão antigos (se houver), bem como a nova versão atribuída ao valor</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc PutAll(stream KeyValueRequest) returns (stream PutReply) {}</code>: atualiza/insere valores e chaves informados, retornando, para cada chave, valor e versão anteriores, bem como a nova versão atribuída<ul>
+<li>Cliente:<ul>
+<li>informa conjunto desordenado de tuplas chave, valor</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna conjunto de tuplas com cada chave, com valor e versão antigos (se houver), bem como a nova versão atribuída ao valor</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc Del(KeyRequest) returns (KeyValueVersionReply) {}</code>: remove todos os valores associados à chave e retorna valor para chave e versão mais atual <ul>
+<li>Cliente:<ul>
+<li>informa chave que deseja excluir do servidor</li>
+<li>versão <em>deve</em> ser deixada em branco</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna chave, com valor e versão mais recentes, ou valores vazios, caso chave não exista</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc DelRange(KeyRequest, KeyRequest) returns (stream KeyValueVersionReply) {}</code>: remove valores no intervalo entre as duas chaves informadas pelo cliente, retornando os valores mais atuais para estas chaves<ul>
+<li>Cliente:<ul>
+<li>informa as duas tuplas, referente ao intervalo de chaves que deseja excluir do servidor</li>
+<li>versão <em>deve</em> ser deixada em branco</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna tuplas com chave, valor e versão mais recentes, ou valores vazios, caso chave não exista</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc DelAll(stream KeyRequest) returns (stream KeyValueVersionReply) {}</code>: remove valores para conjunto de chaves informado pelo cliente e retorna valores mais atuais<ul>
+<li>Cliente:<ul>
+<li>informa conjunto desordenado de tuplas com as chaves</li>
+<li>versão <em>deve</em> ser deixada em branco</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna tuplas com chave, valor e versão mais recentes, ou valores vazios, caso chave não exista</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc Trim(KeyRequest) returns (KeyValueVersionReply) {}</code>: remove todos os valores associados à chave, exceto a versão mais recente, e retorna valor e versão para a chave <ul>
+<li>Cliente:<ul>
+<li>informa chave</li>
+<li>versão <em>deve</em> ser deixada em branco</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna chave, com valor e versão mais recentes, ou valores vazios, caso chave não exista</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="interacao-entre-servidores">Interação entre servidores</h2>
+<h3 id="etapa-1">Etapa 1</h3>
+<ul>
+<li>Implementar os casos de uso usando como cache tabelas hash locais aos servidores.</li>
+<li>Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.</li>
+<li>Implementar testes automatizados de sucesso e falha de cada uma das operações na API.</li>
+<li>Documentar o esquema de dados usados nas tabelas.</li>
+<li>O sistema deve permitir a execução de múltiplos clientes e servidores.</li>
+<li>Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente <em>pub-sub</em>, já que a comunicação é de 1 para muitos.</li>
+<li>Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.</li>
+</ul>
+<h4 id="comunicacao-entre-servidores">Comunicação entre servidores</h4>
+<p>O suporte a múltiplos servidores deve garantir que clientes possam se conectar a instâncias diferentes de servidores e ainda sim sejam capazes de manipular os dados armazenados.
+Por exemplo, o cliente <em>c1</em> pode inserir um valor para a chave <strong>K1</strong> no servicor <em>s1</em> e deve ser capaz de recuperar o valor inserir para a mesma chave a partir de um segundo servidor <em>s2</em>.</p>
+<p>Para isto, cada servidor deve publicar qualquer alteração nas chaves em um broker pub-sub, em tópico conhecido pelos demais, a partir do qual estes receberão as mudanças de estado e atualizarão suas próprias tabelas.</p>
+<p>A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.</p>
+<p><img alt="EM CONSTRUÇÃO" src="" /></p>
+<!--
+![Projeto](drawings/projeto.drawio#0)
+-->
+
+<h2 id="linguagens-aceitas">Linguagens aceitas</h2>
+<p><strong>APENAS</strong> serão aceitas estas linguagens:</p>
+<ul>
+<li>Java</li>
+<li>C</li>
+<li>Python</li>
+<li>Go</li>
+<li>Rust</li>
+</ul>
+<p>Trabalhos em outra linguagem não serão corrigidos e receberão nota zero!</p>
 <!--
 A base de dados é replicada em outros nós usando um protocolo de **difusão atômica**.
 -->
 
-<p>A totalidade da base é particionada usando <strong><em>consistent hashing</em></strong>.
-Cada partição é replicada em outros nós usando um protocolo de <strong>difusão atômica</strong>.</p>
-<p><img alt="Projeto" src="../drawings/projeto.drawio-0.svg" /></p>
-<p>A arquitetura do sistema será <strong>híbrida</strong>, contendo um pouco de Cliente/Servidor e Peer-2-Peer, além de ser multicamadas.
-Apesar de introduzir complexidade extra, também usaremos <strong>múltiplos mecanismos para a comunicação</strong> entre as partes, para que possam experimentar com diversas abordagens.</p>
-<p>O sistemas tem duas <strong>aplicações</strong>, CLI ou GUI, para os dois tipos de papeis do sistema, clientes e administradores.
+<!--
+O projeto consiste em uma com dois tipos de papeis, **clientes** e **administradores**. **Administradores** gerenciam cadastros de clientes e produtos. **Clientes** realizam pedidos de compra.
+
+As funcionalidades são expostas para estes usuários via **dois tipos** de  aplicações distintas, o **portal de pedidos**  e o **portal administrativo**, mas ambos manipulam a **mesma base de dados**.
+
+Múltiplas instâncias de cada portal podem existir e cada instância mantém um **cache** da base de dados em memória, com as entradas mais recentemente acessadas.
+
+
+A totalidade da base é particionada usando ***consistent hashing***.
+Cada partição é replicada em outros nós usando um protocolo de **difusão atômica**.
+
+
+A arquitetura do sistema será **híbrida**, contendo um pouco de Cliente/Servidor e Peer-2-Peer, além de ser multicamadas.
+Apesar de introduzir complexidade extra, também usaremos **múltiplos mecanismos para a comunicação** entre as partes, para que possam experimentar com diversas abordagens.
+
+O sistemas tem duas **aplicações**, CLI ou GUI, para os dois tipos de papeis do sistema, clientes e administradores.
 Estas aplicações se comunicarão com os portais para manipular os dados dos clientes e associados a cada cliente.
 A aplicação do administrador manipula clientes e produtos, isto é, permite o CRUD de clientes e produtos.
-A aplicação do cliente permite manipular os dados associados aos pedidos, ou seja, comprar produtos previamente cadastrados.</p>
-<p>O cadastro do cliente inclui a provisão de um identificador único do cliente CID (<em>client id</em>).
-Os dados dos clientes são mantidos em uma tabela CID -&gt; Dados do Cliente, em memória (use uma tabela hash). 
-O CID tem tipo String; <strong>você</strong> deve decidir o que compõe os dados do cliente, mas eles <strong>devem</strong> ser armazenados como uma string JSON.</p>
-<p>O cadastro do produto inclui a provisão de um identificador único do produto PID (<em>product id</em>).
-Os dados dos produtos são mantidos em uma tabela PID -&gt; Dados do Produto, em memória (use uma tabela hash). 
-O PID tem tipo String; <strong>você</strong> deve decidir o que compõe os dados do produto, mas devem ser suficientes para manter a descrição (String), quantidade (inteiro) e preço (ponto flutuante) do produto, e <strong>devem</strong> ser armazenados como uma string JSON.</p>
-<p>A comunicação entre administradores e Portal Administrativo se dá obrigatoriamente via gRPC, conforme interface definida mais adiante.</p>
-<p>Somente clientes devidamente cadastrados no sistema podem ter suas operações executadas.
-O CID do cliente executando operações no portal de pedidos deve ser informado em cada operação para "autenticar" o cliente e autorizar a execução da operação.</p>
-<p>A comunicação entre clientes e Portal de Pedidos se dá obrigatoriamente via gRPC, conforme interface definida mais adiante.</p>
-<p>O cadastro do pedido inclui a geração de um identificador único do pedido OID (<em>order id</em>).
-O OID tem tipo String; <strong>você</strong> deve decidir o que compõe os dados do pedido, mas devem ser suficientes para identificar o produto, a quantidade comprada e o preço para cada produto no pedido. <strong>Devem</strong> ser armazenados como uma string JSON.
-A relação entre clientes e pedidos é mantida em uma tabela CID -&gt; OID, em memória (use uma tabela hash). </p>
-<p><strong>Exemplo de armazenamento no portal de pedidos</strong>: 
+A aplicação do cliente permite manipular os dados associados aos pedidos, ou seja, comprar produtos previamente cadastrados.
+
+O cadastro do cliente inclui a provisão de um identificador único do cliente CID (*client id*).
+Os dados dos clientes são mantidos em uma tabela CID -> Dados do Cliente, em memória (use uma tabela hash). 
+O CID tem tipo String; **você** deve decidir o que compõe os dados do cliente, mas eles **devem** ser armazenados como uma string JSON.
+
+O cadastro do produto inclui a provisão de um identificador único do produto PID (*product id*).
+Os dados dos produtos são mantidos em uma tabela PID -> Dados do Produto, em memória (use uma tabela hash). 
+O PID tem tipo String; **você** deve decidir o que compõe os dados do produto, mas devem ser suficientes para manter a descrição (String), quantidade (inteiro) e preço (ponto flutuante) do produto, e **devem** ser armazenados como uma string JSON.
+
+A comunicação entre administradores e Portal Administrativo se dá obrigatoriamente via gRPC, conforme interface definida mais adiante.
+
+Somente clientes devidamente cadastrados no sistema podem ter suas operações executadas.
+O CID do cliente executando operações no portal de pedidos deve ser informado em cada operação para "autenticar" o cliente e autorizar a execução da operação.
+
+A comunicação entre clientes e Portal de Pedidos se dá obrigatoriamente via gRPC, conforme interface definida mais adiante.
+
+O cadastro do pedido inclui a geração de um identificador único do pedido OID (*order id*).
+O OID tem tipo String; **você** deve decidir o que compõe os dados do pedido, mas devem ser suficientes para identificar o produto, a quantidade comprada e o preço para cada produto no pedido. **Devem** ser armazenados como uma string JSON.
+A relação entre clientes e pedidos é mantida em uma tabela CID -> OID, em memória (use uma tabela hash). 
+
+**Exemplo de armazenamento no portal de pedidos**: 
 Cada pedido tem um identificador (Sring), e um corpo (JSON);
 Os dados são mantidos em uma tabela hash e múltiplas entradas podem ser necessárias para armazenar e manter um pedido, isto é, algumas entradas podem ser de metadados, por exemplo, índice.
-Por exemplo, para representar dois pedidos, <code>o1</code> e <code>o2</code>, com corpos <code>c1</code> e <code>c2</code>, associadas ao cliente <code>cliente1</code>, podemos ter as seguintes entradas.</p>
-<ul>
-<li><code>cliente1 -&gt; [o1,o2]</code></li>
-<li><code>cliente1:o1 -&gt; c1</code></li>
-<li><code>cliente1:o2 -&gt; c2</code></li>
-</ul>
-<p>Com este formato, podemos identificar os pedidos associados ao <code>cliente1</code> e, a partir desta lista, identificar o conteúdo associado a cada pedido.
-Este formato também permite que múltiplos clientes tenham pedidos com o mesmo OID.</p>
-<h2 id="casos-de-uso">Casos de Uso</h2>
-<h6 id="interfaces">Interfaces</h6>
-<p><strong>O formato exato em que os dados serão armazenados pode variar dentro do JSON</strong>, mas a API apresentada deve ter a assinada definida a seguir:</p>
+Por exemplo, para representar dois pedidos, `o1` e `o2`, com corpos `c1` e `c2`, associadas ao cliente `cliente1`, podemos ter as seguintes entradas.
+
+* `cliente1 -> [o1,o2]`
+* `cliente1:o1 -> c1`
+* `cliente1:o2 -> c2`
+
+Com este formato, podemos identificar os pedidos associados ao `cliente1` e, a partir desta lista, identificar o conteúdo associado a cada pedido.
+Este formato também permite que múltiplos clientes tenham pedidos com o mesmo OID.
+
+
+## Casos de Uso
+
+###### Interfaces
+
+**O formato exato em que os dados serão armazenados pode variar dentro do JSON**, mas a API apresentada deve ter a assinada definida a seguir:
+
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1504,7 +1909,9 @@ Este formato também permite que múltiplos clientes tenham pedidos com o mesmo 
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RetrieveClientOrders</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Order</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>O JSON do cliente deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.</p>
+
+O JSON do cliente deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.
+
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1515,7 +1922,9 @@ Este formato também permite que múltiplos clientes tenham pedidos com o mesmo 
 <span class="w">  </span><span class="nt">&quot;non-mandatory-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxx&quot;</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>O JSON do produto deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.</p>
+
+O JSON do produto deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.
+
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1530,7 +1939,9 @@ Este formato também permite que múltiplos clientes tenham pedidos com o mesmo 
 <span class="w">  </span><span class="nt">&quot;non-mandatory-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxx&quot;</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>O JSON do pedido deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.</p>
+
+O JSON do pedido deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.
+
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1581,233 +1992,137 @@ Este formato também permite que múltiplos clientes tenham pedidos com o mesmo 
 <span class="w">   </span><span class="nt">&quot;non-mandatory-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxx&quot;</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h6 id="manipulacao-clientes">Manipulação Clientes</h6>
-<ul>
-<li>Inserção de Cliente<ul>
-<li>Administrador<ul>
-<li>Gera um CID para cada cliente, baseado em seu nome ou outro atributo único.</li>
-<li>Informa o CID para o cliente</li>
-</ul>
-</li>
-<li>Portal Administrador<ul>
-<li>Executa a operação e retorna código de erro/sucesso.<ul>
-<li>Se cliente existia, falha a operação.</li>
-<li>Se cliente não existia, insere dados no banco e atualiza a cache.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Cliente<ul>
-<li>Recebe CID diretamente do administrador (já sabe o seu CID)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Modificação de Cliente<ul>
-<li>Administrador<ul>
-<li>Determina CID de cliente a ser modificado.</li>
-</ul>
-</li>
-<li>Portal Administrador<ul>
-<li>Executa a operação e retorna código de erro/sucesso.<ul>
-<li>Se cliente existe, atualiza o cliente e atualiza a cache.</li>
-<li>Se cliente não existe, retorna erro.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Recuperação de Clientes<ul>
-<li>Administrador<ul>
-<li>Determina CID de cliente a ser recuperado</li>
-</ul>
-</li>
-<li>Portal Administrador<ul>
-<li>Executa a operação e retorna dados do cliente.<ul>
-<li>Se cliente não existe na cache, pesquisa banco de dados e atualiza a cache caso encontre.</li>
-<li>Se cliente existe na cache, retorna informação.</li>
-<li>Se cliente não existe na cache, retorna objeto vazio com CID igual a 0 (zero).</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Remoção de Cliente<ul>
-<li>Administrador<ul>
-<li>Determina CID de cliente a ser removido</li>
-</ul>
-</li>
-<li>Portal Administrador<ul>
-<li>Executa a operação e retorna código de erro/sucesso.<ul>
-<li>Apaga dados do banco.</li>
-<li>Apaga dados da cache, se existe.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h6 id="manipulacao-produtos">Manipulação Produtos</h6>
-<ul>
-<li>Inserção de Produto<ul>
-<li>Administrador<ul>
-<li>Gera um PID para cada produto, baseado em seu nome ou outro atributo único.</li>
-</ul>
-</li>
-<li>Portal Administrador<ul>
-<li>Executa a operação e retorna código de erro/sucesso.<ul>
-<li>Se produto existia, falha a operação.</li>
-<li>Se produto não existia, insere dados no banco e atualiza a cache.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Cliente<ul>
-<li>Recebe PID diretamente do administrador (já sabe o PID do produto que deseja pedir)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Modificação de Produto<ul>
-<li>Administrador<ul>
-<li>Determina PID de produto a ser modificado.</li>
-</ul>
-</li>
-<li>Portal Administrador<ul>
-<li>Executa a operação e retorna código de erro/sucesso.<ul>
-<li>Se produto existe, atualiza o produto e atualiza a cache.</li>
-<li>Se produto não existe, retorna erro.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Recuperação de Produtos<ul>
-<li>Administrador<ul>
-<li>Determina PID de produto a ser recuperado</li>
-</ul>
-</li>
-<li>Portal Administrador<ul>
-<li>Executa a operação e retorna dados do produto.<ul>
-<li>Se produto não existe na cache, pesquisa banco de dados e atualiza a cache caso encontre.</li>
-<li>Se produto existe na cache, retorna informação.</li>
-<li>Se produto não existe na cache, retorna objeto vazio com PID igual a 0 (zero).</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Remoção de Produto<ul>
-<li>Administrador<ul>
-<li>Determina PID de produto a ser removido</li>
-</ul>
-</li>
-<li>Portal Administrador<ul>
-<li>Executa a operação e retorna código de erro/sucesso.<ul>
-<li>Apaga dados do banco.</li>
-<li>Apaga dados da cache, se existe.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h6 id="manipulacao-de-tarefas-dos-pedidos">Manipulação de Tarefas dos Pedidos</h6>
-<p>Nesta descrição, a interação com a cache foi omitida, mas deverá ser implementada.
-Assuma que o cliente recebeu o CID do administrador, ou seja, ele sabe seu próprio CID.</p>
-<ul>
-<li>Inserção de Pedido<ul>
-<li>Cliente<ul>
-<li>Usa o CID informado pelo administrador</li>
-<li>Informa o OID desejado para o pedido</li>
-<li>Informa zero ou mais pedidos a serem feitos</li>
-</ul>
-</li>
-<li>Portal de Pedidos<ul>
-<li>Autentica o cliente pelo seu CID</li>
-<li>Verifica se o OID informado já foi usado</li>
-<li>Verifica disponibilidade de produto e quantidade.</li>
-<li>Ajusta quantidade disponível de produto, se necessário.</li>
-<li>Executa a operação e retorna código de erro/sucesso.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Modificação de Pedido<ul>
-<li>Cliente<ul>
-<li>Usa o CID informado pelo administrador</li>
-<li>Usa o OID informado na criação do pedido</li>
-</ul>
-</li>
-<li>Portal de Pedidos<ul>
-<li>Autentica o cliente pelo seu CID</li>
-<li>Verifica disponibilidade de produto e quantidade.</li>
-<li>Ajusta quantidade disponível de produto, se necessário.</li>
-<li>A informação de quantidade zero (0) remove o produto do pedido.</li>
-<li>Executa a operação e retorna código de erro/sucesso.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Enumeração do pedido<ul>
-<li>Cliente<ul>
-<li>Usa o CID informado pelo administrador</li>
-<li>Usa o OID informado na criação do pedido</li>
-</ul>
-</li>
-<li>Portal de Pedidos<ul>
-<li>Autentica o cliente pelo seu CID</li>
-<li>Caso o pedido exista, retorna informações dos produtos e valor total do pedido.</li>
-<li>Caso contrário, retorna objeto vazio com OID igual a 0 (zero).</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Cancelamento do pedido<ul>
-<li>Cliente<ul>
-<li>Usa o CID informado pelo administrador</li>
-<li>Usa o OID informado na criação do pedido</li>
-</ul>
-</li>
-<li>Portal de Pedidos<ul>
-<li>Autentica o cliente pelo seu CID</li>
-<li>Ajusta quantidade disponível de produto, se necessário.</li>
-<li>Executa a operação e retorna código de erro/sucesso.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Enumeração de pedidos<ul>
-<li>Cliente<ul>
-<li>Usa o CID informado pelo administrador</li>
-</ul>
-</li>
-<li>Portal de Pedidos<ul>
-<li>Autentica o cliente pelo seu CID</li>
-<li>Retorna lista de pedidos associados ao cliente.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="interacao-entre-portais">Interação entre portais</h2>
-<h3 id="etapa-1-usuariosportais">Etapa 1 - Usuários/Portais</h3>
-<ul>
-<li>Implementar os casos de uso usando como cache tabelas hash locais aos portais Administrador e de Pedidos.</li>
-<li>Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.</li>
-<li>Implementar testes automatizados de sucesso e falha de cada uma das operações na API.</li>
-<li>Documentar o esquema de dados usados nas tabelas.</li>
-<li>O sistema deve permitir a execução de múltiplos clientes, administradores, portais de pedido e portais administrador.</li>
-<li>Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente <em>pub-sub</em>, já que a comunicação é de 1 para muitos.</li>
-<li>Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.</li>
-</ul>
-<p><img alt="Projeto" src="../drawings/projeto.drawio-1.svg" /></p>
+
+###### Manipulação Clientes
+* Inserção de Cliente
+    * Administrador
+        * Gera um CID para cada cliente, baseado em seu nome ou outro atributo único.
+        * Informa o CID para o cliente
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Se cliente existia, falha a operação.
+            * Se cliente não existia, insere dados no banco e atualiza a cache.
+    * Cliente
+        * Recebe CID diretamente do administrador (já sabe o seu CID)
+* Modificação de Cliente
+    * Administrador
+        * Determina CID de cliente a ser modificado.
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Se cliente existe, atualiza o cliente e atualiza a cache.
+            * Se cliente não existe, retorna erro.
+* Recuperação de Clientes
+    * Administrador
+        * Determina CID de cliente a ser recuperado
+    * Portal Administrador
+        * Executa a operação e retorna dados do cliente.
+            * Se cliente não existe na cache, pesquisa banco de dados e atualiza a cache caso encontre.
+            * Se cliente existe na cache, retorna informação.
+            * Se cliente não existe na cache, retorna objeto vazio com CID igual a 0 (zero).
+* Remoção de Cliente
+    * Administrador
+        * Determina CID de cliente a ser removido
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Apaga dados do banco.
+            * Apaga dados da cache, se existe.
+
+###### Manipulação Produtos
+* Inserção de Produto
+    * Administrador
+        * Gera um PID para cada produto, baseado em seu nome ou outro atributo único.
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Se produto existia, falha a operação.
+            * Se produto não existia, insere dados no banco e atualiza a cache.
+    * Cliente
+        * Recebe PID diretamente do administrador (já sabe o PID do produto que deseja pedir)
+* Modificação de Produto
+    * Administrador
+        * Determina PID de produto a ser modificado.
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Se produto existe, atualiza o produto e atualiza a cache.
+            * Se produto não existe, retorna erro.
+* Recuperação de Produtos
+    * Administrador
+        * Determina PID de produto a ser recuperado
+    * Portal Administrador
+        * Executa a operação e retorna dados do produto.
+            * Se produto não existe na cache, pesquisa banco de dados e atualiza a cache caso encontre.
+            * Se produto existe na cache, retorna informação.
+            * Se produto não existe na cache, retorna objeto vazio com PID igual a 0 (zero).
+* Remoção de Produto
+    * Administrador
+        * Determina PID de produto a ser removido
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Apaga dados do banco.
+            * Apaga dados da cache, se existe.
+
+###### Manipulação de Tarefas dos Pedidos
+
+Nesta descrição, a interação com a cache foi omitida, mas deverá ser implementada.
+Assuma que o cliente recebeu o CID do administrador, ou seja, ele sabe seu próprio CID.
+
+* Inserção de Pedido
+    * Cliente
+        * Usa o CID informado pelo administrador
+        * Informa o OID desejado para o pedido
+        * Informa zero ou mais pedidos a serem feitos
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Verifica se o OID informado já foi usado
+        * Verifica disponibilidade de produto e quantidade.
+        * Ajusta quantidade disponível de produto, se necessário.
+        * Executa a operação e retorna código de erro/sucesso.
+* Modificação de Pedido
+    * Cliente
+        * Usa o CID informado pelo administrador
+        * Usa o OID informado na criação do pedido
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Verifica disponibilidade de produto e quantidade.
+        * Ajusta quantidade disponível de produto, se necessário.
+        * A informação de quantidade zero (0) remove o produto do pedido.
+        * Executa a operação e retorna código de erro/sucesso.
+* Enumeração do pedido
+    * Cliente
+        * Usa o CID informado pelo administrador
+        * Usa o OID informado na criação do pedido
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Caso o pedido exista, retorna informações dos produtos e valor total do pedido.
+        * Caso contrário, retorna objeto vazio com OID igual a 0 (zero).
+* Cancelamento do pedido
+    * Cliente
+        * Usa o CID informado pelo administrador
+        * Usa o OID informado na criação do pedido
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Ajusta quantidade disponível de produto, se necessário.
+        * Executa a operação e retorna código de erro/sucesso.
+* Enumeração de pedidos
+    * Cliente
+        * Usa o CID informado pelo administrador
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Retorna lista de pedidos associados ao cliente.
+
+## Interação entre portais
+
+### Etapa 1 - Usuários/Portais
+
+* Implementar os casos de uso usando como cache tabelas hash locais aos portais Administrador e de Pedidos.
+* Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.
+* Implementar testes automatizados de sucesso e falha de cada uma das operações na API.
+* Documentar o esquema de dados usados nas tabelas.
+* O sistema deve permitir a execução de múltiplos clientes, administradores, portais de pedido e portais administrador.
+* Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
+* Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
+
+![Projeto](drawings/projeto.drawio#1)
+
 <!--
 
 ### Etapa 2 - Banco de dados Replicado
@@ -1844,66 +2159,47 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
 
 -->
 
-<h3 id="etapa-2-banco-de-dados-particionado-e-replicacao">Etapa 2 - Banco de dados particionado e Replicação</h3>
-<p>Nesta etapa você modificará o sistema para que modificações dos dados sejam refletidas no banco de dados particionado (para aumentar a escalabilidade) implementado usando <em>consistent hashing</em>, além de
-prover tolerância a falhas por meio da replicação de cada partição usando um protocolo de difusão atômica.</p>
-<p><img alt="Projeto" src="../drawings/projeto.drawio-0.svg" /></p>
-<ul>
-<li>
-<p>Objetivos</p>
-<ul>
-<li>Particionar e replicar a base de dados para obter escalabilidade e tolerância a falhas.</li>
-</ul>
-</li>
-<li>
-<p>Desafios</p>
-<ul>
-<li>Compreender o uso de <em>consistent hashing</em> em nível teórico</li>
-<li>Compreender o uso de <em>consistent hashing</em> em nível prático<ul>
-<li>Utilizar uma estrutura com duas partições, partição 0 e partição 1, equivalente a uma rede <em>Chord</em> com <em>m = 1</em></li>
-<li>As chaves de cada objeto (<em>PID, CID, OID</em>) serão utilizadas para definir a partição em que será armazenado utilizando a saída da função "<em>mod 2</em>" (resto da divisão por 2)</li>
-</ul>
-</li>
-<li>Certificar-se de que o portais são máquinas de estados determinísticas (API descrita oferece esta garantia)</li>
-<li>Compreender o uso de Difusão Atômica em nível teórico</li>
-<li>Compreender o uso de Difusão Atômica em nível prático <ul>
-<li>Use <a href="https://paulo-coelho.github.io/ds_notes/cases/ratis">Ratis</a> para java</li>
-<li>Para Python, utilize <a href="https://github.com/bakwc/PySyncObj">PySyncObj</a></li>
-<li>Aplicar difusão atômica na replicação do cada partição</li>
-<li>Utilizar um banco de dados simples do tipo chave-valor em cada réplica de cada partição, necessariamente <a href="https://github.com/google/leveldb">LevelDB</a> ou <a href="https://git.openldap.org/openldap/openldap/tree/mdb.master">LMDB</a><ul>
-<li>Embora originalmente escritas em C++/C, há <em>ports</em> para diversas outras linguagens, (e.g., <a href="https://github.com/lmdbjava/lmdbjava">aqui</a> e <a href="https://github.com/dain/leveldb">aqui</a>)</li>
-</ul>
-</li>
-<li>Utilizar três réplicas (servidores) por partição</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Portal<ul>
-<li>A API para clientes e administradores continua a mesma.</li>
-<li>Requisições para o servidor (linha contínua) são encaminhadas via Ratis/PySyncObj (linha tracejada) para ordená-las e entregar a todas as réplicas da partição selecionada (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  </li>
-<li>Dados não são mais armazenados pela sua aplicação original, mas somente via Ratis/PySyncObj</li>
-<li>Os portais devem manter uma estrutura de cache local para evitar consultas desnecessárias<ul>
-<li>Defina a estratégia de cache utilizada e política de atualização</li>
-<li>A efetivação da operação no banco de dados deve falhar se a operação for executada com dados antigos do cache, por exemplo, a tentativa de criação de um pedido para um cliente que estava no cache, mas não existe mais, deverá retornar erro ao ser executado na partição correspondente.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Testes<ul>
-<li>O mesmo <em>framework</em> de testes deve continuar funcional</li>
-</ul>
-</li>
-<li>Comunicação<ul>
-<li>Entre cliente/administrador e portais, não é alterado.</li>
-<li>Entre servidores de armazenamento, usar Ratis/PySyncOb</li>
-</ul>
-</li>
-<li>Apresentação<ul>
-<li>Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidoa.</li>
-</ul>
-</li>
-</ul>
+<!--
+### Etapa 2 - Banco de dados particionado e Replicação
+
+Nesta etapa você modificará o sistema para que modificações dos dados sejam refletidas no banco de dados particionado (para aumentar a escalabilidade) implementado usando *consistent hashing*, além de
+prover tolerância a falhas por meio da replicação de cada partição usando um protocolo de difusão atômica.
+
+![Projeto](drawings/projeto.drawio#0)
+
+* Objetivos
+    * Particionar e replicar a base de dados para obter escalabilidade e tolerância a falhas.
+
+* Desafios
+    * Compreender o uso de *consistent hashing* em nível teórico
+    * Compreender o uso de *consistent hashing* em nível prático
+        * Utilizar uma estrutura com duas partições, partição 0 e partição 1, equivalente a uma rede *Chord* com *m = 1*
+        * As chaves de cada objeto (*PID, CID, OID*) serão utilizadas para definir a partição em que será armazenado utilizando a saída da função "*mod 2*" (resto da divisão por 2)
+    * Certificar-se de que o portais são máquinas de estados determinísticas (API descrita oferece esta garantia)
+    * Compreender o uso de Difusão Atômica em nível teórico
+    * Compreender o uso de Difusão Atômica em nível prático 
+        * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
+        * Para Python, utilize [PySyncObj](https://github.com/bakwc/PySyncObj)
+        * Aplicar difusão atômica na replicação do cada partição
+        * Utilizar um banco de dados simples do tipo chave-valor em cada réplica de cada partição, necessariamente [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
+            * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
+        * Utilizar três réplicas (servidores) por partição
+* Portal
+    * A API para clientes e administradores continua a mesma.
+    * Requisições para o servidor (linha contínua) são encaminhadas via Ratis/PySyncObj (linha tracejada) para ordená-las e entregar a todas as réplicas da partição selecionada (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  
+    * Dados não são mais armazenados pela sua aplicação original, mas somente via Ratis/PySyncObj
+    * Os portais devem manter uma estrutura de cache local para evitar consultas desnecessárias
+        * Defina a estratégia de cache utilizada e política de atualização
+        * A efetivação da operação no banco de dados deve falhar se a operação for executada com dados antigos do cache, por exemplo, a tentativa de criação de um pedido para um cliente que estava no cache, mas não existe mais, deverá retornar erro ao ser executado na partição correspondente.
+* Testes
+    * O mesmo *framework* de testes deve continuar funcional
+* Comunicação
+    * Entre cliente/administrador e portais, não é alterado.
+    * Entre servidores de armazenamento, usar Ratis/PySyncOb
+* Apresentação
+    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidoa.
+
+
 <!--
 ### Etapa 2 - Cache
 
@@ -2037,6 +2333,15 @@ Para garantir que todo o seu esforço será concentrado no lugar certo e que sua
 
 -->
 
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#currentTimeMillis--">System.currentTimeMillis() em Java</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
   <!-- Last update of source file -->
 
 
@@ -2090,13 +2395,15 @@ Para garantir que todo o seu esforço será concentrado no lugar certo e que sua
     <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ce72ebac.min.js"></script>
+      <script src="../assets/javascripts/bundle.2a6f1dda.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="../javascripts/mathjaxhelper.js"></script>
+      
+        <script src="../search/main.js"></script>
       
     
   </body>
