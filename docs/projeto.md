@@ -164,7 +164,7 @@ service KeyValueStore {
 ### Comunicação entre servidores
 
 O suporte a múltiplos servidores deve garantir que clientes possam se conectar a instâncias diferentes de servidores e ainda sim sejam capazes de manipular os dados armazenados.
-Por exemplo, o cliente *c1* pode inserir um valor para a chave **K1** no servicor *s1* e deve ser capaz de recuperar o valor inserir para a mesma chave a partir de um segundo servidor *s2*.
+Por exemplo, o cliente *c1* pode inserir um valor para a chave **K1** no servidor *s1* e deve ser capaz de recuperar o valor inserir para a mesma chave a partir de um segundo servidor *s2*.
 
 Para isto, cada servidor deve publicar qualquer alteração nas chaves em um broker pub-sub, em tópico conhecido pelos demais, a partir do qual estes receberão as mudanças de estado e atualizarão suas próprias tabelas.
 
