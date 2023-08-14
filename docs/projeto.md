@@ -151,10 +151,7 @@ service KeyValueStore {
     * Servidor:
         - retorna chave, com valor e versão mais recentes, ou valores vazios, caso chave não exista
 
-
-## Interação entre servidores
-
-### Etapa 1 
+## Etapa 1 
 
 * Implementar os casos de uso usando como cache tabelas hash locais aos servidores.
 * Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.
@@ -164,7 +161,7 @@ service KeyValueStore {
 * Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
 * Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
 
-#### Comunicação entre servidores
+### Comunicação entre servidores
 
 O suporte a múltiplos servidores deve garantir que clientes possam se conectar a instâncias diferentes de servidores e ainda sim sejam capazes de manipular os dados armazenados.
 Por exemplo, o cliente *c1* pode inserir um valor para a chave **K1** no servicor *s1* e deve ser capaz de recuperar o valor inserir para a mesma chave a partir de um segundo servidor *s2*.
