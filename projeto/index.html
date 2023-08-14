@@ -1283,14 +1283,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#interacao-entre-servidores" class="md-nav__link">
-    Interação entre servidores
-  </a>
-  
-    <nav class="md-nav" aria-label="Interação entre servidores">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#etapa-1" class="md-nav__link">
     Etapa 1
   </a>
@@ -1302,11 +1294,6 @@
   <a href="#comunicacao-entre-servidores" class="md-nav__link">
     Comunicação entre servidores
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1382,14 +1369,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#interacao-entre-servidores" class="md-nav__link">
-    Interação entre servidores
-  </a>
-  
-    <nav class="md-nav" aria-label="Interação entre servidores">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#etapa-1" class="md-nav__link">
     Etapa 1
   </a>
@@ -1401,11 +1380,6 @@
   <a href="#comunicacao-entre-servidores" class="md-nav__link">
     Comunicação entre servidores
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1694,8 +1668,7 @@ A implementação que não seguir a interface definida não será avaliada e ter
 </ul>
 </li>
 </ul>
-<h2 id="interacao-entre-servidores">Interação entre servidores</h2>
-<h3 id="etapa-1">Etapa 1</h3>
+<h2 id="etapa-1">Etapa 1</h2>
 <ul>
 <li>Implementar os casos de uso usando como cache tabelas hash locais aos servidores.</li>
 <li>Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.</li>
@@ -1705,7 +1678,7 @@ A implementação que não seguir a interface definida não será avaliada e ter
 <li>Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente <em>pub-sub</em>, já que a comunicação é de 1 para muitos.</li>
 <li>Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.</li>
 </ul>
-<h4 id="comunicacao-entre-servidores">Comunicação entre servidores</h4>
+<h3 id="comunicacao-entre-servidores">Comunicação entre servidores</h3>
 <p>O suporte a múltiplos servidores deve garantir que clientes possam se conectar a instâncias diferentes de servidores e ainda sim sejam capazes de manipular os dados armazenados.
 Por exemplo, o cliente <em>c1</em> pode inserir um valor para a chave <strong>K1</strong> no servicor <em>s1</em> e deve ser capaz de recuperar o valor inserir para a mesma chave a partir de um segundo servidor <em>s2</em>.</p>
 <p>Para isto, cada servidor deve publicar qualquer alteração nas chaves em um broker pub-sub, em tópico conhecido pelos demais, a partir do qual estes receberão as mudanças de estado e atualizarão suas próprias tabelas.</p>
