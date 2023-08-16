@@ -1437,7 +1437,7 @@ Cada atualização para a mesma chave <strong>K</strong> com um novo valor <stro
 <p>As consultas podem ser feitas sobre uma versão específica ou sobre a versão mais recente da chave.
 Caso seja especificada uma versão <strong>i</strong>, a consulta deve retornar o valor <strong>V</strong> para a chave <strong>K</strong> com versão imediatamente menor ou igual a <strong>i</strong>.</p>
 <p>Tanto as consultas quanto as atualizações pode ser feitas para múltiplas chaves simultaneamente. A API completa é apresentada a seguir.</p>
-<p>As chaves e valores devem ser do tipo <em>String</em> enquanto as versões são variáveis do tipo <em>inteiro</em> que crescem monotonicamente a partir de 1 a cada nova atualização de cada chave.</p>
+<p>As chaves e valores devem ser do tipo <em>String</em> enquanto as versões são variáveis do tipo <em>inteiro longo</em>.</p>
 <p>A comunicação entre cliente e servidor deve ser, obrigatoriamente, realizada via gRPC de acordo com a interface definida adiante.
 A implementação que não seguir a interface definida não será avaliada e terá atribuída a nota zero.</p>
 <h2 id="casos-de-uso">Casos de Uso</h2>
@@ -1494,7 +1494,16 @@ A implementação que não seguir a interface definida não será avaliada e ter
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
-<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
 
 <span class="k">option</span><span class="w"> </span><span class="na">java_multiple_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="k">option</span><span class="w"> </span><span class="na">java_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;br.ufu.facom.gbc074.project&quot;</span><span class="p">;</span>
@@ -1506,6 +1515,13 @@ A implementação que não seguir a interface definida não será avaliada e ter
 <span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">  </span><span class="c1">// version</span>
 <span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">KeyRange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// from this key</span>
+<span class="w">    </span><span class="n">KeyRequest</span><span class="w"> </span><span class="na">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// until this key</span>
+<span class="w">    </span><span class="n">KeyRequest</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">message</span><span class="w"> </span><span class="nc">KeyValueRequest</span><span class="w"> </span><span class="p">{</span>
@@ -1535,14 +1551,16 @@ A implementação que não seguir a interface definida não será avaliada e ter
 <span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">ver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
 
+
+
 <span class="kd">service</span><span class="w"> </span><span class="n">KeyValueStore</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Get</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetRange</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">,</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetRange</span><span class="p">(</span><span class="n">KeyRange</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetAll</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Put</span><span class="p">(</span><span class="n">KeyValueRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PutReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">PutAll</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">PutReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Del</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DelRange</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">,</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DelRange</span><span class="p">(</span><span class="n">KeyRange</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DelAll</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
@@ -1565,7 +1583,7 @@ A implementação que não seguir a interface definida não será avaliada e ter
 </li>
 </ul>
 </li>
-<li><code>rpc GetRange(KeyRequest, KeyRequest) returns (stream KeyValueVersionReply) {}</code>: retorna valores no intervalo entre as duas chaves informadas pelo cliente<ul>
+<li><code>rpc GetRange(KeyRange) returns (stream KeyValueVersionReply) {}</code>: retorna valores no intervalo entre as duas chaves informadas pelo cliente<ul>
 <li>Cliente:<ul>
 <li>informa as duas tuplas chave e versão referente ao intervalo de chaves que deseja obter do servidor</li>
 <li>versão pode ser deixada em branco para obter valores mais recentes</li>
@@ -1631,7 +1649,7 @@ A implementação que não seguir a interface definida não será avaliada e ter
 </li>
 </ul>
 </li>
-<li><code>rpc DelRange(KeyRequest, KeyRequest) returns (stream KeyValueVersionReply) {}</code>: remove valores no intervalo entre as duas chaves informadas pelo cliente, retornando os valores mais atuais para estas chaves<ul>
+<li><code>rpc DelRange(KeyRange) returns (stream KeyValueVersionReply) {}</code>: remove valores no intervalo entre as duas chaves informadas pelo cliente, retornando os valores mais atuais para estas chaves<ul>
 <li>Cliente:<ul>
 <li>informa as duas tuplas, referente ao intervalo de chaves que deseja excluir do servidor</li>
 <li>versão <em>deve</em> ser deixada em branco</li>
