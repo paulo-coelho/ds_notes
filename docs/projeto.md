@@ -24,7 +24,7 @@ Caso seja especificada uma versão **i**, a consulta deve retornar o valor **V**
 
 Tanto as consultas quanto as atualizações pode ser feitas para múltiplas chaves simultaneamente. A API completa é apresentada a seguir.
 
-As chaves e valores devem ser do tipo *String* enquanto as versões são variáveis do tipo *inteiro* que crescem monotonicamente a partir de 1 a cada nova atualização de cada chave.
+As chaves e valores devem ser do tipo *String* enquanto as versões são variáveis do tipo *inteiro longo*.
 
 A comunicação entre cliente e servidor deve ser, obrigatoriamente, realizada via gRPC de acordo com a interface definida adiante.
 A implementação que não seguir a interface definida não será avaliada e terá atribuída a nota zero.
@@ -48,6 +48,13 @@ message KeyRequest {
   string key = 1;
   // version
   optional int64 version = 2;
+}
+
+message KeyRange {
+    // from this key
+    KeyRequest from = 1;
+    // until this key
+    KeyRequest to = 2;
 }
 
 message KeyValueRequest {
@@ -77,14 +84,16 @@ message PutReply {
   int64 ver = 4;
 }
 
+
+
 service KeyValueStore {
   rpc Get(KeyRequest) returns (KeyValueVersionReply) {}
-  rpc GetRange(KeyRequest, KeyRequest) returns (stream KeyValueVersionReply) {}
+  rpc GetRange(KeyRange) returns (stream KeyValueVersionReply) {}
   rpc GetAll(stream KeyRequest) returns (stream KeyValueVersionReply) {}
   rpc Put(KeyValueRequest) returns (PutReply) {}
   rpc PutAll(stream KeyValueRequest) returns (stream PutReply) {}
   rpc Del(KeyRequest) returns (KeyValueVersionReply) {}
-  rpc DelRange(KeyRequest, KeyRequest) returns (stream KeyValueVersionReply) {}
+  rpc DelRange(KeyRange) returns (stream KeyValueVersionReply) {}
   rpc DelAll(stream KeyRequest) returns (stream KeyValueVersionReply) {}
   rpc Trim(KeyRequest) returns (KeyValueVersionReply) {}
 }
@@ -100,7 +109,7 @@ service KeyValueStore {
         - retorna chave, valor e versão de acordo com requisição do cliente:
             - caso versão esteja em branco, retorna valor e versão mais recentes
             - caso contrário, retorna valor e versão imediatamente menor ou igual à versão informada
-*  `rpc GetRange(KeyRequest, KeyRequest) returns (stream KeyValueVersionReply) {}`: retorna valores no intervalo entre as duas chaves informadas pelo cliente
+*  `rpc GetRange(KeyRange) returns (stream KeyValueVersionReply) {}`: retorna valores no intervalo entre as duas chaves informadas pelo cliente
     * Cliente:
         - informa as duas tuplas chave e versão referente ao intervalo de chaves que deseja obter do servidor
         - versão pode ser deixada em branco para obter valores mais recentes
@@ -132,7 +141,7 @@ service KeyValueStore {
         - versão *deve* ser deixada em branco
     * Servidor:
         - retorna chave, com valor e versão mais recentes, ou valores vazios, caso chave não exista
-*  `rpc DelRange(KeyRequest, KeyRequest) returns (stream KeyValueVersionReply) {}`: remove valores no intervalo entre as duas chaves informadas pelo cliente, retornando os valores mais atuais para estas chaves
+*  `rpc DelRange(KeyRange) returns (stream KeyValueVersionReply) {}`: remove valores no intervalo entre as duas chaves informadas pelo cliente, retornando os valores mais atuais para estas chaves
     * Cliente:
         - informa as duas tuplas, referente ao intervalo de chaves que deseja excluir do servidor
         - versão *deve* ser deixada em branco
