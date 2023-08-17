@@ -47,7 +47,7 @@ message KeyRequest {
   // key
   string key = 1;
   // version
-  optional int64 version = 2;
+  optional int64 ver = 2;
 }
 
 message KeyRange {
