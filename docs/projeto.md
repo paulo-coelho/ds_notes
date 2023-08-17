@@ -179,10 +179,7 @@ Para isto, cada servidor deve publicar qualquer alteração nas chaves em um bro
 
 A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
 
-![EM CONSTRUÇÃO]()
-<!--
 ![Projeto](drawings/projeto.drawio#0)
--->
 
 
 ## Linguagens aceitas
