@@ -52,7 +52,7 @@ message KeyRequest {
 
 message KeyRange {
     // from this key
-    KeyRequest from = 1;
+    KeyRequest fr = 1;
     // until this key
     KeyRequest to = 2;
 }
@@ -107,7 +107,7 @@ service KeyValueStore {
         - versão pode ser deixada em branco para obter valor mais recente
     * Servidor:
         - retorna chave, valor e versão de acordo com requisição do cliente:
-            - caso versão esteja em branco, retorna valor e versão mais recentes
+            - caso versão esteja em branco (valor igual ou menor a zero), retorna valor e versão mais recentes
             - caso contrário, retorna valor e versão imediatamente menor ou igual à versão informada
 *  `rpc GetRange(KeyRange) returns (stream KeyValueVersionReply) {}`: retorna valores no intervalo entre as duas chaves informadas pelo cliente
     * Cliente:
@@ -160,15 +160,12 @@ service KeyValueStore {
     * Servidor:
         - retorna chave, com valor e versão mais recentes, ou valores vazios, caso chave não exista
 
-## Etapa 1 
+### Retornos
 
-* Implementar os casos de uso usando como cache tabelas hash locais aos servidores.
-* Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.
-* Implementar testes automatizados de sucesso e falha de cada uma das operações na API.
-* Documentar o esquema de dados usados nas tabelas.
-* O sistema deve permitir a execução de múltiplos clientes e servidores.
-* Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
-* Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
+Valores não encontrados são deixados em branco, isto é, deve-se retornar "" (string vazia) para valores não encontrados.
+Uma versão em branco corresponde a um valor menor ou igual a zero.
+Exceções (erros de comunicação, formato dos dados, etc, devem ser tratadas ao menos no lado servidor para evitar perda do estado durante os testes.
+
 
 ### Comunicação entre servidores
 
@@ -180,6 +177,28 @@ Para isto, cada servidor deve publicar qualquer alteração nas chaves em um bro
 A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
 
 ![Projeto](drawings/projeto.drawio#0)
+
+
+## Etapa 1 
+
+* Implementar os casos de uso usando como cache tabelas hash locais aos servidores.
+* Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.
+* Implementar testes automatizados de sucesso e falha de cada uma das operações na API.
+* Documentar o esquema de dados usados nas tabelas.
+* O sistema deve permitir a execução de múltiplos clientes e servidores.
+* Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
+* Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
+
+
+### Submissão
+
+* A submissão será feita até a data limite via formulário do Microsoft Teams, bastando informar o link do repositório **privado** em *github.com*, devidamente compartilhado com o usuário `paulo-coelho`.
+* O repositório privado no *github* deve conter no mínimo:
+    * Arquivo `README.md` com instruções de compilação, inicialização e uso de clientes e servidores.
+    * Arquivo `compile.sh` para baixar/instalar dependências, compilar e gerar binários.
+    * Arquivo `server.sh` para executar o servidor, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
+    * Arquivo `client.sh` para executar o cliente, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
+    * Descrição das dificuldades com indicação do que não foi implementado.
 
 
 ## Linguagens aceitas
