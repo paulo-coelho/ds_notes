@@ -189,6 +189,37 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
 * Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
 * Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
 
+## Etapa 2 - Banco de dados Replicado
+Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas persistente e consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
+
+![Projeto](drawings/projeto.drawio#1)
+
+* Objetivos
+    * Replicar a base de dados para obter tolerância a falhas.
+
+* Desafios
+    * Certificar-se de que os servidores são máquinas de estados determinística
+    * Compreender o uso de Difusão Atômica em nível teórico
+    * Compreender o uso de Difusão Atômica em nível prático
+        * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
+        * Para Python, [PySyncObj](https://github.com/bakwc/PySyncObj) é uma boa opção
+        * Para Rust, [raft-rs](https://github.com/tikv/raft-rs) parece ser a biblioteca mais utilizada
+        * Aplicar difusão atômica na replicação do banco de dados
+        * Utilizar um banco de dados simples do tipo chave-valor, necessariamente [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
+            * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
+        * Utilizar três réplicas para o banco de dados
+        * Não há limite para a quantidade de servidores acessados pelos clientes
+* Implementação
+    * A API para clientes e servidores continua a mesma
+    * Requisições feitas pelos clientes via gRPC para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas
+    * Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi)
+* Testes
+    * O mesmo *framework* de testes deve continuar funcional
+* Comunicação
+    * Entre cliente e servidor nada é alterado
+    * Entre servidores e réplicas do banco de dados, usar Ratis/PySyncOb
+* Apresentação
+    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
 
 ### Submissão
 
@@ -197,6 +228,7 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
     * Arquivo `README.md` com instruções de compilação, inicialização e uso de clientes e servidores.
     * Arquivo `compile.sh` para baixar/instalar dependências, compilar e gerar binários.
     * Arquivo `server.sh` para executar o servidor, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
+    * Arquivo `replica.sh` para executar a réplica do banco de dados, recebendo como parâmetro o parâmetro *bd1*, *bd2* ou *bd3*, representado cada uma das réplicas da figura
     * Arquivo `client.sh` para executar o cliente, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
     * Descrição das dificuldades com indicação do que não foi implementado.
 
