@@ -1,7 +1,7 @@
 A área de computação distribuída é rica em aplicações e desenvolvê-los é topar de frente com vários problemas e decidir como resolvê-los ou contorná-los e, por isto, nada melhor que um projeto para experimentar em primeira mão as angústias e prazeres da área. 
 Assim, proponho visitarmos o material destas notas à luz de uma aplicação genérica mas real, desenvolvida por vocês enquanto vemos a teoria.
 
-O projeto consistem em implementar um **Sistema de Matrícula** com armazenamento  chave-valor (*key-value store = KVS*).
+O projeto consiste em implementar um **Sistema de Matrícula** com armazenamento  chave-valor (*key-value store = KVS*).
 
 A arquitetura do sistema será **híbrida**, contendo um pouco de cliente/servidor, publish/subscribe e Peer-2-Peer, além de ser multicamadas.
 Apesar de introduzir complexidade extra, também usaremos **múltiplos mecanismos para a comunicação** entre as partes, para que possam experimentar com diversas abordagens.
@@ -17,7 +17,7 @@ O detalhamento do comportamento e implementação, neste caso, será diferente p
 
 Tanto as aplicações clientes quanto os servidores devem, obrigatoriamente, possuir uma interface de linha de comando (*command line interface - CLI*) para execução e interação.
 
-A aplicação cliente manipula cada chave **K** em operações de escrita e leitura de acordo com a descrição e interface apresentada mais adiante.
+A aplicação servidor manipula cada chave **K** em operações de escrita e leitura de acordo com a descrição e interface apresentadas mais adiante.
 A tupla **(K,V)** significa que a chave **K** possui valor **V**.
 Cada atualização para a mesma chave **K** com um novo valor **V'** substitui o valor **V** armazenado previamente.
 As chaves e valores devem ser do tipo *String*.
@@ -27,9 +27,9 @@ Os dados de alunos, professores e disciplinas em cada Portal são mantidos em um
 O campo `Dados` **deve** ser armazenado como uma string JSON, com formato definido por você, devidamente descrito na documentação do projeto.
 
 Além disso, você pode criar tabelas hash adicionais para representar a relação entre os dados. 
-Por exemplo, pode-se criar a tabela "DisciplinaAluno" no Portal de Matrículas, cuja chave seja a sigla da disciplina e o valor seja um vetor de matrículas de alunos devidamente representada no formato JSON.
+Por exemplo, pode-se criar a tabela "DisciplinaAluno" no Portal de Matrículas, cuja chave seja a sigla da disciplina e o valor seja um vetor de matrículas de alunos devidamente representado no formato JSON.
 
-A comunicação entre clientes e servidores deve ser, **obrigatoriamente**, realizada via gRPC de acordo com a interface definida adiante.
+A comunicação entre clientes e servidores deve ser, **obrigatoriamente**, realizada via [gRPC](../cases/grpc) de acordo com a interface definida adiante.
 
 O servidor do Portal de Matrícula deve obter os dados de alunos, professores e disciplinas a partir do servidor do Portal Administrativo.
 Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas para evitar chamdas repetidas para valores já conhecidos.
@@ -311,7 +311,7 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
 * Documentar o esquema de dados usados nas tabelas.
 * Suportar a execução de múltiplos clientes e servidores.
 * Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
-    * Utilizar o *broker pub-sub* [`mosquitto`](/ds_notes/cases/mosquitto) com a configuração padrão e aceitando conexões na interface local (*localhost ou 127.0.0.1*), porta TCP 1883.
+    * Utilizar o *broker pub-sub* [`mosquitto`](../cases/mosquitto) com a configuração padrão e aceitando conexões na interface local (*localhost ou 127.0.0.1*), porta TCP 1883.
 * Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
 <!--
 
