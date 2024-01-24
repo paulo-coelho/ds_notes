@@ -1,0 +1,2835 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Notas de aula do curso de Sistemas Distribuídos da FACOM/UFU">
+      
+      
+      
+        <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/projeto-2023-1/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>Projeto 2023 1 - Notas de Aula em Sistemas Distribuídos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Anonymous Pro";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#casos-de-uso" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Notas de Aula em Sistemas Distribuídos" class="md-header__button md-logo" aria-label="Notas de Aula em Sistemas Distribuídos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notas de Aula em Sistemas Distribuídos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Projeto 2023 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/paulo-coelho/ds_notes" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Notas de Aula em Sistemas Distribuídos" class="md-nav__button md-logo" aria-label="Notas de Aula em Sistemas Distribuídos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Notas de Aula em Sistemas Distribuídos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/paulo-coelho/ds_notes" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prefácio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introdução
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../comm/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Comunicação
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Comunicação
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comm/redes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comm/internet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comm/sockets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sockets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comm/datarep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Representação
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comm/middleware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Middlewares
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comm/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comm/mom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MOM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comm/epidemics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Epidêmicos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comm/refs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Referências
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../arch/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arquiteturas
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Arquiteturas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch/p2p/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    P2P
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch/microservices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microsserviços
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../models/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Modelos
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Modelos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tipos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Coordenação
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Coordenação
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coord/concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concorrência
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coord/coord/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Coordenação
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../time/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tempo
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Tempo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time/physical/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tempo Físico
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time/logical/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tempo Lógico
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../fault/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tolerância a Faltas
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Tolerância a Faltas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fault/failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Falta/Erros/Falhas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fault/replication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Replicação
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fault/failuredetector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Detectores de Falhas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fault/agreement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acordo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fault/reconfiguration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grupos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fault/bizantine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Falhas bizantinas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fault/dependability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dependabilidade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../consistency/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Consistência
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Consistência
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consistency/consistency_models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modelos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consistency/data_centric/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Centrado nos Dados
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consistency/client_centric/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Centrado no Cliente
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consistency/replica_management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gerenciamento de Réplicas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consistency/checkpointing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checkpointing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consistency/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Referências
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../db/disdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bancos de Dados
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../cases/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Estudos de Caso
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Estudos de Caso
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/sockets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sockets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/cassandra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cassandra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/chord/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chord
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/grpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/mosquitto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mosquitto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/thrift/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thrift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/ratis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ratis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cases/etcd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Etcd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projeto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projeto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Casos de Uso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Casos de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descricao-dos-metodos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição dos métodos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retornos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retornos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comunicacao-entre-servidores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicação entre servidores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Etapa 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-2-banco-de-dados-replicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Etapa 2 - Banco de dados Replicado
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 2 - Banco de dados Replicado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#submissao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submissão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linguagens-aceitas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linguagens aceitas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+<!-- Edit button -->
+
+
+  <!--
+       Hack: check whether the content contains a h1 headline. If it
+       doesn't, the page title (or respectively site name) is used
+       as the main headline.
+    -->
+
+  <h1>Projeto 2023 1</h1>
+
+
+  <!-- Content -->
+  <p>A área de computação distribuída é rica em aplicações e desenvolvê-los é topar de frente com vários problemas e decidir como resolvê-los ou contorná-los e, por isto, nada melhor que um projeto para experimentar em primeira mão as angústias e prazeres da área. 
+Assim, proponho visitarmos o material destas notas à luz de uma aplicação genérica mas real, desenvolvida por vocês enquanto vemos a teoria.</p>
+<p>O projeto consistem em implementar um sistema de armazenamento chave-valor (<em>key-value store = KVS</em>) multi-versão.</p>
+<p>A arquitetura do sistema será <strong>híbrida</strong>, contendo um pouco de cliente/servidor, publish/subscribe e Peer-2-Peer, além de ser multicamadas.
+Apesar de introduzir complexidade extra, também usaremos <strong>múltiplos mecanismos para a comunicação</strong> entre as partes, para que possam experimentar com diversas abordagens.</p>
+<p>O sistema utiliza a arquitetura cliente-servidor na comunicação entre o cliente, que realiza as operações em cima do sistema de armazenamento, e o servidor, que atualiza seu estado de acordo e retorna o resultado ao cliente.</p>
+<p>Múltiplas instâncias do servidor podem ser executados simultaneamente para prover aumentar a disponibilidade do serviço e/ou atender um maior número de clientes (escalar).
+O detalhamento do comportamento e implementação, neste caso, será diferente para cada etapa do projeto, sendo detalhado nas seções seguintes.</p>
+<p>Tanto a aplicação cliente quanto a aplicação servidor devem, obrigatoriamente, possuir uma interface de linha de comando (<em>command line interface - CLI</em>) para execução e interação.</p>
+<p>A aplicação cliente manipula cada chave <strong>K</strong> em operações de escrita e leitura de acordo com a descrição e interface apresentada mais adiante.
+O sistema utiliza a noção de versões <strong>i</strong> de valores, ou seja, cada atualização de uma mesma chave <strong>K</strong> para uma valor <strong>V</strong> gera uma nova versão da mesma.
+A tupla <strong>(K,V,i)</strong> significa que a chave <strong>K</strong> possui valor <strong>V</strong> em sua versão <strong>i</strong>.
+Cada atualização para a mesma chave <strong>K</strong> com um novo valor <strong>V'</strong> gera uma nova versão <strong>j</strong>, em que <strong>j = <code>System.currentTimeMillis()</code></strong><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>As consultas podem ser feitas sobre uma versão específica ou sobre a versão mais recente da chave.
+Caso seja especificada uma versão <strong>i</strong>, a consulta deve retornar o valor <strong>V</strong> para a chave <strong>K</strong> com versão imediatamente menor ou igual a <strong>i</strong>.</p>
+<p>Tanto as consultas quanto as atualizações pode ser feitas para múltiplas chaves simultaneamente. A API completa é apresentada a seguir.</p>
+<p>As chaves e valores devem ser do tipo <em>String</em> enquanto as versões são variáveis do tipo <em>inteiro longo</em>.</p>
+<p>A comunicação entre cliente e servidor deve ser, obrigatoriamente, realizada via gRPC de acordo com a interface definida adiante.
+A implementação que não seguir a interface definida não será avaliada e terá atribuída a nota zero.</p>
+<h2 id="casos-de-uso">Casos de Uso</h2>
+<h3 id="interface">Interface</h3>
+<p>O formato exato em que os dados serão armazenados pode variar na sua implementação, mas a API apresentada deve, <strong>obrigatoriamente</strong>, ter a assinada definida a seguir:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+
+<span class="k">option</span><span class="w"> </span><span class="na">java_multiple_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="k">option</span><span class="w"> </span><span class="na">java_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;br.ufu.facom.gbc074.project&quot;</span><span class="p">;</span>
+
+<span class="kn">package</span><span class="w"> </span><span class="nn">project</span><span class="p">;</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">KeyRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// key</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// version</span>
+<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="na">ver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">KeyRange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// from this key</span>
+<span class="w">    </span><span class="n">KeyRequest</span><span class="w"> </span><span class="na">fr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// until this key</span>
+<span class="w">    </span><span class="n">KeyRequest</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">KeyValueRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// key</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// value</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">KeyValueVersionReply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// key</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// value</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// version</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">ver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">PutReply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// key</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// value</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">old_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// old version</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">old_ver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// assigned version</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">ver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+
+<span class="kd">service</span><span class="w"> </span><span class="n">KeyValueStore</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Get</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetRange</span><span class="p">(</span><span class="n">KeyRange</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetAll</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Put</span><span class="p">(</span><span class="n">KeyValueRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PutReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">PutAll</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">PutReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Del</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DelRange</span><span class="p">(</span><span class="n">KeyRange</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DelAll</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">KeyRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">KeyValueVersionReply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="descricao-dos-metodos">Descrição dos métodos</h3>
+<ul>
+<li><code>rpc Get(KeyRequest) returns (KeyValueVersionReply) {}</code>: retorna valor para chave e versão informados pelo cliente<ul>
+<li>Cliente:<ul>
+<li>informa chave e versão que deseja obter do servidor</li>
+<li>versão pode ser deixada em branco para obter valor mais recente</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna chave, valor e versão de acordo com requisição do cliente:<ul>
+<li>caso versão esteja em branco (valor igual ou menor a zero), retorna valor e versão mais recentes</li>
+<li>caso contrário, retorna valor e versão imediatamente menor ou igual à versão informada</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc GetRange(KeyRange) returns (stream KeyValueVersionReply) {}</code>: retorna valores no intervalo entre as duas chaves informadas pelo cliente<ul>
+<li>Cliente:<ul>
+<li>informa as duas tuplas chave e versão referente ao intervalo de chaves que deseja obter do servidor</li>
+<li>versão pode ser deixada em branco para obter valores mais recentes</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna conjunto de chaves, valores e versões de acordo com requisição do cliente:<ul>
+<li>caso versões estejam em branco, retorna valores e versões mais recentes</li>
+<li>caso contrário, escolhe a maior entre as versões recebidas do cliente e retorna valores e versões imediatamente menores ou iguais a esta versão.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc GetAll(stream KeyRequest) returns (stream KeyValueVersionReply) {}</code>: retorna valores para conjunto de chaves informado pelo cliente<ul>
+<li>Cliente:<ul>
+<li>informa conjunto desordenado de tuplas com chave e versão</li>
+<li>versão pode ser deixada em branco para obter valores mais recentes</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna conjunto de chaves, valores e versões de acordo com requisição do cliente:<ul>
+<li>caso versão esteja em branco, retorna valores e versões mais recentes</li>
+<li>caso contrário, escolhe a maior entre as versões recebidas do cliente e retorna valores e versões imediatamente menores ou iguais a esta versão.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc Put(KeyValueRequest) returns (PutReply) {}</code>: atualiza/insere valor e chave informados, retornando valor para chave e versão anteriores, bem como a nova versão atribuída<ul>
+<li>Cliente:<ul>
+<li>informa chave e valor para inserir/atualizar no servidor</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna chave, com valor e versão antigos (se houver), bem como a nova versão atribuída ao valor</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc PutAll(stream KeyValueRequest) returns (stream PutReply) {}</code>: atualiza/insere valores e chaves informados, retornando, para cada chave, valor e versão anteriores, bem como a nova versão atribuída<ul>
+<li>Cliente:<ul>
+<li>informa conjunto desordenado de tuplas chave, valor</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna conjunto de tuplas com cada chave, com valor e versão antigos (se houver), bem como a nova versão atribuída ao valor</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc Del(KeyRequest) returns (KeyValueVersionReply) {}</code>: remove todos os valores associados à chave e retorna valor para chave e versão mais atual <ul>
+<li>Cliente:<ul>
+<li>informa chave que deseja excluir do servidor</li>
+<li>versão <em>deve</em> ser deixada em branco</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna chave, com valor e versão mais recentes, ou valores vazios, caso chave não exista</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc DelRange(KeyRange) returns (stream KeyValueVersionReply) {}</code>: remove valores no intervalo entre as duas chaves informadas pelo cliente, retornando os valores mais atuais para estas chaves<ul>
+<li>Cliente:<ul>
+<li>informa as duas tuplas, referente ao intervalo de chaves que deseja excluir do servidor</li>
+<li>versão <em>deve</em> ser deixada em branco</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna tuplas com chave, valor e versão mais recentes, ou valores vazios, caso chave não exista</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc DelAll(stream KeyRequest) returns (stream KeyValueVersionReply) {}</code>: remove valores para conjunto de chaves informado pelo cliente e retorna valores mais atuais<ul>
+<li>Cliente:<ul>
+<li>informa conjunto desordenado de tuplas com as chaves</li>
+<li>versão <em>deve</em> ser deixada em branco</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna tuplas com chave, valor e versão mais recentes, ou valores vazios, caso chave não exista</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc Trim(KeyRequest) returns (KeyValueVersionReply) {}</code>: remove todos os valores associados à chave, exceto a versão mais recente, e retorna valor e versão para a chave <ul>
+<li>Cliente:<ul>
+<li>informa chave</li>
+<li>versão <em>deve</em> ser deixada em branco</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna chave, com valor e versão mais recentes, ou valores vazios, caso chave não exista</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="retornos">Retornos</h3>
+<p>Valores não encontrados são deixados em branco, isto é, deve-se retornar "" (string vazia) para valores não encontrados.
+Uma versão em branco corresponde a um valor menor ou igual a zero.
+Exceções (erros de comunicação, formato dos dados, etc, devem ser tratadas ao menos no lado servidor para evitar perda do estado durante os testes.</p>
+<h3 id="comunicacao-entre-servidores">Comunicação entre servidores</h3>
+<p>O suporte a múltiplos servidores deve garantir que clientes possam se conectar a instâncias diferentes de servidores e ainda sim sejam capazes de manipular os dados armazenados.
+Por exemplo, o cliente <em>c1</em> pode inserir um valor para a chave <strong>K1</strong> no servidor <em>s1</em> e deve ser capaz de recuperar o valor inserir para a mesma chave a partir de um segundo servidor <em>s2</em>.</p>
+<p>Para isto, cada servidor deve publicar qualquer alteração nas chaves em um broker pub-sub, em tópico conhecido pelos demais, a partir do qual estes receberão as mudanças de estado e atualizarão suas próprias tabelas.</p>
+<p>A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.</p>
+<p><img alt="Projeto" src="../drawings/projeto.drawio-0.svg" /></p>
+<h2 id="etapa-1">Etapa 1</h2>
+<ul>
+<li>Implementar os casos de uso usando como cache tabelas hash locais aos servidores.</li>
+<li>Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.</li>
+<li>Implementar testes automatizados de sucesso e falha de cada uma das operações na API.</li>
+<li>Documentar o esquema de dados usados nas tabelas.</li>
+<li>O sistema deve permitir a execução de múltiplos clientes e servidores.</li>
+<li>Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente <em>pub-sub</em>, já que a comunicação é de 1 para muitos.</li>
+<li>Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.</li>
+</ul>
+<h2 id="etapa-2-banco-de-dados-replicado">Etapa 2 - Banco de dados Replicado</h2>
+<p>Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas persistente e consistentemente entre todas as réplicas usando um protocolo de difusão atômica.</p>
+<p><img alt="Projeto" src="../drawings/projeto.drawio-1.svg" /></p>
+<ul>
+<li>
+<p>Objetivos</p>
+<ul>
+<li>Replicar a base de dados para obter tolerância a falhas.</li>
+</ul>
+</li>
+<li>
+<p>Desafios</p>
+<ul>
+<li>Certificar-se de que os servidores são máquinas de estados determinística</li>
+<li>Compreender o uso de Difusão Atômica em nível teórico</li>
+<li>Compreender o uso de Difusão Atômica em nível prático<ul>
+<li>Use <a href="https://paulo-coelho.github.io/ds_notes/cases/ratis">Ratis</a> para java</li>
+<li>Para Python, <a href="https://github.com/bakwc/PySyncObj">PySyncObj</a> é uma boa opção</li>
+<li>Para Rust, <a href="https://github.com/tikv/raft-rs">raft-rs</a> parece ser a biblioteca mais utilizada</li>
+<li>Aplicar difusão atômica na replicação do banco de dados</li>
+<li>Utilizar um banco de dados simples do tipo chave-valor, necessariamente <a href="https://github.com/google/leveldb">LevelDB</a> ou <a href="https://git.openldap.org/openldap/openldap/tree/mdb.master">LMDB</a><ul>
+<li>Embora originalmente escritas em C++/C, há <em>ports</em> para diversas outras linguagens, (e.g., <a href="https://github.com/lmdbjava/lmdbjava">aqui</a> e <a href="https://github.com/dain/leveldb">aqui</a>)</li>
+</ul>
+</li>
+<li>Utilizar três réplicas para o banco de dados</li>
+<li>Não há limite para a quantidade de servidores acessados pelos clientes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Implementação<ul>
+<li>A API para clientes e servidores continua a mesma</li>
+<li>Requisições feitas pelos clientes via gRPC para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas</li>
+<li>Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi)</li>
+</ul>
+</li>
+<li>Testes<ul>
+<li>O mesmo <em>framework</em> de testes deve continuar funcional</li>
+</ul>
+</li>
+<li>Comunicação<ul>
+<li>Entre cliente e servidor nada é alterado</li>
+<li>Entre servidores e réplicas do banco de dados, usar Ratis/PySyncOb</li>
+</ul>
+</li>
+<li>Apresentação<ul>
+<li>Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.</li>
+</ul>
+</li>
+</ul>
+<h3 id="submissao">Submissão</h3>
+<ul>
+<li>A submissão será feita até a data limite via formulário do Microsoft Teams, bastando informar o link do repositório <strong>privado</strong> em <em>github.com</em>, devidamente compartilhado com o usuário <code>paulo-coelho</code>.</li>
+<li>O repositório privado no <em>github</em> deve conter no mínimo:<ul>
+<li>Arquivo <code>README.md</code> com instruções de compilação, inicialização e uso de clientes e servidores.</li>
+<li>Arquivo <code>compile.sh</code> para baixar/instalar dependências, compilar e gerar binários.</li>
+<li>Arquivo <code>server.sh</code> para executar o servidor, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.</li>
+<li>Arquivo <code>replica.sh</code> para executar a réplica do banco de dados, recebendo como parâmetro o parâmetro <em>bd1</em>, <em>bd2</em> ou <em>bd3</em>, representado cada uma das réplicas da figura</li>
+<li>Arquivo <code>client.sh</code> para executar o cliente, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.</li>
+<li>Descrição das dificuldades com indicação do que não foi implementado.</li>
+</ul>
+</li>
+</ul>
+<h2 id="linguagens-aceitas">Linguagens aceitas</h2>
+<p><strong>APENAS</strong> serão aceitas estas linguagens:</p>
+<ul>
+<li>Java</li>
+<li>C</li>
+<li>Python</li>
+<li>Go</li>
+<li>Rust</li>
+</ul>
+<p>Trabalhos em outra linguagem não serão corrigidos e receberão nota zero!</p>
+<!--
+A base de dados é replicada em outros nós usando um protocolo de **difusão atômica**.
+-->
+
+<!--
+O projeto consiste em uma com dois tipos de papeis, **clientes** e **administradores**. **Administradores** gerenciam cadastros de clientes e produtos. **Clientes** realizam pedidos de compra.
+
+As funcionalidades são expostas para estes usuários via **dois tipos** de  aplicações distintas, o **portal de pedidos**  e o **portal administrativo**, mas ambos manipulam a **mesma base de dados**.
+
+Múltiplas instâncias de cada portal podem existir e cada instância mantém um **cache** da base de dados em memória, com as entradas mais recentemente acessadas.
+
+
+A totalidade da base é particionada usando ***consistent hashing***.
+Cada partição é replicada em outros nós usando um protocolo de **difusão atômica**.
+
+
+A arquitetura do sistema será **híbrida**, contendo um pouco de Cliente/Servidor e Peer-2-Peer, além de ser multicamadas.
+Apesar de introduzir complexidade extra, também usaremos **múltiplos mecanismos para a comunicação** entre as partes, para que possam experimentar com diversas abordagens.
+
+O sistemas tem duas **aplicações**, CLI ou GUI, para os dois tipos de papeis do sistema, clientes e administradores.
+Estas aplicações se comunicarão com os portais para manipular os dados dos clientes e associados a cada cliente.
+A aplicação do administrador manipula clientes e produtos, isto é, permite o CRUD de clientes e produtos.
+A aplicação do cliente permite manipular os dados associados aos pedidos, ou seja, comprar produtos previamente cadastrados.
+
+O cadastro do cliente inclui a provisão de um identificador único do cliente CID (*client id*).
+Os dados dos clientes são mantidos em uma tabela CID -> Dados do Cliente, em memória (use uma tabela hash). 
+O CID tem tipo String; **você** deve decidir o que compõe os dados do cliente, mas eles **devem** ser armazenados como uma string JSON.
+
+O cadastro do produto inclui a provisão de um identificador único do produto PID (*product id*).
+Os dados dos produtos são mantidos em uma tabela PID -> Dados do Produto, em memória (use uma tabela hash). 
+O PID tem tipo String; **você** deve decidir o que compõe os dados do produto, mas devem ser suficientes para manter a descrição (String), quantidade (inteiro) e preço (ponto flutuante) do produto, e **devem** ser armazenados como uma string JSON.
+
+A comunicação entre administradores e Portal Administrativo se dá obrigatoriamente via gRPC, conforme interface definida mais adiante.
+
+Somente clientes devidamente cadastrados no sistema podem ter suas operações executadas.
+O CID do cliente executando operações no portal de pedidos deve ser informado em cada operação para "autenticar" o cliente e autorizar a execução da operação.
+
+A comunicação entre clientes e Portal de Pedidos se dá obrigatoriamente via gRPC, conforme interface definida mais adiante.
+
+O cadastro do pedido inclui a geração de um identificador único do pedido OID (*order id*).
+O OID tem tipo String; **você** deve decidir o que compõe os dados do pedido, mas devem ser suficientes para identificar o produto, a quantidade comprada e o preço para cada produto no pedido. **Devem** ser armazenados como uma string JSON.
+A relação entre clientes e pedidos é mantida em uma tabela CID -> OID, em memória (use uma tabela hash). 
+
+**Exemplo de armazenamento no portal de pedidos**: 
+Cada pedido tem um identificador (Sring), e um corpo (JSON);
+Os dados são mantidos em uma tabela hash e múltiplas entradas podem ser necessárias para armazenar e manter um pedido, isto é, algumas entradas podem ser de metadados, por exemplo, índice.
+Por exemplo, para representar dois pedidos, `o1` e `o2`, com corpos `c1` e `c2`, associadas ao cliente `cliente1`, podemos ter as seguintes entradas.
+
+* `cliente1 -> [o1,o2]`
+* `cliente1:o1 -> c1`
+* `cliente1:o2 -> c2`
+
+Com este formato, podemos identificar os pedidos associados ao `cliente1` e, a partir desta lista, identificar o conteúdo associado a cada pedido.
+Este formato também permite que múltiplos clientes tenham pedidos com o mesmo OID.
+
+
+## Casos de Uso
+
+###### Interfaces
+
+**O formato exato em que os dados serão armazenados pode variar dentro do JSON**, mas a API apresentada deve ter a assinada definida a seguir:
+
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+
+<span class="k">option</span><span class="w"> </span><span class="na">java_multiple_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="k">option</span><span class="w"> </span><span class="na">java_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;br.ufu.facom.gbc074.project&quot;</span><span class="p">;</span>
+
+<span class="kn">package</span><span class="w"> </span><span class="nn">project</span><span class="p">;</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">Client</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Client ID</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">CID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// JSON string representing client data: at least a name</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">Product</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Produto ID</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">PID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// JSON string representing produto data: at least product name, price, and</span>
+<span class="w">  </span><span class="c1">// quantity</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">Order</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Order ID</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">OID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// CLient ID</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">CID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// JSON string representing at least array of PIDs, prices, and quantities</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">Reply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Error code: 0 for success</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// Error message, if error &gt; 0</span>
+<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">ID</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// generic ID for CID, PID and OID</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">service</span><span class="w"> </span><span class="n">AdminPortal</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">CreateClient</span><span class="p">(</span><span class="n">Client</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Reply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RetrieveClient</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Client</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateClient</span><span class="p">(</span><span class="n">Client</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Reply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DeleteClient</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Reply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">CreateProduct</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Reply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RetrieveProduct</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Product</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateProduct</span><span class="p">(</span><span class="n">Product</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Reply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DeleteProduct</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Reply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">service</span><span class="w"> </span><span class="n">OrderPortal</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">CreateOrder</span><span class="p">(</span><span class="n">Order</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Reply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RetrieveOrder</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Order</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateOrder</span><span class="p">(</span><span class="n">Order</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Reply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DeleteOrder</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Reply</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RetrieveClientOrders</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Order</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+
+O JSON do cliente deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.
+
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;CID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Paulo&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;non-mandatory-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxx&quot;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+
+O JSON do produto deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.
+
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;PID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;caneta&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;40&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.50&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;non-mandatory-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxx&quot;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+
+O JSON do pedido deve ter o formato apresentado a seguir. Campos adicionais podem existir, mas não devem ser obrigatórios.
+
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;OID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;CID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;456&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;products&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;PID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;30&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.50&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;non-mandatory-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxx&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;PID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;321&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.50&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;non-mandatory-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxx&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;PID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;456&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.50&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;non-mandatory-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxx&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;non-mandatory-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxx&quot;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+
+###### Manipulação Clientes
+* Inserção de Cliente
+    * Administrador
+        * Gera um CID para cada cliente, baseado em seu nome ou outro atributo único.
+        * Informa o CID para o cliente
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Se cliente existia, falha a operação.
+            * Se cliente não existia, insere dados no banco e atualiza a cache.
+    * Cliente
+        * Recebe CID diretamente do administrador (já sabe o seu CID)
+* Modificação de Cliente
+    * Administrador
+        * Determina CID de cliente a ser modificado.
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Se cliente existe, atualiza o cliente e atualiza a cache.
+            * Se cliente não existe, retorna erro.
+* Recuperação de Clientes
+    * Administrador
+        * Determina CID de cliente a ser recuperado
+    * Portal Administrador
+        * Executa a operação e retorna dados do cliente.
+            * Se cliente não existe na cache, pesquisa banco de dados e atualiza a cache caso encontre.
+            * Se cliente existe na cache, retorna informação.
+            * Se cliente não existe na cache, retorna objeto vazio com CID igual a 0 (zero).
+* Remoção de Cliente
+    * Administrador
+        * Determina CID de cliente a ser removido
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Apaga dados do banco.
+            * Apaga dados da cache, se existe.
+
+###### Manipulação Produtos
+* Inserção de Produto
+    * Administrador
+        * Gera um PID para cada produto, baseado em seu nome ou outro atributo único.
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Se produto existia, falha a operação.
+            * Se produto não existia, insere dados no banco e atualiza a cache.
+    * Cliente
+        * Recebe PID diretamente do administrador (já sabe o PID do produto que deseja pedir)
+* Modificação de Produto
+    * Administrador
+        * Determina PID de produto a ser modificado.
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Se produto existe, atualiza o produto e atualiza a cache.
+            * Se produto não existe, retorna erro.
+* Recuperação de Produtos
+    * Administrador
+        * Determina PID de produto a ser recuperado
+    * Portal Administrador
+        * Executa a operação e retorna dados do produto.
+            * Se produto não existe na cache, pesquisa banco de dados e atualiza a cache caso encontre.
+            * Se produto existe na cache, retorna informação.
+            * Se produto não existe na cache, retorna objeto vazio com PID igual a 0 (zero).
+* Remoção de Produto
+    * Administrador
+        * Determina PID de produto a ser removido
+    * Portal Administrador
+        * Executa a operação e retorna código de erro/sucesso.
+            * Apaga dados do banco.
+            * Apaga dados da cache, se existe.
+
+###### Manipulação de Tarefas dos Pedidos
+
+Nesta descrição, a interação com a cache foi omitida, mas deverá ser implementada.
+Assuma que o cliente recebeu o CID do administrador, ou seja, ele sabe seu próprio CID.
+
+* Inserção de Pedido
+    * Cliente
+        * Usa o CID informado pelo administrador
+        * Informa o OID desejado para o pedido
+        * Informa zero ou mais pedidos a serem feitos
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Verifica se o OID informado já foi usado
+        * Verifica disponibilidade de produto e quantidade.
+        * Ajusta quantidade disponível de produto, se necessário.
+        * Executa a operação e retorna código de erro/sucesso.
+* Modificação de Pedido
+    * Cliente
+        * Usa o CID informado pelo administrador
+        * Usa o OID informado na criação do pedido
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Verifica disponibilidade de produto e quantidade.
+        * Ajusta quantidade disponível de produto, se necessário.
+        * A informação de quantidade zero (0) remove o produto do pedido.
+        * Executa a operação e retorna código de erro/sucesso.
+* Enumeração do pedido
+    * Cliente
+        * Usa o CID informado pelo administrador
+        * Usa o OID informado na criação do pedido
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Caso o pedido exista, retorna informações dos produtos e valor total do pedido.
+        * Caso contrário, retorna objeto vazio com OID igual a 0 (zero).
+* Cancelamento do pedido
+    * Cliente
+        * Usa o CID informado pelo administrador
+        * Usa o OID informado na criação do pedido
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Ajusta quantidade disponível de produto, se necessário.
+        * Executa a operação e retorna código de erro/sucesso.
+* Enumeração de pedidos
+    * Cliente
+        * Usa o CID informado pelo administrador
+    * Portal de Pedidos
+        * Autentica o cliente pelo seu CID
+        * Retorna lista de pedidos associados ao cliente.
+
+## Interação entre portais
+
+### Etapa 1 - Usuários/Portais
+
+* Implementar os casos de uso usando como cache tabelas hash locais aos portais Administrador e de Pedidos.
+* Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas; explicar sua decisão de tratamento dos erros.
+* Implementar testes automatizados de sucesso e falha de cada uma das operações na API.
+* Documentar o esquema de dados usados nas tabelas.
+* O sistema deve permitir a execução de múltiplos clientes, administradores, portais de pedido e portais administrador.
+* Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
+* Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
+
+![Projeto](drawings/projeto.drawio#1)
+
+<!--
+
+### Etapa 2 - Banco de dados Replicado
+Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
+
+![Projeto](drawings/projeto.drawio#3)
+
+* Objetivos
+    * Replicar a base de dados para obter tolerância a falhas.
+
+* Desafios
+    * Certificar-se de que o portais são máquinas de estados determinística
+    * Compreender o uso de Difusão Atômica em nível teórico
+    * Compreender o uso de Difusão Atômica em nível prático 
+        * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
+        * Para Python, [PySyncObj](https://github.com/bakwc/PySyncObj) é uma boa opção.
+        * Aplicar difusão atômica na replicação do servidor
+        * Utilizar um banco de dados simples do tipo chave-valor, necessariamente [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
+            * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
+        * Utilizar três réplicas (servidores)
+* Portal
+    * A API para clientes e administradores continua a mesma.
+    * Requisições para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  
+    * Dados não são mais armazenados em disco pela sua aplicação mas somente via Ratis.
+* Cliente e Administrador
+    * Sem alteração.
+* Testes
+    * O mesmo *framework* de testes deve continuar funcional
+* Comunicação
+    * Entre cliente/administrador e portais, não é alterado.
+    * Entre servidores, usar Ratis/PySyncOb
+* Apresentação
+    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidoa.
+
+-->
+
+<!--
+### Etapa 2 - Banco de dados particionado e Replicação
+
+Nesta etapa você modificará o sistema para que modificações dos dados sejam refletidas no banco de dados particionado (para aumentar a escalabilidade) implementado usando *consistent hashing*, além de
+prover tolerância a falhas por meio da replicação de cada partição usando um protocolo de difusão atômica.
+
+![Projeto](drawings/projeto.drawio#0)
+
+* Objetivos
+    * Particionar e replicar a base de dados para obter escalabilidade e tolerância a falhas.
+
+* Desafios
+    * Compreender o uso de *consistent hashing* em nível teórico
+    * Compreender o uso de *consistent hashing* em nível prático
+        * Utilizar uma estrutura com duas partições, partição 0 e partição 1, equivalente a uma rede *Chord* com *m = 1*
+        * As chaves de cada objeto (*PID, CID, OID*) serão utilizadas para definir a partição em que será armazenado utilizando a saída da função "*mod 2*" (resto da divisão por 2)
+    * Certificar-se de que o portais são máquinas de estados determinísticas (API descrita oferece esta garantia)
+    * Compreender o uso de Difusão Atômica em nível teórico
+    * Compreender o uso de Difusão Atômica em nível prático 
+        * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
+        * Para Python, utilize [PySyncObj](https://github.com/bakwc/PySyncObj)
+        * Aplicar difusão atômica na replicação do cada partição
+        * Utilizar um banco de dados simples do tipo chave-valor em cada réplica de cada partição, necessariamente [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
+            * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
+        * Utilizar três réplicas (servidores) por partição
+* Portal
+    * A API para clientes e administradores continua a mesma.
+    * Requisições para o servidor (linha contínua) são encaminhadas via Ratis/PySyncObj (linha tracejada) para ordená-las e entregar a todas as réplicas da partição selecionada (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  
+    * Dados não são mais armazenados pela sua aplicação original, mas somente via Ratis/PySyncObj
+    * Os portais devem manter uma estrutura de cache local para evitar consultas desnecessárias
+        * Defina a estratégia de cache utilizada e política de atualização
+        * A efetivação da operação no banco de dados deve falhar se a operação for executada com dados antigos do cache, por exemplo, a tentativa de criação de um pedido para um cliente que estava no cache, mas não existe mais, deverá retornar erro ao ser executado na partição correspondente.
+* Testes
+    * O mesmo *framework* de testes deve continuar funcional
+* Comunicação
+    * Entre cliente/administrador e portais, não é alterado.
+    * Entre servidores de armazenamento, usar Ratis/PySyncOb
+* Apresentação
+    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidoa.
+
+
+<!--
+### Etapa 2 - Cache
+
+Nesta segunda etapa você modificará o sistema para que os portais, em vez de armazenar os dados em tabelas hash locais, o façam em uma tabela remota, compartilhada entre os portais.
+A tabela hash remota é particionada para permitir o armazenamento de mais dados do que caberiam em apenas um computador. Isto é, é essencialmente uma Distributed Hash Table, a base dos bancos de dados NoSQL como Redis, Memcached ou Cassandra.
+
+* Portais
+    * Os dados são armazenados no banco distribuído
+    * A comunicação com o banco é feita via MQTTP ou Kafka
+* Banco
+    * As partições usam *consistent hashing*  para distribuir os dados
+    * Uma requisição feita para a partição errada deve ser encaminhada para a partição correta usando o algoritmo de roteamento Chord.
+
+### Etapa 3 - Durabilidade
+
+Nesta etapa tornaremos todas as operações feitas no banco de dados permanentes por meio de um log remoto[^log] ou pela replicação das partições. Mais detalhes se seguirão.
+
+
+## Versão independente
+
+no sql cresceram rapidamente em uso e implementacoes.a facilidade e familiaridade do sql tem atrativos fortes. cockroach and yugabyte.
+entender como funcionam é importate para qquer um interessado em SD.
+
+In this project we will develop a rudimentary no SQL database and use that many difficulties to implement such a project to introduce concepts and frameworks related to the development of distributing systems. We will start by exploring the Waze stocked each other in a Distributed system. Then we will Dan will be explored different Architectures used to combine the efforts of components in the distributed system. Next we explore the guarantees that databases can provide to their users and how these guarantees are insured. 
+
+To do move the session to an introductory part with either the preface or introduction itself.
+
+O objetivo deste projeto é praticar o projeto de sistemas distribuídos, usando várias arquiteturas e tecnologias.
+A ideia é implementar um banco de dados NoSQL (Not only SQL) rudimentar.
+Mesmo uma versão simples de um banco de dados distribuído é um sistema complexo e por isso você deverá trabalhar em fases. Infelizmnte enquanto esta abordagem facilita a jornada, ela poderá levar a um pouco de retrabalho no final.
+
+Para garantir que todo o seu esforço será concentrado no lugar certo e que sua avaliação seja justa, atente-se aos detalhes e aos passos na especificação abaixo.
+
+* Etapa 1 - Cliente/Servidor usando RPC
+    * Objetivos
+        * Hash Table acessível remotamente por interface CRUD usando gRPC.
+        * Armazenamento em disco com recuperação de dados no caso de falhas
+    * Desafios
+        * Especificação do protocolo para dados genéricos
+        * Armazenamento atômico no disco
+        * Multithreading para garantir escalabilidade
+        * Controle de concorrência para garantir corretude nos dados armazenados.
+    * Servidor
+        * Todos os dados devem ser armazenados em um mapa Chave-Valor (Dicionário)
+        * Chave é um número de precisão arbitrária do tipo BigInteger
+        * Valor é uma tripla (Versão, Timestamp, Dados)
+             * Versão é um inteiro com 64 bits (long)
+             * Timestamp é um inteiro com 64 bits (long)
+             * Dados é um vetor de bytes (byte[]) de tamanho arbitrário
+        * O servidor implementa a seguinte API:
+             * set(k,ts,d):(e,v') 
+                 * adiciona ao mapa a entrada k-v, caso não exista uma entrada com a chave k, onde v=(1,ts,d)
+                 * retorna a tupla (e,v') onde e=SUCCESS e v'=NULL se k-v foi inserido
+                 * retorna a tupla (e,v') onde e=ERROR e v'=(ver,ts,data) se já existia uma entrada no banco de dados com a chave k e vers, ts e data correspondem, respectivamente, à versão, timestamp e dados de tal entrada
+             * get(k):(e,v') 
+                 * retorna a tupla (e,v') onde e=ERROR e v'=NULL se não há entrada no banco de dados com chave k
+                 * retorna a tupla (e,v') onde e=SUCCESS e v'=(ver,ts,data) se já existia uma entrada no banco de dados com a chave k e vers, ts e data correspondem, respectivamente, à versão, timestamp e dados de tal entrada 
+             * del(k):(e,v')
+                 * remove a entrada k-v' do banco de dados se existir
+                 * retorna a tupla (e,v') onde e=SUCCESS e v'=(ver,ts,data) se já existia uma entrada no banco de dados com a chave k e vers, ts e data correspondem, respectivamente, à versão, timestamp e dados de tal entrada 
+                 * retorna a tupla (e,v') onde e=ERROR e v'=NULL se não existia entrada com chave k no banco de dados.
+             * del(k,vers):(e,v')
+                 * remove a entrada k-v' do banco de dados se existir e tiver versão v
+                 * retorna a tupla (e,v') onde e=SUCCESS e v'=(vers,ts,data) se já existia uma entrada no banco de dados com a chave k e vers e ts e data correspondem, respectivamente, timestamp e dados de tal entrada 
+                 * retorna a tupla (e,v') onde e=ERROR_NE e v'=NULL se não existia entrada com chave k no banco de dados.
+                 * retorna a tupla (e,v') onde e=ERROR_WV e v'=(ver',ts,data) se já existia uma entrada no banco de dados com a chave k  version vers' not equal to vers, e  ts e data correspondem, respectivamente, timestamp e dados de tal entrada
+             * testAndSet(k,v,vers):(e,v')
+                 * atualiza o mapa se a versão atual no sistema corresponde à versão especificada.
+                 * retorna a tupla (e,v') onde e=SUCCESS e v'=(ver,ts,data) se já existia uma entrada no banco de dados com a chave k e version vers, e  ts e data correspondem, respectivamente, timestamp e dados de tal entrada
+                 * retorna a tupla (e,v') onde e=ERROR_NE e v'=NULL se não existia uma entrada no banco com chave k;
+                 * retorna a tupla (e,v') onde e=ERROR_WV e v'=(ver',ts,data) se já existia uma entrada no banco de dados com a chave k  version vers' not equal to vers, e  ts e data correspondem, respectivamente, timestamp e dados de tal entrada
+        * O mapa deve ser salvo em disco
+            * Com periodicidade configurável, os dados do mapa devem ser salvos em disco.
+            * Os dados em disco devem corresponder a uma versão dos dados em memória. Para entender, veja a seguinte sequência de eventos, que leva a uma versão em disco que nunca ocorreu em memória.
+                * Dados em memória (1/lala, 2/lele, 3/lili)
+                * Cópia para disco iniciada
+                * Dados em disco (1/lala)
+                * Dados em memória (1/lolo, 2/lele, 3/lili)
+                * Dados em disco (1/lala, 2/lele)
+                * Dados em memória (1/lolo, 2/lele, 3/lulu)
+                * Dados em disco (1/lala, 2/lele, 3/lulu)
+
+    * Cliente
+        * O cliente deve implementar uma UI que permita a interação com o banco de dados usando todas as API
+    * Testes
+        * Um segundo cliente implementará as seguintes baterias de testes no sistema
+            * Teste de todas as API levando a todos os tipos de resultados (sucesso e erro)
+            * Teste de estresse em que a API seja exercitada pelo menos 1000 vezes e o resultado final deve ser demonstrado como esperado (por exemplo, inserir 1000 entradas com chaves distintas, atualizar a todas as entradas, ler todas a entradas e verificar que o valor, isto é, versão e dados, correspondem aos esperados.
+        * Todos os testes apresentam os resultados esperados mesmo quando múltiplos clientes de teste são executados em paralelo.
+    * Comunicação
+        * Toda a comunicação entre cliente e servidor deve ser feita usando gRPC
+    * Apresentação
+        * Demonstrar que todos os itens da especificação foram seguidos
+        * Demonstrar a corretude do sistema frente aos testes
+        * Enumerar outros testes e casos cobertos implemententados
+        * Demonstrar comportamento quando comunicação é interrompida no meio do teste
+
+* Etapa 2 - Tolerância a Falhas
+    * Objetivos 
+         * Replicar o servidor para obter tolerância a falhas.
+    * Desafios
+         * Certificar-se de que o servidor é uma máquina de estados determinística
+         * Compreender o uso de Difusão Atômica em nível teórico
+         * Compreender o uso de Difusão Atômica em nível prático (Via [Ratis](https://lasarojc.github.io/ds_notes/fault/#estudo-de-caso-ratis))
+         * Aplicar difusão atômica na replicação do servidor
+    * Servidor
+         * A API permanece a mesma e implementada via gRPC.
+         * Requisições para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas (pontilhado fino).  
+         * Dados não são mais armazenados em disco pela sua aplicação mas somente via Ratis.
+    * Cliente
+         * Sem alteração.
+    * Testes
+         * O mesmo *framework* de testes deve continuar funcional
+    * Comunicação
+         * Entre cliente e servidor, usar gRPC
+         * Entre servidores, usar Ratis
+    * Apresentação
+         * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
+
+* Etapa 2 - P2P
+    * Objetivos
+        * DHT com roteamento estilo Chord
+        * Armazenamento em Log de operações e em arquivo de snapshots
+        * Comunicação usando RPC
+    * Desafios
+        * Uso adequado da interface funcional do RPC
+        * Uso do log + snapshots para recuperação
+        * Roteamento no anel
+        * Bootstrap dos processos
+        * Log Structured Merge Tree
+
+-->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#currentTimeMillis--">System.currentTimeMillis() em Java</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+  <!-- Last update of source file -->
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2022 Paulo Coelho
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/paulo-coelho/ds_notes" target="_blank" rel="noopener" title="These notes on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../javascripts/mathjaxhelper.js"></script>
+      
+    
+  </body>
+</html>
