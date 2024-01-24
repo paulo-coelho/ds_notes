@@ -279,7 +279,7 @@ service PortalAdministrativo {
 
 Valores não encontrados são deixados "em branco", isto é, deve-se retornar "" (string vazia) ou 0 (se inteiro) para valores não encontrados.
 
-Exceções (erros de comunicação, formato dos dados, etc, devem ser tratadas ao menos no lado servidor para evitar perda do estado durante os testes.
+Exceções (erros de comunicação, formato dos dados, etc), devem ser tratadas ao menos no lado servidor para evitar perda do estado durante os testes.
 
 
 ## Etapa 1 
