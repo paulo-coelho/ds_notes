@@ -2190,7 +2190,7 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 </li>
 </ul>
 </li>
-<li><code>rpc ObtemTodosAlunos(Vazia) returns (Alunos) {}</code><ul>
+<li><code>rpc ObtemTodosAlunos(Vazia) returns (stream Aluno) {}</code><ul>
 <li>Cliente:<ul>
 <li>invoca método sem argumentos*</li>
 </ul>
@@ -2391,25 +2391,25 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 </li>
 </ul>
 </li>
-<li><code>rpc ObtemDisciplinasProfessor(Identificador) returns (RelatorioDisciplinaProfessor) {}</code><ul>
+<li><code>rpc ObtemDisciplinasProfessor(Identificador) returns (stream RelatorioDisciplina) {}</code><ul>
 <li>Cliente:<ul>
 <li>informa o siape do professor.</li>
 </ul>
 </li>
 <li>Servidor:<ul>
-<li>retorna relatório com as disciplinas associadas ao professor, caso o professor existam e o mesmo esteja associado a alguma disciplina.</li>
+<li>retorna lista de disciplinas associadas ao professor, caso o professor exista e o mesmo esteja associado a alguma disciplina.</li>
 <li>retorna relatório em branco, caso contrário.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><code>rpc ObtemDisciplinasAluno(Identificador) returns (RelatorioDisciplinaAluno) {}</code><ul>
+<li><code>rpc ObtemDisciplinasAluno(Identificador) returns (stream ResumoDisciplina) {}</code><ul>
 <li>Cliente:<ul>
 <li>informa a matrícula do aluno.</li>
 </ul>
 </li>
 <li>Servidor:<ul>
-<li>retorna relatório com as disciplinas associadas ao aluno, caso o aluno exista e a mesmo esteja matriculado em alguma disciplina.</li>
+<li>retorna lista de disciplinas associadas ao aluno, caso o aluno exista e esteja matriculado em alguma disciplina.</li>
 <li>retorna relatório em branco, caso contrário.</li>
 </ul>
 </li>
