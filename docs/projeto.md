@@ -131,7 +131,7 @@ service PortalAdministrativo {
     * Servidor:
         - retorna dados do aluno solicitado, caso ele exista.
         - retorna Aluno com matrícula e nome em branco, caso contrário.
-* `rpc ObtemTodosAlunos(Vazia) returns (Alunos) {}`
+* `rpc ObtemTodosAlunos(Vazia) returns (stream Aluno) {}`
     * Cliente:
         - invoca método sem argumentos\*
     * Servidor:
@@ -240,17 +240,17 @@ service PortalAdministrativo {
     * Servidor:
         - retorna relatório para a disciplina solicitada, caso ela exista.
         - retorna relatório em branco, caso contrário.
-* `rpc ObtemDisciplinasProfessor(Identificador) returns (RelatorioDisciplinaProfessor) {}`
+* `rpc ObtemDisciplinasProfessor(Identificador) returns (stream RelatorioDisciplina) {}`
     * Cliente:
         - informa o siape do professor.
     * Servidor:
-        - retorna relatório com as disciplinas associadas ao professor, caso o professor existam e o mesmo esteja associado a alguma disciplina.
+        - retorna lista de disciplinas associadas ao professor, caso o professor exista e o mesmo esteja associado a alguma disciplina.
         - retorna relatório em branco, caso contrário.
-* `rpc ObtemDisciplinasAluno(Identificador) returns (RelatorioDisciplinaAluno) {}`
+* `rpc ObtemDisciplinasAluno(Identificador) returns (stream ResumoDisciplina) {}`
     * Cliente:
         - informa a matrícula do aluno.
     * Servidor:
-        - retorna relatório com as disciplinas associadas ao aluno, caso o aluno exista e a mesmo esteja matriculado em alguma disciplina.
+        - retorna lista de disciplinas associadas ao aluno, caso o aluno exista e esteja matriculado em alguma disciplina.
         - retorna relatório em branco, caso contrário.
 
 ### Retornos
@@ -259,11 +259,9 @@ Valores não encontrados são deixados "em branco", isto é, deve-se retornar ""
 
 Exceções (erros de comunicação, formato dos dados, etc), devem ser tratadas ao menos no lado servidor para evitar perda do estado durante os testes.
 
-
 ## Etapa 1 
 
 Esta etapa consiste na implementação da lógica de cadastros e consultas nos portais, com comunicação RPC entre clientes e servidores, e comunicação por meio de arquitetura *Publish-Subscribe* entre os servidores.
-
 
 ### Comunicação entre servidores
 
@@ -273,7 +271,6 @@ Por exemplo, o cliente *c1* pode cadastrar um aluno no servidor *s1* e deve ser 
 Para isto, nesta etapa, cada servidor deve publicar qualquer alteração nas chaves em um broker pub-sub, em tópico conhecido pelos demais, a partir do qual estes receberão as mudanças de estado e atualizarão suas próprias tabelas.
 
 Os dados publicados no broker pub-sub devem, **obrigatoriamente**, utilizar o formato JSON, com exemplos na documentação do projeto.
-
 
 A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
 
