@@ -2084,22 +2084,7 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
 
 <span class="k">option</span><span class="w"> </span><span class="na">java_multiple_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="k">option</span><span class="w"> </span><span class="na">java_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;br.ufu.facom.gbc074.projeto.cadastro&quot;</span><span class="p">;</span>
@@ -2135,21 +2120,6 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 <span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">message</span><span class="w"> </span><span class="nc">Alunos</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// lista de alunos</span>
-<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Aluno</span><span class="w"> </span><span class="na">alunos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">message</span><span class="w"> </span><span class="nc">Professores</span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// lista de professores</span>
-<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Professor</span><span class="w"> </span><span class="na">professores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">message</span><span class="w"> </span><span class="nc">Disciplinas</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// lista de alunos</span>
-<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Disciplina</span><span class="w"> </span><span class="na">disciplinas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
 <span class="kd">message</span><span class="w"> </span><span class="nc">Vazia</span><span class="w"> </span><span class="p">{}</span>
 
 <span class="kd">service</span><span class="w"> </span><span class="n">PortalAdministrativo</span><span class="w"> </span><span class="p">{</span>
@@ -2157,17 +2127,17 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">EditaAluno</span><span class="p">(</span><span class="n">Aluno</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RemoveAluno</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemAluno</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Aluno</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemTodosAlunos</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Alunos</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemTodosAlunos</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Aluno</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">NovoProfessor</span><span class="p">(</span><span class="n">Professor</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">EditaProfessor</span><span class="p">(</span><span class="n">Professor</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RemoveProfessor</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemProfessor</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Professor</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemTodosProfessores</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Professores</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemTodosProfessores</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Professor</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">NovaDisciplina</span><span class="p">(</span><span class="n">Disciplina</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">EditaDisciplina</span><span class="p">(</span><span class="n">Disciplina</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RemoveDisciplina</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemDisciplina</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Disciplina</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemTodasDisciplinas</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Disciplinas</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemTodasDisciplinas</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Disciplina</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h4 id="descricao-dos-metodos">Descrição dos métodos</h4>
@@ -2296,13 +2266,7 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
 
 <span class="k">option</span><span class="w"> </span><span class="na">java_multiple_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="k">option</span><span class="w"> </span><span class="na">java_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;br.ufu.facom.gbc074.projeto.matricula&quot;</span><span class="p">;</span>
@@ -2336,12 +2300,6 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 <span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">totalAlunos</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// Serve tanto para professor quanto para aluno</span>
-<span class="kd">message</span><span class="w"> </span><span class="nc">RelatorioDisciplinaAlunoProfessor</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// lista e disciplinas para o aluno ou professor</span>
-<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">ResumoDisciplina</span><span class="w"> </span><span class="na">disciplinas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
 <span class="kd">message</span><span class="w"> </span><span class="nc">Status</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 0 = sucesso, 1 = erro</span>
 <span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
@@ -2367,8 +2325,8 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">AdicionaAluno</span><span class="p">(</span><span class="n">DisciplinaPessoa</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RemoveAluno</span><span class="p">(</span><span class="n">DisciplinaPessoa</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">DetalhaDisciplina</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">RelatorioDisciplina</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemDisciplinasProfessor</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">RelatorioDisciplinaAlunoProfessor</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemDisciplinasAluno</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">RelatorioDisciplinaAlunoProfessor</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemDisciplinasProfessor</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">RelatorioDisciplina</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemDisciplinasAluno</span><span class="p">(</span><span class="n">Identificador</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ResumoDisciplina</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h4 id="descricao-dos-metodos_1">Descrição dos métodos</h4>
