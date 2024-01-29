@@ -84,21 +84,6 @@ message Identificador {
   string id = 1;
 }
 
-message Alunos {
-  // lista de alunos
-  repeated Aluno alunos = 1;
-}
-
-message Professores{
-  // lista de professores
-  repeated Professor professores = 1;
-}
-
-message Disciplinas {
-  // lista de alunos
-  repeated Disciplina disciplinas = 1;
-}
-
 message Vazia {}
 
 service PortalAdministrativo {
@@ -106,17 +91,17 @@ service PortalAdministrativo {
   rpc EditaAluno(Aluno) returns (Status) {}
   rpc RemoveAluno(Identificador) returns (Status) {}
   rpc ObtemAluno(Identificador) returns (Aluno) {}
-  rpc ObtemTodosAlunos(Vazia) returns (Alunos) {}
+  rpc ObtemTodosAlunos(Vazia) returns (stream Aluno) {}
   rpc NovoProfessor(Professor) returns (Status) {}
   rpc EditaProfessor(Professor) returns (Status) {}
   rpc RemoveProfessor(Identificador) returns (Status) {}
   rpc ObtemProfessor(Identificador) returns (Professor) {}
-  rpc ObtemTodosProfessores(Vazia) returns (Professores) {}
+  rpc ObtemTodosProfessores(Vazia) returns (stream Professor) {}
   rpc NovaDisciplina(Disciplina) returns (Status) {}
   rpc EditaDisciplina(Disciplina) returns (Status) {}
   rpc RemoveDisciplina(Identificador) returns (Status) {}
   rpc ObtemDisciplina(Identificador) returns (Disciplina) {}
-  rpc ObtemTodasDisciplinas(Vazia) returns (Disciplinas) {}
+  rpc ObtemTodasDisciplinas(Vazia) returns (stream Disciplina) {}
 }
 ```
 
@@ -193,12 +178,6 @@ message ResumoDisciplina {
   int32 totalAlunos              = 3;
 }
 
-// Serve tanto para professor quanto para aluno
-message RelatorioDisciplinaAlunoProfessor {
-  // lista e disciplinas para o aluno ou professor
-  repeated ResumoDisciplina disciplinas = 1;
-}
-
 message Status {
   // 0 = sucesso, 1 = erro
   int32 status = 1; 
@@ -224,10 +203,9 @@ service PortalAdministrativo {
   rpc AdicionaAluno(DisciplinaPessoa) returns (Status) {}
   rpc RemoveAluno(DisciplinaPessoa) returns (Status) {}
   rpc DetalhaDisciplina(Identificador) returns (RelatorioDisciplina) {}
-  rpc ObtemDisciplinasProfessor(Identificador) returns (RelatorioDisciplinaAlunoProfessor) {}
-  rpc ObtemDisciplinasAluno(Identificador) returns (RelatorioDisciplinaAlunoProfessor) {}
+  rpc ObtemDisciplinasProfessor(Identificador) returns (stream RelatorioDisciplina) {}
+  rpc ObtemDisciplinasAluno(Identificador) returns (stream ResumoDisciplina) {}
 }
-
 ```
 
 #### Descrição dos métodos
