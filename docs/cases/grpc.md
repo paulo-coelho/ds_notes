@@ -43,14 +43,6 @@ cd grpc-java/examples
 ./gradlew installDist -PskipAndroid=true
 ```
 
-
-!!!note "Proxy"
-    Caso esteja na UFU, coloque também informação sobre o proxy no comando.
-
-    ```bash
-    ./gradlew -Dhttp.proxyHost=proxy.ufu.br -Dhttp.proxyPort=3128 -Dhttps.proxyHost=proxy.ufu.br -Dhttps.proxyPort=3128 installDist
-    ```
-
 Como quando usamos sockets diretamente, para usar o serviço definido neste exemplo, primeiros temos que executar o servidor.
 
 ```bash
