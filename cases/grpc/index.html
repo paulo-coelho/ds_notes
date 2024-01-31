@@ -1909,12 +1909,6 @@ git<span class="w"> </span>checkout<span class="w"> </span>v1.47.0
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>grpc-java/examples
 ./gradlew<span class="w"> </span>installDist<span class="w"> </span>-PskipAndroid<span class="o">=</span><span class="nb">true</span>
 </code></pre></div></td></tr></table></div>
-<div class="admonition note">
-<p class="admonition-title">Proxy</p>
-<p>Caso esteja na UFU, coloque também informação sobre o proxy no comando.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./gradlew<span class="w"> </span>-Dhttp.proxyHost<span class="o">=</span>proxy.ufu.br<span class="w"> </span>-Dhttp.proxyPort<span class="o">=</span><span class="m">3128</span><span class="w"> </span>-Dhttps.proxyHost<span class="o">=</span>proxy.ufu.br<span class="w"> </span>-Dhttps.proxyPort<span class="o">=</span><span class="m">3128</span><span class="w"> </span>installDist
-</code></pre></div></td></tr></table></div>
-</div>
 <p>Como quando usamos sockets diretamente, para usar o serviço definido neste exemplo, primeiros temos que executar o servidor.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./build/install/examples/bin/hello-world-server
 </code></pre></div></td></tr></table></div>
