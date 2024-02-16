@@ -197,7 +197,7 @@ message DisciplinaPessoa {
   string idPessoa = 2;
 }
 
-service PortalAdministrativo {
+service PortalMatricula {
   rpc AdicionaProfessor(DisciplinaPessoa) returns (Status) {}
   rpc RemoveProfessor(DisciplinaPessoa) returns (Status) {}
   rpc AdicionaAluno(DisciplinaPessoa) returns (Status) {}
