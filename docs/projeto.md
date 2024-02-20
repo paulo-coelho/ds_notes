@@ -164,6 +164,7 @@ message Professor {
 message Disciplina {
   string sigla = 1;
   string nome  = 2;
+  int32 vagas  = 3;
 }
 
 message RelatorioDisciplina {
