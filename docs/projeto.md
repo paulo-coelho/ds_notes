@@ -289,41 +289,67 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
 * Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
     * Utilizar o *broker pub-sub* [`mosquitto`](../cases/mosquitto) com a configuração padrão e aceitando conexões na interface local (*localhost ou 127.0.0.1*), porta TCP 1883.
 * Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
-<!--
 
-## Etapa 2 - Banco de dados Replicado
-Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas persistente e consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
+## Etapa 2 - Banco de dados particionado e replicado
 
-![Projeto](drawings/projeto.drawio#1)
+Nesta etapa você deverá modificar os servidores para que a atualizações sejam persistidas em disco.
+Esta persistência deve ser tolerante a falhas. 
+Além disso, os dados serão particionados, ou seja, cada parcela dos dados será gerenciada por um conjunto de processos diversos.
 
-* Objetivos
-    * Replicar a base de dados para obter tolerância a falhas.
+### Objetivos
 
-* Desafios
-    * Certificar-se de que os servidores são máquinas de estados determinística
-    * Compreender o uso de Difusão Atômica em nível teórico
-    * Compreender o uso de Difusão Atômica em nível prático
-        * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
-        * Para Python, [PySyncObj](https://github.com/bakwc/PySyncObj) é uma boa opção
-        * Para Rust, [raft-rs](https://github.com/tikv/raft-rs) parece ser a biblioteca mais utilizada
-        * Aplicar difusão atômica na replicação do banco de dados
-        * Utilizar um banco de dados simples do tipo chave-valor, necessariamente [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
-            * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
-        * Utilizar três réplicas para o banco de dados
-        * Não há limite para a quantidade de servidores acessados pelos clientes
-* Implementação
-    * A API para clientes e servidores continua a mesma
-    * Requisições feitas pelos clientes via gRPC para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas
-    * Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi)
-* Testes
-    * O mesmo *framework* de testes deve continuar funcional
-* Comunicação
-    * Entre cliente e servidor nada é alterado
-    * Entre servidores e réplicas do banco de dados, usar Ratis/PySyncOb
-* Apresentação
-    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
+* Replicar a base de dados para obter tolerância a falhas.
+* Particionar a base de dados para aumentar a escalabilidade.
 
--->
+
+### Estratégia de particionamento e replicação
+
+O sistema de armazenamento deve utilizar uma base de dados chave valor de código aberto amplamente conhecida para persistência em disco (mais detalhes a seguir) para guardar os dados de alunos, professores e disciplinas, bem como as relações entre estes.
+
+Estes dados serão armazenados no mesmo formato definido para a Etapa 1.
+
+Serão instanciadas duas partições (partição 0 e partição 1), cada uma contendo três réplicas do sistema de armazenamento.
+Cada partição de três réplicas corresponde a uma máquina de estados replicada, que deve utilizar um *middleware* de difusão totalmente ordenada para garantir que requisições determinísticas dos servidores administrativo e de matrícula sejam executadas na mesma ordem em cada réplica.
+
+A decisão da partição que receberá os dados será feita de acordo com o seguinte critério:
+
+* `partição <- sha1(key) mod 2`, ou seja, seja o resto da divisão por 2 do *hash* da chave `key` (siape, matrícula ou sigla, dependendo do tipo de dado).
+
+Além da persistência em disco por meio do armazenamento replicado e particionado, os servidores devem manter um *cache* local em memória para evitar consultas excessivas ao serviço de persistência.
+Deste modo, os servidores devem continuar a publicar no *broker* MQTT todas as atualizações, da mesma forma que foi implementado na Etapa 1. 
+Esta publicação servirá para manter atualizados os *caches* dos demais servidores.
+
+### Desafios
+
+* Certificar-se de que os servidores são máquinas de estados determinística
+* Compreender o uso de Difusão Atômica em nível teórico
+* Compreender o uso de Difusão Atômica em nível prático
+    * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
+    * Para Python, [PySyncObj](https://github.com/bakwc/PySyncObj) é uma boa opção
+    * Para Rust, [raft-rs](https://github.com/tikv/raft-rs) parece ser a biblioteca mais utilizada
+    * Aplicar difusão atômica na replicação do banco de dados
+    * Utilizar um banco de dados simples do tipo chave-valor, **obrigatoriamente** [LevelDB](https://github.com/google/leveldb)
+        * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
+    * Utilizar três réplicas para o banco de dados em cada partição
+    * Não há limite para a quantidade de servidores acessados pelos clientes
+
+### Implementação
+
+* Compreender o critério de seleção da partição
+* A API para clientes e servidores continua a mesma
+* Requisições feitas pelos clientes via gRPC para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas
+* Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi)
+
+#### Testes
+* O mesmo *framework* de testes deve continuar funcional
+municação
+* Entre cliente e servidor nada é alterado
+* Entre servidores e réplicas do banco de dados, usar Ratis (gRPC) ou PySyncOb+(gRPC ou socket).
+* Manter *caches* locais atualizados via *pub-sub*
+
+A figura a seguir ilustra a arquitetura exigida para a Etapa 2 do Projeto.
+
+![Projeto](drawings/projeto.drawio#4)
 
 ### Submissão
 
@@ -336,6 +362,7 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
     * Arquivo `mat-server.sh` para executar o servidor do Portal de Matrícula, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
     * Arquivo `mat-client.sh` para executar o cliente do Portal de Matrícula, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
     * Descrição das dificuldades com indicação do que não foi implementado.
+    * Arquivo `db.sh` para executar cada réplica do serviço de persistência, recebendo como parâmetro o `id` da réplica (0, 1 ou 2) e o número da partição a que ela pertence (0 ou 1).
 
 <!--
     * Arquivo `replica.sh` para executar a réplica do banco de dados, recebendo como parâmetro o parâmetro *bd1*, *bd2* ou *bd3*, representado cada uma das réplicas da figura
