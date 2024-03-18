@@ -1788,6 +1788,72 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-2-banco-de-dados-particionado-e-replicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Etapa 2 - Banco de dados particionado e replicado
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 2 - Banco de dados particionado e replicado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-particionamento-e-replicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estratégia de particionamento e replicação
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desafios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desafios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#submissao" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1949,6 +2015,72 @@
       Requisitos básicos
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-2-banco-de-dados-particionado-e-replicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Etapa 2 - Banco de dados particionado e replicado
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 2 - Banco de dados particionado e replicado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-particionamento-e-replicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estratégia de particionamento e replicação
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desafios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desafios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2445,42 +2577,62 @@ Por exemplo, o cliente <em>c1</em> pode cadastrar um aluno no servidor <em>s1</e
 </li>
 <li>Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.</li>
 </ul>
-<!--
-
-## Etapa 2 - Banco de dados Replicado
-Nesta etapa você modificará o sistema para que atualizações dos dados sejam feitas persistente e consistentemente entre todas as réplicas usando um protocolo de difusão atômica.
-
-![Projeto](drawings/projeto.drawio#1)
-
-* Objetivos
-    * Replicar a base de dados para obter tolerância a falhas.
-
-* Desafios
-    * Certificar-se de que os servidores são máquinas de estados determinística
-    * Compreender o uso de Difusão Atômica em nível teórico
-    * Compreender o uso de Difusão Atômica em nível prático
-        * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
-        * Para Python, [PySyncObj](https://github.com/bakwc/PySyncObj) é uma boa opção
-        * Para Rust, [raft-rs](https://github.com/tikv/raft-rs) parece ser a biblioteca mais utilizada
-        * Aplicar difusão atômica na replicação do banco de dados
-        * Utilizar um banco de dados simples do tipo chave-valor, necessariamente [LevelDB](https://github.com/google/leveldb) ou [LMDB](https://git.openldap.org/openldap/openldap/tree/mdb.master)
-            * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
-        * Utilizar três réplicas para o banco de dados
-        * Não há limite para a quantidade de servidores acessados pelos clientes
-* Implementação
-    * A API para clientes e servidores continua a mesma
-    * Requisições feitas pelos clientes via gRPC para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas
-    * Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi)
-* Testes
-    * O mesmo *framework* de testes deve continuar funcional
-* Comunicação
-    * Entre cliente e servidor nada é alterado
-    * Entre servidores e réplicas do banco de dados, usar Ratis/PySyncOb
-* Apresentação
-    * Sem alteração, isto é, gravar um vídeo demonstrando que os requisitos foram atendidos.
-
--->
-
+<h2 id="etapa-2-banco-de-dados-particionado-e-replicado">Etapa 2 - Banco de dados particionado e replicado</h2>
+<p>Nesta etapa você deverá modificar os servidores para que a atualizações sejam persistidas em disco.
+Esta persistência deve ser tolerante a falhas. 
+Além disso, os dados serão particionados, ou seja, cada parcela dos dados será gerenciada por um conjunto de processos diversos.</p>
+<h3 id="objetivos">Objetivos</h3>
+<ul>
+<li>Replicar a base de dados para obter tolerância a falhas.</li>
+<li>Particionar a base de dados para aumentar a escalabilidade.</li>
+</ul>
+<h3 id="estrategia-de-particionamento-e-replicacao">Estratégia de particionamento e replicação</h3>
+<p>O sistema de armazenamento deve utilizar uma base de dados chave valor de código aberto amplamente conhecida para persistência em disco (mais detalhes a seguir) para guardar os dados de alunos, professores e disciplinas, bem como as relações entre estes.</p>
+<p>Estes dados serão armazenados no mesmo formato definido para a Etapa 1.</p>
+<p>Serão instanciadas duas partições (partição 0 e partição 1), cada uma contendo três réplicas do sistema de armazenamento.
+Cada partição de três réplicas corresponde a uma máquina de estados replicada, que deve utilizar um <em>middleware</em> de difusão totalmente ordenada para garantir que requisições determinísticas dos servidores administrativo e de matrícula sejam executadas na mesma ordem em cada réplica.</p>
+<p>A decisão da partição que receberá os dados será feita de acordo com o seguinte critério:</p>
+<ul>
+<li><code>partição &lt;- sha1(key) mod 2</code>, ou seja, seja o resto da divisão por 2 do <em>hash</em> da chave <code>key</code> (siape, matrícula ou sigla, dependendo do tipo de dado).</li>
+</ul>
+<p>Além da persistência em disco por meio do armazenamento replicado e particionado, os servidores devem manter um <em>cache</em> local em memória para evitar consultas excessivas ao serviço de persistência.
+Deste modo, os servidores devem continuar a publicar no <em>broker</em> MQTT todas as atualizações, da mesma forma que foi implementado na Etapa 1. 
+Esta publicação servirá para manter atualizados os <em>caches</em> dos demais servidores.</p>
+<h3 id="desafios">Desafios</h3>
+<ul>
+<li>Certificar-se de que os servidores são máquinas de estados determinística</li>
+<li>Compreender o uso de Difusão Atômica em nível teórico</li>
+<li>Compreender o uso de Difusão Atômica em nível prático<ul>
+<li>Use <a href="https://paulo-coelho.github.io/ds_notes/cases/ratis">Ratis</a> para java</li>
+<li>Para Python, <a href="https://github.com/bakwc/PySyncObj">PySyncObj</a> é uma boa opção</li>
+<li>Para Rust, <a href="https://github.com/tikv/raft-rs">raft-rs</a> parece ser a biblioteca mais utilizada</li>
+<li>Aplicar difusão atômica na replicação do banco de dados</li>
+<li>Utilizar um banco de dados simples do tipo chave-valor, <strong>obrigatoriamente</strong> <a href="https://github.com/google/leveldb">LevelDB</a><ul>
+<li>Embora originalmente escritas em C++/C, há <em>ports</em> para diversas outras linguagens, (e.g., <a href="https://github.com/lmdbjava/lmdbjava">aqui</a> e <a href="https://github.com/dain/leveldb">aqui</a>)</li>
+</ul>
+</li>
+<li>Utilizar três réplicas para o banco de dados em cada partição</li>
+<li>Não há limite para a quantidade de servidores acessados pelos clientes</li>
+</ul>
+</li>
+</ul>
+<h3 id="implementacao">Implementação</h3>
+<ul>
+<li>Compreender o critério de seleção da partição</li>
+<li>A API para clientes e servidores continua a mesma</li>
+<li>Requisições feitas pelos clientes via gRPC para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas</li>
+<li>Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi)</li>
+</ul>
+<h4 id="testes">Testes</h4>
+<ul>
+<li>O mesmo <em>framework</em> de testes deve continuar funcional
+municação</li>
+<li>Entre cliente e servidor nada é alterado</li>
+<li>Entre servidores e réplicas do banco de dados, usar Ratis (gRPC) ou PySyncOb+(gRPC ou socket).</li>
+<li>Manter <em>caches</em> locais atualizados via <em>pub-sub</em></li>
+</ul>
+<p>A figura a seguir ilustra a arquitetura exigida para a Etapa 2 do Projeto.</p>
+<p><img alt="Projeto" src="../drawings/projeto.drawio-4.svg" /></p>
 <h3 id="submissao">Submissão</h3>
 <ul>
 <li>A submissão será feita até a data limite via formulário do Microsoft Teams, bastando informar o link do repositório <strong>privado</strong> em <em>github.com</em>, devidamente compartilhado com o usuário <code>paulo-coelho</code>.</li>
@@ -2492,6 +2644,7 @@ Nesta etapa você modificará o sistema para que atualizações dos dados sejam 
 <li>Arquivo <code>mat-server.sh</code> para executar o servidor do Portal de Matrícula, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.</li>
 <li>Arquivo <code>mat-client.sh</code> para executar o cliente do Portal de Matrícula, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.</li>
 <li>Descrição das dificuldades com indicação do que não foi implementado.</li>
+<li>Arquivo <code>db.sh</code> para executar cada réplica do serviço de persistência, recebendo como parâmetro o <code>id</code> da réplica (0, 1 ou 2) e o número da partição a que ela pertence (0 ou 1).</li>
 </ul>
 </li>
 </ul>
