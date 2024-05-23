@@ -1,39 +1,38 @@
 A área de computação distribuída é rica em aplicações e desenvolvê-los é topar de frente com vários problemas e decidir como resolvê-los ou contorná-los e, por isto, nada melhor que um projeto para experimentar em primeira mão as angústias e prazeres da área. 
 Assim, proponho visitarmos o material destas notas à luz de uma aplicação genérica mas real, desenvolvida por vocês enquanto vemos a teoria.
 
-O projeto consiste em implementar um **Sistema de Bibliotecas** com armazenamento  chave-valor (*key-value store = KVS*).
+O projeto consiste em implementar um **Sistema de Matrícula** com armazenamento  chave-valor (*key-value store = KVS*).
 
 A arquitetura do sistema será **híbrida**, contendo um pouco de cliente/servidor, publish/subscribe e Peer-2-Peer, além de ser multicamadas.
 Apesar de introduzir complexidade extra, também usaremos **múltiplos mecanismos para a comunicação** entre as partes, para que possam experimentar com diversas abordagens.
 
-O sistema contempla dois portais: **Portal Cadastro** e **Portal Biblioteca**.
-O Portal Cadastro é responsável por manter os cadastros de usuários e livros.
-O Portal Biblioteca gerencia o empréstimo de livros a usuários.
+O sistema contempla dois portais: **Portal Administrativo** e **Portal de Matrícula**.
+O Portal Administrativo é responsável por manter os cadastros de alunos, professores e disciplinas.
+O Portal de Matrícula gerencia a atribuição de disciplinas a professores e o cadastro de alunos em matrículas.
 
-O sistema utiliza a arquitetura cliente-servidor na comunicação com os clientes dos portais, que invoca as operações definidas mais adiante,  e servidores, que atualizam o estado de acordo e retornam o resultado a cada cliente.
+O sistema utiliza a arquitetura cliente-servidor na comunicação entre clientes, que realiza as operações em cima do sistema de armazenamento, e servidores, que atualizam o estado de acordo e retornam o resultado a cada cliente.
 
-Múltiplas instâncias do servidor de cada portal podem ser executados simultaneamente para aumentar a disponibilidade do serviço e/ou atender um maior número de clientes (escalar).
+Múltiplas instâncias do servidor podem ser executados simultaneamente para aumentar a disponibilidade do serviço e/ou atender um maior número de clientes (escalar).
 O detalhamento do comportamento e implementação, neste caso, será diferente para cada etapa do projeto, sendo detalhado nas seções seguintes.
 
 Tanto as aplicações clientes quanto os servidores devem, obrigatoriamente, possuir uma interface de linha de comando (*command line interface - CLI*) para execução e interação.
-O cliente deve ter uma interface interativa, ou seja, deve permitir a escolha da operação a partir de menu impresso no terminal, fazendo a leitura dos campos necessários a partir do teclado.
 
 A aplicação servidor manipula cada chave **K** em operações de escrita e leitura de acordo com a descrição e interface apresentadas mais adiante.
 A tupla **(K,V)** significa que a chave **K** possui valor **V**.
 Cada atualização para a mesma chave **K** com um novo valor **V'** substitui o valor **V** armazenado previamente.
 As chaves e valores devem ser do tipo *String*.
 
-Os dados de usuários e livros em cada Portal são mantidos em um tabela hash `ID -> Dados`, todos do tipo `String` e armazenados em memória (use uma tabela hash). 
+Os dados de alunos, professores e disciplinas em cada Portal são mantidos em um tabela hash `ID -> Dados`, todos do tipo `String` e armazenados em memória (use uma tabela hash). 
 
 O campo `Dados` **deve** ser armazenado como uma string JSON, com formato definido por você, devidamente descrito na documentação do projeto.
 
 Além disso, você pode criar tabelas hash adicionais para representar a relação entre os dados. 
-Por exemplo, pode-se criar a tabela `UsuarioLivro` no Portal Biblioteca com chave correspondente ao `ID` do usuário e com valor igual à lista de livros que o usuário emprestou.
+Por exemplo, pode-se criar a tabela "DisciplinaAluno" no Portal de Matrículas, cuja chave seja a sigla da disciplina e o valor seja um vetor de matrículas de alunos devidamente representado no formato JSON.
 
 A comunicação entre clientes e servidores deve ser, **obrigatoriamente**, realizada via [gRPC](../cases/grpc) de acordo com a interface definida adiante.
 
-O servidor do **Portal Biblioteca** deve obter os dados de usuários e livros a partir do servidor do **Portal Cadastro**.
-Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas para evitar chamadas repetidas para valores já conhecidos.
+O servidor do Portal de Matrícula deve obter os dados de alunos, professores e disciplinas a partir do servidor do Portal Administrativo.
+Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas para evitar chamdas repetidas para valores já conhecidos.
 
 A comunicação entre estes servidores será detalhada na descrição da etapa correspondente nas seções a seguir.
 
@@ -54,20 +53,23 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "br.ufu.facom.gbc074.projeto.cadastro";
 
-package cadastro;
+package project;
 
-message Usuario{
-  // CPF do usuario (chave)
-  string cpf     = 1;
-  string nome    = 2;
+message Aluno {
+  string matricula = 1;
+  string nome      = 2;
 }
 
-message Livro {
-  // ISBN do livro (chave)
-  string isbn      = 1;
-  string titulo    = 2;
-  string autor     = 3;
-  int32 quantidade = 4;
+message Professor {
+  string siape = 1;
+  string nome  = 2;
+}
+
+message Disciplina {
+  string sigla = 1;
+  string nome  = 2;
+  // total de alunos permitido
+  int32 vagas  = 3;
 }
 
 message Status {
@@ -78,86 +80,103 @@ message Status {
 }
 
 message Identificador {
-  // cpf para usuario, isbn para livro
+  // matricula, siape ou sigla
   string id = 1;
 }
 
 message Vazia {}
 
-service PortalCadastro {
-  rpc NovoUsuario(Usuario) returns (Status) {}
-  rpc EditaUsuario(Usuario) returns (Status) {}
-  rpc RemoveUsuario(Identificador) returns (Status) {}
-  rpc ObtemUsuario(Identificador) returns (Usuario) {}
-  rpc ObtemTodosUsuarios(Vazia) returns (stream Usuario) {}
-  rpc NovoLivro(Livro) returns (Status) {}
-  rpc EditaLivro(Livro) returns (Status) {}
-  rpc RemoveLivro(Identificador) returns (Status) {}
-  rpc ObtemLivro(Identificador) returns (Livro) {}
-  rpc ObtemTodosLivros(Vazia) returns (stream Livro) {}
+service PortalAdministrativo {
+  rpc NovoAluno(Aluno) returns (Status) {}
+  rpc EditaAluno(Aluno) returns (Status) {}
+  rpc RemoveAluno(Identificador) returns (Status) {}
+  rpc ObtemAluno(Identificador) returns (Aluno) {}
+  rpc ObtemTodosAlunos(Vazia) returns (stream Aluno) {}
+  rpc NovoProfessor(Professor) returns (Status) {}
+  rpc EditaProfessor(Professor) returns (Status) {}
+  rpc RemoveProfessor(Identificador) returns (Status) {}
+  rpc ObtemProfessor(Identificador) returns (Professor) {}
+  rpc ObtemTodosProfessores(Vazia) returns (stream Professor) {}
+  rpc NovaDisciplina(Disciplina) returns (Status) {}
+  rpc EditaDisciplina(Disciplina) returns (Status) {}
+  rpc RemoveDisciplina(Identificador) returns (Status) {}
+  rpc ObtemDisciplina(Identificador) returns (Disciplina) {}
+  rpc ObtemTodasDisciplinas(Vazia) returns (stream Disciplina) {}
 }
 ```
 
 #### Descrição dos métodos
 
-* `rpc NovoUsuario(Usuario) returns (Status) {}`
+* `rpc NovoAluno(Aluno) returns (Status) {}`
     * Cliente:
-        - informa dados do usuário a ser cadastrado.
+        - informa matricula e nome do aluno a ser cadastrado.
     * Servidor:
-        - cadastra o novo usuário e retorna 0 se ele não existia previamente e os campos possuem tamanho maior do que 3.
+        - cadastra o novo aluno e retorna 0 se aluno não existia previamente e a matrícula e o nome possuem tamanho maior do que 4.
         - retorna 1 com a descrição do erro, caso contrário.
-* `rpc EditaUsuario(Usuario) returns (Status) {}`
+* `rpc EditaAluno(Aluno) returns (Status) {}`
     * Cliente:
-        - informa dados do usuário a ser atualizado.
+        - informa matricula e nome do aluno a ser atualizado.
     * Servidor:
-        - atualiza o usuário e retorna 0 se chave já existia previamente e o novos campos possuem tamanho maior do que 3.
+        - atualiza o aluno e retorna 0 se matrícula informada já existia previamente e o novo nome possui tamanho maior do que 4.
         - retorna 1 com a descrição do erro, caso contrário.
-* `rpc RemoveUsuario(Identificador) returns (Status) {}`
+* `rpc RemoveAluno(Identificador) returns (Status) {}`
     * Cliente:
-        - informa chave do usuário a ser removido.
+        - informa matricula do aluno a ser removido.
     * Servidor:
-        - remove o usuário e retorna 0 se ele já existia previamente.
+        - remove o aluno e retorna 0 se aluno já existia previamente.
         - retorna 1 com a descrição do erro, caso contrário.
-* `rpc ObtemUsuario(Identificador) returns (Usuario) {}`
+* `rpc ObtemAluno(Identificador) returns (Aluno) {}`
     * Cliente:
-        - informa chave do usuário.
+        - informa matricula do aluno.
     * Servidor:
-        - retorna dados do usuário solicitado, caso ele exista.
-        - retorna `Usuario` com dados em branco, caso contrário.
-* `rpc ObtemTodosUsuarios(Vazia) returns (stream Usuario) {}`
+        - retorna dados do aluno solicitado, caso ele exista.
+        - retorna Aluno com matrícula e nome em branco, caso contrário.
+* `rpc ObtemTodosAlunos(Vazia) returns (stream Aluno) {}`
     * Cliente:
         - invoca método sem argumentos\*
     * Servidor:
-        - retorna lista de todos os usuários cadastrados.
+        - retorna lista de todos os alunos cadastrados.
 
 \* A linguagem de descrição de interface do *ProtoBuf* exige que o método tenha argumento, sendo definida uma mensagem sem atributos denominada `Vazia` para garantir conformidade.
 
-A mesma lógica do cadastro de usuários se aplica ao cadastro de livros.
+A mesma lógica do cadastro de alunos se aplica aos cadastros de professores e disciplinas.
 
-### Portal Biblioteca
+### Portal de Matrícula
 
 ```proto
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "br.ufu.facom.gbc074.projeto.biblioteca";
+option java_package = "br.ufu.facom.gbc074.projeto.matricula";
 
-package biblioteca;
+package project;
 
-message Usuario{
-  // CPF do usuario (chave)
-  string cpf     = 1;
-  string nome    = 2;
-  // campo presente apenas no portal biblioteca
-  bool bloqueado = 3;
+message Aluno {
+  string matricula = 1;
+  string nome      = 2;
 }
 
-message Livro {
-  // ISBN do livro (chave)
-  string isbn      = 1;
-  string titulo    = 2;
-  string autor     = 3;
-  int32 quantidade = 4;
+message Professor {
+  string siape = 1;
+  string nome  = 2;
+}
+
+message Disciplina {
+  string sigla = 1;
+  string nome  = 2;
+  int32 vagas  = 3;
+}
+
+message RelatorioDisciplina {
+  Disciplina disciplina          = 1;
+  Professor professor            = 2;
+  repeated Aluno alunos          = 3;
+}
+
+message ResumoDisciplina {
+  Disciplina disciplina          = 1;
+  Professor professor            = 2;
+  int32 totalAlunos              = 3;
 }
 
 message Status {
@@ -168,52 +187,72 @@ message Status {
 }
 
 message Identificador {
-  // cpf para usuario, isbn para livro
+  // matricula, siape ou sigla
   string id = 1;
 }
 
-message UsuarioLivro {
-  Identificador usuario = 1;
-  Identificador livro   = 2;
+message DisciplinaPessoa {
+  // id da disciplina
+  string disciplina = 1;
+  // matricula do aluno ou siape do professor
+  string idPessoa = 2;
 }
 
-message Vazia {}
-
-service PortalBiblioteca {
-  rpc RealizaEmprestimo(stream UsuarioLivro) returns (Status) {}
-  rpc RealizaDevolucao(stream UsuarioLivro) returns (Status) {}
-  rpc BloqueiaUsuarios(Vazia) returns (Status) {}
-  rpc LiberaUsuarios(Vazia) returns (Status) {}
-  rpc ListaUsuariosBloqueados(Vazia) returns (stream Usuario) {}
-  rpc ListaLivrosEmprestados(Vazia) returns (stream Livro) {}
-  rpc ListaLivrosEmFalta(Vazia) returns (stream Livro) {}
+service PortalMatricula {
+  rpc AdicionaProfessor(DisciplinaPessoa) returns (Status) {}
+  rpc RemoveProfessor(DisciplinaPessoa) returns (Status) {}
+  rpc AdicionaAluno(DisciplinaPessoa) returns (Status) {}
+  rpc RemoveAluno(DisciplinaPessoa) returns (Status) {}
+  rpc DetalhaDisciplina(Identificador) returns (RelatorioDisciplina) {}
+  rpc ObtemDisciplinasProfessor(Identificador) returns (stream RelatorioDisciplina) {}
+  rpc ObtemDisciplinasAluno(Identificador) returns (stream ResumoDisciplina) {}
 }
 ```
 
 #### Descrição dos métodos
 
-* `rpc RealizaEmprestimo(stream UsuarioLivro) returns (Status) {}`
+* `rpc AdicionaProfessor(DisciplinaPessoa) returns (Status) {}`
     * Cliente:
-        - informa chaves do usuário e do livro.
+        - informa a sigla da disciplina e o siape do professor a ser associado à disciplina.
     * Servidor:
-        - caso o livro e usuário existam, livro esteja disponível e o usuário não esteja bloqueado, realiza o empréstimo ajustando a quantidade de livros disponíveis e retorna 0.
+        - cadastra o professor na disciplina e retorna 0 se disciplina e professor existem, e a disciplina não tem nenhum professor previamente cadastrado.
         - retorna 1 com a descrição do erro, caso contrário.
-* `rpc RealizaDevolucao(stream UsuarioLivro) returns (Status) {}`
+* `rpc RemoveProfessor(DisciplinaPessoa) returns (Status) {}`
     * Cliente:
-        - informa chaves do usuário e do livro.
+        - informa a sigla da disciplina e o siape do professor a ser desassociado da disciplina.
     * Servidor:
-        - caso o livro e usuário existam, realiza a devolução do livro ajustando a quantidade de livros disponíveis e, caso se aplique, desbloqueia o usuário ajustando a quantidade de livros disponíveis, retornando 0.
+        - remove o professor da disciplina e retorna 0 se disciplina e professor existem, e a o professor estava associado à disciplina.
         - retorna 1 com a descrição do erro, caso contrário.
-* `rpc BloqueiaUsuarios(Vazia) returns (Status) {}`
+* `rpc AdicionaAluno(DisciplinaPessoa) returns (Status) {}`
     * Cliente:
-        - invoca método sem argumentos.
+        - informa a sigla da disciplina e a matrícula do aluno a ser matriculado na disciplina.
     * Servidor:
-      * - varre lista de empréstimos de usuários e bloqueia todos os usuários com prazo de devolução de livro expirado (detalhes sobre o prazo mais adiante), retornando 0 caso nenhum usuário esteja bloqueado.
-        - retorna a quantidade de usuários bloqueados no campo `status` do retorno.
-* `rpc LiberaUsuarios(Vazia) returns (Status) {}`
-* `rpc ListaUsuariosBloqueados(Vazia) returns (stream Usuario) {}`
-* `rpc ListaLivrosEmprestados(Vazia) returns (stream Livro) {}`
-* `rpc ListaLivrosEmFalta(Vazia) returns (stream Livro) {}`
+        - cadastra o aluno na disciplina e retorna 0 se disciplina e aluno existem, e a disciplina ainda não atingiu o limite de vagas ou não contém o mesmo aluno.
+        - retorna 1 com a descrição do erro, caso contrário.
+* `rpc RemoveAluno(DisciplinaPessoa) returns (Status) {}`
+    * Cliente:
+        - informa a sigla da disciplina e a matrícula do aluno a ser desassociado da disciplina.
+    * Servidor:
+        - remove o aluno da disciplina e retorna 0 se disciplina e disciplina existem, e a o aluno estava associado à disciplina.
+        - retorna 1 com a descrição do erro, caso contrário.
+* `rpc DetalhaDisciplina(Identificador) returns (RelatorioDisciplina) {}`
+    * Cliente:
+        - informa a sigla da disciplina.
+    * Servidor:
+        - retorna relatório para a disciplina solicitada, caso ela exista.
+        - retorna relatório em branco, caso contrário.
+* `rpc ObtemDisciplinasProfessor(Identificador) returns (stream RelatorioDisciplina) {}`
+    * Cliente:
+        - informa o siape do professor.
+    * Servidor:
+        - retorna lista de disciplinas associadas ao professor, caso o professor exista e o mesmo esteja associado a alguma disciplina.
+        - retorna relatório em branco, caso contrário.
+* `rpc ObtemDisciplinasAluno(Identificador) returns (stream ResumoDisciplina) {}`
+    * Cliente:
+        - informa a matrícula do aluno.
+    * Servidor:
+        - retorna lista de disciplinas associadas ao aluno, caso o aluno exista e esteja matriculado em alguma disciplina.
+        - retorna relatório em branco, caso contrário.
 
 ### Retornos
 
@@ -228,11 +267,11 @@ Esta etapa consiste na implementação da lógica de cadastros e consultas nos p
 ### Comunicação entre servidores
 
 O suporte a múltiplos servidores deve garantir que clientes possam se conectar a instâncias diferentes de servidores e ainda sim sejam capazes de manipular os dados armazenados.
-Por exemplo, o cliente *c1* pode cadastrar um usuário no servidor *s1* e deve ser capaz de recuperar o valor inserido para a mesma chave a partir de um segundo servidor *s2*.
+Por exemplo, o cliente *c1* pode cadastrar um aluno no servidor *s1* e deve ser capaz de recuperar o valor inserido para a mesma matrícula a partir de um segundo servidor *s2*.
 
 Para isto, nesta etapa, cada servidor deve publicar qualquer alteração nas chaves em um broker pub-sub, em tópico conhecido pelos demais, a partir do qual estes receberão as mudanças de estado e atualizarão suas próprias tabelas.
 
-Os dados publicados no broker pub-sub devem, **obrigatoriamente**, utilizar o formato JSON, com detalhamento do campos escolhidos na documentação do projeto.
+Os dados publicados no broker pub-sub devem, **obrigatoriamente**, utilizar o formato JSON, com exemplos na documentação do projeto.
 
 A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
 
@@ -240,18 +279,17 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
 
 ### Requisitos básicos
 
-* Organizar-se em grupos de, **obrigatoriamente**, 4 alunos.
-    * Grupos menores serão reagrupados!
+* Organizar-se em grupos de, **obrigatoriamente**, 3 alunos.
 * Implementar os casos de uso usando tabelas hash locais aos servidores, em memória (hash tables, dicionários, mapas, etc).
 * Implementar os clientes e servidores com interface de linha de comando para execução.
-* Certificar-se de que todas as APIs possam retornar erros/exceções e que estas são tratadas, explicando sua decisão de tratamento dos erros.
-* Documentar o esquema de dados usados nas tabelas e escolhas para cada JSON.
+* Certificar-se de que todas as API possam retornar erros/exceções e que estas são tratadas, explicando sua decisão de tratamento dos erros.
+* Implementar testes automatizados de sucesso e falha de cada uma das operações na API.
+* Documentar o esquema de dados usados nas tabelas.
 * Suportar a execução de múltiplos clientes e servidores.
 * Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
     * Utilizar o *broker pub-sub* [`mosquitto`](../cases/mosquitto) com a configuração padrão e aceitando conexões na interface local (*localhost ou 127.0.0.1*), porta TCP 1883.
-* Gravar um vídeo de no máximo 5 minutos demonstrando que os requisitos foram atendidos.
+* Gravar um vídeo de no máximo 10 minutos demonstrando que os requisitos foram atendidos.
 
-<!--
 ## Etapa 2 - Banco de dados particionado e replicado
 
 Nesta etapa você deverá modificar os servidores para que a atualizações sejam persistidas em disco.
@@ -313,21 +351,20 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 2 do Projeto.
 
 ![Projeto](drawings/projeto.drawio#4)
 
---> 
-
 ### Submissão
 
 * A submissão será feita até a data limite via formulário do Microsoft Teams, bastando informar o link do repositório **privado** em *github.com*, devidamente compartilhado com o usuário `paulo-coelho`.
 * O repositório privado no *github* deve conter no mínimo:
     * Arquivo `README.md` com instruções de compilação, inicialização e uso de clientes e servidores.
     * Arquivo `compile.sh` para baixar/instalar dependências, compilar e gerar binários.
-    * Arquivo `cad-server.sh` para executar o servidor do Portal Cadastro, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
-    * Arquivo `cad-client.sh` para executar o cliente interativo do Portal Cadastro, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
-    * Arquivo `bib-server.sh` para executar o servidor do Portal Biblioteca, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
-    * Arquivo `bib-client.sh` para executar o cliente interativo do Portal Biblioteca, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
+    * Arquivo `admin-server.sh` para executar o servidor do Portal Administrativo, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
+    * Arquivo `admin-client.sh` para executar o cliente do Portal Administrativo, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
+    * Arquivo `mat-server.sh` para executar o servidor do Portal de Matrícula, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
+    * Arquivo `mat-client.sh` para executar o cliente do Portal de Matrícula, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
     * Descrição das dificuldades com indicação do que não foi implementado.
-<!--
     * Arquivo `db.sh` para executar cada réplica do serviço de persistência, recebendo como parâmetro o `id` da réplica (0, 1 ou 2) e o número da partição a que ela pertence (0 ou 1).
+
+<!--
     * Arquivo `replica.sh` para executar a réplica do banco de dados, recebendo como parâmetro o parâmetro *bd1*, *bd2* ou *bd3*, representado cada uma das réplicas da figura
 -->
 
