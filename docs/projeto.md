@@ -64,10 +64,10 @@ message Usuario{
 
 message Livro {
   // ISBN do livro (chave)
-  string isbn      = 1;
-  string titulo    = 2;
-  string autor     = 3;
-  int32 quantidade = 4;
+  string isbn   = 1;
+  string titulo = 2;
+  string autor  = 3;
+  int32 total   = 4;
 }
 
 message Status {
@@ -154,10 +154,12 @@ message Usuario{
 
 message Livro {
   // ISBN do livro (chave)
-  string isbn      = 1;
-  string titulo    = 2;
-  string autor     = 3;
-  int32 quantidade = 4;
+  string isbn    = 1;
+  string titulo  = 2;
+  string autor   = 3;
+  int32 total    = 4;
+  // campo presente apenas no portal biblioteca
+  int32 restante = 5;
 }
 
 message Status {
@@ -177,6 +179,16 @@ message UsuarioLivro {
   Identificador livro   = 2;
 }
 
+message UsuarioBloqueado {
+  Usuario usuario       = 1;
+  // livro(s) que causou(aram) bloqueio
+  repeated Livro livros = 2;
+}
+
+message Criterio {
+  string criterio = 1;
+}
+
 message Vazia {}
 
 service PortalBiblioteca {
@@ -184,9 +196,10 @@ service PortalBiblioteca {
   rpc RealizaDevolucao(stream UsuarioLivro) returns (Status) {}
   rpc BloqueiaUsuarios(Vazia) returns (Status) {}
   rpc LiberaUsuarios(Vazia) returns (Status) {}
-  rpc ListaUsuariosBloqueados(Vazia) returns (stream Usuario) {}
+  rpc ListaUsuariosBloqueados(Vazia) returns (stream UsuarioBloqueado) {}
   rpc ListaLivrosEmprestados(Vazia) returns (stream Livro) {}
   rpc ListaLivrosEmFalta(Vazia) returns (stream Livro) {}
+  rpc PesquisaLivro(Criterio) returns (stream Livro) {}
 }
 ```
 
@@ -211,15 +224,56 @@ service PortalBiblioteca {
       * - varre lista de empréstimos de usuários e bloqueia todos os usuários com prazo de devolução de livro expirado (detalhes sobre o prazo mais adiante), retornando 0 caso nenhum usuário esteja bloqueado.
         - retorna a quantidade de usuários bloqueados no campo `status` do retorno.
 * `rpc LiberaUsuarios(Vazia) returns (Status) {}`
+    * Cliente:
+        - invoca método sem argumentos.
+    * Servidor:
+      * - varre lista de empréstimos de usuários e libera todos os usuários com prazo de devolução de livro dentro do prazo (detalhes sobre o prazo mais adiante), retornando 0 caso nenhum usuário seja liberado.
+        - retorna a quantidade de usuários liberados no campo `status` do retorno.
 * `rpc ListaUsuariosBloqueados(Vazia) returns (stream Usuario) {}`
+    * Cliente:
+        - invoca método sem argumentos.
+    * Servidor:
+        - retorna a lista de usuários bloqueados e os livros que causaram o bloqueio.
 * `rpc ListaLivrosEmprestados(Vazia) returns (stream Livro) {}`
+    * Cliente:
+        - invoca método sem argumentos.
+    * Servidor:
+        - retorna a lista de livros com pelo menos um exemplar emprestado.
 * `rpc ListaLivrosEmFalta(Vazia) returns (stream Livro) {}`
+    * Cliente:
+        - invoca método sem argumentos.
+    * Servidor:
+        - retorna a lista de livros emprestados na totalidade.
+* `rpc PesquisaLivro(Criterio) returns (stream Livro) {}`
+    * Cliente:
+        - informa critério de pesquisa (detalhes mais adiante).
+    * Servidor:
+        - retorna a lista de livros que satisfazem critério.
 
 ### Retornos
 
 Valores não encontrados são deixados "em branco", isto é, deve-se retornar "" (string vazia) ou 0 (se inteiro) para valores não encontrados.
 
 Exceções (erros de comunicação, formato dos dados, etc), devem ser tratadas ao menos no lado servidor para evitar perda do estado durante os testes.
+
+### Bloqueio de Usuários
+
+Ao emprestar um livro, deve ser associado o momento (*timestamp*) do empréstimo.
+O período máximo de empréstimo de qualquer livro, para facilitar a verificação e testes, é de 10 segundos.
+
+O método `BloqueiaUsuarios()`, por exemplo, deve varrer a lista de empréstimos e bloquear usuários cujo intervalo desde momento de empréstimo de algum livro até agora seja superior a 10 segundos.
+
+### Critérios de Pesquisa
+
+A pesquisa por livros pode ser feita por 3 critérios:
+
+* ISBN: deve seguir o formato 'isbn:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo `isbn` do livro.
+* Título: deve seguir o formato 'titulo:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo `titulo` do livro.
+* Autor: deve seguir o formato 'autor:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo `autor` do livro.
+
+No máximo 2 critérios podem ser usados na mesma pesquisa, combinados pelo operador "ou" (`|`) ou pelo operador "e" (`&`).
+
+Por exemplo, a pesquisa "`titulo:o pequeno pr&autor:saint`" deve retornar todos os livros que possuem a string "o pequeno pr" como parte do título E a string "saint" como parte do nome do autor.
 
 ## Etapa 1 
 
