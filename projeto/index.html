@@ -1739,6 +1739,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#bloqueio-de-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloqueio de Usuários
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-pesquisa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critérios de Pesquisa
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1898,6 +1916,24 @@
   <a href="#retornos" class="md-nav__link">
     <span class="md-ellipsis">
       Retornos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloqueio-de-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloqueio de Usuários
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-pesquisa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critérios de Pesquisa
     </span>
   </a>
   
@@ -2076,10 +2112,10 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 
 <span class="kd">message</span><span class="w"> </span><span class="nc">Livro</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ISBN do livro (chave)</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">isbn</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">titulo</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">autor</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">quantidade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">isbn</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">autor</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">total</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">message</span><span class="w"> </span><span class="nc">Status</span><span class="w"> </span><span class="p">{</span>
@@ -2224,7 +2260,20 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
 
 <span class="k">option</span><span class="w"> </span><span class="na">java_multiple_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="k">option</span><span class="w"> </span><span class="na">java_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;br.ufu.facom.gbc074.projeto.biblioteca&quot;</span><span class="p">;</span>
@@ -2241,10 +2290,12 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 
 <span class="kd">message</span><span class="w"> </span><span class="nc">Livro</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ISBN do livro (chave)</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">isbn</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">titulo</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">autor</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">quantidade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">isbn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">titulo</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">autor</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">total</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// campo presente apenas no portal biblioteca</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">restante</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">message</span><span class="w"> </span><span class="nc">Status</span><span class="w"> </span><span class="p">{</span>
@@ -2264,6 +2315,16 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 <span class="w">  </span><span class="n">Identificador</span><span class="w"> </span><span class="na">livro</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 
+<span class="kd">message</span><span class="w"> </span><span class="nc">UsuarioBloqueado</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Usuario</span><span class="w"> </span><span class="na">usuario</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// livro(s) que causou(aram) bloqueio</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Livro</span><span class="w"> </span><span class="na">livros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">Criterio</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">criterio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="kd">message</span><span class="w"> </span><span class="nc">Vazia</span><span class="w"> </span><span class="p">{}</span>
 
 <span class="kd">service</span><span class="w"> </span><span class="n">PortalBiblioteca</span><span class="w"> </span><span class="p">{</span>
@@ -2271,9 +2332,10 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RealizaDevolucao</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">UsuarioLivro</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">BloqueiaUsuarios</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">LiberaUsuarios</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ListaUsuariosBloqueados</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ListaUsuariosBloqueados</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">UsuarioBloqueado</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ListaLivrosEmprestados</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Livro</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ListaLivrosEmFalta</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Livro</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">PesquisaLivro</span><span class="p">(</span><span class="n">Criterio</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Livro</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h4 id="descricao-dos-metodos_1">Descrição dos métodos</h4>
@@ -2316,14 +2378,81 @@ Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas pa
 </li>
 </ul>
 </li>
-<li><code>rpc LiberaUsuarios(Vazia) returns (Status) {}</code></li>
-<li><code>rpc ListaUsuariosBloqueados(Vazia) returns (stream Usuario) {}</code></li>
-<li><code>rpc ListaLivrosEmprestados(Vazia) returns (stream Livro) {}</code></li>
-<li><code>rpc ListaLivrosEmFalta(Vazia) returns (stream Livro) {}</code></li>
+<li><code>rpc LiberaUsuarios(Vazia) returns (Status) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos.</li>
+</ul>
+</li>
+<li>Servidor:</li>
+<li>
+<ul>
+<li>varre lista de empréstimos de usuários e libera todos os usuários com prazo de devolução de livro dentro do prazo (detalhes sobre o prazo mais adiante), retornando 0 caso nenhum usuário seja liberado.</li>
+<li>retorna a quantidade de usuários liberados no campo <code>status</code> do retorno.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc ListaUsuariosBloqueados(Vazia) returns (stream Usuario) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna a lista de usuários bloqueados e os livros que causaram o bloqueio.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc ListaLivrosEmprestados(Vazia) returns (stream Livro) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna a lista de livros com pelo menos um exemplar emprestado.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc ListaLivrosEmFalta(Vazia) returns (stream Livro) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna a lista de livros emprestados na totalidade.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc PesquisaLivro(Criterio) returns (stream Livro) {}</code><ul>
+<li>Cliente:<ul>
+<li>informa critério de pesquisa (detalhes mais adiante).</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna a lista de livros que satisfazem critério.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="retornos">Retornos</h3>
 <p>Valores não encontrados são deixados "em branco", isto é, deve-se retornar "" (string vazia) ou 0 (se inteiro) para valores não encontrados.</p>
 <p>Exceções (erros de comunicação, formato dos dados, etc), devem ser tratadas ao menos no lado servidor para evitar perda do estado durante os testes.</p>
+<h3 id="bloqueio-de-usuarios">Bloqueio de Usuários</h3>
+<p>Ao emprestar um livro, deve ser associado o momento (<em>timestamp</em>) do empréstimo.
+O período máximo de empréstimo de qualquer livro, para facilitar a verificação e testes, é de 10 segundos.</p>
+<p>O método <code>BloqueiaUsuarios()</code>, por exemplo, deve varrer a lista de empréstimos e bloquear usuários cujo intervalo desde momento de empréstimo de algum livro até agora seja superior a 10 segundos.</p>
+<h3 id="criterios-de-pesquisa">Critérios de Pesquisa</h3>
+<p>A pesquisa por livros pode ser feita por 3 critérios:</p>
+<ul>
+<li>ISBN: deve seguir o formato 'isbn:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo <code>isbn</code> do livro.</li>
+<li>Título: deve seguir o formato 'titulo:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo <code>titulo</code> do livro.</li>
+<li>Autor: deve seguir o formato 'autor:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo <code>autor</code> do livro.</li>
+</ul>
+<p>No máximo 2 critérios podem ser usados na mesma pesquisa, combinados pelo operador "ou" (<code>|</code>) ou pelo operador "e" (<code>&amp;</code>).</p>
+<p>Por exemplo, a pesquisa "<code>titulo:o pequeno pr&amp;autor:saint</code>" deve retornar todos os livros que possuem a string "o pequeno pr" como parte do título E a string "saint" como parte do nome do autor.</p>
 <h2 id="etapa-1">Etapa 1</h2>
 <p>Esta etapa consiste na implementação da lógica de cadastros e consultas nos portais, com comunicação RPC entre clientes e servidores, e comunicação por meio de arquitetura <em>Publish-Subscribe</em> entre os servidores.</p>
 <h3 id="comunicacao-entre-servidores">Comunicação entre servidores</h3>
