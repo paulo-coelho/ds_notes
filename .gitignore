@@ -1,6 +1,7 @@
 **/.DS_Store
 **/.vscode
 **/.idea
+Pipfile*
 docs/drawio-exporter
 _site
 site
