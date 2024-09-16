@@ -305,35 +305,34 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
     * Utilizar o *broker pub-sub* [`mosquitto`](../cases/mosquitto) com a configuração padrão e aceitando conexões na interface local (*localhost ou 127.0.0.1*), porta TCP 1883.
 * Gravar um vídeo de no máximo 5 minutos demonstrando que os requisitos foram atendidos.
 
-<!--
-## Etapa 2 - Banco de dados particionado e replicado
+
+## Etapa 2 - Banco de dados replicado
 
 Nesta etapa você deverá modificar os servidores para que a atualizações sejam persistidas em disco.
 Esta persistência deve ser tolerante a falhas. 
-Além disso, os dados serão particionados, ou seja, cada parcela dos dados será gerenciada por um conjunto de processos diversos.
 
 ### Objetivos
 
 * Replicar a base de dados para obter tolerância a falhas.
-* Particionar a base de dados para aumentar a escalabilidade.
+* Utilizar cache nos portais para otimizar acesso.
 
 
-### Estratégia de particionamento e replicação
+### Estratégia de replicação
 
-O sistema de armazenamento deve utilizar uma base de dados chave valor de código aberto amplamente conhecida para persistência em disco (mais detalhes a seguir) para guardar os dados de alunos, professores e disciplinas, bem como as relações entre estes.
+O sistema de armazenamento deve utilizar uma base de dados chave-valor (*key-value store*) de código aberto amplamente conhecida para persistência em disco (mais detalhes a seguir) para guardar os dados de usuários e livros, bem como as relações entre estes.
 
 Estes dados serão armazenados no mesmo formato definido para a Etapa 1.
 
-Serão instanciadas duas partições (partição 0 e partição 1), cada uma contendo três réplicas do sistema de armazenamento.
-Cada partição de três réplicas corresponde a uma máquina de estados replicada, que deve utilizar um *middleware* de difusão totalmente ordenada para garantir que requisições determinísticas dos servidores administrativo e de matrícula sejam executadas na mesma ordem em cada réplica.
+Serão instanciadas 2 *clusters* (*cluster* 0 e *cluster* 1), cada um contendo uma das bases, usuário e livro, respectivamente. As relações entre as bases devem ser armazenadas junto à base de usuários.
+Cada *cluster* de três réplicas corresponde a uma máquina de estados replicada, que deve utilizar um *middleware* de difusão totalmente ordenada para garantir que requisições determinísticas dos servidores administrativo e de matrícula sejam executadas na mesma ordem em cada réplica.
 
-A decisão da partição que receberá os dados será feita de acordo com o seguinte critério:
+A API corresponde a 2 métodos para criação de tabelas -- `createTable(tName)` e `deleteTable(tName)` -- e 4 métodos para manipulação das tabelas -- `create(tName, key, value)`, `request(tName, key)`, `update(tName, key, value)` e `delete(tName, key)` -- que serão usados para manipular os dados de usuários, livros e suas relações nos 2 *clusters*.
 
-* `partição <- sha1(key) mod 2`, ou seja, seja o resto da divisão por 2 do *hash* da chave `key` (siape, matrícula ou sigla, dependendo do tipo de dado).
+Além da persistência em disco por meio do armazenamento replicado e particionado, os servidores **devem obrigatoriamente** manter um *cache* local em memória para evitar consultas excessivas ao serviço de persistência.
+As entradas no *cache* devem ser validadas a cada atualização ou consulta aos *clusters*.
+Estas entradas devem ter validade de 5 segundos, sendo descartadas após esse período.
 
-Além da persistência em disco por meio do armazenamento replicado e particionado, os servidores devem manter um *cache* local em memória para evitar consultas excessivas ao serviço de persistência.
-Deste modo, os servidores devem continuar a publicar no *broker* MQTT todas as atualizações, da mesma forma que foi implementado na Etapa 1. 
-Esta publicação servirá para manter atualizados os *caches* dos demais servidores.
+O uso do MQTT não é mais necessário. 
 
 ### Desafios
 
@@ -343,10 +342,10 @@ Esta publicação servirá para manter atualizados os *caches* dos demais servid
     * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
     * Para Python, [PySyncObj](https://github.com/bakwc/PySyncObj) é uma boa opção
     * Para Rust, [raft-rs](https://github.com/tikv/raft-rs) parece ser a biblioteca mais utilizada
-    * Aplicar difusão atômica na replicação do banco de dados
+    * Aplicar difusão atômica na replicação do banco de dados para cada *cluster*
     * Utilizar um banco de dados simples do tipo chave-valor, **obrigatoriamente** [LevelDB](https://github.com/google/leveldb)
         * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
-    * Utilizar três réplicas para o banco de dados em cada partição
+    * Utilizar três réplicas para o banco de dados em cada *cluster*
     * Não há limite para a quantidade de servidores acessados pelos clientes
 
 ### Implementação
@@ -354,24 +353,25 @@ Esta publicação servirá para manter atualizados os *caches* dos demais servid
 * Compreender o critério de seleção da partição
 * A API para clientes e servidores continua a mesma
 * Requisições feitas pelos clientes via gRPC para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas
-* Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi)
+* Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi), para java, ou serviço equivalente em outra linguagem
 
 #### Testes
 * O mesmo *framework* de testes deve continuar funcional
-municação
+ 
+#### Comunicação
 * Entre cliente e servidor nada é alterado
-* Entre servidores e réplicas do banco de dados, usar Ratis (gRPC) ou PySyncOb+(gRPC ou socket).
-* Manter *caches* locais atualizados via *pub-sub*
+* Entre servidores e réplicas do banco de dados, usar Ratis em Java (gRPC) ou PySyncOb+(gRPC ou socket) em Python.
+* Manter *caches* locais atualizados de acordo com a política definida acima
 
 A figura a seguir ilustra a arquitetura exigida para a Etapa 2 do Projeto.
 
 ![Projeto](drawings/projeto.drawio#4)
 
---> 
 
 ### Submissão
 
 * A submissão será feita até a data limite via formulário do Microsoft Teams, bastando informar o link do repositório **privado** em *github.com*, devidamente compartilhado com o usuário `paulo-coelho`.
+* Os grupos devem ser os mesmos da Etapa 1.
 * O repositório privado no *github* deve conter no mínimo:
     * Arquivo `README.md` com instruções de compilação, inicialização e uso de clientes e servidores.
     * Arquivo `compile.sh` para baixar/instalar dependências, compilar e gerar binários.
@@ -380,8 +380,8 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 2 do Projeto.
     * Arquivo `bib-server.sh` para executar o servidor do Portal Biblioteca, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
     * Arquivo `bib-client.sh` para executar o cliente interativo do Portal Biblioteca, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
     * Descrição das dificuldades com indicação do que não foi implementado.
+    * Arquivo `replica.sh` para executar cada réplica do serviço de persistência, recebendo como parâmetro o `id` da réplica (0, 1 ou 2) e o número do *cluster* a que ela pertence (0 ou 1).
 <!--
-    * Arquivo `db.sh` para executar cada réplica do serviço de persistência, recebendo como parâmetro o `id` da réplica (0, 1 ou 2) e o número da partição a que ela pertence (0 ou 1).
     * Arquivo `replica.sh` para executar a réplica do banco de dados, recebendo como parâmetro o parâmetro *bd1*, *bd2* ou *bd3*, representado cada uma das réplicas da figura
 -->
 
