@@ -10,10 +10,8 @@
       
       
       
-        <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/projeto/">
+        <link rel="canonical" href="https://paulo-coelho.github.io/ds_notes/projeto-2024-1/">
       
-      
-        <link rel="prev" href="../cases/etcd/">
       
       
       
@@ -22,7 +20,7 @@
     
     
       
-        <title>Projeto - Notas de Aula em Sistemas Distribuídos</title>
+        <title>Projeto 2024 1 - Notas de Aula em Sistemas Distribuídos</title>
       
     
     
@@ -75,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#casos-de-uso" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -111,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Projeto
+              Projeto 2024 1
             
           </span>
         </div>
@@ -1614,17 +1617,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../projeto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1633,7 +1629,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1656,6 +1651,239 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Casos de Uso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Casos de Uso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portal-administrativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Portal Administrativo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Portal Administrativo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-dos-metodos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição dos métodos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portal-biblioteca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Portal Biblioteca
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Portal Biblioteca">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descricao-dos-metodos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descrição dos métodos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retornos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retornos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloqueio-de-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloqueio de Usuários
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-pesquisa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critérios de Pesquisa
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Etapa 1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comunicacao-entre-servidores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicação entre servidores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requisitos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos básicos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapa-2-banco-de-dados-replicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Etapa 2 - Banco de dados replicado
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapa 2 - Banco de dados replicado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-replicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estratégia de replicação
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desafios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desafios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementação
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comunicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comunicação
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submissao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submissão
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linguagens-aceitas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linguagens aceitas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1676,62 +1904,40 @@
        as the main headline.
     -->
 
-  <h1>Projeto</h1>
+  <h1>Projeto 2024 1</h1>
 
 
   <!-- Content -->
-  <p>Em construção</p>
-<!--
-A área de computação distribuída é rica em aplicações e desenvolvê-los é topar de frente com vários problemas e decidir como resolvê-los ou contorná-los e, por isto, nada melhor que um projeto para experimentar em primeira mão as angústias e prazeres da área. 
-Assim, proponho visitarmos o material destas notas à luz de uma aplicação genérica mas real, desenvolvida por vocês enquanto vemos a teoria.
-
-O projeto consiste em implementar um **Sistema de Bibliotecas** com armazenamento  chave-valor (*key-value store = KVS*).
-
-A arquitetura do sistema será **híbrida**, contendo um pouco de cliente/servidor, publish/subscribe e Peer-2-Peer, além de ser multicamadas.
-Apesar de introduzir complexidade extra, também usaremos **múltiplos mecanismos para a comunicação** entre as partes, para que possam experimentar com diversas abordagens.
-
-O sistema contempla dois portais: **Portal Cadastro** e **Portal Biblioteca**.
+  <p>A área de computação distribuída é rica em aplicações e desenvolvê-los é topar de frente com vários problemas e decidir como resolvê-los ou contorná-los e, por isto, nada melhor que um projeto para experimentar em primeira mão as angústias e prazeres da área. 
+Assim, proponho visitarmos o material destas notas à luz de uma aplicação genérica mas real, desenvolvida por vocês enquanto vemos a teoria.</p>
+<p>O projeto consiste em implementar um <strong>Sistema de Bibliotecas</strong> com armazenamento  chave-valor (<em>key-value store = KVS</em>).</p>
+<p>A arquitetura do sistema será <strong>híbrida</strong>, contendo um pouco de cliente/servidor, publish/subscribe e Peer-2-Peer, além de ser multicamadas.
+Apesar de introduzir complexidade extra, também usaremos <strong>múltiplos mecanismos para a comunicação</strong> entre as partes, para que possam experimentar com diversas abordagens.</p>
+<p>O sistema contempla dois portais: <strong>Portal Cadastro</strong> e <strong>Portal Biblioteca</strong>.
 O Portal Cadastro é responsável por manter os cadastros de usuários e livros.
-O Portal Biblioteca gerencia o empréstimo de livros a usuários.
-
-O sistema utiliza a arquitetura cliente-servidor na comunicação com os clientes dos portais, que invoca as operações definidas mais adiante,  e servidores, que atualizam o estado de acordo e retornam o resultado a cada cliente.
-
-Múltiplas instâncias do servidor de cada portal podem ser executados simultaneamente para aumentar a disponibilidade do serviço e/ou atender um maior número de clientes (escalar).
-O detalhamento do comportamento e implementação, neste caso, será diferente para cada etapa do projeto, sendo detalhado nas seções seguintes.
-
-Tanto as aplicações clientes quanto os servidores devem, obrigatoriamente, possuir uma interface de linha de comando (*command line interface - CLI*) para execução e interação.
-O cliente deve ter uma interface interativa, ou seja, deve permitir a escolha da operação a partir de menu impresso no terminal, fazendo a leitura dos campos necessários a partir do teclado.
-
-A aplicação servidor manipula cada chave **K** em operações de escrita e leitura de acordo com a descrição e interface apresentadas mais adiante.
-A tupla **(K,V)** significa que a chave **K** possui valor **V**.
-Cada atualização para a mesma chave **K** com um novo valor **V'** substitui o valor **V** armazenado previamente.
-As chaves e valores devem ser do tipo *String*.
-
-Os dados de usuários e livros em cada Portal são mantidos em um tabela hash `ID -> Dados`, todos do tipo `String` e armazenados em memória (use uma tabela hash). 
-
-O campo `Dados` **deve** ser armazenado como uma string JSON, com formato definido por você, devidamente descrito na documentação do projeto.
-
-Além disso, você pode criar tabelas hash adicionais para representar a relação entre os dados. 
-Por exemplo, pode-se criar a tabela `UsuarioLivro` no Portal Biblioteca com chave correspondente ao `ID` do usuário e com valor igual à lista de livros que o usuário emprestou.
-
-A comunicação entre clientes e servidores deve ser, **obrigatoriamente**, realizada via [gRPC](../cases/grpc) de acordo com a interface definida adiante.
-
-O servidor do **Portal Biblioteca** deve obter os dados de usuários e livros a partir do servidor do **Portal Cadastro**.
-Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas para evitar chamadas repetidas para valores já conhecidos.
-
-A comunicação entre estes servidores será detalhada na descrição da etapa correspondente nas seções a seguir.
-
-A implementação que não seguir o formato dos dados, a interface ou a estratégia de comunicação definidos **não será avaliada e terá atribuída a nota zero**.
-
-
-## Casos de Uso
-
-### Interface
-
-O formato exato em que os dados serão armazenados pode variar na sua implementação, mas a API apresentada deve, **obrigatoriamente**, ter a assinatura definida a seguir para cada aplicação:
-
-### Portal Administrativo
-
+O Portal Biblioteca gerencia o empréstimo de livros a usuários.</p>
+<p>O sistema utiliza a arquitetura cliente-servidor na comunicação com os clientes dos portais, que invoca as operações definidas mais adiante,  e servidores, que atualizam o estado de acordo e retornam o resultado a cada cliente.</p>
+<p>Múltiplas instâncias do servidor de cada portal podem ser executados simultaneamente para aumentar a disponibilidade do serviço e/ou atender um maior número de clientes (escalar).
+O detalhamento do comportamento e implementação, neste caso, será diferente para cada etapa do projeto, sendo detalhado nas seções seguintes.</p>
+<p>Tanto as aplicações clientes quanto os servidores devem, obrigatoriamente, possuir uma interface de linha de comando (<em>command line interface - CLI</em>) para execução e interação.
+O cliente deve ter uma interface interativa, ou seja, deve permitir a escolha da operação a partir de menu impresso no terminal, fazendo a leitura dos campos necessários a partir do teclado.</p>
+<p>A aplicação servidor manipula cada chave <strong>K</strong> em operações de escrita e leitura de acordo com a descrição e interface apresentadas mais adiante.
+A tupla <strong>(K,V)</strong> significa que a chave <strong>K</strong> possui valor <strong>V</strong>.
+Cada atualização para a mesma chave <strong>K</strong> com um novo valor <strong>V'</strong> substitui o valor <strong>V</strong> armazenado previamente.
+As chaves e valores devem ser do tipo <em>String</em>.</p>
+<p>Os dados de usuários e livros em cada Portal são mantidos em um tabela hash <code>ID -&gt; Dados</code>, todos do tipo <code>String</code> e armazenados em memória (use uma tabela hash). </p>
+<p>O campo <code>Dados</code> <strong>deve</strong> ser armazenado como uma string JSON, com formato definido por você, devidamente descrito na documentação do projeto.</p>
+<p>Além disso, você pode criar tabelas hash adicionais para representar a relação entre os dados. 
+Por exemplo, pode-se criar a tabela <code>UsuarioLivro</code> no Portal Biblioteca com chave correspondente ao <code>ID</code> do usuário e com valor igual à lista de livros que o usuário emprestou.</p>
+<p>A comunicação entre clientes e servidores deve ser, <strong>obrigatoriamente</strong>, realizada via <a href="../cases/grpc">gRPC</a> de acordo com a interface definida adiante.</p>
+<p>O servidor do <strong>Portal Biblioteca</strong> deve obter os dados de usuários e livros a partir do servidor do <strong>Portal Cadastro</strong>.
+Recomenda-se manter um "cache" dos dados no servidor do Portal de Matrículas para evitar chamadas repetidas para valores já conhecidos.</p>
+<p>A comunicação entre estes servidores será detalhada na descrição da etapa correspondente nas seções a seguir.</p>
+<p>A implementação que não seguir o formato dos dados, a interface ou a estratégia de comunicação definidos <strong>não será avaliada e terá atribuída a nota zero</strong>.</p>
+<h2 id="casos-de-uso">Casos de Uso</h2>
+<h3 id="interface">Interface</h3>
+<p>O formato exato em que os dados serão armazenados pode variar na sua implementação, mas a API apresentada deve, <strong>obrigatoriamente</strong>, ter a assinatura definida a seguir para cada aplicação:</p>
+<h3 id="portal-administrativo">Portal Administrativo</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1826,45 +2032,71 @@ O formato exato em que os dados serão armazenados pode variar na sua implementa
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ObtemTodosLivros</span><span class="p">(</span><span class="n">Vazia</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Livro</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-
-#### Descrição dos métodos
-
-* `rpc NovoUsuario(Usuario) returns (Status) {}`
-    * Cliente:
-        - informa dados do usuário a ser cadastrado.
-    * Servidor:
-        - cadastra o novo usuário e retorna 0 se ele não existia previamente e os campos possuem tamanho maior do que 3.
-        - retorna 1 com a descrição do erro, caso contrário.
-* `rpc EditaUsuario(Usuario) returns (Status) {}`
-    * Cliente:
-        - informa dados do usuário a ser atualizado.
-    * Servidor:
-        - atualiza o usuário e retorna 0 se chave já existia previamente e o novos campos possuem tamanho maior do que 3.
-        - retorna 1 com a descrição do erro, caso contrário.
-* `rpc RemoveUsuario(Identificador) returns (Status) {}`
-    * Cliente:
-        - informa chave do usuário a ser removido.
-    * Servidor:
-        - remove o usuário e retorna 0 se ele já existia previamente.
-        - retorna 1 com a descrição do erro, caso contrário.
-* `rpc ObtemUsuario(Identificador) returns (Usuario) {}`
-    * Cliente:
-        - informa chave do usuário.
-    * Servidor:
-        - retorna dados do usuário solicitado, caso ele exista.
-        - retorna `Usuario` com dados em branco, caso contrário.
-* `rpc ObtemTodosUsuarios(Vazia) returns (stream Usuario) {}`
-    * Cliente:
-        - invoca método sem argumentos\*
-    * Servidor:
-        - retorna lista de todos os usuários cadastrados.
-
-\* A linguagem de descrição de interface do *ProtoBuf* exige que o método tenha argumento, sendo definida uma mensagem sem atributos denominada `Vazia` para garantir conformidade.
-
-A mesma lógica do cadastro de usuários se aplica ao cadastro de livros.
-
-### Portal Biblioteca
-
+<h4 id="descricao-dos-metodos">Descrição dos métodos</h4>
+<ul>
+<li><code>rpc NovoUsuario(Usuario) returns (Status) {}</code><ul>
+<li>Cliente:<ul>
+<li>informa dados do usuário a ser cadastrado.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>cadastra o novo usuário e retorna 0 se ele não existia previamente e os campos possuem tamanho maior do que 3.</li>
+<li>retorna 1 com a descrição do erro, caso contrário.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc EditaUsuario(Usuario) returns (Status) {}</code><ul>
+<li>Cliente:<ul>
+<li>informa dados do usuário a ser atualizado.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>atualiza o usuário e retorna 0 se chave já existia previamente e o novos campos possuem tamanho maior do que 3.</li>
+<li>retorna 1 com a descrição do erro, caso contrário.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc RemoveUsuario(Identificador) returns (Status) {}</code><ul>
+<li>Cliente:<ul>
+<li>informa chave do usuário a ser removido.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>remove o usuário e retorna 0 se ele já existia previamente.</li>
+<li>retorna 1 com a descrição do erro, caso contrário.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc ObtemUsuario(Identificador) returns (Usuario) {}</code><ul>
+<li>Cliente:<ul>
+<li>informa chave do usuário.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna dados do usuário solicitado, caso ele exista.</li>
+<li>retorna <code>Usuario</code> com dados em branco, caso contrário.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc ObtemTodosUsuarios(Vazia) returns (stream Usuario) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos*</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna lista de todos os usuários cadastrados.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>* A linguagem de descrição de interface do <em>ProtoBuf</em> exige que o método tenha argumento, sendo definida uma mensagem sem atributos denominada <code>Vazia</code> para garantir conformidade.</p>
+<p>A mesma lógica do cadastro de usuários se aplica ao cadastro de livros.</p>
+<h3 id="portal-biblioteca">Portal Biblioteca</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1993,199 +2225,232 @@ A mesma lógica do cadastro de usuários se aplica ao cadastro de livros.
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">PesquisaLivro</span><span class="p">(</span><span class="n">Criterio</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Livro</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-
-#### Descrição dos métodos
-
-* `rpc RealizaEmprestimo(stream UsuarioLivro) returns (Status) {}`
-    * Cliente:
-        - informa chaves do usuário e do livro.
-    * Servidor:
-        - caso o livro e usuário existam, livro esteja disponível e o usuário não esteja bloqueado, realiza o empréstimo ajustando a quantidade de livros disponíveis e retorna 0.
-        - retorna 1 com a descrição do erro, caso contrário.
-* `rpc RealizaDevolucao(stream UsuarioLivro) returns (Status) {}`
-    * Cliente:
-        - informa chaves do usuário e do livro.
-    * Servidor:
-        - caso o livro e usuário existam, realiza a devolução do livro ajustando a quantidade de livros disponíveis e, caso se aplique, desbloqueia o usuário ajustando a quantidade de livros disponíveis, retornando 0.
-        - retorna 1 com a descrição do erro, caso contrário.
-* `rpc BloqueiaUsuarios(Vazia) returns (Status) {}`
-    * Cliente:
-        - invoca método sem argumentos.
-    * Servidor:
-      * - varre lista de empréstimos de usuários e bloqueia todos os usuários com prazo de devolução de livro expirado (detalhes sobre o prazo mais adiante), retornando 0 caso nenhum usuário esteja bloqueado.
-        - retorna a quantidade de usuários bloqueados no campo `status` do retorno.
-* `rpc LiberaUsuarios(Vazia) returns (Status) {}`
-    * Cliente:
-        - invoca método sem argumentos.
-    * Servidor:
-      * - varre lista de empréstimos de usuários e libera todos os usuários com prazo de devolução de livro dentro do prazo (detalhes sobre o prazo mais adiante), retornando 0 caso nenhum usuário seja liberado.
-        - retorna a quantidade de usuários liberados no campo `status` do retorno.
-* `rpc ListaUsuariosBloqueados(Vazia) returns (stream Usuario) {}`
-    * Cliente:
-        - invoca método sem argumentos.
-    * Servidor:
-        - retorna a lista de usuários bloqueados e os livros que causaram o bloqueio.
-* `rpc ListaLivrosEmprestados(Vazia) returns (stream Livro) {}`
-    * Cliente:
-        - invoca método sem argumentos.
-    * Servidor:
-        - retorna a lista de livros com pelo menos um exemplar emprestado.
-* `rpc ListaLivrosEmFalta(Vazia) returns (stream Livro) {}`
-    * Cliente:
-        - invoca método sem argumentos.
-    * Servidor:
-        - retorna a lista de livros emprestados na totalidade.
-* `rpc PesquisaLivro(Criterio) returns (stream Livro) {}`
-    * Cliente:
-        - informa critério de pesquisa (detalhes mais adiante).
-    * Servidor:
-        - retorna a lista de livros que satisfazem critério.
-
-### Retornos
-
-Valores não encontrados são deixados "em branco", isto é, deve-se retornar "" (string vazia) ou 0 (se inteiro) para valores não encontrados.
-
-Exceções (erros de comunicação, formato dos dados, etc), devem ser tratadas ao menos no lado servidor para evitar perda do estado durante os testes.
-
-### Bloqueio de Usuários
-
-Ao emprestar um livro, deve ser associado o momento (*timestamp*) do empréstimo.
-O período máximo de empréstimo de qualquer livro, para facilitar a verificação e testes, é de 10 segundos.
-
-O método `BloqueiaUsuarios()`, por exemplo, deve varrer a lista de empréstimos e bloquear usuários cujo intervalo desde momento de empréstimo de algum livro até agora seja superior a 10 segundos.
-
-### Critérios de Pesquisa
-
-A pesquisa por livros pode ser feita por 3 critérios:
-
-* ISBN: deve seguir o formato 'isbn:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo `isbn` do livro.
-* Título: deve seguir o formato 'titulo:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo `titulo` do livro.
-* Autor: deve seguir o formato 'autor:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo `autor` do livro.
-
-No máximo 2 critérios podem ser usados na mesma pesquisa, combinados pelo operador "ou" (`|`) ou pelo operador "e" (`&`).
-
-Por exemplo, a pesquisa "`titulo:o pequeno pr&autor:saint`" deve retornar todos os livros que possuem a string "o pequeno pr" como parte do título E a string "saint" como parte do nome do autor.
-
-## Etapa 1 
-
-Esta etapa consiste na implementação da lógica de cadastros e consultas nos portais, com comunicação RPC entre clientes e servidores, e comunicação por meio de arquitetura *Publish-Subscribe* entre os servidores.
-
-### Comunicação entre servidores
-
-O suporte a múltiplos servidores deve garantir que clientes possam se conectar a instâncias diferentes de servidores e ainda sim sejam capazes de manipular os dados armazenados.
-Por exemplo, o cliente *c1* pode cadastrar um usuário no servidor *s1* e deve ser capaz de recuperar o valor inserido para a mesma chave a partir de um segundo servidor *s2*.
-
-Para isto, nesta etapa, cada servidor deve publicar qualquer alteração nas chaves em um broker pub-sub, em tópico conhecido pelos demais, a partir do qual estes receberão as mudanças de estado e atualizarão suas próprias tabelas.
-
-Os dados publicados no broker pub-sub devem, **obrigatoriamente**, utilizar o formato JSON, com detalhamento do campos escolhidos na documentação do projeto.
-
-A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.
-
-![Projeto](drawings/projeto.drawio#3)
-
-### Requisitos básicos
-
-* Organizar-se em grupos de, **obrigatoriamente**, 4 alunos.
-    * Grupos menores serão reagrupados!
-* Implementar os casos de uso usando tabelas hash locais aos servidores, em memória (hash tables, dicionários, mapas, etc).
-* Implementar os clientes e servidores com interface de linha de comando para execução.
-* Certificar-se de que todas as APIs possam retornar erros/exceções e que estas são tratadas, explicando sua decisão de tratamento dos erros.
-* Documentar o esquema de dados usados nas tabelas e escolhas para cada JSON.
-* Suportar a execução de múltiplos clientes e servidores.
-* Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente *pub-sub*, já que a comunicação é de 1 para muitos.
-    * Utilizar o *broker pub-sub* [`mosquitto`](../cases/mosquitto) com a configuração padrão e aceitando conexões na interface local (*localhost ou 127.0.0.1*), porta TCP 1883.
-* Gravar um vídeo de no máximo 5 minutos demonstrando que os requisitos foram atendidos.
-
-
-## Etapa 2 - Banco de dados replicado
-
-Nesta etapa você deverá modificar os servidores para que a atualizações sejam persistidas em disco.
-Esta persistência deve ser tolerante a falhas. 
-
-### Objetivos
-
-* Replicar a base de dados para obter tolerância a falhas.
-* Utilizar cache nos portais para otimizar acesso.
-
-
-### Estratégia de replicação
-
-O sistema de armazenamento deve utilizar uma base de dados chave-valor (*key-value store*) de código aberto amplamente conhecida para persistência em disco (mais detalhes a seguir) para guardar os dados de usuários e livros, bem como as relações entre estes.
-
-Estes dados serão armazenados no mesmo formato definido para a Etapa 1.
-
-Serão instanciadas 2 *clusters* (*cluster* 0 e *cluster* 1), cada um contendo uma das bases, usuário e livro, respectivamente. As relações entre as bases devem ser armazenadas junto à base de usuários.
-Cada *cluster* de três réplicas corresponde a uma máquina de estados replicada, que deve utilizar um *middleware* de difusão totalmente ordenada para garantir que requisições determinísticas dos servidores administrativo e de matrícula sejam executadas na mesma ordem em cada réplica.
-
-A API corresponde a 2 métodos para criação de tabelas -- `createTable(tName)` e `deleteTable(tName)` -- e 4 métodos para manipulação das tabelas -- `create(tName, key, value)`, `request(tName, key)`, `update(tName, key, value)` e `delete(tName, key)` -- que serão usados para manipular os dados de usuários, livros e suas relações nos 2 *clusters*.
-
-Além da persistência em disco por meio do armazenamento replicado e particionado, os servidores **devem obrigatoriamente** manter um *cache* local em memória para evitar consultas excessivas ao serviço de persistência.
-As entradas no *cache* devem ser validadas a cada atualização ou consulta aos *clusters*.
-Estas entradas devem ter validade de 5 segundos, sendo descartadas após esse período.
-
-O uso do MQTT não é mais necessário. 
-
-### Desafios
-
-* Certificar-se de que os servidores são máquinas de estados determinística
-* Compreender o uso de Difusão Atômica em nível teórico
-* Compreender o uso de Difusão Atômica em nível prático
-    * Use [Ratis](https://paulo-coelho.github.io/ds_notes/cases/ratis) para java
-    * Para Python, [PySyncObj](https://github.com/bakwc/PySyncObj) é uma boa opção
-    * Para Rust, [raft-rs](https://github.com/tikv/raft-rs) parece ser a biblioteca mais utilizada
-    * Aplicar difusão atômica na replicação do banco de dados para cada *cluster*
-    * Utilizar um banco de dados simples do tipo chave-valor, **obrigatoriamente** [LevelDB](https://github.com/google/leveldb)
-        * Embora originalmente escritas em C++/C, há *ports* para diversas outras linguagens, (e.g., [aqui](https://github.com/lmdbjava/lmdbjava) e [aqui](https://github.com/dain/leveldb))
-    * Utilizar três réplicas para o banco de dados em cada *cluster*
-    * Não há limite para a quantidade de servidores acessados pelos clientes
-
-### Implementação
-
-* Compreender o critério de seleção da partição
-* A API para clientes e servidores continua a mesma
-* Requisições feitas pelos clientes via gRPC para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas
-* Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi), para java, ou serviço equivalente em outra linguagem
-
-#### Testes
-* O mesmo *framework* de testes deve continuar funcional
-
-#### Comunicação
-* Entre cliente e servidor nada é alterado
-* Entre servidores e réplicas do banco de dados, usar Ratis em Java (gRPC) ou PySyncOb+(gRPC ou socket) em Python.
-* Manter *caches* locais atualizados de acordo com a política definida acima
-
-A figura a seguir ilustra a arquitetura exigida para a Etapa 2 do Projeto.
-
-![Projeto](drawings/projeto.drawio#4)
-
-
-### Submissão
-
-* A submissão será feita até a data limite via formulário do Microsoft Teams, bastando informar o link do repositório **privado** em *github.com*, devidamente compartilhado com o usuário `paulo-coelho`.
-* Os grupos devem ser os mesmos da Etapa 1.
-* O repositório privado no *github* deve conter no mínimo:
-    * Arquivo `README.md` com instruções de compilação, inicialização e uso de clientes e servidores.
-    * Arquivo `compile.sh` para baixar/instalar dependências, compilar e gerar binários.
-    * Arquivo `cad-server.sh` para executar o servidor do Portal Cadastro, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
-    * Arquivo `cad-client.sh` para executar o cliente interativo do Portal Cadastro, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
-    * Arquivo `bib-server.sh` para executar o servidor do Portal Biblioteca, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.
-    * Arquivo `bib-client.sh` para executar o cliente interativo do Portal Biblioteca, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
-    * Descrição das dificuldades com indicação do que não foi implementado.
-    * Arquivo `replica.sh` para executar cada réplica do serviço de persistência, recebendo como parâmetro o `id` da réplica (0, 1 ou 2) e o número do *cluster* a que ela pertence (0 ou 1).
-
-## Linguagens aceitas
-
-**APENAS** serão aceitas estas linguagens:
-
-* Java
-* C
-* Python
-* Go
-* Rust
-
-Trabalhos em outra linguagem não serão corrigidos e receberão nota zero!
-
+<h4 id="descricao-dos-metodos_1">Descrição dos métodos</h4>
+<ul>
+<li><code>rpc RealizaEmprestimo(stream UsuarioLivro) returns (Status) {}</code><ul>
+<li>Cliente:<ul>
+<li>informa chaves do usuário e do livro.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>caso o livro e usuário existam, livro esteja disponível e o usuário não esteja bloqueado, realiza o empréstimo ajustando a quantidade de livros disponíveis e retorna 0.</li>
+<li>retorna 1 com a descrição do erro, caso contrário.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc RealizaDevolucao(stream UsuarioLivro) returns (Status) {}</code><ul>
+<li>Cliente:<ul>
+<li>informa chaves do usuário e do livro.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>caso o livro e usuário existam, realiza a devolução do livro ajustando a quantidade de livros disponíveis e, caso se aplique, desbloqueia o usuário ajustando a quantidade de livros disponíveis, retornando 0.</li>
+<li>retorna 1 com a descrição do erro, caso contrário.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc BloqueiaUsuarios(Vazia) returns (Status) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos.</li>
+</ul>
+</li>
+<li>Servidor:</li>
+<li>
+<ul>
+<li>varre lista de empréstimos de usuários e bloqueia todos os usuários com prazo de devolução de livro expirado (detalhes sobre o prazo mais adiante), retornando 0 caso nenhum usuário esteja bloqueado.</li>
+<li>retorna a quantidade de usuários bloqueados no campo <code>status</code> do retorno.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc LiberaUsuarios(Vazia) returns (Status) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos.</li>
+</ul>
+</li>
+<li>Servidor:</li>
+<li>
+<ul>
+<li>varre lista de empréstimos de usuários e libera todos os usuários com prazo de devolução de livro dentro do prazo (detalhes sobre o prazo mais adiante), retornando 0 caso nenhum usuário seja liberado.</li>
+<li>retorna a quantidade de usuários liberados no campo <code>status</code> do retorno.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc ListaUsuariosBloqueados(Vazia) returns (stream Usuario) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna a lista de usuários bloqueados e os livros que causaram o bloqueio.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc ListaLivrosEmprestados(Vazia) returns (stream Livro) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna a lista de livros com pelo menos um exemplar emprestado.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc ListaLivrosEmFalta(Vazia) returns (stream Livro) {}</code><ul>
+<li>Cliente:<ul>
+<li>invoca método sem argumentos.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna a lista de livros emprestados na totalidade.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc PesquisaLivro(Criterio) returns (stream Livro) {}</code><ul>
+<li>Cliente:<ul>
+<li>informa critério de pesquisa (detalhes mais adiante).</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>retorna a lista de livros que satisfazem critério.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="retornos">Retornos</h3>
+<p>Valores não encontrados são deixados "em branco", isto é, deve-se retornar "" (string vazia) ou 0 (se inteiro) para valores não encontrados.</p>
+<p>Exceções (erros de comunicação, formato dos dados, etc), devem ser tratadas ao menos no lado servidor para evitar perda do estado durante os testes.</p>
+<h3 id="bloqueio-de-usuarios">Bloqueio de Usuários</h3>
+<p>Ao emprestar um livro, deve ser associado o momento (<em>timestamp</em>) do empréstimo.
+O período máximo de empréstimo de qualquer livro, para facilitar a verificação e testes, é de 10 segundos.</p>
+<p>O método <code>BloqueiaUsuarios()</code>, por exemplo, deve varrer a lista de empréstimos e bloquear usuários cujo intervalo desde momento de empréstimo de algum livro até agora seja superior a 10 segundos.</p>
+<h3 id="criterios-de-pesquisa">Critérios de Pesquisa</h3>
+<p>A pesquisa por livros pode ser feita por 3 critérios:</p>
+<ul>
+<li>ISBN: deve seguir o formato 'isbn:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo <code>isbn</code> do livro.</li>
+<li>Título: deve seguir o formato 'titulo:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo <code>titulo</code> do livro.</li>
+<li>Autor: deve seguir o formato 'autor:XXXX', em que 'XXXX' representa a string a ser pesquisada no campo <code>autor</code> do livro.</li>
+</ul>
+<p>No máximo 2 critérios podem ser usados na mesma pesquisa, combinados pelo operador "ou" (<code>|</code>) ou pelo operador "e" (<code>&amp;</code>).</p>
+<p>Por exemplo, a pesquisa "<code>titulo:o pequeno pr&amp;autor:saint</code>" deve retornar todos os livros que possuem a string "o pequeno pr" como parte do título E a string "saint" como parte do nome do autor.</p>
+<h2 id="etapa-1">Etapa 1</h2>
+<p>Esta etapa consiste na implementação da lógica de cadastros e consultas nos portais, com comunicação RPC entre clientes e servidores, e comunicação por meio de arquitetura <em>Publish-Subscribe</em> entre os servidores.</p>
+<h3 id="comunicacao-entre-servidores">Comunicação entre servidores</h3>
+<p>O suporte a múltiplos servidores deve garantir que clientes possam se conectar a instâncias diferentes de servidores e ainda sim sejam capazes de manipular os dados armazenados.
+Por exemplo, o cliente <em>c1</em> pode cadastrar um usuário no servidor <em>s1</em> e deve ser capaz de recuperar o valor inserido para a mesma chave a partir de um segundo servidor <em>s2</em>.</p>
+<p>Para isto, nesta etapa, cada servidor deve publicar qualquer alteração nas chaves em um broker pub-sub, em tópico conhecido pelos demais, a partir do qual estes receberão as mudanças de estado e atualizarão suas próprias tabelas.</p>
+<p>Os dados publicados no broker pub-sub devem, <strong>obrigatoriamente</strong>, utilizar o formato JSON, com detalhamento do campos escolhidos na documentação do projeto.</p>
+<p>A figura a seguir ilustra a arquitetura exigida para a Etapa 1 do Projeto.</p>
+<p><img alt="Projeto" src="../drawings/projeto.drawio-3.svg" /></p>
+<h3 id="requisitos-basicos">Requisitos básicos</h3>
+<ul>
+<li>Organizar-se em grupos de, <strong>obrigatoriamente</strong>, 4 alunos.<ul>
+<li>Grupos menores serão reagrupados!</li>
+</ul>
+</li>
+<li>Implementar os casos de uso usando tabelas hash locais aos servidores, em memória (hash tables, dicionários, mapas, etc).</li>
+<li>Implementar os clientes e servidores com interface de linha de comando para execução.</li>
+<li>Certificar-se de que todas as APIs possam retornar erros/exceções e que estas são tratadas, explicando sua decisão de tratamento dos erros.</li>
+<li>Documentar o esquema de dados usados nas tabelas e escolhas para cada JSON.</li>
+<li>Suportar a execução de múltiplos clientes e servidores.</li>
+<li>Implementar a propagação de informação entre as diversas caches do sistema usando necessariamente <em>pub-sub</em>, já que a comunicação é de 1 para muitos.<ul>
+<li>Utilizar o <em>broker pub-sub</em> <a href="../cases/mosquitto"><code>mosquitto</code></a> com a configuração padrão e aceitando conexões na interface local (<em>localhost ou 127.0.0.1</em>), porta TCP 1883.</li>
+</ul>
+</li>
+<li>Gravar um vídeo de no máximo 5 minutos demonstrando que os requisitos foram atendidos.</li>
+</ul>
+<h2 id="etapa-2-banco-de-dados-replicado">Etapa 2 - Banco de dados replicado</h2>
+<p>Nesta etapa você deverá modificar os servidores para que a atualizações sejam persistidas em disco.
+Esta persistência deve ser tolerante a falhas. </p>
+<h3 id="objetivos">Objetivos</h3>
+<ul>
+<li>Replicar a base de dados para obter tolerância a falhas.</li>
+<li>Utilizar cache nos portais para otimizar acesso.</li>
+</ul>
+<h3 id="estrategia-de-replicacao">Estratégia de replicação</h3>
+<p>O sistema de armazenamento deve utilizar uma base de dados chave-valor (<em>key-value store</em>) de código aberto amplamente conhecida para persistência em disco (mais detalhes a seguir) para guardar os dados de usuários e livros, bem como as relações entre estes.</p>
+<p>Estes dados serão armazenados no mesmo formato definido para a Etapa 1.</p>
+<p>Serão instanciadas 2 <em>clusters</em> (<em>cluster</em> 0 e <em>cluster</em> 1), cada um contendo uma das bases, usuário e livro, respectivamente. As relações entre as bases devem ser armazenadas junto à base de usuários.
+Cada <em>cluster</em> de três réplicas corresponde a uma máquina de estados replicada, que deve utilizar um <em>middleware</em> de difusão totalmente ordenada para garantir que requisições determinísticas dos servidores administrativo e de matrícula sejam executadas na mesma ordem em cada réplica.</p>
+<p>A API corresponde a 2 métodos para criação de tabelas -- <code>createTable(tName)</code> e <code>deleteTable(tName)</code> -- e 4 métodos para manipulação das tabelas -- <code>create(tName, key, value)</code>, <code>request(tName, key)</code>, <code>update(tName, key, value)</code> e <code>delete(tName, key)</code> -- que serão usados para manipular os dados de usuários, livros e suas relações nos 2 <em>clusters</em>.</p>
+<p>Além da persistência em disco por meio do armazenamento replicado e particionado, os servidores <strong>devem obrigatoriamente</strong> manter um <em>cache</em> local em memória para evitar consultas excessivas ao serviço de persistência.
+As entradas no <em>cache</em> devem ser validadas a cada atualização ou consulta aos <em>clusters</em>.
+Estas entradas devem ter validade de 5 segundos, sendo descartadas após esse período.</p>
+<p>O uso do MQTT não é mais necessário. </p>
+<h3 id="desafios">Desafios</h3>
+<ul>
+<li>Certificar-se de que os servidores são máquinas de estados determinística</li>
+<li>Compreender o uso de Difusão Atômica em nível teórico</li>
+<li>Compreender o uso de Difusão Atômica em nível prático<ul>
+<li>Use <a href="https://paulo-coelho.github.io/ds_notes/cases/ratis">Ratis</a> para java</li>
+<li>Para Python, <a href="https://github.com/bakwc/PySyncObj">PySyncObj</a> é uma boa opção</li>
+<li>Para Rust, <a href="https://github.com/tikv/raft-rs">raft-rs</a> parece ser a biblioteca mais utilizada</li>
+<li>Aplicar difusão atômica na replicação do banco de dados para cada <em>cluster</em></li>
+<li>Utilizar um banco de dados simples do tipo chave-valor, <strong>obrigatoriamente</strong> <a href="https://github.com/google/leveldb">LevelDB</a><ul>
+<li>Embora originalmente escritas em C++/C, há <em>ports</em> para diversas outras linguagens, (e.g., <a href="https://github.com/lmdbjava/lmdbjava">aqui</a> e <a href="https://github.com/dain/leveldb">aqui</a>)</li>
+</ul>
+</li>
+<li>Utilizar três réplicas para o banco de dados em cada <em>cluster</em></li>
+<li>Não há limite para a quantidade de servidores acessados pelos clientes</li>
+</ul>
+</li>
+</ul>
+<h3 id="implementacao">Implementação</h3>
+<ul>
+<li>Compreender o critério de seleção da partição</li>
+<li>A API para clientes e servidores continua a mesma</li>
+<li>Requisições feitas pelos clientes via gRPC para o servidor (linha contínua) são encaminhadas via Ratis (linha tracejada) para ordená-las e entregar a todas as réplicas (linha pontilhada) para só então serem executadas e respondidas</li>
+<li>Dados são armazenados em disco pela sua máquina de estado da aplicação via Ratis (DBi), para java, ou serviço equivalente em outra linguagem</li>
+</ul>
+<h4 id="testes">Testes</h4>
+<ul>
+<li>O mesmo <em>framework</em> de testes deve continuar funcional</li>
+</ul>
+<h4 id="comunicacao">Comunicação</h4>
+<ul>
+<li>Entre cliente e servidor nada é alterado</li>
+<li>Entre servidores e réplicas do banco de dados, usar Ratis em Java (gRPC) ou PySyncOb+(gRPC ou socket) em Python.</li>
+<li>Manter <em>caches</em> locais atualizados de acordo com a política definida acima</li>
+</ul>
+<p>A figura a seguir ilustra a arquitetura exigida para a Etapa 2 do Projeto.</p>
+<p><img alt="Projeto" src="../drawings/projeto.drawio-4.svg" /></p>
+<h3 id="submissao">Submissão</h3>
+<ul>
+<li>A submissão será feita até a data limite via formulário do Microsoft Teams, bastando informar o link do repositório <strong>privado</strong> em <em>github.com</em>, devidamente compartilhado com o usuário <code>paulo-coelho</code>.</li>
+<li>Os grupos devem ser os mesmos da Etapa 1.</li>
+<li>O repositório privado no <em>github</em> deve conter no mínimo:<ul>
+<li>Arquivo <code>README.md</code> com instruções de compilação, inicialização e uso de clientes e servidores.</li>
+<li>Arquivo <code>compile.sh</code> para baixar/instalar dependências, compilar e gerar binários.</li>
+<li>Arquivo <code>cad-server.sh</code> para executar o servidor do Portal Cadastro, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.</li>
+<li>Arquivo <code>cad-client.sh</code> para executar o cliente interativo do Portal Cadastro, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.</li>
+<li>Arquivo <code>bib-server.sh</code> para executar o servidor do Portal Biblioteca, recebendo como parâmetro ao menos a porta em que o servidor deve aguardar conexões.</li>
+<li>Arquivo <code>bib-client.sh</code> para executar o cliente interativo do Portal Biblioteca, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.</li>
+<li>Descrição das dificuldades com indicação do que não foi implementado.</li>
+<li>Arquivo <code>replica.sh</code> para executar cada réplica do serviço de persistência, recebendo como parâmetro o <code>id</code> da réplica (0, 1 ou 2) e o número do <em>cluster</em> a que ela pertence (0 ou 1).</li>
+</ul>
+</li>
+</ul>
+<!--
+    * Arquivo `replica.sh` para executar a réplica do banco de dados, recebendo como parâmetro o parâmetro *bd1*, *bd2* ou *bd3*, representado cada uma das réplicas da figura
 -->
+
+<h2 id="linguagens-aceitas">Linguagens aceitas</h2>
+<p><strong>APENAS</strong> serão aceitas estas linguagens:</p>
+<ul>
+<li>Java</li>
+<li>C</li>
+<li>Python</li>
+<li>Go</li>
+<li>Rust</li>
+</ul>
+<p>Trabalhos em outra linguagem não serão corrigidos e receberão nota zero!</p>
 
   <!-- Last update of source file -->
 
