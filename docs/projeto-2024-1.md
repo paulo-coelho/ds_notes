@@ -1,6 +1,3 @@
-Em construção
-
-<!--
 A área de computação distribuída é rica em aplicações e desenvolvê-los é topar de frente com vários problemas e decidir como resolvê-los ou contorná-los e, por isto, nada melhor que um projeto para experimentar em primeira mão as angústias e prazeres da área. 
 Assim, proponho visitarmos o material destas notas à luz de uma aplicação genérica mas real, desenvolvida por vocês enquanto vemos a teoria.
 
@@ -384,6 +381,9 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 2 do Projeto.
     * Arquivo `bib-client.sh` para executar o cliente interativo do Portal Biblioteca, recebendo como parâmetro ao menos a porta do servidor que deve se conectar.
     * Descrição das dificuldades com indicação do que não foi implementado.
     * Arquivo `replica.sh` para executar cada réplica do serviço de persistência, recebendo como parâmetro o `id` da réplica (0, 1 ou 2) e o número do *cluster* a que ela pertence (0 ou 1).
+<!--
+    * Arquivo `replica.sh` para executar a réplica do banco de dados, recebendo como parâmetro o parâmetro *bd1*, *bd2* ou *bd3*, representado cada uma das réplicas da figura
+-->
 
 ## Linguagens aceitas
 
@@ -396,5 +396,3 @@ A figura a seguir ilustra a arquitetura exigida para a Etapa 2 do Projeto.
 * Rust
 
 Trabalhos em outra linguagem não serão corrigidos e receberão nota zero!
-
--->
