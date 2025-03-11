@@ -165,7 +165,7 @@ Os dados publicados no broker pub-sub devem, **obrigatoriamente**, utilizar o fo
 
 A figura a seguir ilustra a arquitetura exigida para esta etapa do Projeto.
 
-![Projeto](drawings/projeto.drawio#3)
+![Projeto](drawings/projeto.drawio#0)
 
 ### Requisitos básicos
 
