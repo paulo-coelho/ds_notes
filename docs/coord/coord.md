@@ -366,7 +366,7 @@ Isto porquê, dados os dois quóruns, todos os processos na interseção foram r
 Mas de forma geral, qual a probabilidade de isso acontecer? 
 Ou seja, dados dois quóruns, de tamanho $m$, que se sobrepõem em $k$ processos, qual a probabilidade $P_v$ de que os $k$ processos na interseção sejam reiniciados e levem à violação?
 
-![Quoruns](../drawings/quorum_k.drawio#0)
+![Quoruns](../../drawings/quorum_k.drawio#0)
 
 Seja a $P$ a probabilidade de **um coordenador em específico falhar** e se recuperar dentro de uma janela de tempo $\delta t$. Temos
 
@@ -470,7 +470,7 @@ Suponha o seguinte algoritmo de eleição neste anel, em que um processo inicial
 
 Imagine um cenário com dois processos, como na imagem a seguir. 
 Os nomes dos processos são apenas para facilitar o entendimento do fluxo de mensagens e não estão acessíveis aos processos.   
-![](../drawings/anel1.drawio)   
+![](../../drawings/anel1.drawio)   
 Executando o algoritmo Anel 1, os processos enviam ($\rightarrow$) e recebem ($\leftarrow$) as seguintes mensagens e ajustam $C$ da seguinte forma.
 
 | 1 | 2 |
@@ -579,7 +579,7 @@ Observe o papel do nó no centro, supondo que tem o maior identificador entre to
 Inicialmente ele envia as mensagens em verde para os lados, que levam seus vizinhos imediatos a se inativarem.
 Na segunda rodada, as mensagens são repassadas para os vizinhos dos vizinhos, que também se inativam.
 
-![Algoritmo de Franklin](../drawings/leaderelection.drawio#0)
+![Algoritmo de Franklin](../../drawings/leaderelection.drawio#0)
 
 Observe o seguinte:
 
@@ -712,7 +712,7 @@ Vejamos o algoritmo em mais detalhes.
 
 Veja um exemplo com 3 processos em destaque, uma fonte, um interno e um vertedouro.
 
-![Algoritmo do YoYo](../drawings/leaderelection.drawio#1)
+![Algoritmo do YoYo](../../drawings/leaderelection.drawio#1)
 
 Veja o seguinte exemplo, em que cada figura mostra um estágio da resolução do problema de eleição de líderes.
 

@@ -36,7 +36,7 @@ A taxa de erro é denominada *drift*, é representada por $\rho$.
 Assumindo um relógio perfeito, $t$, temos que $1 - \rho \leq \frac{dC}{dt} \leq 1 + \rho$.
 Assim, um $\rho$ de 0.1 implica em um erro de mais ou menos 10%; a figura a seguir mostra a faixa em que $C$ pode operar e que o erro em relação a $t$ vai aumentando com a passagem do tempo.
 
-![Clock drift](../drawings/clock_skew.drawio)
+![Clock drift](../../drawings/clock_skew.drawio)
 
 Embora adequado para humanos, o erro dos relógios de quartzo é inaceitável em algumas operações computacionais. 
 Felizmente, os erros do destes relógios podem ser minimizados ao ponto de termos um erros menores que 1s em milhões de anos, nos dispositivos conhecidos como **relógios atômicos**.
@@ -130,7 +130,7 @@ Sendo mais específico, nomeemos os processos como cliente, quem pergunta, e ser
 * Servidor envia resposta - $t_2$
 * Cliente recebe resposta - $t_3$
 
-![Algoritmo genérico de sincronização](../drawings/algo_cristian.drawio#0)
+![Algoritmo genérico de sincronização](../../drawings/algo_cristian.drawio#0)
 
 Esta receita básica pode ser ajustada de diversas formas, sendo a primeira dada pelo algoritmo de Cristian.
 
@@ -142,7 +142,7 @@ No algoritmo de Cristian, assumimos que o relógio do Cliente é bom o suficient
 * Assuma $\frac{t_3-t_0}{2}$ como o tempo de transmissão da resposta (média da ida e da volta)
 * Cliente ajusta relógio para $C = t_s + \frac{t_3-t_0}{2}$
 
-![Algoritmo genérico de sincronização](../drawings/algo_cristian.drawio#1)
+![Algoritmo genérico de sincronização](../../drawings/algo_cristian.drawio#1)
 
 Mas e a aproximação $\frac{t_3-t_0}{2}$, é boa? É uma aproximação tão boa quanto possível, pois medir a latência em uma única direção demandaria relógios sincronizados, exatamente o que estamos tentando resolver com este algoritmo. Quero dizer, temos uma dependência circular aqui, como o vídeo a seguir mostra.
 
@@ -155,7 +155,7 @@ Neste caso, podemos estimar o erro que a aproximação introduz na sincronizaç�
 * as setas vermelhas indicam o caso em que a requisição foi muito mais rápida que resposta ($T_{min}$)
 * as setas verdes indicam o caso em que a resposta foi muito mais rápida que requisição ($T_{min}$)
 
-![Erro do algoritmo de Christian](../drawings/algo_cristian.drawio#2)
+![Erro do algoritmo de Christian](../../drawings/algo_cristian.drawio#2)
 
 No caso vermelho, a aproximação $\frac{t_3-t_0}{2}$ é muito menor que o tempo de propagação da resposta, $t3 - t1$, e no caso verde a aproximação é maior que o tempo $t_3 - t_2$.
 Em ambos os casos, o erro é está limitado a $\frac{t_2 - t1}{2}$, ou seja, $+- \frac{t_3 - t_0}{2} - T_{min}$.
@@ -291,7 +291,7 @@ Qualquer que seja o algoritmo utilizado, é provavelmente uma boa ideia **nunca 
 Mesmo que o universo não seja destruído no processo, voltar no tempo poderia levar a situações estranhas como um dado ter data de edição anterior a data de criação. Para evitar estas situações, devem ser feitos de **ajustes graduais** nos relógios, que acelerem ou desacelerem o relógio $C$ em relação a $t$ (ou sua melhor aproximação, pelo **ajuste frequência de interrupção para atrasar/adiantar relógio** ou **ajustes dos incrementos com cada interrupção**. Isso fará com que as curvas no seguinte gráfico convirjam.
 A exceção a esta regra deve ser restrita a correções após longos períodos em que o relógio dorme.
 
-![Clock drift](../drawings/clock_skew.drawio#1)
+![Clock drift](../../drawings/clock_skew.drawio#1)
 
 
 ### Usos de relógios sincronizados
@@ -305,7 +305,7 @@ Mensagens para a cópia próxima do cliente (em verde) são entregues rapidament
 
 [^liskov]: [Liskov, B.: Distrib Comput (1993) 6: 211. doi:10.1007/BF02242709](http://rdcu.be/s4iy)
 
-![Sistema Bancário Replicado](../drawings/dist_trans.drawio#0)
+![Sistema Bancário Replicado](../../drawings/dist_trans.drawio#0)
 
 Imagine que o usuário U1 envie o comando C1 `atualizar saldo da conta para USD 10`[^usd] e que o usuário U2 envie o comando C2 `atualizar saldo da conta para USD 20`.
 Se os comandos chegam primeiro para a réplica mais próxima e são executados na ordem em que chegam, ao final da execução a réplica R1 terá executado C1 seguido de C2, tendo saldo da conta como USD 20, enquanto R2 terá executado C2 seguido de C1 e terá como saldo na conta USD 10.
@@ -322,7 +322,7 @@ Assim, ao  receber um comando com timestamp $t$, uma réplica espera até $t + \
 
 [^tiebreak]: Empates são quebrados pelo identificador do processo, isto é, se duas mensagens são produzidas ao mesmo tempo por U1 e U2, então o a mensagem de U1 tem precedência na execução.
 
-![Ordenação](../drawings/tau.drawio#0)
+![Ordenação](../../drawings/tau.drawio#0)
 
 Implementar este protocolo é muito simples:
 
@@ -343,7 +343,7 @@ Se estiver atrasada em relação ao primeiro cliente, então acabará por espera
 Finalmente, se a réplica estiver adiantada em relação ao primeiro cliente, então seu relógio alcançará $t + \tau + \Delta$ antes do relógio do primeiro cliente, mas isso não é um problema. Isto porquê, o último instante em que o cliente 2 poderá enviar uma mensagem com timestamp $t' < t$ é o instante em que o relógio da réplica marcar $t + \Delta$, e portanto deverá também ser recebido até que o mesmo relógio marque $t + \tau + \Delta$. 
 
 
-![Ordenação](../drawings/tau.drawio#1)
+![Ordenação](../../drawings/tau.drawio#1)
 
 O mesmo raciocínio pode ser usado para definir um **protocolo de acesso recursos** para os quais *leases* são distribuídos, onde um ***lease*** **é uma permissão de acesso durante uma janela de tempo**, emitida por um coordenador (possivelmente eleito usando os algoritmos vistos anteriormente), e $\Delta$ é o máximo de dessincronismo entre os relógios. 
 O seguinte protocolo resolve este problema:

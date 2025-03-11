@@ -50,7 +50,7 @@ Quanto à comunicação, **ou** os nós podem **compartilhar um espaço de ender
 
 Quanto à tarefa em comum, veja o seguinte exemplo, em que vários clientes trocam emails por meio de uma máquina com a qual se comunicam para entregar mensagens a serem enviadas e receber mensagens a eles destinadas; enquanto aguardam a entrega, mensagens são armazenadas em um Sistema Gerenciador de Banco de Dados (SGBD) em uma outra máquina, da qual os usuários não tem ciência. 
 
-![Sistema Distribuído](drawings/sis_dis.drawio)
+![Sistema Distribuído](../drawings/sis_dis.drawio)
 
 ???info inline end "Dependência"
     * ao colaborarem, criam dependência

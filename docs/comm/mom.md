@@ -18,19 +18,19 @@ Quatro das operações providas pelas implementações de MPI, mostradas na figu
 Por exemplo, suponha que você esteja desenvolvendo uma aplicação que fará buscas de caminhos em grafos, com várias propriedades distintas.
 Digamos que precise calcular uma rota entre vários vértices do grafo usando caminhadas aleatórias. Usando a função *broadcast*, você pode enviar uma cópia do grafo para cada processo disponível para que independentemente calcule alguma rota. 
 
-![MPI](../drawings/mpi.drawio#0)
+![MPI](../../drawings/mpi.drawio#0)
 
 Ao final do cálculo, um processo pode coletar os resultados de cada processo e escolher a melhor entre as rotas encontradas usando a função *reduction*.
 
-![MPI](../drawings/mpi.drawio#3)
+![MPI](../../drawings/mpi.drawio#3)
 
 Se preferir que cada busca se restrinja a um subgrafo, onde os vários subgrafos são complementares, então a função *scatter* seria usada.[^scatter]
 
-![MPI](../drawings/mpi.drawio#1)
+![MPI](../../drawings/mpi.drawio#1)
 
 Finalmente, a função *gather* poderia ser usada para coletar subgrafos com rotas encontradas e montar um grafo com todas as alternativas.
 
-![MPI](../drawings/mpi.drawio#2)
+![MPI](../../drawings/mpi.drawio#2)
 
 
 [^scatter]: O particionamento básico provido pela MPI é simplesmente uma divisão do buffer com os dados entre os vários processos, então para fragmentar um grafo, você teria um pouco de trabalho.
@@ -40,7 +40,7 @@ Finalmente, a função *gather* poderia ser usada para coletar subgrafos com rot
 ## Filas de mensagem
 **Filas de mensagem** provêm uma forma de encaminhar dados para nós específicos sem a necessidade de conexão direta com os mesmos, através de **caixas de entrada**, funcionando como um serviço de correio, parecido o serviço de email ou mesmo as redes sociais para trocas de mensagens.
 
-![Message Queues](../drawings/message_queue.drawio#2)
+![Message Queues](../../drawings/message_queue.drawio#2)
 
 Estes *middleware* permitem enfrentar uma das dificuldades de se implementar sistemas distribuídos hoje, advinda do número cada vez maior de componentes, o fato de que componentes em saem do sistema frequentemente, por diversas razões, e que é difícil garantir que componentes que precisam interagir estarão online ao mesmo tempo.
 Por exemplo, imagine se redes sociais tivessem o mesmo problema, isto é, se suas mensagens só pudessem ser entregues se tanto você quanto o destinatário estivessem *online* ao mesmo tempo.

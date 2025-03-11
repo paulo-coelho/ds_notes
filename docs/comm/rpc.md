@@ -31,7 +31,7 @@ Quando acontece, faz o ***unmarshalling*** dos dados, invoca a função localmen
 
 [^marshal]: Marshalling: representar parâmetros de forma própria para transmissão "no fio".
 
-![RPC](../drawings/rpc.drawio#0)
+![RPC](../../drawings/rpc.drawio#0)
 
 |Stub cliente    | Stub servidor  |
 |----------------|----------------|
@@ -64,7 +64,7 @@ O código `x = substring(a,3,c);`, que procura `*c` em `*a`, é traduzido nos se
 * salte de volta recuperando o endereço de retorno da pilha e ajustando o IP
 * coloque resultado em `x`
 
-![RPC](../drawings/rpc.drawio#4)
+![RPC](../../drawings/rpc.drawio#4)
 
 
 O problema é que há uma distinção clara em pelo menos dois processos e se pensarmos no código descrito acima, temos que entender que 
@@ -73,12 +73,12 @@ O problema é que há uma distinção clara em pelo menos dois processos e se pe
 * processos independentes não compartilham uma pilha.
 
 
-![RPC](../drawings/rpc.drawio#1)
+![RPC](../../drawings/rpc.drawio#1)
 
 Assim, como fica a **passagem de parâmetro por referência**, uma vez que o stub servidor não pode usar endereços do espaço de endereçamento do cliente?
 Algumas abordagens para simular a passagem por referência são possíveis. Por exemplo, **o valor apontado pelo ponteiro é passado para o servidor**, que armazena o valor e alguma posição de memória e passa o endereço de tal posição para a função invocada.
 
-![RPC](../drawings/rpc.drawio#2)
+![RPC](../../drawings/rpc.drawio#2)
 
 Contudo, a modificação do valor pela função não reflete imediatamente no invocador; tais valores tem que ser copiados novamente e usados para sobrescrever o valor original no cliente.
 Além disso, esta abordagem só é possível se o valor apontado for delimitado, o que nem sempre é fácil de determinar. 
@@ -87,7 +87,7 @@ Por exemplo, se o ponteiro for para o primeiro elemento de uma lista, o que deve
 Java "resolve" o problema da passagem de parâmetro por referência passando todo o grafo do objeto passado como parâmetro para o servidor. Isto é, além de serializar o objeto apontado no parâmetro, se o mesmo aponta para outros objetos, estes também serão serializados e transferidos; o servidor irá então reconstruir todo o grafo e passar para o método sendo invocado.
 É muito fácil ver que esta abordagem pode se tornar inviável rapidamente. Quando for o caso, Java permite marcar objetos como **remotos** e, em vez de serializar este objeto e enviar para o servidor, envia informação suficiente para que o servidor possa invocar métodos em tal objeto no cliente, tornando nebulosa a definição de quem é quem.
 
-![RPC](../drawings/rpc.drawio#8)
+![RPC](../../drawings/rpc.drawio#8)
 
 
 Outros fatores também trabalham contra a transparência para o desenvolvedor.
@@ -101,7 +101,7 @@ Birrel e Nelson propuseram um serviço de **Páginas Amarelas**, no qual cliente
 Esta abordagem tem seus próprios problemas, como por exemplo determinar **quem administra** o serviço para incluir novos servidores.
 E como determinar qual serviço acessar, caso hajam **múltiplas opções de servidores**.
 
-![RPC](../drawings/rpc.drawio#3)
+![RPC](../../drawings/rpc.drawio#3)
 
 Apesar dos problemas, **páginas amarelas** foram usadas em abordagens muito mais recentes para descobertas de serviços, por exemplo [Web Services Discovery](https://en.wikipedia.org/wiki/Web_Services_Discovery), que permite a descoberta de Web Services em escala global, e [Java Remote Object Registry](https://docs.oracle.com/javase/7/docs/technotes/tools/solaris/rmiregistry.html) que permite a descoberta de objetos remotos Java.
 
@@ -142,7 +142,7 @@ Se o cliente havia invocado uma operação mas percebeu o erro antes de receber 
 * (i) ou a requisição nunca foi recebida pelo servidor e, portanto, não foi executada,
 * (ii) ou a execução foi recebida e executada, mas a resposta não foi enviada.
 
-![RPC](../drawings/rpc.drawio#5)
+![RPC](../../drawings/rpc.drawio#5)
 
 O cliente tem que tratar o erro, mas como?
 Se a operação **precisa** ser executada **a qualquer custo**, o cliente pode retentá-la quando conseguir novo contato com o servidor (ou mesmo com outro).
@@ -150,13 +150,13 @@ Neste caso, se o que de fato aconteceu foi a situação (i), então retentar gar
 Contudo, se o que o ocorreu foi a situação (ii), então reenviar a operação levará a mesma a ser executada múltiplas vezes, o que pode ou não ser ok.
 Esta abordagem é o que garantirá que a execução acontece **pelo menos 1 vez**.
 
-![RPC](../drawings/rpc.drawio#6)
+![RPC](../../drawings/rpc.drawio#6)
 
 Imagine que a operação se tratasse de uma transferência de saldo, ou a encomenda de de um caminhão carregado de algum produto caro. Neste caso, reexecutar não parece ser uma opção.
 Neste caso, talvez a melhor opção seja não retentar a operação, o que levará a zero execuções na situação (ii) e uma execução na situação, ou seja, a **no máximo uma** execução.
 Uma situação em que esta abordagem é claramente preferível é a entrega de quadros em um *stream* de vídeo ou áudio, devido à importância da operação ser atrelada ao momento de sua execução.
 
-![RPC](../drawings/rpc.drawio#7)
+![RPC](../../drawings/rpc.drawio#7)
 
 !!!info inline end "Quantidade de execuções"
     * No máximo uma - não retentar
@@ -237,15 +237,15 @@ O fluxo de processamento é o seguinte:
 
 Invocações de procedimentos e métodos são geralmente síncronas, o que quer dizer que o chamador do procedimento normalmente espera a conclusão do procedimento para continuar a executar.
 
-![RPC](../drawings/rpc.drawio#9)
+![RPC](../../drawings/rpc.drawio#9)
 
 Essa abordagem é necessária quando o chamador precisa do resultado do procedimento para continuar, mas deixa de fazer sentido quando ou o procedimento não tem um resultado ... 
 
-![RPC](../drawings/rpc.drawio#10)
+![RPC](../../drawings/rpc.drawio#10)
 
 ... ou quando o resultado só será necessário mais tarde, podendo ser recebido via um *callback*.
 
-![RPC](../drawings/rpc.drawio#11)
+![RPC](../../drawings/rpc.drawio#11)
 
 Independentemente de qual abordagem for utilizada, ambos os processos, chamador e chamado, precisam estar ativos ao mesmo tempo para que a comunicação aconteça, isto é, os processos estão **acoplados no tempo**.
 Nas seções seguintes veremos como este requisito pode ser relaxado, permitindo que os processos sejam desacoplados no tempo.

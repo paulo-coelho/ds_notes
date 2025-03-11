@@ -4,7 +4,7 @@ Se você se lembrar da pilha de protocolos de comunicação de referência OSI, 
 O protocolo de cada camada inclui **cabeçalhos** (*header*) e **carga** (*payload*) e o conjunto de cabeçalho + carga de uma camada é considerado carga da camada inferior.
 Assim, embora tenha-se a impressão de que cada camada conversa com a equivalente do outro lado da comunicação, na prática, a comunicação desce e sobe a pilha. 
 
-![Pilhas de Comunicação](../drawings/pilha.drawio#0)
+![Pilhas de Comunicação](../../drawings/pilha.drawio#0)
 
 São sete as camadas:
 
@@ -16,21 +16,21 @@ São sete as camadas:
 6. Apresentação: Objetos; json, xml; criptografia
 7. Aplicação: Aplicações; http, pop, ftp
 
-![Pilhas de Comunicação](../drawings/pilha.drawio#1)
+![Pilhas de Comunicação](../../drawings/pilha.drawio#1)
 
 
 
 O ***internetworking protocol***, ou IP, é um protocolo da camada 3, mas apesar disso, nos referimos à pilha que usa este protocolo como a pilha IP.
 Esta pilha é, na prática, diferente da pilha de referência OSI por ser mais simples, como se vê na figura a seguir
 
-[![OSI x IP](../drawings/pilha.drawio#2)](http://computing.dcu.ie/~humphrys/Notes/Networks/intro.2.html)
+[![OSI x IP](../../drawings/pilha.drawio#2)](http://computing.dcu.ie/~humphrys/Notes/Networks/intro.2.html)
 
 
 O IP trabalha conectando diversas redes via os **roteadores**, nós que fazem parte de mais de uma rede.
 Nestes nós, os os pacotes de dados sobem somente até a camada 3 e lá são encaminhados, por  **melhor esforço** para o próximo segmento rumo ao destinatário.
 
 
-![Pilhas de Comunicação](../drawings/pilha.drawio#3)
+![Pilhas de Comunicação](../../drawings/pilha.drawio#3)
 
 Assim, para a aplicação usando o IP, as redes se comportam como uma única e coerente rede, exceto por alguns detalhes.
 Esta habilidade é o que dá o nome ao protocolo e, de fato, a toda a Internet.

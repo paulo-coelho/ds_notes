@@ -22,14 +22,14 @@ A figura a seguir mostra um anel em cujo os nós tem identificadores de 8 bits (
 Assumamos inicialmente que os nós só estão cientes dos seus vizinhos imediatos no anel.
 [^chord_dist]: Observe que as distâncias entre os nós no anel foram desenhadas de forma proporcional à diferença numérica entre os identificadores.
 
-![Anel Chord](../drawings/chord.drawio#0)
+![Anel Chord](../../drawings/chord.drawio#0)
 
 Cada chave é associada a um nó, responsável por atender requisições de criação, consulta, modificação e remoção dos dados relacionados àquela chave.
 A pseudo aleatoriedade na geração da chave e a aleatoriedade na geração dos identificadores de nós faz com que a distribuição de carga entre os nós seja uniforme.
 O dado com chave $k$ é responsabilidade do nó com menor identificador $i \geq k$, aka, **sucessor de $k$** ($i = suc(k)$), no anel.
 Na figura a seguir, é apresentado junto a cada nó as chaves pelas quais o nó é responsável.
 
-![Anel com Chaves no Chord](../drawings/chord.drawio#1)
+![Anel com Chaves no Chord](../../drawings/chord.drawio#1)
 
 
 ## Roteamento
@@ -47,7 +47,7 @@ Em outras palavras, cada nó mantem uma **tabela de rotas** com uma ou duas entr
 Com uma rede com milhares de nós, uma solução $O(n)$ saltos, onde cada pode levar **ao outro lado do planeta**, operações teriam uma latência muito alta.
 Para amenizar o custo, Chord propõe a criação de uma tabela de rotas, também conhecida como *finger-table*, que aponta para nós no anel com distâncias que se dobram a cada entrada.
 
-![Anel com Chaves no Chord](../drawings/chord.drawio#2)
+![Anel com Chaves no Chord](../../drawings/chord.drawio#2)
 
 A *finger-table* é construída da seguinte forma, onde $m$ é a quantidade de bits usados para identificar nós no sistema:
 

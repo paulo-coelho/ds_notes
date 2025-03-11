@@ -25,19 +25,19 @@ O evento $a$ aconteceu-antes $b$, notado como $a \rightarrow b$, se uma das trê
 
 Na figura abaixo, as três regras são exemplificadas pelos eventos de cor vermelha, amarela e verde, respectivamente.
 
-![LC - Primeira tentativa](../drawings/clock.drawio#1)
+![LC - Primeira tentativa](../../drawings/clock.drawio#1)
 
 Note que se $e \rightarrow e'$ é falso e $e' \rightarrow e$ é falso, então $e$ e $e'$ são **concorrentes**, e que ser concorrente não quer dizer que aconteceram exatamente no mesmo instante, do ponto de vista de um observador externo, como exemplificado na figura anterior pelos eventos de cor roxa.
 Ser concorrente quer dizer que um evento $e$ não pode ter influenciado o evento $e'$, dado que os efeitos de $e$ não poderiam ser conhecidos pelo processo onde $e'$ ocorreu, quando $e'$ ocorreu.
 O cone de luz na figura seguinte mostra esta relação entre eventos. Somente os efeitos dos eventos uma distância no espaço/tempo menor ou igual às dos pontos mais distantes ao evento em questão, podem ter influenciado tal evento. No caso dos eventos $o$ e $v$ na figura, os mesmos não figuram no mesmo cone de luz.
 
-![Light-cone](../drawings/clock.drawio#2)
+![Light-cone](../../drawings/clock.drawio#2)
 
 Mas para que nos serve capturar a causalidade entre os eventos? Bem, se capturarmos a causalidade, podemos usar esta informação para ordenar os seu processamento, de forma a fazer sentido.
 Por exemplo, considere um sistema em que o primeiro usuário de um serviço de emails recebe primeiro a resposta da mensagem A, R:A, para somente depois receber A.
 Para que a troca de mensagens faça sentido, o usuário posterga a leitura de R:A até depois de ter lido A.
 
-![Inversão causal](../drawings/group_com.drawio#0)
+![Inversão causal](../../drawings/group_com.drawio#0)
 
 Observe que em nenhum momento a informação sobre **quando** as mensagens foram enviadas foi necessária, apenas a **ordem** das mesmas.
 Relógios lógicos permitem que sistemas capturem a relação de causalidade entre eventos e implementem esquemas como o apenas descrito, para coordenar as ações dos processos em sistemas distribuídos.
@@ -64,7 +64,7 @@ Experimentemos a seguinte definição:
 Observe que não há **fonte da verdade** em termos de tempo lógico, já que **cada processo mantém seu próprio relógio** que pode ser relacionado com relógios de outros processos.
 Veja um exemplo desta definição em ação.
 
-![LC - Primeira tentativa](../drawings/clock.drawio#3)
+![LC - Primeira tentativa](../../drawings/clock.drawio#3)
 
 É verdade neste cenário que se $a \rightarrow b$ então $C(a) < C(b)$?  
 Observe com atenção os eventos $j$ e $q$, pois para estes, a regra não é respeitada.
@@ -87,7 +87,7 @@ Para que a regra $e \rightarrow e'$ então $C(e) < C(e')$ seja válida, precisam
 
 Com este ajuste, temos os **Relógios de Lamport**.
 
-![LC - Primeira tentativa](../drawings/clock.drawio#4)
+![LC - Primeira tentativa](../../drawings/clock.drawio#4)
 
 Neste caso, temos que para quaisquer eventos $e,e'$,  se $e \rightarrow e'$ então $C(e) < C(e')$.
 
@@ -141,7 +141,7 @@ Assim, sejam dois eventos $e \neq e'$:
 Para entender melhor como esta definição funciona, considere a seguinte execução.
 O que quer dizer $c_p[q] = k$, ou tomando o evento $d$ como exemplo, o que quer dizer $V(d) = (4,1,0)$?
 
-![Relógio Vetorial](../drawings/clock.drawio#5)
+![Relógio Vetorial](../../drawings/clock.drawio#5)
 
 Quer dizer que $p1$ está ciente de 1 eventos locais a $p2$, assim com está ciente de 0 eventos em $p3$ e de que $d$ é o quarto evento em $p1$.
 Agora compare os eventos $o$ e $v$.
@@ -182,7 +182,7 @@ Isto é, se poucos eventos acontecerem, o valor do relógio lógico acompanhará
             * $c_p.l \gets max(c_p.l + 1, ts + 1, c_p.f)$
             * $V(e) = c_p.l$
 
-![Relógio Híbrido Simples](../drawings/clock.drawio#0)
+![Relógio Híbrido Simples](../../drawings/clock.drawio#0)
 
 
 Nesta versão do algoritmo, contudo, se muitos eventos acontecerem, o valor do relógio lógico pode ser incrementadado muito rapidamente, perdendo a relação com o relógio físico.
@@ -212,7 +212,7 @@ Como todo programa, este é uma máquina de estados, com a peculiaridade de ser 
 Logo, se tivermos **várias cópias** deste programa, executando em locais distintos, mas garantirmos que cada cópia veja exatamente a **mesma entrada de dados**, então garantiremos que todas as cópias **transitarão pelos mesmos estados** e chegarão ao mesmo estado final.
 Como difusão totalmente ordenada pode ser usado para garantir que todas as cópias receberão a mesma entrada, pode ser usado para implementar esta técnica, conhecida como Replicação de Máquinas de Estados (em inglês, [*State Machine Replication*](https://en.wikipedia.org/wiki/State_machine_replication), ou pelo menos o seu princípio.
 
-![State Machine Replication](../drawings/group_com.drawio#1)
+![State Machine Replication](../../drawings/group_com.drawio#1)
 
 Mas como podemos implementar estas primitivas de difusão usando relógios lógicos? 
 Vejamos um algoritmo, onde consideramos que todas as mensagens são enviadas a todos os processos, inclusive o próprio remetente.
@@ -250,7 +250,7 @@ Vejamos um outro algoritmo, de difusão **causalmente** ordenada.
         * $ts[q] = c_p[q]+1$
         * $ts[k] \leq c_p[k], k \neq q$
 
-![Causal Ordering](../drawings/group_com.drawio#2)
+![Causal Ordering](../../drawings/group_com.drawio#2)
 
 !!!exercise "Difusão Causalmente Ordenada"
      Considere $c_{p3}[0,2,2]$ e $ts=[1,3,0]$, de $p1$. O que $p3$ está esperando? Como age ao receber mensagem com $ts$?
@@ -262,7 +262,7 @@ Um aspecto interessante da implementação de primitivas de comunicação em gru
 Isto é, no exemplo descrito anteriormente em que processos mandam mensagens para réplicas usando difusão totalmente ordenada, os clientes não precisam estar cientes disto, e podem simplesmente mandar suas requisições como faziam antes do serviço ser replicado. Mas como então as mensagens tem seus relógios lógicos atualizados e usados para a geração de *timestamps*?
 Isto pode ser feito por meio de **interceptadores** em uma camada de ***middleware***.
 
-![Interceptadores](../drawings/group_com.drawio#3)
+![Interceptadores](../../drawings/group_com.drawio#3)
 
 
 Quando a aplicação envia uma mensagem, o relógio lógico mantido no *middleware* é atualizado e seu valor usado como *timestamp* em uma versão estendida da mensagem, efetivamente enviada na rede.

@@ -18,7 +18,7 @@ Sobre este meio, são usados protocolos para, por exemplo,
 As redes Ethernet, contudo, cobrem pequenas áreas e, para se ter conversas mais "abrangentes", é necessário que se conecte diversas destas redes.
 A conversa então é feita por meio de intermediários, ***gateways*** que conectam duas ou mais redes, permitindo que mensagens de um interlocutor sejam **roteadas** para o outro.
 
-![Gateway](../drawings/gateway.drawio)
+![Gateway](../../drawings/gateway.drawio)
 
 Um exemplo interessante das questões ligadas à manutenção da conversa entre dois pontos é a decisão sobre o uso de **comutação de pacotes** (*packet switching*) ou de **circuitos** (*circuit switching*).
 

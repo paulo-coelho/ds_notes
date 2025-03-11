@@ -26,19 +26,19 @@ As entradas desta tabela podem ser ser pensadas linhas de uma relação de um ba
 Obviamente que $X$ e $Y$ não precisam ser declarados antes da primeira escrita, assim como chaves primárias não são declaradas até que sejam usadas, e que o valor associado a uma variável pode ter várias partes, como **"{'Endereço':'Av 1, número 2', 'Profissão':'Computeiro'}** e cada parte um tipo. 
 Essa á uma simplificação dos bancos de dados, mas uma simplificação poderosa.
 
-![Single DB](../drawings/disdb.drawio#0)
+![Single DB](../../drawings/disdb.drawio#0)
 
 
 ###### Expectativa x Realidade
 Quando um processo se comunica com um banco de dados, ele o faz com certas expectativas quanto ao funcionamento deste banco.
 Por exemplo, ao escrever um dados no banco, independentemente de como o banco é implementado, o cliente geralmente espera que as escritas aconteçam na ordem em que as disparou e que, ao ler uma variável, lhe seja retornado o "último" valor escrito na mesma.
 
-![Single DB](../drawings/disdb.drawio#7)
+![Single DB](../../drawings/disdb.drawio#7)
 
 Esta expectativa é independente do banco de dados ser implementado de forma distribuída ou não. 
 Isto é, mesmo que os dados armazenados no banco sejam particionados ou replicados entre vários nós, o cliente espera que o banco tenha comportamento consistente com o de um banco não distribuído e retorne ou aquilo que escreveu ou algo mais recente.
 
-![Single DB](../drawings/disdb.drawio#1)
+![Single DB](../../drawings/disdb.drawio#1)
 
 !!!note inline end "Níveis de Consistência"
       * Consistência forte: leituras sempre retornam a versão mais recente do dado sendo lido.
@@ -53,13 +53,13 @@ A expectativa, ou melhor, a forma como o banco de dados age dada uma interação
 A grande dificuldade na implementação de qualquer modelo de consistência em um banco de dados distribuído vem do fato das operações não serem atômicas, como mostrado acima.
 Se os processos estão em máquinas distintas, há uma naturalmente um tempo de propagação para os comandos e respostas, e a execução se parece mais com o seguinte, onde as operações são espalhadas no tempo.
 
-![Single DB](../drawings/disdb.drawio#2)
+![Single DB](../../drawings/disdb.drawio#2)
 
 O problema se agrava quando o próprio banco de dados é distribuído, replicado ou particionando seus dados. 
 Para entender como isso afeta a implementação, considere a execução seguinte, em que cada cliente se comunica com uma réplica.
 Neste caso, a operação de atualização de $Y$ para 20, que já havia terminado do ponto de vista do cliente de baixo, ainda não havia sido propagada para a réplica de cima, o que fez com que a leitura iniciada depois não visse o valor 20.
 
-![Não linearabilidade](../drawings/disdb.drawio#5)
+![Não linearabilidade](../../drawings/disdb.drawio#5)
 
 Para impedir execuções como esta, os processos devem coordenar suas ações, o que tem um custo em termos do desempenho do sistema, forçando a comunidade a buscar por modelos em que o custo seja menor mas que as garantias dadas ainda sejam úteis.
 
@@ -101,26 +101,26 @@ O modelo mais forte de consistência, para operações simples sobre objetos ind
 que implica que operações aparentam executar atomicamente (acontece em um ponto indivisível da execução), respeitando a ordem temporal das operações, isto é, se uma operação $b$ foi iniciada depois que uma outra operação $a$ foi terminada, então, os efeitos de $a$ devem ser vistos antes dos efeitos de $b$.
 A execução mostrada anteriormente, é um exemplo de execução linearizável.
 
-![Linearabilidade](../drawings/disdb.drawio#2)
+![Linearabilidade](../../drawings/disdb.drawio#2)
 
 Observe que a execução é equivalente à seguinte, onde não há concorrência entre operações (caixas com bordas arredondadas).[^multiplas]
 
 [^multiplas]: Observe também que se $X$ e $Y$ forem considerados objetos diferentes, então estamos falando em duas execuções distintas, uma verde e outra vermelha, ambas linearizáveis.
 
-![Linearabilidade](../drawings/disdb.drawio#3)
+![Linearabilidade](../../drawings/disdb.drawio#3)
 
 De fato, cada operação poderia ser substituída por um único ponto e mesmo a distribuição poderia ser ignorada; tudo o que importa para que a execução seja linearizável são os efeitos das operações, não o fato do banco ser distribuído, replicado ou particionado.
 
-![Linearabilidade](../drawings/disdb.drawio#4)
+![Linearabilidade](../../drawings/disdb.drawio#4)
 
 Como já mencionamos, implementar este modelo mesmo em um sistema distribuído assíncrono demanda muita coordenação entre os processos, estendendo o tempo de execução de cada operação para "cobrir" esta coordenação. 
 Reveja o exemplo seguinte, em que a operação de atualização de $Y$ para 20 não foi refletida na última leitura.
 
-![Não linearabilidade](../drawings/disdb.drawio#5)
+![Não linearabilidade](../../drawings/disdb.drawio#5)
 
 Para corrigir o problema, as réplicas precisam se "sincronizar" antes de executarem leituras.
 
-![Não linearabilidade](../drawings/disdb.drawio#6)
+![Não linearabilidade](../../drawings/disdb.drawio#6)
 
 
 ## Consistência sequencial
@@ -128,5 +128,5 @@ A grande dificuldade em se garantir a linearabilidade vem da exigência das oper
 
 
 
-![Consistência sequencial](../drawings/disdb.drawio#5)
+![Consistência sequencial](../../drawings/disdb.drawio#5)
 

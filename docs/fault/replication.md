@@ -8,7 +8,7 @@ Uma forma de olhar para este problema é considerar em quais réplicas as opera�
 ## Multi-Escritores
 Nos sistemas multi-escritores, clientes podem disparar operações de modificações de dados (escritas) e de recuperação de dados (leituras) para qualquer réplica.
 
-![](../drawings/replication.drawio#8)
+![](../../drawings/replication.drawio#8)
 
 
 ### Encaminhamento de mensagens
@@ -17,12 +17,12 @@ Esta abordagem pode ser implementada com diferentes mecanismo de comunicação, 
 Por exemplo, se implementada o uso de UDP, todas as réplicas receberão as mesmas operações, exceto por alguma eventualmente perdida.
 Se em vez disso usarem várias conexões TCP conectado todas as réplicas, desde que as réplicas estejam sempre ativas, todas receberão, em algum momento, todas as operações enviadas pelos clientes.
 
-![](../drawings/replication.drawio#0)
+![](../../drawings/replication.drawio#0)
 
 Mesmo que todas as mensagens sejam entregues, a falta de ordenação no processamento de operações pode levar a estados inconsistentes entre as réplicas.
 Por exemplo, se dois comandos são enviados, um para esvaziar o conteúdo de um arquivo e o outro pra apagá-lo, o processamento desordenado poderá levar uma réplica a ter um arquivo vazio e a outra a não ter o arquivo.
 
-![](../drawings/replication.drawio#1)
+![](../../drawings/replication.drawio#1)
 
 
 ### Anti-entropia
@@ -33,31 +33,31 @@ O termo em inglês para esta garantia é ***eventual consistency***[^eventual] e
 
 [^eventual]: *Eventual*, no inglês, quer dizer que algo vai acontecer, embora não se saiba quando.
 
-![](../drawings/replication.drawio#2)
+![](../../drawings/replication.drawio#2)
 
 Apesar de levar à consistência entre réplicas, o estado alcançado não necessariamente faz sentido do ponto de vista da aplicação pois pode corresponder, por exemplo, a uma ordenação errada dos comandos emitidos por um dado cliente.
 Por isso, esta técnica não pode ser aplicada em todas as situações.
 
-![](../drawings/replication.drawio#3)
+![](../../drawings/replication.drawio#3)
 
 
 ## Único Escritor
 No caso de único escritor, as operações de escrita são direcionadas para uma única réplica e, dependendo dos requisitos de **consistência** dos clientes, as operações e leitura podem ser direcionadas à mesma réplica ou a quaisquer das réplicas.
 
-![](../drawings/replication.drawio#9)
+![](../../drawings/replication.drawio#9)
 
 ### Primário/Secundário
 Nos foquemos na raiz do problema que aparentemente é a ordenação das operações.
 Se cada processo pode receber as mensagens em qualquer ordem, ou seja, cada uma tem uma fila de mensagens independente, então as réplicas podem chegar a estados distintos.
 
-![Primário/Backup](../drawings/replication.drawio#4)
+![Primário/Backup](../../drawings/replication.drawio#4)
 
 Mas e se tivéssemos uma fila única?
 No caso da replicação **primário/cópia**,[^mestreescravo] o primário é responsável por lidar com clientes e por informar cópias das modificações de estado, efetivamente mantendo a fila única e impondo uma ordenação de operações que faz sentido, correspondendo a ordem de entrega das mensagens.
 
 [^mestreescravo]: Esta técnica também é conhecida como **mestre/escravo**, mas esta nomenclatura tem caído em desuso por razões óbvias.
 
-![Primário/Backup](../drawings/replication.drawio#5)
+![Primário/Backup](../../drawings/replication.drawio#5)
 
 Algumas observações são importantes sobre a forma como as operações são repassadas para as réplicas aqui.
 
@@ -76,7 +76,7 @@ Contudo, como o primário primeiro executa a operação antes de repassá-la par
 ### Replicação em Cadeia
 A **replicação em cadeia** é uma generalização de primário/cópia em que os processos se organizam em um sequência para executar operações.
 
-![Chain replication](../drawings/replication.drawio#6)
+![Chain replication](../../drawings/replication.drawio#6)
 
 
 Como na abordagem original, **atualizações** no sistema são sempre **direcionadas ao primário**, a cabeça da sequência. 
@@ -101,7 +101,7 @@ Se este for o caso, replicação ativa pode ser usada.
 
 No caso da replicação ativa, as **várias cópias executam todos os comandos** enviados para o sistema, estando assim todas aptas a continuar a executar o serviço a qualquer instante, pelo menos se as operações de leitura forem enfileiradas também, ou poderiam chegar a uma réplica antes de uma escrita disparada anteriormente.
 
-![Replicação ativa](../drawings/replication.drawio#7)
+![Replicação ativa](../../drawings/replication.drawio#7)
 
 
 A técnica de replicação de [máquinas de estados](../time/logical/#comunicacao-em-grupo), brevemente discutida anteriormente, é uma materialização da replicação ativa.

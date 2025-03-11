@@ -10,7 +10,7 @@ Seja $G$ o conjunto dos componentes do sistema; $G$ é a **visão** deste sistem
 No exemplo da imagem a seguir, $G$ consiste inicialmente de apenas o processo $p$, a *semente* do sistema.
 Na sequência, outros processo vão se unindo ao grupo através de mudanças de visão, e quando processos falham, são excluídos pelo mesmo processo, mesmo que depois voltem a funcionar e novamente a compor o grupo.
 
-![](../drawings/view_change.drawio#0)
+![](../../drawings/view_change.drawio#0)
 
 ###### Impossibilidade de Detecção de Falhas
 Como já vimos, em um sistema distribuído assíncrono, é impossível distinguir com toda certeza um processo falho de um que está lento.
@@ -18,7 +18,7 @@ Assim, como é que no exemplo anterior os processos decidem corretamente excluir
 A verdade é que não há como ter certeza e o sistema ou aceita a possibilidade de injustiça e muda quando suspeitar de uma falha, ou corre o risco de ficar esperando *ad eternum* e não mudar, mesmo quando uma falha aconteceu.
 Se a falha de fato não ocorreu, uma vez que o processo excluído estiver apto, ele encadeará uma nova visão que novamente o inclua.
 
-![](../drawings/view_change.drawio#1)
+![](../../drawings/view_change.drawio#1)
 
 
 ## Sincronismos Virtual
@@ -41,7 +41,7 @@ As outras mensagens são totalmente ordenadas com $m$, satisfazendo parte do cri
 A exclusão de um processo acontece de forma semelhante; se $q$ acha que $p$ deve ser excluído, então envia uma mensagem $m$ que comanda **excluir $p$ na visão**.
 Se, além da ordem de exclusão, a mensagem $m$ também informar a visão em que $m$ foi enviada (ou informação equivalente), os processos saberão julgar que qualquer mensagem cujo remetente é $p$ e que seja entregue depois de $m$ deve ser ignorada.
 
-![](../drawings/view_change.drawio#2)
+![](../../drawings/view_change.drawio#2)
 
 
 
@@ -56,7 +56,7 @@ Este sistema influenciou e inspirou diversos outros, como Zookeeper, Totem, Horu
 A última propriedade especificada acima para o sincronismo virtual diz respeito à transferência de estado entre processos que entram e permanecem na visão.
 Novos estados são gerados por eventos relevantes, como a recepção de uma mensagem com um comando a ser executado pelo processo.
 
-![](../drawings/view_change.drawio#3)
+![](../../drawings/view_change.drawio#3)
 
 Com parte do procedimento de mudança de visão, toda a informação necessária para que o novo processo comece a processar novos eventos e progrida em sua computação deve ser transferido para os processos que entram na visão.
 Processos que estão saindo da visão, ao retornarem, devem ter seu estado também atualizado.
@@ -66,12 +66,12 @@ Processos que estão saindo da visão, ao retornarem, devem ter seu estado tamb�
 Outro ponto importante, também ligado à questão da detecção de falhas, é o fato da rede poder ser particionada, levando processos em uma partição a supeitar dos processos que estão na outra.
 No exemplo, após a partição, cada conjunto de processos gera uma nova visão, incompleta e inconsistente do sistema.
 
-![](../drawings/view_change.drawio#4)
+![](../../drawings/view_change.drawio#4)
 
 No exemplo, quando a partição da rede desaparece, aos processos sobra o trabalho de unificar os estados divergentes.
 Para evitar esta situação, pode-se adotar um modelo de partição primária, em que somente pode ser formada uma nova partição se esta incluir pelo menos uma maioria dos processos pertencentes à visão anterior (ou que pelo menos uma maioria dos processos seja envolvida no processo de decisão da nova partição).
 
-![](../drawings/view_change.drawio#5)
+![](../../drawings/view_change.drawio#5)
 
 ## Referências
 

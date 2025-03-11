@@ -70,7 +70,7 @@ Com esta visão de falhas, podemos definir quatro métricas
 * Tempo médio para reparo, MTTR (do inglês, *mean time to repair*) é a expectativa de quanto tempo leva para corrigir o sistema e retorná-lo ao estado funcional, uma vez que o defeito foi percebido
 * Tempo médio entre falhas, MTBF (do inglês, *mean time between failures*) é a expectativa de quanto tempo transcorre entre falhas.
 
-[![System Reliability & Availability Calculations](../drawings/mtbf.drawio)](https://www.bmc.com/blogs/system-reliability-availability-calculations/)
+[![System Reliability & Availability Calculations](../../drawings/mtbf.drawio)](https://www.bmc.com/blogs/system-reliability-availability-calculations/)
 
 A frequência de falhas de um único componente é dada por $\lambda = \frac{1}{MTBF}$ e, dada a taxa de falhas de um componente, é possível calcular sua confiabilidade em um certo instante $t$ como $R(t) = e^{-\lambda t}$.
 Calcular estas métricas para sistemas com múltiplos componentes, como um sistema distribuído, é possível mas requer uma imersão em probabilidade condicional.
@@ -111,18 +111,18 @@ Agora suponha que os chips foram organizados em série, isto é, que para que os
 A probabilidade do sistema estar funcionando é a probabilidade de o primeiro da série estar funcionando, e o segundo da série estar funcionando, e o terceiro da série..., bem, você entendeu a ideia.
 Assim, se a sua configuração tem 10 chips, então a confiabilidade do conjunto é de $0,99^{10} = 0,9034$. Se fossem 20 chips, a confiabilidade seria de $0,99^{10} = 0,81$.
 
-![](../drawings/reliability.drawio#0)
+![](../../drawings/reliability.drawio#0)
 
 Se os componentes estivessem ligados em paralelo, ou seja, propiciando formas redundantes de uso, o cálculo seria diferente.
 Neste caso, a probabilidade do sistema não estar funcional seria a probabilidade de nenhum deles estar funcional; dado que um componente não está funcional com probabilidade $1-0,99 = 0,01$, todos não estariam funcionais com probabilidade $0,01* 0,01 * 0,01 \ldots$. Já a probabilidade do sistema estar funcional, sua confiabilidade, é de 1 menos a probabilidade de não estar funcional, isto é, $1 - (0,01*0,01*0,01\ldots)$.
 Se forem 4 componentes, temos $1 - 0,01^4 = 0,9999999$.
 
-![](../drawings/reliability.drawio#1)
+![](../../drawings/reliability.drawio#1)
 
 
 Por isso, não basta ter dispositivos individualmente confiáveis; a forma como os mesmos são combinados tem um grande impacto no resultado final.
 
-![](../drawings/reliability.drawio#1)
+![](../../drawings/reliability.drawio#1)
  
 Embora seja óbvio que quanto mais redundância (caminhos paralelos) tivermos no sistema, maior será a confiabilidade, o que pode lhe induzir a querer aumentar a redundância, lembre-se de que redundância tem um custo, e este custo pode chegar a ser maior que o benefício que esta redundância lhe trará.
 

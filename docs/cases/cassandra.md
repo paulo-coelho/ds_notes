@@ -2,7 +2,7 @@
 ## Sistema P2P/Híbrido: Cassandra
 O banco de dados Cassandra é um banco de dados em que os dados são mantidos por pares de servidores.
 
-![CassandraDB](../drawings/cassandra_hibrido.drawio)
+![CassandraDB](../../drawings/cassandra_hibrido.drawio)
 
 Uma característica fundamental do Cassandra, que o distingue o Chord e outros sistemas P2P é que cada nó do sistema conheça todos os outros. 
 Assim, cada requisição é diretamente encaminhada ao nó responsável por tratá-la.

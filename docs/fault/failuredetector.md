@@ -6,22 +6,22 @@ Assim, um detector de falhas pode ser visto como **oráculo distribuído**, com 
 
 [^CT96]: [Unreliable Failure Detectors for Reliable Distributed Systems](https://www.cs.utexas.edu/~lorenzo/corsi/cs380d/papers/p225-chandra.pdf)
 
-![Failure Detector](../drawings/failure_detector.drawio#0)
+![Failure Detector](../../drawings/failure_detector.drawio#0)
 
 
 Chandra e Toueg classificaram os detectores de falhas segundo suas características de completude (*completeness*) e acurácia (*accuracy*), ou seja, a capacidade de suspeitar de um processo defeituoso e a capacidade de não suspeitar de um processo correto, respectivamente. 
 Embora não seja obrigatório, detectores de falhas são normalmente implementados por meio de trocas de mensagens de *heartbeat*.
 Mensagens são esperadas em momentos específicos para sugerir que o remetente continua funcional.
 
-![Failure Detector](../drawings/failure_detector.drawio#1)
+![Failure Detector](../../drawings/failure_detector.drawio#1)
 
 Quando os *heartbeats* não chegam até o limite de tempo, o processo remetente passa a ser considerado **suspeito** de falha.
 
-![Failure Detector](../drawings/failure_detector.drawio#2)
+![Failure Detector](../../drawings/failure_detector.drawio#2)
 
 *Heartbeats*  que chegam depois podem corrigir erros, mas também podem levar a atrasos na detecção de falhas.
 
-![Failure Detector](../drawings/failure_detector.drawio#3)
+![Failure Detector](../../drawings/failure_detector.drawio#3)
 
 
 Para capturar estas combinações de eventos, foram definidos os seguintes níveis para as propriedades de completude e acurácia, onde um processo é denominado **correto** se ele não falha durante execução do protocolo.

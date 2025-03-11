@@ -23,7 +23,7 @@ De uma forma ou de outra, sistemas distribuídos tem à sua disposição múltip
 Contudo, por um lado, quando falamos em sistemas multiprocessados, normalmente estamos falando de sistemas em que os processadores estão **próximos** e compartilham um mesmo espaço de endereçamento, sejam computadores com múltiplos processadores ou sejam clusters de computadores conectados por um barramento de comunicação de altíssima largura de banda, como [Infiniband](https://en.wikipedia.org/wiki/InfiniBand) que abstraiam múltiplos segmentos de memória como um único espaço de endereçamento.
 Seja como for, estes sistemas com **memória compartilhada** são normalmente usados para aplicações de computação intensiva e em cujo os componentes são mais **fortemente acoplados** e melhor estudados em um curso de computação paralela.
 
-![Memória Compartilhada](../drawings/shared_memory.drawio#0)
+![Memória Compartilhada](../../drawings/shared_memory.drawio#0)
 
 
 ??? info inline end "Comunicação"
@@ -33,17 +33,17 @@ Seja como for, estes sistemas com **memória compartilhada** são normalmente us
 Por outro lado, estamos mais interessados aqui em sistemas de maior escala geográfica, o que se adequa melhor ao modelo de troca de mensagens, isto é, onde cada nó mantem controle total do seu espaço de endereçamento e só expõe seu estado via mensagens enviadas para os outros nós.
 Este modelo é mais adequado ao desenvolvimento de aplicações com componentes **fracamente acoplados**, em que atrasos de comunicação e ocorrência de falhas independentes são intrínsecas.
 
-![Passagem de Mensagens](../drawings/shared_memory.drawio#2)
+![Passagem de Mensagens](../../drawings/shared_memory.drawio#2)
 
 Memória Compartilhada Distribuída (DSM, do inglês, *Distributed Shared Memory*) é uma abordagem híbrida que tenta integrar a facilidade de se programar usando um único espaço de endereçamento mas com o nível de distribuição necessária a aplicações de larga escala, inclusive geográfica.
 
-![Memória Compartilhada](../drawings/memory.drawio)
+![Memória Compartilhada](../../drawings/memory.drawio)
 
 Considere uma possível implementação em software da DSM, apresentada na próxima figura. 
 Nesta abordagem, cada *host* contribui uma porção de sua memória para um *pool* global. Processos acessam o *pool* via **gerentes de memória**, que traduzem os endereços de um espaço de endereçamento virtual para um host e um endereço local a tal host, e usam *message passing*  para implementar o acesso. 
 Esta abordagem resulta em uma arquitetura NUMA, isto é, *Non-Uniform Memory Access*, já que os acessos a endereços locais são mais rápidos que aos remotos.
 
-![Memória Compartilhada Distribuída em Software](../drawings/shared_memory.drawio#1)
+![Memória Compartilhada Distribuída em Software](../../drawings/shared_memory.drawio#1)
 
 O modelo de comunicação usado no problema dos 3 exércitos é claramente de passagem de mensagens.
 
