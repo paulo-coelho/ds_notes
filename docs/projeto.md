@@ -36,13 +36,13 @@ A implementação que não seguir o formato dos dados, a interface ou a estraté
 
 O formato exato em que os dados serão armazenados pode variar na sua implementação, mas a API apresentada deve, **obrigatoriamente**, ter a assinatura definida a seguir para cada aplicação:
 
-### Portal Administrativo
+###  Servidor KVS
 
 ```proto
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "br.ufu.facom.gbc074.projeto.cadastro";
+option java_package = "br.ufu.facom.gbc074.kvs";
 
 package kvs;
 
@@ -196,7 +196,6 @@ A figura a seguir ilustra a arquitetura exigida para esta etapa do Projeto.
       * Indicação dos requisitos não implementados
     * Arquivo `compile.sh` para baixar/instalar dependências, compilar e gerar binários.
     * Arquivo `server.sh` para executar o servidor, recebendo como parâmetro único a porta em que o servidor deve aguardar conexões.
-    * Arquivo `client.sh` (fornecido) para executar o cliente interativo.
 
 ## Linguagens aceitas
 
