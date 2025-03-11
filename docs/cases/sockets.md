@@ -226,11 +226,11 @@ Com tantas dificuldades para se usar o UDP, fica a questão: **para que serve UD
 
 Compare a figuras a seguir, representando conexões TCP para difundir a mesma informação para vários clientes.
 
-![Multicast](../drawings/multicast.drawio#0)
+![Multicast](../../drawings/multicast.drawio#0)
 
 Multicast, em oposição ao Unicast, é a capacidade de enviar mensagens para um grupo de destinatários, em vez de apenas um. 
 
-![Multicast](../drawings/multicast.drawio#1)
+![Multicast](../../drawings/multicast.drawio#1)
 
 IP-Multicast é uma implementação desta ideia, usando umaa configuração específica do UDP, associada a recursos dos comutadores de rede, para otimizar o envio dos mesmos dados a múltiplos destinatários.
 Grupos são identificados por endereços IP especiais, conhecidos como Classe D (224.0.0.0-239.255.255.255), e propagados pela rede.

@@ -39,11 +39,11 @@ roteamento que a estrutura chave para o algoritmo de roteamento.
 
 
 
-![um estado hipotetico de um nó de id 10233102](../drawings/pastry_node.drawio#0)  
+![um estado hipotetico de um nó de id 10233102](../../drawings/pastry_node.drawio#0)  
 
 
 
-![Pastry vs Dense graph vs ring graph](../drawings/dense_vs_pastry.drawio#0)
+![Pastry vs Dense graph vs ring graph](../../drawings/dense_vs_pastry.drawio#0)
 
 
 

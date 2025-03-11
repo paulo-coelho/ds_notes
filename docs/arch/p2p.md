@@ -74,7 +74,7 @@ Distâncias entre nós são medidas como a soma das distâncias em $x$ mais a di
 * $d_y(a,b) = min(|y - y'|, N - |y - y'|)$
 * $d(a,b) = d_x(a,b) + d_y(a,b)$
 
-![Grade NxN](../drawings/estruturada.drawio#0)
+![Grade NxN](../../drawings/estruturada.drawio#0)
 
 Suponha que cada divida a organização da topologia em dois módulos, um de descoberta de novos nós e outro de seleção.
 
@@ -82,7 +82,7 @@ Suponha que cada divida a organização da topologia em dois módulos, um de des
 
 O módulo de descoberta leva inicialmente ao estabelecimento de conexões aleatórias e à formação de uma rede sobreposta não estruturada como, por exemplo, a seguinte.
 
-![Grade NxN](../drawings/estruturada.drawio#1)
+![Grade NxN](../../drawings/estruturada.drawio#1)
 
 Após as conexões inicias, cada um dos nós executa o seguinte protocolo iteradamente.
 
@@ -92,7 +92,7 @@ Após as conexões inicias, cada um dos nós executa o seguinte protocolo iterad
 Ao final de múltiplas interações, cada nó terá como seus vizinhos, os nós mais próximos. Se a rede for completa (um nó em cada posição da grade), como no exemplo, e o módulo de seleção sempre mantiver quatro conexões, ao final do processo os vizinhos serão os nós à direita, esquerda, acima e abaixo.
 Se a rede não for completa ou se menos conexões forem mantidas, uma aproximação será obtida.
 
-![Grade NxN](../drawings/estruturada.drawio#2)
+![Grade NxN](../../drawings/estruturada.drawio#2)
 
 A seguinte figura apresenta uma outra rede resultada da aplicação do mesmo princípio, mas em uma "grade" com três dimensões.
 
