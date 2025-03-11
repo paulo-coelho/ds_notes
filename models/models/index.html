@@ -1894,7 +1894,7 @@ Por isso, em vez de considerar cada ambiente específico, abstraímos os ambient
 <p>De uma forma ou de outra, sistemas distribuídos tem à sua disposição múltiplos processadores e permitem o desenvolvimento de aplicações paralelas, isto é, onde múltiplas tarefas são executadas ao mesmo tempo ou <strong>paralelamente</strong>.
 Contudo, por um lado, quando falamos em sistemas multiprocessados, normalmente estamos falando de sistemas em que os processadores estão <strong>próximos</strong> e compartilham um mesmo espaço de endereçamento, sejam computadores com múltiplos processadores ou sejam clusters de computadores conectados por um barramento de comunicação de altíssima largura de banda, como <a href="https://en.wikipedia.org/wiki/InfiniBand">Infiniband</a> que abstraiam múltiplos segmentos de memória como um único espaço de endereçamento.
 Seja como for, estes sistemas com <strong>memória compartilhada</strong> são normalmente usados para aplicações de computação intensiva e em cujo os componentes são mais <strong>fortemente acoplados</strong> e melhor estudados em um curso de computação paralela.</p>
-<p><img alt="Memória Compartilhada" src="../drawings/shared_memory.drawio-0.svg"></p>
+<p><img alt="Memória Compartilhada" src="../../drawings/shared_memory.drawio-0.svg"></p>
 <details class="info inline end">
 <summary>Comunicação</summary>
 <ul>
@@ -1904,13 +1904,13 @@ Seja como for, estes sistemas com <strong>memória compartilhada</strong> são n
 </details>
 <p>Por outro lado, estamos mais interessados aqui em sistemas de maior escala geográfica, o que se adequa melhor ao modelo de troca de mensagens, isto é, onde cada nó mantem controle total do seu espaço de endereçamento e só expõe seu estado via mensagens enviadas para os outros nós.
 Este modelo é mais adequado ao desenvolvimento de aplicações com componentes <strong>fracamente acoplados</strong>, em que atrasos de comunicação e ocorrência de falhas independentes são intrínsecas.</p>
-<p><img alt="Passagem de Mensagens" src="../drawings/shared_memory.drawio-2.svg"></p>
+<p><img alt="Passagem de Mensagens" src="../../drawings/shared_memory.drawio-2.svg"></p>
 <p>Memória Compartilhada Distribuída (DSM, do inglês, <em>Distributed Shared Memory</em>) é uma abordagem híbrida que tenta integrar a facilidade de se programar usando um único espaço de endereçamento mas com o nível de distribuição necessária a aplicações de larga escala, inclusive geográfica.</p>
-<p><img alt="Memória Compartilhada" src="../drawings/memory.drawio-0.svg"></p>
+<p><img alt="Memória Compartilhada" src="../../drawings/memory.drawio-0.svg"></p>
 <p>Considere uma possível implementação em software da DSM, apresentada na próxima figura. 
 Nesta abordagem, cada <em>host</em> contribui uma porção de sua memória para um <em>pool</em> global. Processos acessam o <em>pool</em> via <strong>gerentes de memória</strong>, que traduzem os endereços de um espaço de endereçamento virtual para um host e um endereço local a tal host, e usam <em>message passing</em>  para implementar o acesso. 
 Esta abordagem resulta em uma arquitetura NUMA, isto é, <em>Non-Uniform Memory Access</em>, já que os acessos a endereços locais são mais rápidos que aos remotos.</p>
-<p><img alt="Memória Compartilhada Distribuída em Software" src="../drawings/shared_memory.drawio-1.svg"></p>
+<p><img alt="Memória Compartilhada Distribuída em Software" src="../../drawings/shared_memory.drawio-1.svg"></p>
 <p>O modelo de comunicação usado no problema dos 3 exércitos é claramente de passagem de mensagens.</p>
 <h2 id="sincronismo">Sincronismo</h2>
 <details class="info inline end">

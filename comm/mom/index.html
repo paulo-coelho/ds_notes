@@ -1845,16 +1845,16 @@ Quatro das operações providas pelas implementações de MPI, mostradas na figu
 <p><img alt="CFD" src="../../images/mpi.jpeg" /></p>
 <p>Por exemplo, suponha que você esteja desenvolvendo uma aplicação que fará buscas de caminhos em grafos, com várias propriedades distintas.
 Digamos que precise calcular uma rota entre vários vértices do grafo usando caminhadas aleatórias. Usando a função <em>broadcast</em>, você pode enviar uma cópia do grafo para cada processo disponível para que independentemente calcule alguma rota. </p>
-<p><img alt="MPI" src="../drawings/mpi.drawio-0.svg"></p>
+<p><img alt="MPI" src="../../drawings/mpi.drawio-0.svg"></p>
 <p>Ao final do cálculo, um processo pode coletar os resultados de cada processo e escolher a melhor entre as rotas encontradas usando a função <em>reduction</em>.</p>
-<p><img alt="MPI" src="../drawings/mpi.drawio-3.svg"></p>
+<p><img alt="MPI" src="../../drawings/mpi.drawio-3.svg"></p>
 <p>Se preferir que cada busca se restrinja a um subgrafo, onde os vários subgrafos são complementares, então a função <em>scatter</em> seria usada.<sup id="fnref:scatter"><a class="footnote-ref" href="#fn:scatter">1</a></sup></p>
-<p><img alt="MPI" src="../drawings/mpi.drawio-1.svg"></p>
+<p><img alt="MPI" src="../../drawings/mpi.drawio-1.svg"></p>
 <p>Finalmente, a função <em>gather</em> poderia ser usada para coletar subgrafos com rotas encontradas e montar um grafo com todas as alternativas.</p>
-<p><img alt="MPI" src="../drawings/mpi.drawio-2.svg"></p>
+<p><img alt="MPI" src="../../drawings/mpi.drawio-2.svg"></p>
 <h2 id="filas-de-mensagem">Filas de mensagem</h2>
 <p><strong>Filas de mensagem</strong> provêm uma forma de encaminhar dados para nós específicos sem a necessidade de conexão direta com os mesmos, através de <strong>caixas de entrada</strong>, funcionando como um serviço de correio, parecido o serviço de email ou mesmo as redes sociais para trocas de mensagens.</p>
-<p><img alt="Message Queues" src="../drawings/message_queue.drawio-2.svg"></p>
+<p><img alt="Message Queues" src="../../drawings/message_queue.drawio-2.svg"></p>
 <p>Estes <em>middleware</em> permitem enfrentar uma das dificuldades de se implementar sistemas distribuídos hoje, advinda do número cada vez maior de componentes, o fato de que componentes em saem do sistema frequentemente, por diversas razões, e que é difícil garantir que componentes que precisam interagir estarão online ao mesmo tempo.
 Por exemplo, imagine se redes sociais tivessem o mesmo problema, isto é, se suas mensagens só pudessem ser entregues se tanto você quanto o destinatário estivessem <em>online</em> ao mesmo tempo.
 O modelo de caixa de entrada, contudo, permite que haja um <strong>desacoplamento temporal</strong> das contrapartes na conversa ao armazenar mensagens até que o destinatário esteja apto a recebê-las.

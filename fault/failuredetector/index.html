@@ -1745,15 +1745,15 @@
 Por exemplo, se um componente não está funcional, pode ser necessário fazer alguma manutenção, indo de uma simples reinicialização a uma troca de um disco ou uma fonte, a uma aposentadoria do componente e substituição por um novo.
 Chandra e Toueg<sup id="fnref:CT96"><a class="footnote-ref" href="#fn:CT96">1</a></sup> introduziram o conceito de <strong>Detectores de Falhas</strong> como forma de encapsular a percepção do estado funcional dos outros processos.
 Assim, um detector de falhas pode ser visto como <strong>oráculo distribuído</strong>, com módulos acoplados aos processos do sistema e que trabalha monitorando os outros processos.</p>
-<p><img alt="Failure Detector" src="../drawings/failure_detector.drawio-0.svg"></p>
+<p><img alt="Failure Detector" src="../../drawings/failure_detector.drawio-0.svg"></p>
 <p>Chandra e Toueg classificaram os detectores de falhas segundo suas características de completude (<em>completeness</em>) e acurácia (<em>accuracy</em>), ou seja, a capacidade de suspeitar de um processo defeituoso e a capacidade de não suspeitar de um processo correto, respectivamente. 
 Embora não seja obrigatório, detectores de falhas são normalmente implementados por meio de trocas de mensagens de <em>heartbeat</em>.
 Mensagens são esperadas em momentos específicos para sugerir que o remetente continua funcional.</p>
-<p><img alt="Failure Detector" src="../drawings/failure_detector.drawio-1.svg"></p>
+<p><img alt="Failure Detector" src="../../drawings/failure_detector.drawio-1.svg"></p>
 <p>Quando os <em>heartbeats</em> não chegam até o limite de tempo, o processo remetente passa a ser considerado <strong>suspeito</strong> de falha.</p>
-<p><img alt="Failure Detector" src="../drawings/failure_detector.drawio-2.svg"></p>
+<p><img alt="Failure Detector" src="../../drawings/failure_detector.drawio-2.svg"></p>
 <p><em>Heartbeats</em>  que chegam depois podem corrigir erros, mas também podem levar a atrasos na detecção de falhas.</p>
-<p><img alt="Failure Detector" src="../drawings/failure_detector.drawio-3.svg"></p>
+<p><img alt="Failure Detector" src="../../drawings/failure_detector.drawio-3.svg"></p>
 <p>Para capturar estas combinações de eventos, foram definidos os seguintes níveis para as propriedades de completude e acurácia, onde um processo é denominado <strong>correto</strong> se ele não falha durante execução do protocolo.</p>
 <ul>
 <li>Completude Forte - A partir de algum instante, todo processo falho é suspeito permanentemente por todos os processos corretos.</li>

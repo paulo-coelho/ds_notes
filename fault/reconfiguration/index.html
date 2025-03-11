@@ -1841,13 +1841,13 @@ Precisamos de uma forma de trocar nós da aplicação que falharam por novos nó
 <p>Seja <span class="arithmatex">\(G\)</span> o conjunto dos componentes do sistema; <span class="arithmatex">\(G\)</span> é a <strong>visão</strong> deste sistema.
 No exemplo da imagem a seguir, <span class="arithmatex">\(G\)</span> consiste inicialmente de apenas o processo <span class="arithmatex">\(p\)</span>, a <em>semente</em> do sistema.
 Na sequência, outros processo vão se unindo ao grupo através de mudanças de visão, e quando processos falham, são excluídos pelo mesmo processo, mesmo que depois voltem a funcionar e novamente a compor o grupo.</p>
-<p><img alt="" src="../drawings/view_change.drawio-0.svg"></p>
+<p><img alt="" src="../../drawings/view_change.drawio-0.svg"></p>
 <h6 id="impossibilidade-de-deteccao-de-falhas">Impossibilidade de Detecção de Falhas</h6>
 <p>Como já vimos, em um sistema distribuído assíncrono, é impossível distinguir com toda certeza um processo falho de um que está lento.
 Assim, como é que no exemplo anterior os processos decidem corretamente excluir <span class="arithmatex">\(p\)</span> e <span class="arithmatex">\(q\)</span>?
 A verdade é que não há como ter certeza e o sistema ou aceita a possibilidade de injustiça e muda quando suspeitar de uma falha, ou corre o risco de ficar esperando <em>ad eternum</em> e não mudar, mesmo quando uma falha aconteceu.
 Se a falha de fato não ocorreu, uma vez que o processo excluído estiver apto, ele encadeará uma nova visão que novamente o inclua.</p>
-<p><img alt="" src="../drawings/view_change.drawio-1.svg"></p>
+<p><img alt="" src="../../drawings/view_change.drawio-1.svg"></p>
 <h2 id="sincronismos-virtual">Sincronismos Virtual</h2>
 <p><strong>Sincronismo virtual</strong> é uma especificação de como combinar o problema de gerenciamento de grupos com protocolos de comunicação em grupo, mais especificamente das garantias de ordenação e confiabilidade na entrega de mensagens quando tanto remetentes quanto destinatários podem sair ou ser excluídos do grupo a qualquer momento.
 As propriedades a serem garantidas por um protocolo de sincronismo virtual são as seguintes:</p>
@@ -1865,23 +1865,23 @@ Neste momento <span class="arithmatex">\(q\)</span> envia uma mensagem <span cla
 As outras mensagens são totalmente ordenadas com <span class="arithmatex">\(m\)</span>, satisfazendo parte do critério colocado acima.</p>
 <p>A exclusão de um processo acontece de forma semelhante; se <span class="arithmatex">\(q\)</span> acha que <span class="arithmatex">\(p\)</span> deve ser excluído, então envia uma mensagem <span class="arithmatex">\(m\)</span> que comanda <strong>excluir <span class="arithmatex">\(p\)</span> na visão</strong>.
 Se, além da ordem de exclusão, a mensagem <span class="arithmatex">\(m\)</span> também informar a visão em que <span class="arithmatex">\(m\)</span> foi enviada (ou informação equivalente), os processos saberão julgar que qualquer mensagem cujo remetente é <span class="arithmatex">\(p\)</span> e que seja entregue depois de <span class="arithmatex">\(m\)</span> deve ser ignorada.</p>
-<p><img alt="" src="../drawings/view_change.drawio-2.svg"></p>
+<p><img alt="" src="../../drawings/view_change.drawio-2.svg"></p>
 <h6 id="isis-toolkit">ISIS Toolkit</h6>
 <p>O <a href="http://www.cs.cornell.edu/Info/Projects/Isis/">ISIS Toolkit</a> é um sistema de sincronismo virtual tolerante a falhas desenvolvido por Ken Birman e outros<sup id="fnref:isis"><a class="footnote-ref" href="#fn:isis">1</a></sup> e que foi usado em diversos projetos na indústria e academia (NY Stock Exchange, Swiss Exchange, US Navy) pelo menos até 2009.
 Este sistema influenciou e inspirou diversos outros, como Zookeeper, Totem, Horus, Transis, Spread, Ensamble, JGroups, Appia, QuickSilver e vSynch (inicialmente denominado ISIS 2 mas que foi renomeado por razões óbvias).</p>
 <h6 id="transferencia-de-estado">Transferência de estado</h6>
 <p>A última propriedade especificada acima para o sincronismo virtual diz respeito à transferência de estado entre processos que entram e permanecem na visão.
 Novos estados são gerados por eventos relevantes, como a recepção de uma mensagem com um comando a ser executado pelo processo.</p>
-<p><img alt="" src="../drawings/view_change.drawio-3.svg"></p>
+<p><img alt="" src="../../drawings/view_change.drawio-3.svg"></p>
 <p>Com parte do procedimento de mudança de visão, toda a informação necessária para que o novo processo comece a processar novos eventos e progrida em sua computação deve ser transferido para os processos que entram na visão.
 Processos que estão saindo da visão, ao retornarem, devem ter seu estado também atualizado.</p>
 <h6 id="particoes-primarias">Partições primárias</h6>
 <p>Outro ponto importante, também ligado à questão da detecção de falhas, é o fato da rede poder ser particionada, levando processos em uma partição a supeitar dos processos que estão na outra.
 No exemplo, após a partição, cada conjunto de processos gera uma nova visão, incompleta e inconsistente do sistema.</p>
-<p><img alt="" src="../drawings/view_change.drawio-4.svg"></p>
+<p><img alt="" src="../../drawings/view_change.drawio-4.svg"></p>
 <p>No exemplo, quando a partição da rede desaparece, aos processos sobra o trabalho de unificar os estados divergentes.
 Para evitar esta situação, pode-se adotar um modelo de partição primária, em que somente pode ser formada uma nova partição se esta incluir pelo menos uma maioria dos processos pertencentes à visão anterior (ou que pelo menos uma maioria dos processos seja envolvida no processo de decisão da nova partição).</p>
-<p><img alt="" src="../drawings/view_change.drawio-5.svg"></p>
+<p><img alt="" src="../../drawings/view_change.drawio-5.svg"></p>
 <h2 id="referencias">Referências</h2>
 <ul>
 <li><a href="http://courses.cs.vt.edu/cs5204/fall05-gback/lectures/Lecture8.pdf">http://courses.cs.vt.edu/cs5204/fall05-gback/lectures/Lecture8.pdf</a></li>

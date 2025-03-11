@@ -1795,7 +1795,7 @@
   <!-- Content -->
   <h2 id="sistema-p2phibrido-cassandra">Sistema P2P/Híbrido: Cassandra</h2>
 <p>O banco de dados Cassandra é um banco de dados em que os dados são mantidos por pares de servidores.</p>
-<p><img alt="CassandraDB" src="../drawings/cassandra_hibrido.drawio-0.svg"></p>
+<p><img alt="CassandraDB" src="../../drawings/cassandra_hibrido.drawio-0.svg"></p>
 <p>Uma característica fundamental do Cassandra, que o distingue o Chord e outros sistemas P2P é que cada nó do sistema conheça todos os outros. 
 Assim, cada requisição é diretamente encaminhada ao nó responsável por tratá-la.
 O custo do roteamento, neste caso, é <span class="arithmatex">\(O(1)\)</span>, muito mais rápido que na abordagem anterior. O custo de armazenamento da <em>tabela de rotas</em> é, contudo, <span class="arithmatex">\(O(n)\)</span>, o que pode ser proibitivo em uma rede com milhares de nós, apesar de ser uma solução viável em redes menores. Este é o caso do CassandraDB, uma banco de dados distribuído baseado no Chord, que estudaremos melhor mais adiante, considerado uma DHT de salto único (<em>single-hop</em> DHT).</p>

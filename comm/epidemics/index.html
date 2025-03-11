@@ -1867,7 +1867,7 @@ Considere o caso em que <span class="arithmatex">\(F=2\)</span>; no início do a
 Durante o primeiro ciclo, o processo infectado propaga a informação para outros dois, elevando o número de infectados a 3.
 No próximo ciclo, cada um destes infectados infecta outros dois, módulo interações entre nós já infectados e que desperdiçam oportunidades de propagação.
 Se imaginarmos estes ciclos como uma árvore em que cada ciclo corresponde a um ciclo, em que os nós contaminados no final do ciclo são os nós da árvore, e que as interações são arestas, temos o seguinte.</p>
-<p><img alt="" src="../drawings/epidemics.drawio-0.svg"></p>
+<p><img alt="" src="../../drawings/epidemics.drawio-0.svg"></p>
 <div class="admonition note inline end">
 <p class="admonition-title">Ciclos</p>
 <ul>
@@ -1902,7 +1902,7 @@ Ou, como é frequentemente verdade, a melhor abordagem pode ser um misto das dua
 Por exemplo, cada processo pode gerar periodicamente um resumo da carga de trabalho com a qual está lidando (taxa de escrita em disco, taxa de utilização de CPU, etc) e propagar este resumo para todo o sistema, para ser usado como entrada em uma política de balanceamento de carga.</p>
 <p>Assim, um modelo comum de representação dos dados em cada nó é um mapa, um banco de dados <strong>chave/valor</strong>, onde a chave é um identificador único da informação e o valor é dado em si, por exemplo ("ABCD1234_CPU%","90%").
 A cada contato, um nó faz um <em>pull</em> das entradas cujas chaves desconhece e um <em>push</em> das que a contraparte não conhece.</p>
-<p><img alt="" src="../drawings/epidemics.drawio-1.svg"></p>
+<p><img alt="" src="../../drawings/epidemics.drawio-1.svg"></p>
 <h6 id="fofoca-antiga">Fofoca antiga</h6>
 <p>Uma razão para protocolos epidêmicos serem também chamados de <strong><em>gossiping</em></strong> é o fato de que informações envelhecem e devem parar de ser propagadas quando deixam de ser relevantes.
 Algumas estratégias se complementam para implementar este comportamento.</p>
@@ -1910,7 +1910,7 @@ Algumas estratégias se complementam para implementar este comportamento.</p>
 <li><strong>Frescor da informação</strong>: se cada nó registra o instante em que primeiro recebeu uma informação, pode então determinar um limiar de tempo dentro do qual repassará a informação em seus contatos. Depois deste tempo a informação não mais se propaga pois não é mais uma "fofoca quente" ou porquê o nó deixou de ser "contagioso" para aquele vírus.</li>
 <li><strong>Coleta de lixo</strong>: para restringir a quantidade de espaço usado pelo nó, informações muito antigas devem ser esquecidas em algum momento. Este processo pode ser gradual, por exemplo excluindo os dados após algum tempo, mas mantendo as chaves, efetivamente tornando o nó não infectado mas <strong>imune</strong> ao vírus. Mesmo que as chaves sejam armazenadas de forma eficiente, por exemplo via uso de <a href=""><strong>filtros de bloom</strong></a>, elas devem ser completamente esquecidas em algum momento, a partir do qual uma reinfecção é possível já que uma nova exposição seria indistinguível da exposição inicial.</li>
 </ul>
-<p><img alt="" src="../drawings/epidemics.drawio-2.svg"></p>
+<p><img alt="" src="../../drawings/epidemics.drawio-2.svg"></p>
 <h6 id="versoes">Versões</h6>
 <p>Em certas aplicações, como a propagação da carga de trabalho de um processo, faz sentido que as informações sejam atualizadas. Por exemplo, mesmo que a informação sobre a carga de trabalho do processo às 10:00hs ainda esteja sendo propagada, se a carga às 10:01hs se torna conhecida, pode não ser mais necessário propagar a anterior.
 Este mecanismo pode se implementado facilmente estendendo-se o par (identificador,valor) para uma tripla (identificador,<em>timestamp</em>/versão,valor), onde <em>timestamp</em>/versão pode ser o valor do relógio quando a informação foi gerada ou simplesmente um contador incrementado a cada geração.</p>

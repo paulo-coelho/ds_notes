@@ -1936,15 +1936,15 @@ Também podemos dizer que <span class="arithmatex">\(e\)</span> precede <span cl
 </ul>
 </div>
 <p>Na figura abaixo, as três regras são exemplificadas pelos eventos de cor vermelha, amarela e verde, respectivamente.</p>
-<p><img alt="LC - Primeira tentativa" src="../drawings/clock.drawio-1.svg"></p>
+<p><img alt="LC - Primeira tentativa" src="../../drawings/clock.drawio-1.svg"></p>
 <p>Note que se <span class="arithmatex">\(e \rightarrow e'\)</span> é falso e <span class="arithmatex">\(e' \rightarrow e\)</span> é falso, então <span class="arithmatex">\(e\)</span> e <span class="arithmatex">\(e'\)</span> são <strong>concorrentes</strong>, e que ser concorrente não quer dizer que aconteceram exatamente no mesmo instante, do ponto de vista de um observador externo, como exemplificado na figura anterior pelos eventos de cor roxa.
 Ser concorrente quer dizer que um evento <span class="arithmatex">\(e\)</span> não pode ter influenciado o evento <span class="arithmatex">\(e'\)</span>, dado que os efeitos de <span class="arithmatex">\(e\)</span> não poderiam ser conhecidos pelo processo onde <span class="arithmatex">\(e'\)</span> ocorreu, quando <span class="arithmatex">\(e'\)</span> ocorreu.
 O cone de luz na figura seguinte mostra esta relação entre eventos. Somente os efeitos dos eventos uma distância no espaço/tempo menor ou igual às dos pontos mais distantes ao evento em questão, podem ter influenciado tal evento. No caso dos eventos <span class="arithmatex">\(o\)</span> e <span class="arithmatex">\(v\)</span> na figura, os mesmos não figuram no mesmo cone de luz.</p>
-<p><img alt="Light-cone" src="../drawings/clock.drawio-2.svg"></p>
+<p><img alt="Light-cone" src="../../drawings/clock.drawio-2.svg"></p>
 <p>Mas para que nos serve capturar a causalidade entre os eventos? Bem, se capturarmos a causalidade, podemos usar esta informação para ordenar os seu processamento, de forma a fazer sentido.
 Por exemplo, considere um sistema em que o primeiro usuário de um serviço de emails recebe primeiro a resposta da mensagem A, R:A, para somente depois receber A.
 Para que a troca de mensagens faça sentido, o usuário posterga a leitura de R:A até depois de ter lido A.</p>
-<p><img alt="Inversão causal" src="../drawings/group_com.drawio-0.svg"></p>
+<p><img alt="Inversão causal" src="../../drawings/group_com.drawio-0.svg"></p>
 <p>Observe que em nenhum momento a informação sobre <strong>quando</strong> as mensagens foram enviadas foi necessária, apenas a <strong>ordem</strong> das mesmas.
 Relógios lógicos permitem que sistemas capturem a relação de causalidade entre eventos e implementem esquemas como o apenas descrito, para coordenar as ações dos processos em sistemas distribuídos.</p>
 <h3 id="relogios-logicos">Relógios lógicos</h3>
@@ -1968,7 +1968,7 @@ Experimentemos a seguinte definição:</p>
 </div>
 <p>Observe que não há <strong>fonte da verdade</strong> em termos de tempo lógico, já que <strong>cada processo mantém seu próprio relógio</strong> que pode ser relacionado com relógios de outros processos.
 Veja um exemplo desta definição em ação.</p>
-<p><img alt="LC - Primeira tentativa" src="../drawings/clock.drawio-3.svg"></p>
+<p><img alt="LC - Primeira tentativa" src="../../drawings/clock.drawio-3.svg"></p>
 <p>É verdade neste cenário que se <span class="arithmatex">\(a \rightarrow b\)</span> então <span class="arithmatex">\(C(a) &lt; C(b)\)</span>?<br />
 Observe com atenção os eventos <span class="arithmatex">\(j\)</span> e <span class="arithmatex">\(q\)</span>, pois para estes, a regra não é respeitada.</p>
 <h4 id="relogio-de-lamport">Relógio de Lamport</h4>
@@ -1996,7 +1996,7 @@ Observe com atenção os eventos <span class="arithmatex">\(j\)</span> e <span c
 </ul>
 </div>
 <p>Com este ajuste, temos os <strong>Relógios de Lamport</strong>.</p>
-<p><img alt="LC - Primeira tentativa" src="../drawings/clock.drawio-4.svg"></p>
+<p><img alt="LC - Primeira tentativa" src="../../drawings/clock.drawio-4.svg"></p>
 <p>Neste caso, temos que para quaisquer eventos <span class="arithmatex">\(e,e'\)</span>,  se <span class="arithmatex">\(e \rightarrow e'\)</span> então <span class="arithmatex">\(C(e) &lt; C(e')\)</span>.</p>
 <details class="todo">
 <summary>Todo</summary>
@@ -2052,7 +2052,7 @@ Estas visões são atualizadas a cada recepção de mensagem, de acordo com a se
 </ul>
 <p>Para entender melhor como esta definição funciona, considere a seguinte execução.
 O que quer dizer <span class="arithmatex">\(c_p[q] = k\)</span>, ou tomando o evento <span class="arithmatex">\(d\)</span> como exemplo, o que quer dizer <span class="arithmatex">\(V(d) = (4,1,0)\)</span>?</p>
-<p><img alt="Relógio Vetorial" src="../drawings/clock.drawio-5.svg"></p>
+<p><img alt="Relógio Vetorial" src="../../drawings/clock.drawio-5.svg"></p>
 <p>Quer dizer que <span class="arithmatex">\(p1\)</span> está ciente de 1 eventos locais a <span class="arithmatex">\(p2\)</span>, assim com está ciente de 0 eventos em <span class="arithmatex">\(p3\)</span> e de que <span class="arithmatex">\(d\)</span> é o quarto evento em <span class="arithmatex">\(p1\)</span>.
 Agora compare os eventos <span class="arithmatex">\(o\)</span> e <span class="arithmatex">\(v\)</span>.
 <span class="arithmatex">\(o\)</span> e <span class="arithmatex">\(v\)</span> são concorrentes pois embora as posições 1 e 2 de <span class="arithmatex">\(V(o)\)</span> sejam maiores que em <span class="arithmatex">\(V(v)\)</span>, a posição 3 é menor.
@@ -2094,7 +2094,7 @@ Isto é, se poucos eventos acontecerem, o valor do relógio lógico acompanhará
 </li>
 </ul>
 </div>
-<p><img alt="Relógio Híbrido Simples" src="../drawings/clock.drawio-0.svg"></p>
+<p><img alt="Relógio Híbrido Simples" src="../../drawings/clock.drawio-0.svg"></p>
 <p>Nesta versão do algoritmo, contudo, se muitos eventos acontecerem, o valor do relógio lógico pode ser incrementadado muito rapidamente, perdendo a relação com o relógio físico.
 Em uma versão melhorada do algoritmo,<sup id="fnref:hlc"><a class="footnote-ref" href="#fn:hlc">4</a></sup> a distância entre os dois relógios é limitada, mantendo a propriedade que faz o relógios híbridos interessantes.<sup id="fnref:hlcerror"><a class="footnote-ref" href="#fn:hlcerror">5</a></sup></p>
 <!--![Hibrid Logical Clock](../images/lc_hybrid.png) - Onde se lê 3,13, leia-se 3,10,3.-->
@@ -2118,7 +2118,7 @@ Considere um programa qualquer, que se comporte de forma determinística (isto �
 Como todo programa, este é uma máquina de estados, com a peculiaridade de ser determinística.
 Logo, se tivermos <strong>várias cópias</strong> deste programa, executando em locais distintos, mas garantirmos que cada cópia veja exatamente a <strong>mesma entrada de dados</strong>, então garantiremos que todas as cópias <strong>transitarão pelos mesmos estados</strong> e chegarão ao mesmo estado final.
 Como difusão totalmente ordenada pode ser usado para garantir que todas as cópias receberão a mesma entrada, pode ser usado para implementar esta técnica, conhecida como Replicação de Máquinas de Estados (em inglês, <a href="https://en.wikipedia.org/wiki/State_machine_replication"><em>State Machine Replication</em></a>, ou pelo menos o seu princípio.</p>
-<p><img alt="State Machine Replication" src="../drawings/group_com.drawio-1.svg"></p>
+<p><img alt="State Machine Replication" src="../../drawings/group_com.drawio-1.svg"></p>
 <p>Mas como podemos implementar estas primitivas de difusão usando relógios lógicos? 
 Vejamos um algoritmo, onde consideramos que todas as mensagens são enviadas a todos os processos, inclusive o próprio remetente.</p>
 <div class="admonition example">
@@ -2176,7 +2176,7 @@ Para que isto funcione, é necessário que os canais de comunicação usados sej
 </li>
 </ul>
 </div>
-<p><img alt="Causal Ordering" src="../drawings/group_com.drawio-2.svg"></p>
+<p><img alt="Causal Ordering" src="../../drawings/group_com.drawio-2.svg"></p>
 <div class="admonition exercise">
 <p class="admonition-title">Difusão Causalmente Ordenada</p>
 <p>Considere <span class="arithmatex">\(c_{p3}[0,2,2]\)</span> e <span class="arithmatex">\(ts=[1,3,0]\)</span>, de <span class="arithmatex">\(p1\)</span>. O que <span class="arithmatex">\(p3\)</span> está esperando? Como age ao receber mensagem com <span class="arithmatex">\(ts\)</span>?</p>
@@ -2185,7 +2185,7 @@ Para que isto funcione, é necessário que os canais de comunicação usados sej
 <p>Um aspecto interessante da implementação de primitivas de comunicação em grupo que usa relógios para ordenação de mensagens é que elas podem ser feitas de forma transparente para a aplicação que as usa. 
 Isto é, no exemplo descrito anteriormente em que processos mandam mensagens para réplicas usando difusão totalmente ordenada, os clientes não precisam estar cientes disto, e podem simplesmente mandar suas requisições como faziam antes do serviço ser replicado. Mas como então as mensagens tem seus relógios lógicos atualizados e usados para a geração de <em>timestamps</em>?
 Isto pode ser feito por meio de <strong>interceptadores</strong> em uma camada de <strong><em>middleware</em></strong>.</p>
-<p><img alt="Interceptadores" src="../drawings/group_com.drawio-3.svg"></p>
+<p><img alt="Interceptadores" src="../../drawings/group_com.drawio-3.svg"></p>
 <p>Quando a aplicação envia uma mensagem, o relógio lógico mantido no <em>middleware</em> é atualizado e seu valor usado como <em>timestamp</em> em uma versão estendida da mensagem, efetivamente enviada na rede.
 Quando a mensagem estendida é entregue ao destinatário, a mensagem é passada para o interceptador que extrai o <em>timestamp</em> e atualiza seu relógio. A mensagem sem o <em>timestamp</em> é entregue para a aplicação quando apropriado, e aplicação não percebe a manipulação.</p>
 <h3 id="exclusao-mutua-revisitada">Exclusão Mútua Revisitada</h3>
