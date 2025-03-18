@@ -35,7 +35,7 @@ Nestes nós, os os pacotes de dados sobem somente até a camada 3 e lá são enc
 Assim, para a aplicação usando o IP, as redes se comportam como uma única e coerente rede, exceto por alguns detalhes.
 Esta habilidade é o que dá o nome ao protocolo e, de fato, a toda a Internet.
 
-[![A Internet](../images/internet.png){: style="max-width:500px"}](https://en.wikipedia.org/wiki/Tier_1_network)[^internet]
+[![A Internet](../../images/internet.png){: style="max-width:500px"}](https://en.wikipedia.org/wiki/Tier_1_network)[^internet]
 
 [^internet]: By User:Ludovic.ferre - Internet Connectivity Distribution&Core.svg, CC BY-SA 3.0, (https://commons.wikimedia.org/w/index.php?curid=10030716)
 

@@ -107,7 +107,7 @@ Obviamente nem tudo são flores no uso destes protocolos e algumas desvantagens 
     !!!note "Convergence Simulator: https://www.serf.io/docs/internals/simulator.html"
         Este simulador do Serf permite ver o quão rápido a informação atinge qual percentagem dos nós do sistema; no exemplo, após 0,5s, 50% dos 30 nós estavam infectados.
 
-        ![https://www.serf.io/docs/internals/simulator.html](../images/serf.png)
+        ![https://www.serf.io/docs/internals/simulator.html](../../images/serf.png)
 
         No sítio é possível ajustar o número de nós, duração da rodada, perda de pacotes e nós defeituosos.
 

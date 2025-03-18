@@ -16,7 +16,7 @@ Uso aqui o termo **abstração** porquê o sistema operacional pode encapsular *
 A figura seguinte   mostra um exemplo com três aplicações executando sobre um *middleware*, que por sua vez é executado sobre diferentes sistemas operacionais, em *hosts*  conectados por uma rede de comunicação. 
 
 
-![Middleware](../images/01-01.png){: style="width:500px"}[^0101]
+![Middleware](../../images/01-01.png){: style="width:500px"}[^0101]
 
 [^0101]: Distributed Systems: Principles and Paradigms. Capítulo 1, Figura 1.
 
@@ -159,7 +159,7 @@ Um serviço com esta propriedade, não precisa ser parado e reconfigurado quando
 Uma das formas de se implementar esta propriedade é através da migração provida por máquinas virtuais, usado, por exemplo, para consolidar o uso de servidores em nuvens computacionais.
 Veja o exemplo do VMotion da VMware.
 
-![http://hyaking.com/wp-content/uploads/2017/01/Hyaking_Image_vmware-vmotion.jpg](../images/vmotion.jpg)
+![http://hyaking.com/wp-content/uploads/2017/01/Hyaking_Image_vmware-vmotion.jpg](../../images/vmotion.jpg)
 
 Na verdade, a movimentação neste cenário, é uma cópia da máquina virtual. Uma vez que a cópia esteja próxima do fim, a imagem original é congelada, a cópia concluída, e há um chaveamento na rede para se direcionar toda comunicação para nova cópia. O máquina original é então descartada.
 
@@ -227,7 +227,7 @@ Nuvens computacionais são um exemplo de onde este tipo de transparência é ess
 Considere um serviço de banco de dados em uma nuvem qualquer. Para prover a mesma interface com a qual usuários estão acostumados a anos, é possível que este serviço seja simplesmente um *wrapper* ao redor do SGBD que se comprava e instalava *in-house* anteriormente.
 Para se tornar viável, contudo, uma mesma instância deve servir múltiplos clientes, os *tenants*, sem que a carga de trabalho introduzida por um, interfira no desempenho do outro. No meio, chamamos esta propriedade de *multi-tenancy*, mas é apenas um exemplo de transparência de concorrência.
 
-* ![https://cdn.jjude.com/mt-models.png](../images/multitenancy_models.png)
+* ![https://cdn.jjude.com/mt-models.png](../../images/multitenancy_models.png)
 
 
 Esta transparência está fundamentalmente ligada à escalabilidade, isto é, à adequação dos *pool* de recursos às demandas dos clientes: se mais clientes estão presentes, então aumente a quantidade de servidores (*scale up*) e separe as cargas (*sharding*); se menos clientes estão presentes, então desligue algumas máquinas (*scale down*) e consolide recursos.

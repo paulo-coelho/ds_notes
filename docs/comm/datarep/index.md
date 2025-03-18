@@ -23,7 +23,7 @@ Neste cenário, vários fatores precisam ser levados em consideração na hora d
 * little endian, como x64 e IA-32, ou  big endian como SPARC (< V9), Motorola e PowerPC? ou ainda, flexível como  ARM,  MIPS ou  IA-64?
 * fim de linha com crlf (DOS) x lf (Unix)?
 * fragmentação de dados na rede   
-  [![Fragmentação](../images/ipfrag.png)](http://www.acsa.net/IP/)
+  [![Fragmentação](../../images/ipfrag.png)](http://www.acsa.net/IP/)
 
 ###### Representação Textual
 

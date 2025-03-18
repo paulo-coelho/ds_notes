@@ -13,7 +13,7 @@ Sistemas usando MPI normalmente implementam o paradigma ***Single Program Multip
 Os processos então recebem **parte** do volume total de dados a serem processados, e os processam da mesma forma (**paralelismo de dados**: mesma tarefa, mas dados diferentes) ou recebem todos os dados mas executam processamentos diferentes (**paralelismo de tarefas**: mesmos dados mas tarefas diferentes).
 Quatro das operações providas pelas implementações de MPI, mostradas na figura a seguir, provêem as ferramentas para espalhar dados (***broadcast***), fragmentos dos dados (***scatter***), coletar e compor fragmentos (***gather***), ou reduzir resultados parciais (***reduce***).
 
-![CFD](../images/mpi.jpeg)
+![CFD](../../images/mpi.jpeg)
 
 Por exemplo, suponha que você esteja desenvolvendo uma aplicação que fará buscas de caminhos em grafos, com várias propriedades distintas.
 Digamos que precise calcular uma rota entre vários vértices do grafo usando caminhadas aleatórias. Usando a função *broadcast*, você pode enviar uma cópia do grafo para cada processo disponível para que independentemente calcule alguma rota. 
@@ -66,7 +66,7 @@ Isto porquê neste modelo o processo que envia uma mensagem, ***publisher***, n�
 Em vez disso, publica mensagens com um **tópicos**, aos quais os ***subscribers*** se subscrevem.
 Assim, a comunicação não acontece diretamente mas via *brokers* *publishers* e *subscribers* não precisam executar ao mesmo tempo ou sequer saber da existência um do outro.
 
-[![](../images/aws_pubsub.png)](https://aws.amazon.com/pub-sub-messaging/)
+[![](../../images/aws_pubsub.png)](https://aws.amazon.com/pub-sub-messaging/)
 
 Desta forma, um dos aspectos mais importantes proporcionados pelo padrão *pub/sub* é o desacoplamento em várias dimensões das partes envolvidas.
 
@@ -82,9 +82,9 @@ Além disso, os *brokers* que servem de ponto de conexão entre *publishers*  e 
 
 Observe que uma mesma mensagem pode ser entregue a múltiplos *subscribers* se pertencer a um tópico de interesse em comum e que um mesmo *subscriber* pode se interessar por diversos tópicos.
 
-[![](../images/google_pubsub.svg)](https://cloud.google.com/pubsub/docs/overview)
+[![](../../images/google_pubsub.svg)](https://cloud.google.com/pubsub/docs/overview)
 
 
 Embora simples, frameworks pub/sub permitem a implementação de arquiteturas complexas, como o exemplo da figura a seguir e como estudaremos mais adiante.
 
-[![](../images/google_pubsub2.svg)](https://cloud.google.com/pubsub/docs/overview)
+[![](../../images/google_pubsub2.svg)](https://cloud.google.com/pubsub/docs/overview)

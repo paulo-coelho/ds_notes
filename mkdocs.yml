@@ -134,20 +134,20 @@ plugins:
 
 nav:
         #- Início: index.html
-        - Prefácio: preface.md
-        - Introdução: intro.md
+        - Prefácio: preface/index.md
+        - Introdução: intro/index.md
         - Comunicação:
                 - comm/index.md
-                - Redes: comm/redes.md
-                - Internet: comm/internet.md
-                - Sockets: comm/sockets.md
-                - Representação: comm/datarep.md
-                - Middlewares: comm/middleware.md
-                - RPC: comm/rpc.md
-                - MOM: comm/mom.md
+                - Redes: comm/redes/index.md
+                - Internet: comm/internet/index.md
+                - Sockets: comm/sockets/index.md
+                - Representação: comm/datarep/index.md
+                - Middlewares: comm/middleware/index.md
+                - RPC: comm/rpc/index.md
+                - MOM: comm/mom/index.md
                 #TODO? - Multicast: comm/multicast.md
-                - Epidêmicos: comm/epidemics.md
-                - Referências: comm/refs.md
+                - Epidêmicos: comm/epidemics/index.md
+                - Referências: comm/refs/index.md
 
         - Arquiteturas: 
                 - arch/index.md
