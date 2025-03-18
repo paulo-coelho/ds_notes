@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
@@ -310,21 +310,39 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -585,7 +603,11 @@
         
       
         
+          
+        
       
+        
+          
         
       
     
@@ -692,6 +714,8 @@
         
       
         
+          
+        
       
     
     
@@ -771,7 +795,11 @@
     
       
         
+          
+        
       
+        
+          
         
       
     
@@ -784,8 +812,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../coord/concurrency/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Coordenação
@@ -793,8 +823,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
@@ -803,26 +839,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../coord/concurrency/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Concorrência
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -868,7 +884,11 @@
         
       
         
+          
+        
       
+        
+          
         
       
     
@@ -975,17 +995,31 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -1202,15 +1236,27 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -1422,23 +1468,37 @@
     
       
         
+      
+        
           
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -1453,7 +1513,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../cases/" class="md-nav__link ">
+            <a href="../cases/sockets/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1479,19 +1539,17 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-            
-              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../cases/sockets/" class="md-nav__link">
+      <a href="../cases/index.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Sockets
+    Introdução
     
   </span>
   
@@ -1500,6 +1558,8 @@
     </li>
   
 
+              
+            
               
             
               
@@ -2057,14 +2117,7 @@ O esquema de armazenamento utilizado deve ser descrito na documentação do proj
 <span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
 
 <span class="k">option</span><span class="w"> </span><span class="na">java_multiple_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="k">option</span><span class="w"> </span><span class="na">java_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;br.ufu.facom.gbc074.kvs&quot;</span><span class="p">;</span>
@@ -2103,26 +2156,19 @@ O esquema de armazenamento utilizado deve ser descrito na documentação do proj
 <span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">versao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// Retorno de insercoes e remocoes</span>
-<span class="kd">message</span><span class="w"> </span><span class="nc">Status</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// valor do status (depende da operacao)</span>
-<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
-<span class="w">  </span><span class="c1">// mensagem de erro, caso necessário</span>
-<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">msg</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-
 <span class="kd">service</span><span class="w"> </span><span class="n">KVS</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Insere</span><span class="p">(</span><span class="n">ChaveValor</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Insere</span><span class="p">(</span><span class="n">ChaveValor</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Versao</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Consulta</span><span class="p">(</span><span class="n">ChaveVersao</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Tupla</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Remove</span><span class="p">(</span><span class="n">ChaveVersao</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Remove</span><span class="p">(</span><span class="n">ChaveVersao</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Versao</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">InsereVarias</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChaveValor</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Versao</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">ConsultaVarias</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChaveVersao</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Tupla</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RemoveVarias</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChaveVersao</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">RemoveVarias</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChaveVersao</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Versao</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Snapshot</span><span class="p">(</span><span class="n">Versao</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">Tupla</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h4 id="descricao-dos-metodos">Descrição dos métodos</h4>
 <ul>
-<li><code>rpc Insere(ChaveValor) returns (Status) {}</code><ul>
+<li><code>rpc Insere(ChaveValor) returns (Versao) {}</code><ul>
 <li>Cliente:<ul>
 <li>informa chave e valor.</li>
 </ul>
@@ -2130,7 +2176,7 @@ O esquema de armazenamento utilizado deve ser descrito na documentação do proj
 <li>Servidor:<ul>
 <li>cadastra a nova versão com o valor informado para a chave. O primeiro valor de cada chave tem versão 1.</li>
 <li>retorna a versão associada ao novo valor no campo <code>status</code>.</li>
-<li>retorna -1 e mensagem de erro caso a chave e/ou o valor sejam inválidos.</li>
+<li>retorna -1 em caso de erro.</li>
 </ul>
 </li>
 </ul>
@@ -2148,15 +2194,15 @@ O esquema de armazenamento utilizado deve ser descrito na documentação do proj
 </li>
 </ul>
 </li>
-<li><code>rpc Remove(ChaveVersao) returns (Status) {}</code><ul>
+<li><code>rpc Remove(ChaveVersao) returns (Versao) {}</code><ul>
 <li>Cliente:<ul>
 <li>informa chave e versão (opcional) para remoção.</li>
 </ul>
 </li>
 <li>Servidor:<ul>
 <li>remove valor associado à versão informada para a chave, ou todos os valores caso nenhuma versão seja informada.</li>
-<li>retorna <code>Status</code> com quantidade de valores removidos para a chave.</li>
-<li>retorna -1 e mensagem de erro caso a chave ou versão sejam inválidas, a chave não exista ou não exista a versão informada para a chave.</li>
+<li>retorna <code>Versao</code> com a versão efetivamente removida.</li>
+<li>retorna -1 caso a chave ou versão sejam inválidas, a chave não exista ou não exista a versão informada para a chave.</li>
 </ul>
 </li>
 </ul>
@@ -2173,14 +2219,26 @@ O esquema de armazenamento utilizado deve ser descrito na documentação do proj
 </li>
 </ul>
 </li>
-<li><code>rpc RemoveVarias(stream ChaveVersao) returns (Status) {}</code><ul>
+<li><code>rpc InsereVarias(stream ChaveVersao) returns (stream Versao) {}</code><ul>
+<li>Cliente:<ul>
+<li>informa conjunto de chaves e valor para remoção.</li>
+</ul>
+</li>
+<li>Servidor:<ul>
+<li>para cada chave: insere cada chave e valor informado, ajustando a versão de acordo.</li>
+<li>para cada chave: retorna <code>Versao</code> inserida ou retorna -1 em caso de erro.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>rpc RemoveVarias(stream ChaveVersao) returns (stream Versao) {}</code><ul>
 <li>Cliente:<ul>
 <li>informa conjunto de chaves e versões (opcional) para remoção.</li>
 </ul>
 </li>
 <li>Servidor:<ul>
 <li>para cada chave: remove valor associado à versão informada, ou todos os valores caso nenhuma versão seja informada.</li>
-<li>para cada chave: retorna <code>Status</code> com quantidade de valores removidos ou retorna -1 com mensagem de erro no caso de chave ou versão inválidas ou inexistentes.</li>
+<li>para cada chave: retorna <code>Versao</code> efetivamente removida ou retorna -1 no caso de chave ou versão inválidas ou inexistentes.</li>
 </ul>
 </li>
 </ul>
@@ -2194,6 +2252,7 @@ O esquema de armazenamento utilizado deve ser descrito na documentação do proj
 </li>
 <li>Servidor:<ul>
 <li>retorna conjunto de <code>Tupla</code>s considerando, para cada chave, a versão imediatamente menor ou igual à versão solicitada.</li>
+<li>retorna Tuplas com versões mais recentes para cada chave caso a versão informada seja menor ou igual a zero.</li>
 <li>retorna <code>Tupla</code> em branco caso a versão seja inválida ou não existam chaves que atendem ao critério.</li>
 </ul>
 </li>
@@ -2319,7 +2378,7 @@ Por exemplo, o cliente <em>c1</em> pode cadastrar uma chave/valor servidor <em>s
     <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       

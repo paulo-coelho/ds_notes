@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
@@ -312,21 +312,39 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -587,7 +605,11 @@
         
       
         
+          
+        
       
+        
+          
         
       
     
@@ -695,6 +717,8 @@
           
         
       
+        
+          
         
       
     
@@ -861,7 +885,11 @@
     
       
         
+          
+        
       
+        
+          
         
       
     
@@ -874,8 +902,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../coord/concurrency/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Coordenação
@@ -883,8 +913,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
@@ -893,26 +929,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../coord/concurrency/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Concorrência
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -958,7 +974,11 @@
         
       
         
+          
+        
       
+        
+          
         
       
     
@@ -1065,17 +1085,31 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -1292,15 +1326,27 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -1512,23 +1558,37 @@
     
       
         
+      
+        
           
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -1543,7 +1603,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cases/" class="md-nav__link ">
+            <a href="../../cases/sockets/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1569,19 +1629,17 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-            
-              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../cases/sockets/" class="md-nav__link">
+      <a href="../../cases/index.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Sockets
+    Introdução
     
   </span>
   
@@ -1590,6 +1648,8 @@
     </li>
   
 
+              
+            
               
             
               
@@ -1925,7 +1985,7 @@ Esta abordagem resulta em uma arquitetura NUMA, isto é, <em>Non-Uniform Memory 
 <p>Quanto ao sincronismo, considera-se se os processos tem a <strong>capacidade de medir a passagem de tempo</strong>, isto é, se tem a acesso a relógios, o quão acurazes este são e o quão sincronizados são estes relógios uns com os outros.</p>
 <p>No problema dos três exércitos, podemos considerar que amos os atacantes tinha acesso a um relógio perfeitamente sincronizado, bastando olhar para o céu para ver o horário.
 Claramente enquanto variações na ordem de vários minutos ou até mesmo uma hora na leitura de um relógio solar não teriam grande impacto na vida dos exércitos, alguns sistemas computacionais podem exigir que os relógios de seus componentes não distem mais que alguns milissegundos.
-Revisitaremos este tópico em uma seção específica sobre <a href="../../time/">Tempo</a>.</p>
+Revisitaremos este tópico em uma seção específica sobre <a href="../time/index.md">Tempo</a>.</p>
 <p>Além do acesso a relógios, considera-se no modelo de sincronismo a existência ou não de limites de tempo para execução de operações, por exemplo, quanto tempo um processador leva para executar uma operação de soma de dois inteiros, ou quanto tempo é necessário para a entrega de uma mensagem enviada na rede.</p>
 <h2 id="falhas">Falhas</h2>
 <p>Quanto às falhas, primeiro é preciso aceitar o fato de que componentes independentes podem falhar independentemente e que quanto mais <em>hosts</em>, maior é a probabilidade de que pelo menos um deles tenha uma CPU, disco, fonte, ou que quer que seja, apresentando problemas; e estejam certos, problemas acontecem o tempo todo.<sup id="fnref:falham"><a class="footnote-ref" href="#fn:falham">1</a></sup> 
@@ -1941,7 +2001,7 @@ Isto é importante pois se em sistemas monolíticos uma falha pode facilmente fa
 </ul>
 </details>
 <p>Para lidar com falhas, precisamos entender quais são suas possíveis formas, isto é, se o levam componentes falhos a parar de funcionar totalmente e de forma identificável por outros ou não, se há falhas "maliciosas", se os limites de tempo estabelecidos acima podem ser violados, se mensagens podem ser perdidas ou corrompidas.
-Revisitaremos este tópico na sessão <a href="../../fault/">Tolerância a Faltas</a>.</p>
+Revisitaremos este tópico na sessão <a href="../fault/index.md">Tolerância a Faltas</a>.</p>
 <h2 id="modelo-assumido">Modelo Assumido</h2>
 <details class="info inline end">
 <summary>Outros</summary>
@@ -2049,7 +2109,7 @@ Felizmente, para cada problema que tenha que resolver, há uma boa probabilidade
     <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
       
