@@ -151,68 +151,68 @@ nav:
 
         - Arquiteturas: 
                 - arch/index.md
-                - P2P: arch/p2p.md
-                - Microsserviços: arch/microservices.md
+                - P2P: arch/p2p/index.md
+                - Microsserviços: arch/microservices/index.md
 
         - Modelos: 
                 - models/index.md
-                - Tipos: models/models.md
-#                - Processador: models/processor.md
+                - Tipos: models/models/index.md
+#                - Processador: models/processor/index.md
 
         - Coordenação:
-                - Concorrência: coord/concurrency.md
-                - Coordenação: coord/coord.md
+                - Concorrência: coord/concurrency/index.md
+                - Coordenação: coord/coord/index.md
 
         - Tempo: 
                 - time/index.md
-                - Tempo Físico: time/physical.md
-                - Tempo Lógico: time/logical.md
+                - Tempo Físico: time/physical/index.md
+                - Tempo Lógico: time/logical/index.md
         
         - Tolerância a Faltas: 
                 - fault/index.md
-                - Falta/Erros/Falhas: fault/failures.md
-                - Replicação: fault/replication.md
-                - Detectores de Falhas: fault/failuredetector.md
-                - Acordo: fault/agreement.md
-                - Grupos: fault/reconfiguration.md
-                - Falhas bizantinas: fault/bizantine.md
-                - Dependabilidade: fault/dependability.md
+                - Falta/Erros/Falhas: fault/failures/index.md
+                - Replicação: fault/replication/index.md
+                - Detectores de Falhas: fault/failuredetector/index.md
+                - Acordo: fault/agreement/index.md
+                - Grupos: fault/reconfiguration/index.md
+                - Falhas bizantinas: fault/bizantine/index.md
+                - Dependabilidade: fault/dependability/index.md
 
         - Consistência:
                 - consistency/index.md
-                - Modelos: consistency/consistency_models.md
-                - Centrado nos Dados: consistency/data_centric.md
-                - Centrado no Cliente: consistency/client_centric.md
-                - Gerenciamento de Réplicas: consistency/replica_management.md
-                - Checkpointing: consistency/checkpointing.md
-                - Referências: consistency/references.md
+                - Modelos: consistency/consistency_models/index.md
+                - Centrado nos Dados: consistency/data_centric/index.md
+                - Centrado no Cliente: consistency/client_centric/index.md
+                - Gerenciamento de Réplicas: consistency/replica_management/index.md
+                - Checkpointing: consistency/checkpointing/index.md
+                - Referências: consistency/references/index.md
 #
-        - Bancos de Dados: db/disdb.md
+        - Bancos de Dados: db/disdb/index.md
 #        
-#        - Sistemas de Arquivos: filesystem/disfs.md
+#        - Sistemas de Arquivos: filesystem/disfs/index.md
 #
         - Estudos de Caso: 
                 - Introdução: cases/index.md
-                - Sockets: cases/sockets.md
-                - Cassandra: cases/cassandra.md
-                - Chord: cases/chord.md
-#                - Pastry: cases/pastry.md
-#                - Dynamo: cases/dynamo.md
-                - gRPC: cases/grpc.md
-                - Mosquitto: cases/mosquitto.md
-#                - RMI: cases/rmi.md
-                - Thrift: cases/thrift.md
-#                - Kafka: cases/kafka.md
-#                - Swim: cases/swim.md
-#                - Copycat: cases/copycat.md
-                - Ratis: cases/ratis.md
-#                - BFT-Smart: cases/bftsmart.md
-                - Etcd: cases/etcd.md
-#                - Zookeeper: cases/zookeeper.md
+                - Sockets: cases/sockets/index.md
+                - Cassandra: cases/cassandra/index.md
+                - Chord: cases/chord/index.md
+#                - Pastry: cases/pastry/index.md
+#                - Dynamo: cases/dynamo/index.md
+                - gRPC: cases/grpc/index.md
+                - Mosquitto: cases/mosquitto/index.md
+#                - RMI: cases/rmi/index.md
+                - Thrift: cases/thrift/index.md
+#                - Kafka: cases/kafka/index.md
+#                - Swim: cases/swim/index.md
+#                - Copycat: cases/copycat/index.md
+                - Ratis: cases/ratis/index.md
+#                - BFT-Smart: cases/bftsmart/index.md
+                - Etcd: cases/etcd/index.md
+#                - Zookeeper: cases/zookeeper/index.md
 #
-#                - Referências: cases/refs.md
+#                - Referências: cases/refs/index.md
 #
-#        - Tecnologias: tech.md
+#        - Tecnologias: tech/index.md
 #
-        - Projeto: projeto.md
-#        - Seminários: seminar.md
+        - Projeto: projeto/index.md
+#        - Seminários: seminar/index.md
