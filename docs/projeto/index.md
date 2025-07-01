@@ -188,12 +188,6 @@ O núcleo do modelo de consistência reside em como os `VectorClock`s são geren
       string writer_node_id = 4; // O ID do nó que originalmente escreveu esta versão.
     }
 
-    // Representa todas as versões para uma única chave no armazenamento.
-    message StoreEntry {
-      string key = 1;
-      repeated Version versions = 2; // Todas as versões atualmente ativas para esta chave.
-    }
-
     // --- Mensagens de Requisição ---
 
     // Requisição para a operação Put.
