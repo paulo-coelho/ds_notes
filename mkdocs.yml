@@ -192,7 +192,8 @@ nav:
 #        - Sistemas de Arquivos: filesystem/disfs/index.md
 #
         - Estudos de Caso: 
-                - Introdução: cases/index.md
+                - cases/index.md
+                #- Introdução: cases/index.md
                 - Sockets: cases/sockets/index.md
                 - Cassandra: cases/cassandra/index.md
                 - Chord: cases/chord/index.md
